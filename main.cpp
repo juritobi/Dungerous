@@ -6,6 +6,8 @@ int main()
     // Create the main window
     sf::RenderWindow app(sf::VideoMode(800, 600), "SFML window");
 
+
+//esto es una prueba
     // Load a sprite to display
     sf::Texture texture;
     if (!texture.loadFromFile("cb.bmp"))
@@ -17,7 +19,7 @@ int main()
 
 
     background.setOrigin(sf::Vector2f(350,250));
-    background.setPosition(sf::Vector2f(400, 300));
+    background.setPosition(sf::Vector2f(450, 350));
     sprite.setOrigin(sf::Vector2f(75,60));
     sprite.setPosition(sf::Vector2f(400, 300));
 
