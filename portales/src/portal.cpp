@@ -1,8 +1,12 @@
 #include "portal.h"
 
-portal::portal()
+portal::portal(int x, int y, int pos1, int pos2)
 {
-    //ctor
+    RectangleShape portal1(Vector2f(x, y));
+    portal1.setFillColor(Color::Blue);
+    portal1.setOrigin(Vector2f(x/2,y/2));
+    portal1.setPosition(Vector2f(pos1, pos2));
+
 }
 
 portal::~portal()
@@ -12,5 +16,5 @@ portal::~portal()
 
 portal::portal(const portal& other)
 {
-    //copy ctor
+
 }

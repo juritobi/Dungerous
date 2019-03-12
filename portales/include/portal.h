@@ -8,6 +8,9 @@ class portal
         portal(int x, int y, int pos1,int pos2);
         virtual ~portal();
         portal(const portal& other);
+
+
+
     protected:
     private:
 };
