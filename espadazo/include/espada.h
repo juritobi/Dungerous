@@ -5,8 +5,11 @@
 class espada
 {
     public:
-        espada(sf::Vector2f tamano, sf::Vector2f* posicion);
-        virtual ~espada();
+        espada();
+        espada(sf::Vector2f tamano, sf::Vector2f posicion);
+        void borrar();
+        ~espada();
+        sf::RectangleShape body;
     protected:
     private:
 };

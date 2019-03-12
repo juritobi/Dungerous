@@ -2,15 +2,24 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-espada::espada(sf::Vector2f tamano, sf::Vector2f posicion&)
-{
-    RectangleShape this(tamano);
-    this.setFillColor(Color::Green);
-    this.setOrigin(Vector2f(0,tamano.y/2));
-    this.setPosition(posicion);
+espada::espada(){
 }
 
-espada::~espada()
+espada::espada(sf::Vector2f tamano, sf::Vector2f posicion)
 {
-    //dtor
+    body.setSize(tamano);
+    body.setFillColor(sf::Color::Green);
+    body.setOrigin(sf::Vector2f(0,tamano.y/2));
+    body.setPosition(posicion);
+}
+
+void espada::borrar(){
+
+   espada *prueba2=this;
+
+    delete(prueba2);
+}
+
+espada::~espada(){
+
 }

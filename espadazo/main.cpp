@@ -9,8 +9,6 @@ int main()
 {
     // Create the main window
     RenderWindow app(VideoMode(800, 600), "SFML window");
-
-
 //esto es una prueba
     // Load a sprite to display
 
@@ -24,9 +22,13 @@ int main()
     enemigo1.setOrigin(Vector2f(enemigo1.getGlobalBounds().width/2,enemigo1.getGlobalBounds().height/2));
     enemigo1.setPosition(Vector2f(50, 300));
 
-    espada esp = nullptr;
+    RectangleShape espada(Vector2f(20, 100));
+    espada.setFillColor(Color::Green);
+    espada.setOrigin(Vector2f(espada.getGlobalBounds().width/2,espada.getGlobalBounds().height));
+    espada.setPosition(Vector2f(sprite.getPosition().x,sprite.getPosition().y+50));
 
-
+    bool pegando=false;
+    bool muerto=false;
 
     Clock reloj;
     Time tiempo;
@@ -55,21 +57,41 @@ int main()
             sprite.move(sf::Vector2f(0.5,0));
         }
 
-        if(Keyboard::isKeyPressed(Keyboard::Space)){
-                reloj.restart();
-                esp = espada(Vector2f(50,25),sprite.getPosition());
+        if(!pegando){
+            espada.setPosition(Vector2f(sprite.getPosition().x,sprite.getPosition().y+50));
         }
-        if (reloj.getElapsedTime().asSeconds()>1.5){
-            espada=RectangleShape espada(Vector2f(50,25));;
+        else{
+            espada.setPosition(sprite.getPosition());
+        }
+
+        if(Keyboard::isKeyPressed(Keyboard::Space)){
+                if(!pegando){
+                    reloj.restart();
+                    espada.rotate(-90.f);
+                    pegando=true;
+                }
+        }
+        if (reloj.getElapsedTime().asSeconds()>0.2){
+            if(pegando){
+                pegando=false;
+                espada.rotate(90.f);
+            }
+
+        }
+
+        if(espada.getGlobalBounds().intersects(enemigo1.getGlobalBounds())){
+            muerto=true;
+            std::cout<<"hola";
         }
 
         // Clear screen
         app.clear();
 
         // Draw the sprite
-        app.draw(enemigo1);
-        app.draw(sprite);
+        if(!muerto) app.draw(enemigo1);
         app.draw(espada);
+        app.draw(sprite);
+
 
         // Update the window
         app.display();

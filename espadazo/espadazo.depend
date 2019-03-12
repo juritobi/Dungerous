@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1552408985 source:/home/juritobi/p/Dungerous/espadazo/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+	"espada.h"
+
+1552404888 /home/juritobi/p/Dungerous/espadazo/include/espada.h
+	<SFML/Graphics.hpp>
+
+1552406148 source:/home/juritobi/p/Dungerous/espadazo/src/espada.cpp
+	"espada.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
