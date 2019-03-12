@@ -54,6 +54,13 @@ int main()
             sprite.move(sf::Vector2f(0.5,0));
         }
 
+        if(sprite.getGlobalBounds().intersects(portal1.getGlobalBounds())){
+            sprite.setPosition(Vector2f(portal2.getPosition().x-150,portal2.getPosition().y));
+        }
+        if(sprite.getGlobalBounds().intersects(portal2.getGlobalBounds())){
+            sprite.setPosition(Vector2f(portal1.getPosition().x+150,portal1.getPosition().y));
+        }
+
         // Clear screen
         app.clear();
 
