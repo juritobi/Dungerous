@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1552501501 source:/home/jose/Escritorio/espadayenemigo/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	"espada.h"
+	"enemigo.h"
+
+1552498237 source:/home/jose/Escritorio/espadayenemigo/src/enemigo.cpp
+	"enemigo.h"
+
+1552498848 /home/jose/Escritorio/espadayenemigo/include/enemigo.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1552501325 source:/home/jose/Escritorio/espadayenemigo/src/espada.cpp
+	"espada.h"
+
+1552501513 /home/jose/Escritorio/espadayenemigo/include/espada.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
