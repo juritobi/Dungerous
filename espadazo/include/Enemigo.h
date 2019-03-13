@@ -9,6 +9,7 @@ class Enemigo
         static std::vector <RectangleShape>  rec;
         RectangleShape body;
         Enemigo();
+        Enemigo( sf::Vector2f);
         virtual ~Enemigo();
         void meter();
     protected:
