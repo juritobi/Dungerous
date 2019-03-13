@@ -1,0 +1,71 @@
+# depslib dependency file v1.0
+1552469856 source:/home/fv/Escritorio/FV/FV-Grupo/main.cpp
+	<SFML/Graphics.hpp>
+	"Player.h"
+	"Enemy.h"
+	<stdio.h>
+	<TileMap.h>
+
+1551982896 source:/home/fv/Escritorio/FV/FV-Grupo/src/Animation.cpp
+	"Animation.h"
+
+1551987700 /home/fv/Escritorio/FV/FV-Grupo/Animation.h
+	<SFML/Graphics.hpp>
+
+1552307671 /home/fv/Escritorio/FV/FV-Grupo/include/Player.h
+	<SFML/Graphics.hpp>
+	"PlayerAnimation.h"
+
+1552307727 source:/home/fv/Escritorio/FV/FV-Grupo/src/Player.cpp
+	"Player.h"
+
+1551802041 source:/home/fv/Escritorio/FV/FV-Grupo/src/Estado.cpp
+	"Estado.h"
+
+1551799592 /home/fv/Escritorio/FV/FV-Grupo/include/Estado.h
+	<SFML/Graphics.hpp>
+
+1552307839 source:/home/fv/Escritorio/FV/FV-Grupo/src/Enemy.cpp
+	"Enemy.h"
+
+1552307797 /home/fv/Escritorio/FV/FV-Grupo/include/Enemy.h
+	<SFML/Graphics.hpp>
+	"EnemyAnimation.h"
+	"Player.h"
+	<math.h>
+
+1552300712 /home/fv/Escritorio/FV/FV-Grupo/PlayerAnimation.h
+	<SFML/Graphics.hpp>
+
+1551992335 /home/fv/Escritorio/FV/FV-Grupo/include/EnemyAnimation.h
+	<SFML/Graphics.hpp>
+
+1551987852 /home/fv/Escritorio/FV/FV-Grupo/EnemyAnimation.h
+	<SFML/Graphics.hpp>
+	"Enemy.h"
+
+1551988421 source:/home/fv/Escritorio/FV/FV-Grupo/include/EnemyAnimation.h
+	<SFML/Graphics.hpp>
+
+1552300587 /home/fv/Escritorio/FV/FV-Grupo/include/PlayerAnimation.h
+	<SFML/Graphics.hpp>
+
+1552469303 source:/home/fv/Escritorio/FV/FV-Grupo/src/PlayerAnimation.cpp
+	"PlayerAnimation.h"
+
+1552059802 source:/home/fv/Escritorio/FV/FV-Grupo/src/EnemyAnimation.cpp
+	"EnemyAnimation.h"
+
+1552469872 source:/home/fv/Escritorio/FV/FV-Grupo/src/TileMap.cpp
+	"TileMap.h"
+
+1552469892 /home/fv/Escritorio/FV/FV-Grupo/include/TileMap.h
+	<SFML/Graphics.hpp>
+	<string.h>
+
+1552309741 /home/fv/Escritorio/FV/FV-Grupo/include/Tile.h
+	<SFML/Graphics.hpp>
+
+1552309603 source:/home/fv/Escritorio/FV/FV-Grupo/src/Tile.cpp
+	"Tile.h"
+

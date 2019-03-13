@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1551033073 source:/home/fv/Escritorio/FV/FV-Individual/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+
