@@ -11,6 +11,7 @@ espada::espada(sf::Vector2f tamano, sf::Vector2f posicion)
     body.setFillColor(sf::Color::Green);
     body.setOrigin(sf::Vector2f(0,tamano.y/2));
     body.setPosition(posicion);
+    muerto=false;
 }
 
 void espada::borrar(){
@@ -20,6 +21,4 @@ void espada::borrar(){
     delete(prueba2);
 }
 
-espada::~espada(){
-
-}
+espada::~espada(){}

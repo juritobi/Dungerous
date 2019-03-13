@@ -1,14 +1,23 @@
 # depslib dependency file v1.0
-1552408985 source:/home/juritobi/p/Dungerous/espadazo/main.cpp
+1552487074 source:/home/juritobi/p/Dungerous/espadazo/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"espada.h"
+	"Enemigo.h"
+	<vector>
 
-1552404888 /home/juritobi/p/Dungerous/espadazo/include/espada.h
+1552410702 /home/juritobi/p/Dungerous/espadazo/include/espada.h
 	<SFML/Graphics.hpp>
 
-1552406148 source:/home/juritobi/p/Dungerous/espadazo/src/espada.cpp
+1552411554 source:/home/juritobi/p/Dungerous/espadazo/src/espada.cpp
 	"espada.h"
 	<iostream>
 	<SFML/Graphics.hpp>
+
+1552488156 /home/juritobi/p/Dungerous/espadazo/include/Enemigo.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1552488184 source:/home/juritobi/p/Dungerous/espadazo/src/Enemigo.cpp
+	"Enemigo.h"
 

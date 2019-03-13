@@ -1,9 +1,11 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "espada.h"
-
+#include "Enemigo.h"
+#include <vector>
 
 using namespace sf;
+
 
 int main()
 {
@@ -22,11 +24,18 @@ int main()
     enemigo1.setOrigin(Vector2f(enemigo1.getGlobalBounds().width/2,enemigo1.getGlobalBounds().height/2));
     enemigo1.setPosition(Vector2f(50, 300));
 
+
     RectangleShape espada(Vector2f(20, 100));
     espada.setFillColor(Color::Green);
     espada.setOrigin(Vector2f(espada.getGlobalBounds().width/2,espada.getGlobalBounds().height));
     espada.setPosition(Vector2f(sprite.getPosition().x,sprite.getPosition().y+50));
 
+    //espada* esp= espada(Vector2f(50,100),Vector2f(400,300));
+
+    Enemigo en=Enemigo();
+    Enemigo *cossa=&en;
+    std::vector <Enemigo>  vec;
+    vec.push_back(en);
     bool pegando=false;
     bool muerto=false;
 
@@ -79,20 +88,36 @@ int main()
 
         }
 
-        if(espada.getGlobalBounds().intersects(enemigo1.getGlobalBounds())){
-            muerto=true;
-            std::cout<<"hola";
+        if(espada.getGlobalBounds().intersects(en.body.getGlobalBounds())){
+            std::cout<<"SIGO AQUI";
+            //delete[] vec2;
+
+            delete cossa;
+            cossa = NULL;
+
+
+            vec.clear();
+
+
         }
 
         // Clear screen
         app.clear();
 
         // Draw the sprite
-        if(!muerto) app.draw(enemigo1);
+
         app.draw(espada);
         app.draw(sprite);
 
+        if(vec.size()!=0){
+                std::cout<<"YEE";
 
+            for(int i=0;i<vec.size();i++){
+                app.draw(vec[i].body);
+                break;
+            }
+
+        }
         // Update the window
         app.display();
     }

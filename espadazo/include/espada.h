@@ -10,6 +10,7 @@ class espada
         void borrar();
         ~espada();
         sf::RectangleShape body;
+        bool muerto;
     protected:
     private:
 };
