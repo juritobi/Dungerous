@@ -17,3 +17,16 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
+1552501761 source:/home/juritobi/p/Dungerous/proyectoGrupo/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+	"puerta.h"
+
+1552500586 /home/juritobi/p/Dungerous/proyectoGrupo/include/puerta.h
+	<SFML/Graphics.hpp>
+
+1552501599 source:/home/juritobi/p/Dungerous/proyectoGrupo/src/puerta.cpp
+	"puerta.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+

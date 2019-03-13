@@ -60,7 +60,9 @@ int main()
     background2.setPosition(640,0);
     //std::vector <puerta> vecpuertas;
 
-    puerta *puerta1 = new puerta(sf::Vector2f(10.0f, 100.0f), sf::Vector2f(400.0f, 0.0f));
+    puerta *puerta1 = new puerta();
+    std::cout << "HHHHAAAAAA"<< std::endl;
+    //puerta *puerta1 = new puerta(sf::Vector2f(10.0f, 100.0f), sf::Vector2f(400.0f, 0.0f));
 
     //vecpuertas.push_back(*puerta1);
 
@@ -127,12 +129,21 @@ int main()
 
             }
 
-            if(sala == 0 && sprite.getPosition().x == 255.0f && sprite.getPosition().y >= -25.0f && sprite.getPosition().y <= 45.0f)
+
+
+
+
+
+        }
+
+        if(sala == 0 && sprite.getPosition().x == 255.0f && sprite.getPosition().y >= -25.0f && sprite.getPosition().y <= 45.0f)
             {
                 view.move(640.0f, 0.0f);
                 sprite.setPosition(470, -25);
                 sala = 1;
                 relojico.restart();
+                puerta1 = new puerta(sf::Vector2f(10.0f, 100.0f), sf::Vector2f(400.0f, 0.0f));
+                std::cout<<puerta1->body.getGlobalBounds().height<<std::endl;
             }
             else if(sala ==1 && sprite.getPosition().x == 400.0f && sprite.getPosition().y >= -25.0f && sprite.getPosition().y <= 45.0f)
             {
@@ -144,12 +155,6 @@ int main()
             }
 
 
-
-
-        }
-
-
-
             //std::cout <<relojico.getElapsedTime().asSeconds();
             //std::cout <<"\n";
 
@@ -157,6 +162,7 @@ int main()
         if(puerta1->body.getGlobalBounds().intersects(sprite.getGlobalBounds()))
             {
                 sprite.setPosition(450,-25);
+                std::cout<<puerta1->body.getGlobalBounds().height<<std::endl;
             }
         window.clear();
 
