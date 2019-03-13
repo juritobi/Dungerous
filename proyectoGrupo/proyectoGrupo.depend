@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1552491913 source:/home/jose/Escritorio/proyectoGrupo/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+	"puerta.h"
+
+1552248545 source:/home/jose/Escritorio/proyectoGrupo/src/Camara.cpp
+	"Camara.h"
+
+1552251259 /home/jose/Escritorio/proyectoGrupo/include/Camara.h
+
+1552491927 /home/jose/Escritorio/proyectoGrupo/include/puerta.h
+	<SFML/Graphics.hpp>
+
+1552491891 source:/home/jose/Escritorio/proyectoGrupo/src/puerta.cpp
+	"puerta.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
