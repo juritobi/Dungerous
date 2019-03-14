@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1552430400 source:/home/hichman/Desktop/enemyShoot/include/Bullet.cpp
+	<SFML/Graphics.hpp>
+
+1552430547 source:/home/hichman/Desktop/enemyShoot/include/Enemy.cpp
+	<SFML/Graphics.hpp>
+	"Bullet.h"
+
+1552488949 /home/hichman/Desktop/enemyShoot/include/Bullet.h
+	<SFML/Graphics.hpp>
+
+1552430426 source:/home/hichman/Desktop/enemyShoot/include/Player.cpp
+	<SFML/Graphics.hpp>
+
+1552483715 source:/home/hichman/Desktop/enemyShoot/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+	"Bullet.h"
+	"Enemey.h"
+	"Player.h"
+	<vector>
+
+1552483120 /home/hichman/Desktop/enemyShoot/include/Enemey.h
+	<SFML/Graphics.hpp>
+	"Bullet.h"
+	"Player.h"
+
+1552482745 /home/hichman/Desktop/enemyShoot/include/Player.h
+	<SFML/Graphics.hpp>
+
