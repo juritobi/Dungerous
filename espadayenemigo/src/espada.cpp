@@ -1,18 +1,9 @@
-#include "espada.h"
-
+#include "../include/espada.h"
 
 espada::espada()
 {
-
-}
-
-espada::espada(int posx, int posy)
-{
-    body.setSize(sf::Vector2f(100.0f,10.0f));
+    body.setSize(sf::Vector2f(0,0));
     body.setFillColor(sf::Color::Yellow);
-    body.setPosition(sf::Vector2f(posx+10,posy+50));
-    body.setOrigin(sf::Vector2f(5.0f/2, 50.0f/2));
-    std::cout<<"esto funciona"<<std::endl;
 }
 
 espada::~espada()
@@ -21,6 +12,25 @@ espada::~espada()
 }
 
 void espada::desaparecer(){
+    body.setSize(sf::Vector2f(0,0));
+}
 
-    body.setSize(sf::Vector2f(100.0f,10.0f));
+void espada::aparecer(int dir){
+    body.setSize(sf::Vector2f(100,10));
+    body.setOrigin(sf::Vector2f(0, body.getLocalBounds().height/2));
+    switch(dir){
+        case 1:
+            body.setRotation(-90);
+            break;
+        case 2:
+            body.setRotation(0);
+            break;
+        case 3:
+            body.setRotation(90);
+            break;
+        case 4:
+            body.setRotation(180);
+            break;
+    }
+
 }

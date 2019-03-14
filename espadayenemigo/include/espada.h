@@ -9,10 +9,10 @@ class espada
 {
     public:
         espada();
-        espada(int posx, int posy);
         virtual ~espada();
         sf::RectangleShape body;
         void desaparecer();
+        void aparecer(int dir);
     protected:
 
     private:

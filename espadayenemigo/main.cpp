@@ -1,18 +1,24 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #define kVel 5
-#include "espada.h"
-#include "enemigo.h"
+#include "include/espada.h"
+#include "include/enemigo.h"
+
+using namespace sf;
 int main()
 {
-bool vive = true;
 sf::RenderWindow window(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA");
-sf::RectangleShape sprite(sf::Vector2f(50.0f, 100.0f));
-    espada *espada1 = new espada();
-    sprite.setFillColor(sf::Color::Green);
-    sprite.setPosition(sf::Vector2f(0.0f,0.0f));
-    sprite.setOrigin(sf::Vector2f(5.0f/2, 50.0f/2));
 
+sf::RectangleShape sprite(sf::Vector2f(50, 100));
+    sprite.setFillColor(sf::Color::Green);
+    sprite.setPosition(sf::Vector2f(320,240));
+    sprite.setOrigin(sf::Vector2f(sprite.getGlobalBounds().width/2, sprite.getGlobalBounds().height/2));
+
+    espada *espada1 = new espada();
+    enemigo *enemy = new enemigo();
+
+    int dir = 1; //esta variable indica la direccion en la que pega el personaje, 1 arriba 2 derecha 3 abajo 4 izquierda
+    bool dead =false;//indica si el enemgo esta muerto
 
     while (window.isOpen())
     {
@@ -20,91 +26,68 @@ sf::RectangleShape sprite(sf::Vector2f(50.0f, 100.0f));
         sf::Event event;
         while (window.pollEvent(event))
         {
-
             switch(event.type){
-
-
                 //Si se recibe el evento de cerrar la ventana la cierro
                 case sf::Event::Closed:
                     window.close();
                     break;
-
-                //Se pulsó una tecla, imprimo su codigo
                 case sf::Event::KeyPressed:
-
-                    //Verifico si se pulsa alguna tecla de movimiento
-                    switch(event.key.code) {
-
-                        //Mapeo del cursor
-                        case sf::Keyboard::Right:
-                            sprite.setTextureRect(sf::IntRect(0*75, 2*75, 75, 75));
-                            //Escala por defecto
-                            sprite.setScale(1,1);
-                            sprite.move(kVel,0);
-                        break;
-
-                        case sf::Keyboard::Left:
-                            sprite.setTextureRect(sf::IntRect(0*75, 2*75, 75, 75));
-                            //Reflejo vertical
-                            sprite.setScale(-1,1);
-                            sprite.move(-kVel,0);
-                        break;
-
-                        case sf::Keyboard::Up:
-                            sprite.setTextureRect(sf::IntRect(0*75, 3*75, 75, 75));
-                            sprite.move(0,-kVel);
-                        break;
-
-                        case sf::Keyboard::Down:
-                            sprite.setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
-                            sprite.move(0,kVel);
-                        break;
-
-
-                        //Tecla ESC para salir
-                        case sf::Keyboard::Escape:
-                            window.close();
-                        break;
-
+                    if(event.key.code == Keyboard::Up) {
+                        dir=1;
                     }
-                case sf::Event::KeyReleased:
-
-                    //Verifico si se pulsa alguna tecla de movimiento
-                    switch(event.key.code) {
-
-                        case sf::Keyboard::Space:
-                            std::cout<<"prueba borrado"<<std::endl;
-                            espada1->desaparecer();
-                            vive = false;
-                        break;
-
+                    if(event.key.code == Keyboard::Right) {
+                       dir=2;
                     }
-
-                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-                        espada1 = new espada(sprite.getPosition().x, sprite.getPosition().y);
-                        vive= true;
-
-
+                    if(event.key.code == Keyboard::Down) {
+                        dir=3;
                     }
-
+                    if(event.key.code == Keyboard::Left) {
+                        dir=4;
+                    }
+                case sf::Event::KeyReleased:// desaparece la espada cuando se suelta espacio
+                    if(event.key.code == Keyboard::Space) {
+                        espada1->desaparecer();
+                    }
+                    break;
             }
-
-
-
 
         }
 
+        espada1->body.setPosition(sprite.getPosition());//mueve la espada con el personaje
+
+        //inputs
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+            sprite.move(sf::Vector2f(0,-0.1));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+            sprite.move(sf::Vector2f(0,0.1));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            sprite.move(sf::Vector2f(-0.1,0));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            sprite.move(sf::Vector2f(0.1,0));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+            espada1->aparecer(dir);
+        }
 
 
-            //std::cout <<relojico.getElapsedTime().asSeconds();
-            //std::cout <<"\n";
+        //colisiones
+        if(espada1->body.getGlobalBounds().intersects(enemy->body.getGlobalBounds())){
+            if(!dead)delete enemy;
+            dead=true;
+        }
 
-
-
+        //render
         window.clear();
-        window.draw(sprite);
 
+        window.draw(sprite);
         window.draw(espada1->body);
+        if(!dead){
+            window.draw(enemy->body);
+        }
+
         window.display();
     }
 }
