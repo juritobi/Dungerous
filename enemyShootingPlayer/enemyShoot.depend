@@ -6,13 +6,13 @@
 	<SFML/Graphics.hpp>
 	"Bullet.h"
 
-1552488949 /home/hichman/Desktop/enemyShoot/include/Bullet.h
+1552653375 /home/hichman/Desktop/enemyShoot/include/Bullet.h
 	<SFML/Graphics.hpp>
 
 1552430426 source:/home/hichman/Desktop/enemyShoot/include/Player.cpp
 	<SFML/Graphics.hpp>
 
-1552483715 source:/home/hichman/Desktop/enemyShoot/main.cpp
+1552653679 source:/home/hichman/Desktop/enemyShoot/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Bullet.h"
@@ -20,11 +20,70 @@
 	"Player.h"
 	<vector>
 
-1552483120 /home/hichman/Desktop/enemyShoot/include/Enemey.h
+1552510696 /home/hichman/Desktop/enemyShoot/include/Enemey.h
+	<SFML/Graphics.hpp>
+
+1552653648 /home/hichman/Desktop/enemyShoot/include/Player.h
 	<SFML/Graphics.hpp>
 	"Bullet.h"
+
+1552748295 source:/home/dansensei/Escritorio/enemyShoot/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+	"Bullet.h"
+	"Enemy.h"
+	"Player.h"
+	<vector>
+	<math.h>
+
+1552748683 /home/dansensei/Escritorio/enemyShoot/include/Bullet.h
+	<SFML/Graphics.hpp>
+
+1552746388 /home/dansensei/Escritorio/enemyShoot/include/Enemy.h
+	<SFML/Graphics.hpp>
+	"Bullet.h"
+
+1552746481 /home/dansensei/Escritorio/enemyShoot/include/Player.h
+	<SFML/Graphics.hpp>
+	"Bullet.h"
+
+1552748690 source:/home/dansensei/Escritorio/enemyShoot/src/Bullet.cpp
+	"Bullet.h"
+	<iostream>
+
+1552747560 source:/home/dansensei/Escritorio/enemyShoot/src/Enemy.cpp
+	"Enemy.h"
+
+1552748678 source:/home/dansensei/Escritorio/enemyShoot/src/Player.cpp
 	"Player.h"
 
-1552482745 /home/hichman/Desktop/enemyShoot/include/Player.h
+1552748818 source:/home/hichman/Desktop/enemyShoot2/enemyShoot/main.cpp
+	<iostream>
 	<SFML/Graphics.hpp>
+	"Bullet.h"
+	"Enemy.h"
+	"Player.h"
+	<vector>
+	<math.h>
+
+1552748682 /home/hichman/Desktop/enemyShoot2/enemyShoot/include/Bullet.h
+	<SFML/Graphics.hpp>
+
+1552746388 /home/hichman/Desktop/enemyShoot2/enemyShoot/include/Enemy.h
+	<SFML/Graphics.hpp>
+	"Bullet.h"
+
+1552746480 /home/hichman/Desktop/enemyShoot2/enemyShoot/include/Player.h
+	<SFML/Graphics.hpp>
+	"Bullet.h"
+
+1552748690 source:/home/hichman/Desktop/enemyShoot2/enemyShoot/src/Bullet.cpp
+	"Bullet.h"
+	<iostream>
+
+1552747560 source:/home/hichman/Desktop/enemyShoot2/enemyShoot/src/Enemy.cpp
+	"Enemy.h"
+
+1552748678 source:/home/hichman/Desktop/enemyShoot2/enemyShoot/src/Player.cpp
+	"Player.h"
 

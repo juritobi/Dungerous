@@ -7,31 +7,17 @@
 class Player{
 
 public:
-    Player(sf::Vector2f size){
-        player.setSize(size);
-        player.setFillColor(sf::Color::Red);
-    }
+    Player(sf::Vector2f size);
 
-    void setPos(sf::Vector2f newPos){
+    void setPos(sf::Vector2f newPos);
+    void move(sf::Vector2f dir);
 
-        player.setPosition(newPos);
-    }
+    void checkColl(Bullet bullet);
 
-    void checkColl(Bullet bullet){
+    float getX();
+    float getY();
 
-        if(bullet.getRight() > player.getPosition().x
-        && bullet.getTop() < player.getPosition().y + player.getSize().y
-        && bullet.getBottom() > player.getPosition().y)
-        {
-         player.setPosition(sf::Vector2f(4234432, 4234423));
-        }
-
-
-    }
-
-     void draw(sf::RenderWindow &window){
-        window.draw(player);
-    }
+     void draw(sf::RenderWindow &window);
 private:
     sf::RectangleShape player;
 };

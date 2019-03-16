@@ -1,9 +1,10 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Bullet.h"
-#include "Enemey.h"
+#include "Enemy.h"
 #include "Player.h"
 #include <vector>
+#include <math.h>
 
 int main() {
     sf::RenderWindow window;
@@ -20,7 +21,7 @@ int main() {
     Player player(sf::Vector2f(50, 50));
     std::vector<Bullet> bulletVec;
 
-    player.setPos(sf::Vector2f(500, 50));
+    player.setPos(sf::Vector2f(800, 400));
 
     bool isFiring = false;
 
@@ -33,20 +34,20 @@ int main() {
         while (window.pollEvent(Event)) {
             switch (Event.type) {
 
-            case sf::Event::Closed:
-                window.close();
+                case sf::Event::Closed:
+                    window.close();
             }
 
             int moveSpeed = 6;
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-                enemy.move(sf::Vector2f(0, -moveSpeed));
+                player.move(sf::Vector2f(0, -moveSpeed));
             } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-                enemy.move(sf::Vector2f(0, moveSpeed));
+                player.move(sf::Vector2f(0, moveSpeed));
             } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-                enemy.move(sf::Vector2f(-moveSpeed, 0));
+                player.move(sf::Vector2f(-moveSpeed, 0));
             } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-                enemy.move(sf::Vector2f(moveSpeed, 0));
+                player.move(sf::Vector2f(moveSpeed, 0));
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
@@ -56,16 +57,22 @@ int main() {
         }
 
         window.clear();
+
         if (isFiring == true) {
-            Bullet newBullet(sf::Vector2f(50, 5));
-            newBullet.setPos(sf::Vector2f(enemy.getX(), enemy.getY()));
-            bulletVec.push_back(newBullet);
+
+            sf::Vector2f direction(player.getX() - enemy.getX() , player.getY() - enemy.getY());
+            float mod = sqrt(direction.x * direction.x + direction.y * direction.y);
+            direction /= mod;
+
+            Bullet newBullet(sf::Vector2f(5, 5), direction);
+            newBullet.setPos(sf::Vector2f(enemy.getX()+2, enemy.getY()+10));
+            bulletVec.emplace_back(newBullet);
             isFiring = false;
         }
 
         for (int i = 0; i < bulletVec.size(); i++) {
             bulletVec[i].draw(window);
-            bulletVec[i].fire(3);
+            bulletVec[i].fire(0.1);
         }
 
         for (int i = 0; i < bulletVec.size(); i++) {

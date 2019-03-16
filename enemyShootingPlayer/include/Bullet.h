@@ -6,41 +6,20 @@ class Bullet{
 
 public:
 
-    Bullet(sf::Vector2f size){
-        bullet.setSize(size);
-    }
+    Bullet(sf::Vector2f size, sf::Vector2f dir);
 
+    void fire (float speed);
 
-    void fire (int speed){
-        bullet.move(speed, 0);
-    }
+    int getRight();
+    int getLeft();
+    int getTop();
+    int getBottom();
 
-    int getRight(){
-        return bullet.getPosition().x + bullet.getSize().x;
-    }
-
-    int getLeft(){
-        return bullet.getPosition().x;
-    }
-
-
-    int getTop(){
-        return bullet.getPosition().y;
-    }
-
-    int getBottom(){
-        return bullet.getPosition().y + bullet.getSize().y;
-    }
-
-    void draw(sf::RenderWindow &window){
-        window.draw(bullet);
-    }
-
-    void setPos(sf::Vector2f newPos){
-        bullet.setPosition(newPos);
-    }
+    void draw(sf::RenderWindow &window);
+    void setPos(sf::Vector2f newPos);
 
 private:
     sf::RectangleShape bullet;
+    sf::Vector2f direction;
 
 };
