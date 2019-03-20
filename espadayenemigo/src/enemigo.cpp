@@ -10,5 +10,5 @@ enemigo::enemigo()
 
 enemigo::~enemigo()
 {
-    //dtor
+    std::cout<<"Muero";
 }

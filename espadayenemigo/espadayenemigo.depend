@@ -39,3 +39,23 @@
 1552589541 source:/home/juritobi/p/Dungerous/espadayenemigo/src/espada.cpp
 	"../include/espada.h"
 
+1553085118 source:/home/carlos/Escritorio/FV/Dungerous/espadayenemigo/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	"include/espada.h"
+	"include/enemigo.h"
+
+1552863421 /home/carlos/Escritorio/FV/Dungerous/espadayenemigo/include/espada.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1552863421 /home/carlos/Escritorio/FV/Dungerous/espadayenemigo/include/enemigo.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1552863421 source:/home/carlos/Escritorio/FV/Dungerous/espadayenemigo/src/espada.cpp
+	"../include/espada.h"
+
+1553084976 source:/home/carlos/Escritorio/FV/Dungerous/espadayenemigo/src/enemigo.cpp
+	"../include/enemigo.h"
+

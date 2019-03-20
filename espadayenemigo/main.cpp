@@ -74,9 +74,17 @@ sf::RectangleShape sprite(sf::Vector2f(50, 100));
 
 
         //colisiones
-        if(espada1->body.getGlobalBounds().intersects(enemy->body.getGlobalBounds())){
-            if(!dead)delete enemy;
+
+
+        if(!dead){
+            if(espada1->body.getGlobalBounds().intersects(enemy->body.getGlobalBounds())){
+            if(!dead){
+                delete enemy;
+                enemy=NULL;
+            }
+
             dead=true;
+        }
         }
 
         //render
