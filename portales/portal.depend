@@ -1,5 +1,0 @@
-# depslib dependency file v1.0
-1552337805 source:/home/juritobi/p/Dungerous/portales/main.cpp
-	<iostream>
-	<SFML/Graphics.hpp>
-
