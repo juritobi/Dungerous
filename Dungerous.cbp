@@ -40,7 +40,9 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="cb.bmp" />
+		<Unit filename="include/Game.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Game.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />
