@@ -1,5 +1,7 @@
-#include "../include/Game.hpp"
+#include "Game.hpp"
 #include <iostream>
+#include <fstream>
+#include <string>
 
 const float Game::PlayerSpeed = 300.f;
 const sf::Time Game::minUpdateTime = sf::milliseconds(60.f);
@@ -13,13 +15,19 @@ Game::Game()
 , mIsMovingRight(false)
 , mIsMovingLeft(false)
 {
-	if (!mTexture.loadFromFile("Assets/Eagle.png"))
+	if (!mTexture.loadFromFile("Eagle.png"))
 	{
 		// Handle loading error
 	}
-    mWindow.setFramerateLimit(300);
 	mPlayer.setTexture(mTexture);
-	mPlayer.setPosition(100.f, 100.f);
+	float x;
+	float y;
+	std::ifstream myfile;
+	myfile.open("save.txt");
+    myfile>> x >> y;
+
+    std::cout<<x;
+	futurePlayerState=sf::Vector2f(x,y);
 }
 
 void Game::run() //Starts the Main Loop
@@ -58,6 +66,10 @@ void Game::processEvents()//detects inputs
 				break;
 
 			case sf::Event::Closed:
+			    std::ofstream myfile;
+			    myfile.open("save.txt");
+			    myfile << mPlayer.getPosition().x<<" "<< mPlayer.getPosition().y<<std::endl;
+			    myfile.close();
 				mWindow.close();
 				break;
 		}
