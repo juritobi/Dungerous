@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "../include/Game.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -15,7 +15,7 @@ Game::Game()
 , mIsMovingRight(false)
 , mIsMovingLeft(false)
 {
-	if (!mTexture.loadFromFile("Eagle.png"))
+	if (!mTexture.loadFromFile("Assets/Eagle.png"))
 	{
 		// Handle loading error
 	}
