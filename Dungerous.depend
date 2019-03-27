@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1553696092 source:/home/juritobi/p/Dungerous/main.cpp
+	<SFML/Graphics.hpp>
+
+1553696174 source:/home/juritobi/p/Dungerous/src/App.cpp
+	"App.h"
+
+1553696174 /home/juritobi/p/Dungerous/include/App.h
+
