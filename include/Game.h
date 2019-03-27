@@ -10,10 +10,11 @@ class Game
                         Game();
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
-        void            render(sf::RenderWindow* mWindow);
+        void            render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime);
 
     private:
         Player          mPlayer;
+        float           tick;
 };
 
 #endif // GAME_H

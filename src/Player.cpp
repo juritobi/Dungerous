@@ -2,10 +2,15 @@
 #include <SFML/Graphics.hpp>
 Player::Player()
 :box(sf::Vector2f(100,100))
+,speed(300.f)
+,up(false)
+,down(false)
+,right(false)
+,left(false)
+,firstState(sf::Vector2f(100,100))
+,lastState(sf::Vector2f(100,100))
 {
     box.setFillColor(sf::Color::Red);
-    speed= 300.f;
-
 }
 
 void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
@@ -38,8 +43,13 @@ void Player::update(sf::Time elapsedTime){
 
 }
 
+void Player::changePos(float tick){
+    box.setPosition(firstState.x*(1-tick)+lastState.x*tick,firstState.y*(1-tick)+lastState.y*tick);
+}
+
 sf::RectangleShape Player::getBody(){
 
     return box;
 }
+
 

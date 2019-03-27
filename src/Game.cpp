@@ -5,8 +5,8 @@
 
 Game::Game()
 :mPlayer()
+,tick(0)
 {
-
 }
 
 
@@ -27,6 +27,13 @@ void Game::update(sf::Time elapsedTime){
     mPlayer.update(elapsedTime);
 }
 
-void Game::render(sf::RenderWindow *mWindow){
+void Game::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime){
+
+    tick=updateTime/minUpdateTime;
+
+    mPlayer.changePos(tick);
+
     mWindow->draw(mPlayer.getBody());
+
+
 }

@@ -9,6 +9,7 @@ App::App()
 ,mStateManager()
 ,mGame()//temporal
 {
+    mWindow.setFramerateLimit(300);
 }
 
 void App::run(){
@@ -62,6 +63,6 @@ void App::update(sf::Time elapsedTime){
 void App::render(){
 
     mWindow.clear();
-    mGame.render(&mWindow);
+    mGame.render(&mWindow, minUpdateTime, updateClock.getElapsedTime());
     mWindow.display();
 }

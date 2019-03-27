@@ -9,6 +9,7 @@ class Player
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
         sf::RectangleShape getBody();
+        void            changePos(float tick);
 
     private:
         float           speed;
@@ -21,6 +22,7 @@ class Player
 
         sf::Vector2f    firstState;
         sf::Vector2f    lastState;
+
 
 };
 
