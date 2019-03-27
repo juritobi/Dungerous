@@ -6,8 +6,6 @@ class StateManager
 {
     public:
         StateManager();
-        virtual ~StateManager();
-
     protected:
 
     private:

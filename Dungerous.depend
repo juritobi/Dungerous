@@ -1,9 +1,88 @@
 # depslib dependency file v1.0
-1553696092 source:/home/juritobi/p/Dungerous/main.cpp
+1553708025 source:/home/juritobi/p/Dungerous/main.cpp
+	"include/App.h"
+
+1553714743 source:/home/juritobi/p/Dungerous/src/App.cpp
+	"../include/App.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1553714268 /home/juritobi/p/Dungerous/include/App.h
+	<SFML/Graphics.hpp>
+	"../include/StateManager.h"
+	"../include/Game.h"
+
+1553696446 source:/home/juritobi/p/Dungerous/src/FactoriaProyectil.cpp
+	"FactoriaProyectil.h"
+
+1553696446 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
+
+1553714268 source:/home/juritobi/p/Dungerous/src/Game.cpp
+	"../include/Game.h"
 	<SFML/Graphics.hpp>
 
-1553696174 source:/home/juritobi/p/Dungerous/src/App.cpp
-	"App.h"
+1553714743 /home/juritobi/p/Dungerous/include/Game.h
+	"Player.h"
+	<SFML/Graphics.hpp>
 
-1553696174 /home/juritobi/p/Dungerous/include/App.h
+1553696343 source:/home/juritobi/p/Dungerous/src/InterfazEstado.cpp
+	"InterfazEstado.h"
+
+1553696343 /home/juritobi/p/Dungerous/include/InterfazEstado.h
+
+1553696467 source:/home/juritobi/p/Dungerous/src/Map.cpp
+	"Map.h"
+
+1553696467 /home/juritobi/p/Dungerous/include/Map.h
+
+1553696377 source:/home/juritobi/p/Dungerous/src/Menu.cpp
+	"Menu.h"
+
+1553696377 /home/juritobi/p/Dungerous/include/Menu.h
+
+1553696361 source:/home/juritobi/p/Dungerous/src/Pausa.cpp
+	"Pausa.h"
+
+1553696361 /home/juritobi/p/Dungerous/include/Pausa.h
+
+1553714295 source:/home/juritobi/p/Dungerous/src/Player.cpp
+	"../include/Player.h"
+
+1553714977 /home/juritobi/p/Dungerous/include/Player.h
+	<SFML/Graphics.hpp>
+
+1553696413 source:/home/juritobi/p/Dungerous/src/Proyectil.cpp
+	"Proyectil.h"
+
+1553696413 /home/juritobi/p/Dungerous/include/Proyectil.h
+
+1553696507 source:/home/juritobi/p/Dungerous/src/Sala.cpp
+	"Sala.h"
+
+1553696507 /home/juritobi/p/Dungerous/include/Sala.h
+
+1553696304 source:/home/juritobi/p/Dungerous/src/StateManager.cpp
+	"StateManager.h"
+
+1553709466 /home/juritobi/p/Dungerous/include/StateManager.h
+
+1553696370 source:/home/juritobi/p/Dungerous/src/Tienda.cpp
+	"Tienda.h"
+
+1553696370 /home/juritobi/p/Dungerous/include/Tienda.h
+
+1553696574 source:/home/juritobi/p/Dungerous/src/Enemy.cpp
+	"Enemy.h"
+
+1553696587 source:/home/juritobi/p/Dungerous/src/FactoriaEnemy.cpp
+	"FactoriaEnemy.h"
+
+1553696561 source:/home/juritobi/p/Dungerous/src/Palanca.cpp
+	"Palanca.h"
+
+1553696551 source:/home/juritobi/p/Dungerous/src/Portal.cpp
+	"Portal.h"
+
+1553696543 source:/home/juritobi/p/Dungerous/src/Puerta.cpp
+	"Puerta.h"
 
