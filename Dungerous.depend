@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1553708025 source:/home/juritobi/p/Dungerous/main.cpp
+1553789997 source:/home/juritobi/p/Dungerous/main.cpp
 	"include/App.h"
 
 1553716332 source:/home/juritobi/p/Dungerous/src/App.cpp
@@ -7,7 +7,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1553714268 /home/juritobi/p/Dungerous/include/App.h
+1553789997 /home/juritobi/p/Dungerous/include/App.h
 	<SFML/Graphics.hpp>
 	"../include/StateManager.h"
 	"../include/Game.h"
@@ -21,7 +21,7 @@
 	"../include/Game.h"
 	<SFML/Graphics.hpp>
 
-1553715735 /home/juritobi/p/Dungerous/include/Game.h
+1553789997 /home/juritobi/p/Dungerous/include/Game.h
 	"Player.h"
 	<SFML/Graphics.hpp>
 
@@ -49,7 +49,7 @@
 	"../include/Player.h"
 	<SFML/Graphics.hpp>
 
-1553716116 /home/juritobi/p/Dungerous/include/Player.h
+1553789997 /home/juritobi/p/Dungerous/include/Player.h
 	<SFML/Graphics.hpp>
 
 1553696413 source:/home/juritobi/p/Dungerous/src/Proyectil.cpp
@@ -65,7 +65,7 @@
 1553696304 source:/home/juritobi/p/Dungerous/src/StateManager.cpp
 	"StateManager.h"
 
-1553709466 /home/juritobi/p/Dungerous/include/StateManager.h
+1553789997 /home/juritobi/p/Dungerous/include/StateManager.h
 
 1553696370 source:/home/juritobi/p/Dungerous/src/Tienda.cpp
 	"Tienda.h"

@@ -23,6 +23,7 @@ void App::run(){
         if(generalClock.getElapsedTime() - updateStart > minUpdateTime){
 
             lastUpdateTime = updateClock.restart();
+
             manageEvents();
             update(lastUpdateTime);
 
@@ -56,13 +57,16 @@ void App::manageEvents(){
 
 void App::update(sf::Time elapsedTime){
 
-    mGame.update(elapsedTime);
+    mGame.update(elapsedTime);//mGame sera state manager
+
 }
 
 
 void App::render(){
 
     mWindow.clear();
-    mGame.render(&mWindow, minUpdateTime, updateClock.getElapsedTime());
+
+    mGame.render(&mWindow, minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
+
     mWindow.display();
 }

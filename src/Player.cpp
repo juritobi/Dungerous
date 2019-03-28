@@ -12,7 +12,7 @@ Player::Player()
 {
     box.setFillColor(sf::Color::Red);
 }
-
+//detecta las teclas pulsadas
 void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
     if (key == sf::Keyboard::W)
@@ -24,7 +24,7 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 	else if (key == sf::Keyboard::D)
 		right = isPressed;
 }
-
+//actualiza el estado del personaje
 void Player::update(sf::Time elapsedTime){
 
     firstState=lastState;
@@ -43,6 +43,7 @@ void Player::update(sf::Time elapsedTime){
 
 }
 
+//mueve al personaje en funcion de sus estados y el tick
 void Player::changePos(float tick){
     box.setPosition(firstState.x*(1-tick)+lastState.x*tick,firstState.y*(1-tick)+lastState.y*tick);
 }

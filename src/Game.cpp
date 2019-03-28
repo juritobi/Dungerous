@@ -24,9 +24,12 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 }
 
 void Game::update(sf::Time elapsedTime){
+
     mPlayer.update(elapsedTime);
+
 }
 
+//calcula el tick para mover el personaje y dibuja
 void Game::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime){
 
     tick=updateTime/minUpdateTime;
@@ -34,6 +37,5 @@ void Game::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time up
     mPlayer.changePos(tick);
 
     mWindow->draw(mPlayer.getBody());
-
 
 }
