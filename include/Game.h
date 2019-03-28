@@ -11,6 +11,9 @@ class Game
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
         void            render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime);
+        void            cambioSala();
+        void            loadGame();
+        void            saveGame();
 
     private:
         Player          mPlayer;

@@ -40,7 +40,41 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="cb.bmp" />
+		<Unit filename="include/App.h" />
+		<Unit filename="include/Enemy.h" />
+		<Unit filename="include/FactoriaEnemy.h" />
+		<Unit filename="include/FactoriaProyectil.h" />
+		<Unit filename="include/Game.h" />
+		<Unit filename="include/InterfazEstado.h" />
+		<Unit filename="include/Map.h" />
+		<Unit filename="include/Menu.h" />
+		<Unit filename="include/Palanca.h" />
+		<Unit filename="include/Pausa.h" />
+		<Unit filename="include/Player.h" />
+		<Unit filename="include/Portal.h" />
+		<Unit filename="include/Proyectil.h" />
+		<Unit filename="include/Puerta.h" />
+		<Unit filename="include/Sala.h" />
+		<Unit filename="include/StateManager.h" />
+		<Unit filename="include/Tienda.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/App.cpp" />
+		<Unit filename="src/Enemy.cpp" />
+		<Unit filename="src/FactoriaEnemy.cpp" />
+		<Unit filename="src/FactoriaProyectil.cpp" />
+		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/InterfazEstado.cpp" />
+		<Unit filename="src/Map.cpp" />
+		<Unit filename="src/Menu.cpp" />
+		<Unit filename="src/Palanca.cpp" />
+		<Unit filename="src/Pausa.cpp" />
+		<Unit filename="src/Player.cpp" />
+		<Unit filename="src/Portal.cpp" />
+		<Unit filename="src/Proyectil.cpp" />
+		<Unit filename="src/Puerta.cpp" />
+		<Unit filename="src/Sala.cpp" />
+		<Unit filename="src/StateManager.cpp" />
+		<Unit filename="src/Tienda.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />

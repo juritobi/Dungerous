@@ -1,12 +1,12 @@
 #include "../include/Game.h"
 #include <SFML/Graphics.hpp>
-
-
+#include <fstream>
 
 Game::Game()
 :mPlayer()
 ,tick(0)
 {
+    loadGame();
 }
 
 
@@ -34,8 +34,36 @@ void Game::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time up
 
     tick=updateTime/minUpdateTime;
 
-    mPlayer.changePos(tick);
+    mPlayer.renderMove(tick);
 
     mWindow->draw(mPlayer.getBody());
 
+}
+
+
+void Game::cambioSala(){
+    saveGame();
+}
+
+void Game::loadGame(){
+
+    float x;
+	float y;
+	std::ifstream myfile;
+
+	myfile.open("save.txt");
+    myfile>> x >> y;
+
+	mPlayer.setPosition(sf::Vector2f(x,y));
+}
+
+void Game::saveGame(){
+    std::ofstream myfile;
+    myfile.open("save.txt");
+
+    myfile <<
+    mPlayer.getPosition().x<<" "<<
+    mPlayer.getPosition().y<<std::endl;
+
+    myfile.close();
 }

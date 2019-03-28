@@ -8,8 +8,11 @@ class Player
         Player();
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
+        void            renderMove(float tick);
+        void            setPosition(sf::Vector2f pos);
+
         sf::RectangleShape getBody();
-        void            changePos(float tick);
+        sf::Vector2f    getPosition();
 
     private:
         float           speed;

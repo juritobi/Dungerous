@@ -44,13 +44,23 @@ void Player::update(sf::Time elapsedTime){
 }
 
 //mueve al personaje en funcion de sus estados y el tick
-void Player::changePos(float tick){
+void Player::renderMove(float tick){
     box.setPosition(firstState.x*(1-tick)+lastState.x*tick,firstState.y*(1-tick)+lastState.y*tick);
 }
+
+void Player::setPosition(sf::Vector2f pos){
+    lastState=pos;
+}
+
 
 sf::RectangleShape Player::getBody(){
 
     return box;
+}
+
+sf::Vector2f Player::getPosition(){
+
+    return lastState;
 }
 
 
