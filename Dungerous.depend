@@ -17,12 +17,12 @@
 
 1553696446 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
 
-1553797729 source:/home/juritobi/p/Dungerous/src/Game.cpp
+1553798078 source:/home/juritobi/p/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	<SFML/Graphics.hpp>
 	<fstream>
 
-1553797483 /home/juritobi/p/Dungerous/include/Game.h
+1553798078 /home/juritobi/p/Dungerous/include/Game.h
 	"Player.h"
 	<SFML/Graphics.hpp>
 
@@ -46,11 +46,11 @@
 
 1553696361 /home/juritobi/p/Dungerous/include/Pausa.h
 
-1553797727 source:/home/juritobi/p/Dungerous/src/Player.cpp
+1553798078 source:/home/juritobi/p/Dungerous/src/Player.cpp
 	"../include/Player.h"
 	<SFML/Graphics.hpp>
 
-1553797621 /home/juritobi/p/Dungerous/include/Player.h
+1553798078 /home/juritobi/p/Dungerous/include/Player.h
 	<SFML/Graphics.hpp>
 
 1553696413 source:/home/juritobi/p/Dungerous/src/Proyectil.cpp
