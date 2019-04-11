@@ -1,13 +1,12 @@
 #pragma once
-
+#include <SFML/Graphics.hpp>
 class InterfazEstado
 {
 public:
-    virtual void Init() = 0;   //initialize the state
-        virtual void HandleInput() = 0;  //Handle all input on this particular state
-        virtual void Update(float dt) = 0;  //update any variables and update game
-        virtual void Draw(float dt) = 0;  //DT = delta : time difference between frames
+        virtual void manageEvents(sf::Keyboard::Key key, bool isPressed) = 0;
+        virtual void update(sf::Time elapsedTime) = 0;
+        virtual void render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime) = 0;
 
-        virtual void Pause(){}   //pause the game
+        virtual void Pause(){}
         virtual void Resume(){}
 };

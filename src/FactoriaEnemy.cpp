@@ -1,4 +1,4 @@
-#include "FactoriaEnemy.h"
+#include "../include/FactoriaEnemy.h"
 
 FactoriaEnemy::FactoriaEnemy()
 {

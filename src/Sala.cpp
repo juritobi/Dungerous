@@ -1,4 +1,4 @@
-#include "Sala.h"
+#include "../include/Sala.h"
 
 Sala::Sala()
 {

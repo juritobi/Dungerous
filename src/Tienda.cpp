@@ -1,4 +1,4 @@
-#include "Tienda.h"
+#include "../include/Tienda.h"
 
 Tienda::Tienda()
 {

@@ -37,14 +37,16 @@ void App::run(){
 }
 
 void App::manageEvents(){
-
     sf::Event event;
 	while (mWindow.pollEvent(event))
 	{
 		switch (event.type)
 		{
 			case sf::Event::KeyPressed:
-				mStates.GetActiveState()->manageEvents();
+				mStates.GetActiveState()->manageEvents(event.key.code,true);
+				break;
+            case sf::Event::KeyReleased:
+				mStates.GetActiveState()->manageEvents(event.key.code,false);
 				break;
 
 			case sf::Event::Closed:
@@ -65,7 +67,7 @@ void App::render(){
 
     mWindow.clear();
 
-    mStates.getActiveState->render(&mWindow, minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
+    mStates.GetActiveState()->render(&mWindow, minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
 
     mWindow.display();
 }

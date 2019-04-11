@@ -3,9 +3,9 @@
 
 #include "Player.h"
 #include <SFML/Graphics.hpp>
+#include "InterfazEstado.h"
 
-class Game
-{
+class Game : public InterfazEstado {
     public:
                         Game();
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);

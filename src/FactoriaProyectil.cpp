@@ -1,4 +1,4 @@
-#include "FactoriaProyectil.h"
+#include "../include/FactoriaProyectil.h"
 
 FactoriaProyectil::FactoriaProyectil()
 {

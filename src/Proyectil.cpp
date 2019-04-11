@@ -1,4 +1,4 @@
-#include "Proyectil.h"
+#include "../include/Proyectil.h"
 
 Proyectil::Proyectil()
 {

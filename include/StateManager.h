@@ -4,6 +4,7 @@
 #include <stack>
 
 #include "InterfazEstado.h"
+#include "Game.h"
 //typedef std::unique_ptr<InterfazEstado> StateRef;
 
 class StateManager{
@@ -14,7 +15,7 @@ class StateManager{
 		void RemoveState();
 		void ProcessStateChanges();
 
-		InterfazEstado* &GetActiveState();
+		InterfazEstado* GetActiveState();
 
 	private:
 		std::stack<InterfazEstado*> _states;

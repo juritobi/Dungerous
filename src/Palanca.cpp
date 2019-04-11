@@ -1,4 +1,4 @@
-#include "Palanca.h"
+#include "../include/Palanca.h"
 
 Palanca::Palanca()
 {

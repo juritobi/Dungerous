@@ -1,4 +1,4 @@
-#include "Puerta.h"
+#include "../include/Puerta.h"
 
 Puerta::Puerta()
 {

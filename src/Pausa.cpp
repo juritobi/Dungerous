@@ -1,4 +1,4 @@
-#include "Pausa.h"
+#include "../include/Pausa.h"
 
 Pausa::Pausa()
 {

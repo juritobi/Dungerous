@@ -2,47 +2,50 @@
 1553791378 source:/home/juritobi/p/Dungerous/main.cpp
 	"include/App.h"
 
-1553797817 source:/home/juritobi/p/Dungerous/src/App.cpp
+1554981269 source:/home/juritobi/p/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
+	"../include/StateManager.h"
 
-1554974932 /home/juritobi/p/Dungerous/include/App.h
+1554979681 /home/juritobi/p/Dungerous/include/App.h
 	<SFML/Graphics.hpp>
 	"StateManager.h"
 	"Game.h"
 
-1553696446 source:/home/juritobi/p/Dungerous/src/FactoriaProyectil.cpp
-	"FactoriaProyectil.h"
+1554981325 source:/home/juritobi/p/Dungerous/src/FactoriaProyectil.cpp
+	"../include/FactoriaProyectil.h"
 
 1553696446 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
 
-1554909061 source:/home/juritobi/p/Dungerous/src/Game.cpp
+1554981188 source:/home/juritobi/p/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	<SFML/Graphics.hpp>
 	<fstream>
 
-1554909061 /home/juritobi/p/Dungerous/include/Game.h
+1554981256 /home/juritobi/p/Dungerous/include/Game.h
 	"Player.h"
 	<SFML/Graphics.hpp>
+	"InterfazEstado.h"
 
 1553696343 source:/home/juritobi/p/Dungerous/src/InterfazEstado.cpp
 	"InterfazEstado.h"
 
-1554975015 /home/juritobi/p/Dungerous/include/InterfazEstado.h
+1554981388 /home/juritobi/p/Dungerous/include/InterfazEstado.h
+	<SFML/Graphics.hpp>
 
-1553696467 source:/home/juritobi/p/Dungerous/src/Map.cpp
-	"Map.h"
+1554981328 source:/home/juritobi/p/Dungerous/src/Map.cpp
+	"../include/Map.h"
 
 1553696467 /home/juritobi/p/Dungerous/include/Map.h
 
-1553696377 source:/home/juritobi/p/Dungerous/src/Menu.cpp
-	"Menu.h"
+1554981331 source:/home/juritobi/p/Dungerous/src/Menu.cpp
+	"../include/Menu.h"
 
 1553696377 /home/juritobi/p/Dungerous/include/Menu.h
 
-1553696361 source:/home/juritobi/p/Dungerous/src/Pausa.cpp
-	"Pausa.h"
+1554981336 source:/home/juritobi/p/Dungerous/src/Pausa.cpp
+	"../include/Pausa.h"
 
 1553696361 /home/juritobi/p/Dungerous/include/Pausa.h
 
@@ -53,41 +56,54 @@
 1554909061 /home/juritobi/p/Dungerous/include/Player.h
 	<SFML/Graphics.hpp>
 
-1553696413 source:/home/juritobi/p/Dungerous/src/Proyectil.cpp
-	"Proyectil.h"
+1554981342 source:/home/juritobi/p/Dungerous/src/Proyectil.cpp
+	"../include/Proyectil.h"
 
 1553696413 /home/juritobi/p/Dungerous/include/Proyectil.h
 
-1553696507 source:/home/juritobi/p/Dungerous/src/Sala.cpp
-	"Sala.h"
+1554981347 source:/home/juritobi/p/Dungerous/src/Sala.cpp
+	"../include/Sala.h"
 
 1553696507 /home/juritobi/p/Dungerous/include/Sala.h
 
-1553696304 source:/home/juritobi/p/Dungerous/src/StateManager.cpp
-	"StateManager.h"
+1554981797 source:/home/juritobi/p/Dungerous/src/StateManager.cpp
+	"../include/StateManager.h"
+	<memory>
+	<stack>
 
-1554975022 /home/juritobi/p/Dungerous/include/StateManager.h
+1554981421 /home/juritobi/p/Dungerous/include/StateManager.h
 	<memory>
 	<stack>
 	"InterfazEstado.h"
+	"Game.h"
 
-1553696370 source:/home/juritobi/p/Dungerous/src/Tienda.cpp
-	"Tienda.h"
+1554981809 source:/home/juritobi/p/Dungerous/src/Tienda.cpp
+	"../include/Tienda.h"
 
 1553696370 /home/juritobi/p/Dungerous/include/Tienda.h
 
-1553696574 source:/home/juritobi/p/Dungerous/src/Enemy.cpp
-	"Enemy.h"
+1554981300 source:/home/juritobi/p/Dungerous/src/Enemy.cpp
+	"../include/Enemy.h"
 
-1553696587 source:/home/juritobi/p/Dungerous/src/FactoriaEnemy.cpp
-	"FactoriaEnemy.h"
+1554981321 source:/home/juritobi/p/Dungerous/src/FactoriaEnemy.cpp
+	"../include/FactoriaEnemy.h"
 
-1553696561 source:/home/juritobi/p/Dungerous/src/Palanca.cpp
-	"Palanca.h"
+1554981334 source:/home/juritobi/p/Dungerous/src/Palanca.cpp
+	"../include/Palanca.h"
 
-1553696551 source:/home/juritobi/p/Dungerous/src/Portal.cpp
-	"Portal.h"
+1554981339 source:/home/juritobi/p/Dungerous/src/Portal.cpp
+	"../include/Portal.h"
 
-1553696543 source:/home/juritobi/p/Dungerous/src/Puerta.cpp
-	"Puerta.h"
+1554981345 source:/home/juritobi/p/Dungerous/src/Puerta.cpp
+	"../include/Puerta.h"
+
+1553696573 /home/juritobi/p/Dungerous/include/Enemy.h
+
+1553696587 /home/juritobi/p/Dungerous/include/FactoriaEnemy.h
+
+1553696561 /home/juritobi/p/Dungerous/include/Palanca.h
+
+1553696551 /home/juritobi/p/Dungerous/include/Portal.h
+
+1553696543 /home/juritobi/p/Dungerous/include/Puerta.h
 
