@@ -10,11 +10,10 @@ App::App()
 ,mStates()
 {
     mWindow.setFramerateLimit(300);
-    mStates.AddState(new Game());
+    mStates.AddState(new SplashState(&mStates));
 }
 
 void App::run(){
-
     generalClock.restart();
     updateClock.restart();
     updateStart = generalClock.getElapsedTime();
@@ -37,11 +36,13 @@ void App::run(){
 }
 
 void App::manageEvents(){
+
     sf::Event event;
 	while (mWindow.pollEvent(event))
 	{
 		switch (event.type)
 		{
+
 			case sf::Event::KeyPressed:
 				mStates.GetActiveState()->manageEvents(event.key.code,true);
 				break;

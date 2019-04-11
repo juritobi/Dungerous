@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "StateManager.h"
-#include "Game.h"
+#include "SplashState.h"
 
 class App
 {

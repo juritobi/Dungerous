@@ -9,7 +9,7 @@
 
 class StateManager{
 	public:
-		StateManager() { }
+		StateManager();
 
 		void AddState(InterfazEstado* newState, bool isReplacing = true);
 		void RemoveState();

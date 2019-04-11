@@ -1,6 +1,7 @@
 #include "../include/Game.h"
 #include <SFML/Graphics.hpp>
 #include <fstream>
+#include <iostream>
 
 Game::Game()
 :mPlayer()
@@ -31,13 +32,11 @@ void Game::update(sf::Time elapsedTime){
 
 //calcula el tick para mover el personaje y dibuja
 void Game::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime){
-
     tick=updateTime/minUpdateTime;
 
     mPlayer.renderMove(tick);
 
     mWindow->draw(mPlayer.getBody());
-
 }
 
 
