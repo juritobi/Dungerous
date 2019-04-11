@@ -1,15 +1,16 @@
 #include "../include/App.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "../include/StateManager.h"
 
 const sf::Time App::minUpdateTime = sf::milliseconds(60.f);
 
 App::App()
 :mWindow(sf::VideoMode(1792,1008),"Dungerous",sf::Style::Close)
-,mStateManager()
-,mGame()//temporal
+,mStates()
 {
     mWindow.setFramerateLimit(300);
+    mStates.AddState(new Game());
 }
 
 void App::run(){
@@ -20,6 +21,8 @@ void App::run(){
 
     while (mWindow.isOpen())
 	{
+
+        mStates.ProcessStateChanges();
         if(generalClock.getElapsedTime() - updateStart > minUpdateTime){
 
             lastUpdateTime = updateClock.restart();
@@ -41,11 +44,7 @@ void App::manageEvents(){
 		switch (event.type)
 		{
 			case sf::Event::KeyPressed:
-				mGame.manageEvents(event.key.code, true);//mGame sera state manager
-				break;
-
-			case sf::Event::KeyReleased:
-				mGame.manageEvents(event.key.code, false);//mGame sera state manager
+				mStates.GetActiveState()->manageEvents();
 				break;
 
 			case sf::Event::Closed:
@@ -57,7 +56,7 @@ void App::manageEvents(){
 
 void App::update(sf::Time elapsedTime){
 
-    mGame.update(elapsedTime);//mGame sera state manager
+    mStates.GetActiveState()->update(elapsedTime);
 
 }
 
@@ -66,7 +65,7 @@ void App::render(){
 
     mWindow.clear();
 
-    mGame.render(&mWindow, minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
+    mStates.getActiveState->render(&mWindow, minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
 
     mWindow.display();
 }

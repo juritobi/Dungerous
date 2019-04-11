@@ -63,7 +63,6 @@
 		<Unit filename="src/FactoriaEnemy.cpp" />
 		<Unit filename="src/FactoriaProyectil.cpp" />
 		<Unit filename="src/Game.cpp" />
-		<Unit filename="src/InterfazEstado.cpp" />
 		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Palanca.cpp" />

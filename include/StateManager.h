@@ -1,14 +1,26 @@
-#ifndef STATEMANAGER_H
-#define STATEMANAGER_H
+#pragma once
 
+#include <memory>
+#include <stack>
 
-class StateManager
-{
-    public:
-        StateManager();
-    protected:
+#include "InterfazEstado.h"
+//typedef std::unique_ptr<InterfazEstado> StateRef;
 
-    private:
+class StateManager{
+	public:
+		StateManager() { }
+
+		void AddState(InterfazEstado* newState, bool isReplacing = true);
+		void RemoveState();
+		void ProcessStateChanges();
+
+		InterfazEstado* &GetActiveState();
+
+	private:
+		std::stack<InterfazEstado*> _states;
+		InterfazEstado* _newState;
+
+        bool _isRemoving;
+        bool _isAdding;
+        bool _isReplacing;
 };
-
-#endif // STATEMANAGER_H

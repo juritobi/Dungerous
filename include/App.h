@@ -2,8 +2,8 @@
 #define BOOK_GAME_HPP
 
 #include <SFML/Graphics.hpp>
-#include "../include/StateManager.h"
-#include "../include/Game.h"
+#include "StateManager.h"
+#include "Game.h"
 
 class App
 {
@@ -19,8 +19,9 @@ class App
     private:
         static const sf::Time	minUpdateTime;
         sf::RenderWindow		mWindow;
-        StateManager            mStateManager;
-        Game                    mGame;//temporal
+        StateManager            mStates;
+		//AssetManager            mAssets;
+		//InputManager            mInput;
 
         sf::Clock               generalClock;
         sf::Clock               updateClock;
