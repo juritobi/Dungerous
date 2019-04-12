@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "../include/StateManager.h"
+#include "../include/AssetManager.h"
 
 const sf::Time App::minUpdateTime = sf::milliseconds(60.f);
 App* App::app = 0;
@@ -11,6 +12,7 @@ App::App()
 ,mView()
 {
     StateManager::getStateManager();
+    AssetManager::getAssetManager();
     mWindow.setFramerateLimit(300);
     StateManager::getStateManager()->AddState(new SplashState());
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));

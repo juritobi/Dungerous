@@ -25,9 +25,6 @@ class App
     private:
         static const sf::Time	minUpdateTime;
 
-		//AssetManager            mAssets;
-		//InputManager            mInput;
-
         sf::Clock               generalClock;
         sf::Clock               updateClock;
         sf::Time                updateStart;
