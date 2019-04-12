@@ -6,7 +6,7 @@
 
 class SplashState : public InterfazEstado{
 	public:
-        SplashState(StateManager* machine);
+        SplashState();
 
         void  manageEvents(sf::Keyboard::Key key, bool isPressed);
         void  update(sf::Time elapsedTime);
@@ -18,6 +18,5 @@ class SplashState : public InterfazEstado{
 
 		sf::Texture _backgroundTexture;
 		sf::RectangleShape _background;
-		StateManager* mStates;
 };
 

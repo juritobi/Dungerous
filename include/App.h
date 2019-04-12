@@ -25,7 +25,6 @@ class App
     private:
         static const sf::Time	minUpdateTime;
 
-        StateManager            mStates;
 		//AssetManager            mAssets;
 		//InputManager            mInput;
 

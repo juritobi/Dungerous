@@ -9,7 +9,7 @@
 
 class StateManager{
 	public:
-		StateManager();
+		static StateManager* getStateManager();
 
 		void AddState(InterfazEstado* newState, bool isReplacing = true);
 		void RemoveState();
@@ -18,6 +18,9 @@ class StateManager{
 		InterfazEstado* GetActiveState();
 
 	private:
+	    static StateManager* stateManager;
+	    StateManager();
+
 		std::stack<InterfazEstado*> _states;
 		InterfazEstado* _newState;
 

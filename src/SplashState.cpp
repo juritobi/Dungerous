@@ -3,9 +3,8 @@
 #include <iostream>
 #include "../include/App.h"
 
-SplashState::SplashState(StateManager* machine)
+SplashState::SplashState()
 {
-    mStates = machine;
     _background.setSize(sf::Vector2f(100,100));
     _background.setFillColor(sf::Color::Red);
 }
@@ -19,7 +18,7 @@ void SplashState::update(sf::Time elapsedTime)
 {
     if (_clock.getElapsedTime().asSeconds() > 1)
     {
-        mStates->AddState(new Game(), true);
+        StateManager::getStateManager()->AddState(new Game(), true);
     }
 }
 

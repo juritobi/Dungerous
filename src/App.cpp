@@ -8,11 +8,11 @@ App* App::app = 0;
 
 App::App()
 :mWindow(sf::VideoMode(1792,1008),"Dungerous",sf::Style::Close)
-,mStates()
 ,mView()
 {
+    StateManager::getStateManager();
     mWindow.setFramerateLimit(300);
-    mStates.AddState(new SplashState(&mStates));
+    StateManager::getStateManager()->AddState(new SplashState());
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
 }
 
@@ -34,7 +34,7 @@ void App::run(){
     while (mWindow.isOpen())
 	{
 
-        mStates.ProcessStateChanges();
+        StateManager::getStateManager()->ProcessStateChanges();
         if(generalClock.getElapsedTime() - updateStart > minUpdateTime){
 
             lastUpdateTime = updateClock.restart();
@@ -57,10 +57,10 @@ void App::manageEvents(){
 		{
 
 			case sf::Event::KeyPressed:
-				mStates.GetActiveState()->manageEvents(event.key.code,true);
+				StateManager::getStateManager()->GetActiveState()->manageEvents(event.key.code,true);
 				break;
             case sf::Event::KeyReleased:
-				mStates.GetActiveState()->manageEvents(event.key.code,false);
+				StateManager::getStateManager()->GetActiveState()->manageEvents(event.key.code,false);
 				break;
 
 			case sf::Event::Closed:
@@ -72,7 +72,7 @@ void App::manageEvents(){
 
 void App::update(sf::Time elapsedTime){
 
-    mStates.GetActiveState()->update(elapsedTime);
+    StateManager::getStateManager()->GetActiveState()->update(elapsedTime);
 
 }
 
@@ -83,7 +83,7 @@ void App::render(){
 
     mWindow.setView(mView);
 
-    mStates.GetActiveState()->render(minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
+    StateManager::getStateManager()->GetActiveState()->render(minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
 
     mWindow.display();
 }
