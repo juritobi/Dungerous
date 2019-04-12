@@ -8,10 +8,13 @@
 class App
 {
 	public:
-								App();
 		void					run();
+		static App*				getApp();
 
     private:
+        static App*             app;
+        App();
+
         void                    manageEvents();
         void                    update(sf::Time elapsedTime);
         void                    render();

@@ -2,6 +2,6 @@
 #include <iostream>
 int main()
 {
-	App app;
-    app.run();
+	App* app = App::getApp();
+    app->run();
 }

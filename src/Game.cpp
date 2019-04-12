@@ -42,10 +42,6 @@ void Game::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time up
     mPlayer.renderMove(tick);
     mWindow->draw(mPlayer.getBody());
 
-    sf::RectangleShape rec(sf::Vector2f(10,10));
-    rec.setFillColor(sf::Color::Blue);
-    mWindow->draw(rec);
-
     mWindow->setView(hudView);
 
     mWindow->draw(mHud.getPseta());

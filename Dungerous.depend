@@ -1,15 +1,15 @@
 # depslib dependency file v1.0
-1555064654 source:/home/juritobi/p/Dungerous/main.cpp
+1555073129 source:/home/juritobi/p/Dungerous/main.cpp
 	"include/App.h"
 	<iostream>
 
-1555067431 source:/home/juritobi/p/Dungerous/src/App.cpp
+1555073354 source:/home/juritobi/p/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 	"../include/StateManager.h"
 
-1555067431 /home/juritobi/p/Dungerous/include/App.h
+1555073293 /home/juritobi/p/Dungerous/include/App.h
 	<SFML/Graphics.hpp>
 	"StateManager.h"
 	"SplashState.h"
@@ -19,7 +19,7 @@
 
 1555064654 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
 
-1555067678 source:/home/juritobi/p/Dungerous/src/Game.cpp
+1555067745 source:/home/juritobi/p/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	"../include/hud.h"
 	<SFML/Graphics.hpp>

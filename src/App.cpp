@@ -4,6 +4,7 @@
 #include "../include/StateManager.h"
 
 const sf::Time App::minUpdateTime = sf::milliseconds(60.f);
+App* App::app = 0;
 
 App::App()
 :mWindow(sf::VideoMode(1792,1008),"Dungerous",sf::Style::Close)
@@ -13,6 +14,16 @@ App::App()
     mWindow.setFramerateLimit(300);
     mStates.AddState(new SplashState(&mStates));
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
+}
+
+App* App::getApp(){
+
+    if (app == 0)
+    {
+        app = new App();
+    }
+
+    return app;
 }
 
 void App::run(){
