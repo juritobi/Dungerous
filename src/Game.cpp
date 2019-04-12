@@ -5,6 +5,15 @@
 #include <iostream>
 #include "../include/App.h"
 
+Game* Game::game=0;
+
+Game* Game::getGame(){
+    if(game==0){
+        game= new Game();
+    }
+    return game;
+}
+
 Game::Game()
 :mHud()
 ,tick(0)

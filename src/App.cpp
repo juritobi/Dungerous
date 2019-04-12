@@ -12,11 +12,12 @@ App::App()
 :mWindow(sf::VideoMode(1920,1080),"Dungerous",sf::Style::Fullscreen)
 ,mView()
 {
+    //siongleton init
     StateManager::getStateManager();
     AssetManager::getAssetManager();
     Map::getMap();
-    mWindow.setFramerateLimit(300);
-    StateManager::getStateManager()->AddState(new SplashState());
+
+    StateManager::getStateManager()->AddState(SplashState::getSplashState());
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
 }
 

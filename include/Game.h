@@ -8,7 +8,7 @@
 
 class Game : public InterfazEstado {
     public:
-                        Game();
+        static Game* getGame();
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
         void            render(sf::Time minUpdateTime, sf::Time updateTime);
@@ -18,6 +18,8 @@ class Game : public InterfazEstado {
         void            saveGame();
 
     private:
+        static Game* game;
+        Game();
         Player          mPlayer;
         sf::View        hudView;
         hud             mHud;

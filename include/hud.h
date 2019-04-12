@@ -5,6 +5,7 @@
 class hud
 {
     public:
+
         hud();
         sf::Sprite getPseta();
         std::vector<sf::Sprite> getLife();
@@ -14,6 +15,7 @@ class hud
         void loseLife();
 
     private:
+
         sf::Text    txtCrono;
         sf::Text    txtPseta;
 

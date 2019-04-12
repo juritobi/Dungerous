@@ -3,7 +3,7 @@
 	"include/App.h"
 	<iostream>
 
-1555095128 source:/home/juritobi/p/Dungerous/src/App.cpp
+1555098783 source:/home/juritobi/p/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -21,7 +21,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
 
-1555095557 source:/home/juritobi/p/Dungerous/src/Game.cpp
+1555098783 source:/home/juritobi/p/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	"../include/hud.h"
 	<SFML/Graphics.hpp>
@@ -29,7 +29,7 @@
 	<iostream>
 	"../include/App.h"
 
-1555091200 /home/juritobi/p/Dungerous/include/Game.h
+1555098815 /home/juritobi/p/Dungerous/include/Game.h
 	"Player.h"
 	<SFML/Graphics.hpp>
 	"InterfazEstado.h"
@@ -41,10 +41,10 @@
 1555091200 /home/juritobi/p/Dungerous/include/InterfazEstado.h
 	<SFML/Graphics.hpp>
 
-1555095624 source:/home/juritobi/p/Dungerous/src/Map.cpp
+1555098087 source:/home/juritobi/p/Dungerous/src/Map.cpp
 	"../include/Map.h"
 
-1555096739 /home/juritobi/p/Dungerous/include/Map.h
+1555098087 /home/juritobi/p/Dungerous/include/Map.h
 	<iostream>
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
@@ -122,18 +122,18 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Puerta.h
 
-1555082577 /home/juritobi/p/Dungerous/include/SplashState.h
+1555098352 /home/juritobi/p/Dungerous/include/SplashState.h
 	<SFML/Graphics.hpp>
 	"StateManager.h"
 	"Game.h"
 
-1555082577 source:/home/juritobi/p/Dungerous/src/SplashState.cpp
+1555098403 source:/home/juritobi/p/Dungerous/src/SplashState.cpp
 	<sstream>
 	"../include/SplashState.h"
 	<iostream>
 	"../include/App.h"
 
-1555082577 /home/juritobi/p/Dungerous/include/hud.h
+1555098815 /home/juritobi/p/Dungerous/include/hud.h
 
 1555082577 source:/home/juritobi/p/Dungerous/src/hud.cpp
 	"../include/hud.h"
@@ -279,7 +279,7 @@
 	"../include/AssetManager.h"
 	<iostream>
 
-1552871944 /home/juritobi/p/Dungerous/include/tinyxml2.h
+1555098087 /home/juritobi/p/Dungerous/include/tinyxml2.h
 	<ctype.h>
 	<limits.h>
 	<stdio.h>
@@ -295,7 +295,7 @@
 	<android/log.h>
 	<assert.h>
 
-1555094819 source:/home/juritobi/p/Dungerous/src/tinyxml2.cpp
+1555098087 source:/home/juritobi/p/Dungerous/src/tinyxml2.cpp
 	"../include/tinyxml2.h"
 	<new>
 	<stddef.h>
