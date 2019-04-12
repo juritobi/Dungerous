@@ -10,6 +10,7 @@ Player::Player(hud* hud)
 ,firstState(sf::Vector2f(100,100))
 ,lastState(sf::Vector2f(100,100))
 ,mHud(hud)
+,life(3)
 {
     box.setFillColor(sf::Color::Red);
 }
@@ -43,7 +44,11 @@ void Player::update(sf::Time elapsedTime){
 	lastState += movement * elapsedTime.asSeconds();
 
 }
+void Player::loseLife(){
+    life--;
+    mHud->loseLife();
 
+}
 //mueve al personaje en funcion de sus estados y el tick
 void Player::renderMove(float tick){
     box.setPosition(firstState.x*(1-tick)+lastState.x*tick,firstState.y*(1-tick)+lastState.y*tick);

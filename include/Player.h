@@ -11,6 +11,7 @@ class Player
         void            update(sf::Time elapsedTime);
         void            renderMove(float tick);
         void            setPosition(sf::Vector2f pos);
+        void            loseLife();
 
         sf::RectangleShape getBody();
         sf::Vector2f    getPosition();
@@ -18,11 +19,12 @@ class Player
     private:
         float           speed;
         sf::RectangleShape  box;
-
+        int             life;
         bool            up;
         bool            down;
         bool            right;
         bool            left;
+
 
         sf::Vector2f    firstState;
         sf::Vector2f    lastState;
