@@ -8,9 +8,11 @@ const sf::Time App::minUpdateTime = sf::milliseconds(60.f);
 App::App()
 :mWindow(sf::VideoMode(1792,1008),"Dungerous",sf::Style::Close)
 ,mStates()
+,mView()
 {
     mWindow.setFramerateLimit(300);
     mStates.AddState(new SplashState(&mStates));
+    mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
 }
 
 void App::run(){
@@ -67,6 +69,8 @@ void App::update(sf::Time elapsedTime){
 void App::render(){
 
     mWindow.clear();
+
+    mWindow.setView(mView);
 
     mStates.GetActiveState()->render(&mWindow, minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
 

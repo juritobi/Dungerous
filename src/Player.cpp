@@ -1,6 +1,6 @@
 #include "../include/Player.h"
 #include <SFML/Graphics.hpp>
-Player::Player()
+Player::Player(hud* hud)
 :box(sf::Vector2f(100,100))
 ,speed(300.f)
 ,up(false)
@@ -9,6 +9,7 @@ Player::Player()
 ,left(false)
 ,firstState(sf::Vector2f(100,100))
 ,lastState(sf::Vector2f(100,100))
+,mHud(hud)
 {
     box.setFillColor(sf::Color::Red);
 }
@@ -54,7 +55,6 @@ void Player::setPosition(sf::Vector2f pos){
 
 
 sf::RectangleShape Player::getBody(){
-
     return box;
 }
 

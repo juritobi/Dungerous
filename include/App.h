@@ -27,6 +27,7 @@ class App
         sf::Clock               updateClock;
         sf::Time                updateStart;
         sf::Time                lastUpdateTime;
+        sf::View                mView;
 };
 
 #endif

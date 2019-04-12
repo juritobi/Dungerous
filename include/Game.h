@@ -4,6 +4,7 @@
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 #include "InterfazEstado.h"
+#include "hud.h"
 
 class Game : public InterfazEstado {
     public:
@@ -18,7 +19,10 @@ class Game : public InterfazEstado {
 
     private:
         Player          mPlayer;
+        sf::View        hudView;
+        hud             mHud;
         float           tick;
+
 };
 
 #endif // GAME_H

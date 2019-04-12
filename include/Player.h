@@ -2,10 +2,11 @@
 #define PLAYER_H
 
 #include <SFML/Graphics.hpp>
+#include "hud.h"
 class Player
 {
     public:
-        Player();
+        Player(hud* hud);
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
         void            renderMove(float tick);
@@ -26,6 +27,7 @@ class Player
         sf::Vector2f    firstState;
         sf::Vector2f    lastState;
 
+        hud* mHud;
 
 };
 
