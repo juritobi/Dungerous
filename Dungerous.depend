@@ -3,12 +3,13 @@
 	"include/App.h"
 	<iostream>
 
-1555091200 source:/home/juritobi/p/Dungerous/src/App.cpp
+1555095128 source:/home/juritobi/p/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 	"../include/StateManager.h"
 	"../include/AssetManager.h"
+	"../include/Map.h"
 
 1555091200 /home/juritobi/p/Dungerous/include/App.h
 	<SFML/Graphics.hpp>
@@ -20,7 +21,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
 
-1555091200 source:/home/juritobi/p/Dungerous/src/Game.cpp
+1555095557 source:/home/juritobi/p/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	"../include/hud.h"
 	<SFML/Graphics.hpp>
@@ -40,10 +41,15 @@
 1555091200 /home/juritobi/p/Dungerous/include/InterfazEstado.h
 	<SFML/Graphics.hpp>
 
-1555091200 source:/home/juritobi/p/Dungerous/src/Map.cpp
+1555095624 source:/home/juritobi/p/Dungerous/src/Map.cpp
 	"../include/Map.h"
 
-1554894761 /home/juritobi/p/Dungerous/include/Map.h
+1555096739 /home/juritobi/p/Dungerous/include/Map.h
+	<iostream>
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	"tinyxml2.h"
+	<vector>
 
 1555091200 source:/home/juritobi/p/Dungerous/src/Menu.cpp
 	"../include/Menu.h"
@@ -272,4 +278,28 @@
 	<SFML/Graphics.hpp>
 	"../include/AssetManager.h"
 	<iostream>
+
+1552871944 /home/juritobi/p/Dungerous/include/tinyxml2.h
+	<ctype.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stddef.h>
+	<cctype>
+	<climits>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<stdint.h>
+	<android/log.h>
+	<assert.h>
+
+1555094819 source:/home/juritobi/p/Dungerous/src/tinyxml2.cpp
+	"../include/tinyxml2.h"
+	<new>
+	<stddef.h>
+	<stdarg.h>
+	<cstddef>
+	<cstdarg>
 

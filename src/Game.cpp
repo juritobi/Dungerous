@@ -44,6 +44,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     mPlayer.renderMove(tick);
     App::getApp()->mWindow.draw(mPlayer.getBody());
+    //App::getApp()->mWindow.draw(Map::getMap());
 
     mWindow->setView(hudView);
 

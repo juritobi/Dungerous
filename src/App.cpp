@@ -3,16 +3,18 @@
 #include <iostream>
 #include "../include/StateManager.h"
 #include "../include/AssetManager.h"
+#include "../include/Map.h"
 
 const sf::Time App::minUpdateTime = sf::milliseconds(60.f);
 App* App::app = 0;
 
 App::App()
-:mWindow(sf::VideoMode(1792,1008),"Dungerous",sf::Style::Close)
+:mWindow(sf::VideoMode(1920,1080),"Dungerous",sf::Style::Fullscreen)
 ,mView()
 {
     StateManager::getStateManager();
     AssetManager::getAssetManager();
+    Map::getMap();
     mWindow.setFramerateLimit(300);
     StateManager::getStateManager()->AddState(new SplashState());
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
@@ -59,7 +61,11 @@ void App::manageEvents(){
 		{
 
 			case sf::Event::KeyPressed:
+			    if(event.key.code == sf::Keyboard::Escape){
+                        mWindow.close();
+                }
 				StateManager::getStateManager()->GetActiveState()->manageEvents(event.key.code,true);
+
 				break;
             case sf::Event::KeyReleased:
 				StateManager::getStateManager()->GetActiveState()->manageEvents(event.key.code,false);
