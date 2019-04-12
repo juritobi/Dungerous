@@ -2,7 +2,7 @@
 #include "../include/SplashState.h"
 #include <iostream>
 #include "../include/App.h"
-
+#include "../include/AssetManager.h"
 SplashState* SplashState::splashState = 0;
 
 SplashState* SplashState::getSplashState(){
@@ -17,18 +17,20 @@ SplashState* SplashState::getSplashState(){
 
 SplashState::SplashState()
 {
-    _background.setSize(sf::Vector2f(3000,3000));
-    _background.setFillColor(sf::Color::Red);
+    AssetManager::getAssetManager()->createTexture("splash","assets/splashBackground.png");
+    _background.setTexture(AssetManager::getAssetManager()->GetTexture("splash"));
 }
 
 void SplashState::manageEvents(sf::Keyboard::Key key, bool isPressed)
 {
-
+        if(key == sf::Keyboard::Space||key == sf::Keyboard::Return){
+            StateManager::getStateManager()->AddState(Game::getGame(), true);
+        }
 }
 
 void SplashState::update(sf::Time elapsedTime)
 {
-    if (_clock.getElapsedTime().asSeconds() > 1)
+    if (_clock.getElapsedTime().asSeconds() > 5)
     {
         StateManager::getStateManager()->AddState(Game::getGame(), true);
     }

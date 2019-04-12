@@ -16,9 +16,8 @@ class SplashState : public InterfazEstado{
 	private:
         static SplashState* splashState;
         SplashState();
-		sf::Clock _clock;
 
-		sf::Texture _backgroundTexture;
-		sf::RectangleShape _background;
+		sf::Clock _clock;
+		sf::Sprite _background;
 };
 

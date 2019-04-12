@@ -122,16 +122,17 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Puerta.h
 
-1555098352 /home/juritobi/p/Dungerous/include/SplashState.h
+1555101482 /home/juritobi/p/Dungerous/include/SplashState.h
 	<SFML/Graphics.hpp>
 	"StateManager.h"
 	"Game.h"
 
-1555098403 source:/home/juritobi/p/Dungerous/src/SplashState.cpp
+1555101831 source:/home/juritobi/p/Dungerous/src/SplashState.cpp
 	<sstream>
 	"../include/SplashState.h"
 	<iostream>
 	"../include/App.h"
+	"../include/AssetManager.h"
 
 1555098815 /home/juritobi/p/Dungerous/include/hud.h
 
