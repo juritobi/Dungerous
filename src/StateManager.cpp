@@ -31,7 +31,6 @@ void  StateManager::ProcessStateChanges( ){
                 _states.top( )->Resume();
             }
          _isRemoving = false;
-         std::cout<<_states.size()<<"removing"<<std::endl;
     }
      if(_isAdding){
             if(!_states.empty( )){
@@ -42,14 +41,10 @@ void  StateManager::ProcessStateChanges( ){
                     _states.top()->Pause( );
 
                 }
-
-
             }
        _states.push(_newState);
        _isAdding = false;
-       std::cout<<_states.size()<<"adding"<<std::endl;
      }
-     std::cout<<_states.size()<<std::endl;
 }
 
 InterfazEstado* StateManager::GetActiveState( ){

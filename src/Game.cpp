@@ -41,9 +41,6 @@ void Game::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time up
 
     mPlayer.renderMove(tick);
     mWindow->draw(mPlayer.getBody());
-    std::cout<<mPlayer.getBody().getSize().y<<mPlayer.getBody().getSize().x<<std::endl;
-    std::cout<<mPlayer.getBody().getPosition().x;
-
 
     sf::RectangleShape rec(sf::Vector2f(10,10));
     rec.setFillColor(sf::Color::Blue);
@@ -77,7 +74,6 @@ void Game::loadGame(){
 
 	myfile.open("save.txt");
     myfile>> x >> y;
-
 	mPlayer.setPosition(sf::Vector2f(x,y));
 }
 
