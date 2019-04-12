@@ -4,6 +4,17 @@
 #include <stack>
 #include <iostream>
 
+StateManager* StateManager::stateManager = 0;
+
+StateManager* StateManager::getStateManager(){
+    if (stateManager == 0)
+    {
+        stateManager = new StateManager();
+    }
+
+    return stateManager;
+}
+
 StateManager::StateManager()
 :_isRemoving(false)
 ,_isAdding(false)

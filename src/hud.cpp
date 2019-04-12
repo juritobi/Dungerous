@@ -1,21 +1,23 @@
 #include "../include/hud.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "../include/AssetManager.h"
 
 hud::hud()
 {
-    tLife.loadFromFile("assets/corazonPNG.png");
-    tPseta.loadFromFile("assets/pseta.png");
-    tVida.loadFromFile("assets/vida.png");
-    tFuerza.loadFromFile("assets/fuerza.png");
-    tVel.loadFromFile("assets/velAt.png");
+    AssetManager* loader = AssetManager::getAssetManager()->getAssetManager();
 
-    mFont.loadFromFile("assets/font.otf");
+    loader->createTexture("corazon", "assets/corazonPNG.png");
+    loader->createTexture("pseta","assets/pseta.png");
+    loader->createTexture("upVida","assets/vida.png");
+    loader->createTexture("upFuerza","assets/fuerza.png");
+    loader->createTexture("upVelocidad","assets/velAt.png");
+    loader->createFont("basic","assets/font.otf");
 
-    txtPseta.setFont(mFont);
-    txtCrono.setFont(mFont);
+    txtPseta.setFont(loader->GetFont("basic"));
+    txtCrono.setFont(loader->GetFont("basic"));
     txtCrono.setString("0");
-    txtPseta.setString("AAA");
+    txtPseta.setString("0");
 
     txtPseta.setPosition(sf::Vector2f(300.f,230));
     txtPseta.setScale(1,10);
@@ -25,14 +27,14 @@ hud::hud()
     txtCrono.setScale(1,10);
     txtCrono.setColor(sf::Color::White);
 
-    sPseta.setTexture(tPseta);
-
+    sPseta.setTexture(loader->GetTexture("pseta"));
     sPseta.setPosition(sf::Vector2f(250.f,105));
     sPseta.setScale(0.04,0.7);
-    sf::Sprite sp=sf::Sprite(tLife);
-    sf::Sprite sVida=sf::Sprite(tVida);
-    sf::Sprite sFuerza=sf::Sprite(tFuerza);
-    sf::Sprite sVel=sf::Sprite(tVel);
+
+    sf::Sprite sp=sf::Sprite(AssetManager::getAssetManager()->GetTexture("corazon"));
+    sf::Sprite sVida=sf::Sprite(loader->GetTexture("upVida"));
+    sf::Sprite sFuerza=sf::Sprite(loader->GetTexture("upFuerza"));
+    sf::Sprite sVel=sf::Sprite(loader->GetTexture("upVelocidad"));
     sVida.setPosition(400,155);
     sFuerza.setPosition(430,155);
     sVel.setPosition(460,155);

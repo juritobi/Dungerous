@@ -8,26 +8,28 @@
 class App
 {
 	public:
-								App();
 		void					run();
+		static App*				getApp();
+
+        sf::RenderWindow		mWindow;
+        sf::View                mView;
 
     private:
+        static App*             app;
+        App();
+
         void                    manageEvents();
         void                    update(sf::Time elapsedTime);
         void                    render();
 
     private:
         static const sf::Time	minUpdateTime;
-        sf::RenderWindow		mWindow;
-        StateManager            mStates;
-		//AssetManager            mAssets;
-		//InputManager            mInput;
 
         sf::Clock               generalClock;
         sf::Clock               updateClock;
         sf::Time                updateStart;
         sf::Time                lastUpdateTime;
-        sf::View                mView;
+
 };
 
 #endif

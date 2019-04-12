@@ -1,17 +1,17 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 #include "InterfazEstado.h"
 #include "hud.h"
 
+
 class Game : public InterfazEstado {
     public:
                         Game();
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
-        void            render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime);
+        void            render(sf::Time minUpdateTime, sf::Time updateTime);
 
         void            cambioSala();
         void            loadGame();
@@ -25,4 +25,3 @@ class Game : public InterfazEstado {
 
 };
 
-#endif // GAME_H

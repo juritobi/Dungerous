@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <fstream>
 #include <iostream>
+#include "../include/App.h"
 
 Game::Game()
 :mHud()
@@ -35,16 +36,14 @@ void Game::update(sf::Time elapsedTime){
 }
 
 //calcula el tick para mover el personaje y dibuja
-void Game::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime){
+void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
+
+    sf::RenderWindow* mWindow = &App::getApp()->mWindow;
 
     tick=updateTime/minUpdateTime;
 
     mPlayer.renderMove(tick);
-    mWindow->draw(mPlayer.getBody());
-
-    sf::RectangleShape rec(sf::Vector2f(10,10));
-    rec.setFillColor(sf::Color::Blue);
-    mWindow->draw(rec);
+    App::getApp()->mWindow.draw(mPlayer.getBody());
 
     mWindow->setView(hudView);
 
