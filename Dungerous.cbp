@@ -58,6 +58,7 @@
 		<Unit filename="include/SplashState.h" />
 		<Unit filename="include/StateManager.h" />
 		<Unit filename="include/Tienda.h" />
+		<Unit filename="include/hud.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/App.cpp" />
 		<Unit filename="src/Enemy.cpp" />
@@ -76,6 +77,7 @@
 		<Unit filename="src/SplashState.cpp" />
 		<Unit filename="src/StateManager.cpp" />
 		<Unit filename="src/Tienda.cpp" />
+		<Unit filename="src/hud.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />

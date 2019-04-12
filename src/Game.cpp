@@ -36,7 +36,9 @@ void Game::update(sf::Time elapsedTime){
 }
 
 //calcula el tick para mover el personaje y dibuja
-void Game::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime){
+void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
+
+    sf::RenderWindow* mWindow = &App::getApp()->mWindow;
 
     tick=updateTime/minUpdateTime;
 

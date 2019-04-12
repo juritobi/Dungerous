@@ -6,11 +6,11 @@
 
 class SplashState : public InterfazEstado{
 	public:
-            SplashState(StateManager* machine);
+        SplashState(StateManager* machine);
 
         void  manageEvents(sf::Keyboard::Key key, bool isPressed);
         void  update(sf::Time elapsedTime);
-        void  render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime);
+        void  render(sf::Time minUpdateTime, sf::Time updateTime);
 
 	private:
 

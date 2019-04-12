@@ -83,7 +83,7 @@ void App::render(){
 
     mWindow.setView(mView);
 
-    mStates.GetActiveState()->render(&mWindow, minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
+    mStates.GetActiveState()->render(minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
 
     mWindow.display();
 }

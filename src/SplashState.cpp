@@ -1,6 +1,7 @@
 #include <sstream>
 #include "../include/SplashState.h"
 #include <iostream>
+#include "../include/App.h"
 
 SplashState::SplashState(StateManager* machine)
 {
@@ -22,8 +23,8 @@ void SplashState::update(sf::Time elapsedTime)
     }
 }
 
-void SplashState::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time updateTime)
+void SplashState::render(sf::Time minUpdateTime, sf::Time updateTime)
 {
-    mWindow->draw(_background);
+    App::getApp()->mWindow.draw(_background);
 }
 
