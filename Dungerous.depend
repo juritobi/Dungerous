@@ -1,26 +1,26 @@
 # depslib dependency file v1.0
-1555073129 source:/home/juritobi/p/Dungerous/main.cpp
+1555091200 source:/home/juritobi/p/Dungerous/main.cpp
 	"include/App.h"
 	<iostream>
 
-1555079508 source:/home/juritobi/p/Dungerous/src/App.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 	"../include/StateManager.h"
 	"../include/AssetManager.h"
 
-1555078786 /home/juritobi/p/Dungerous/include/App.h
+1555091200 /home/juritobi/p/Dungerous/include/App.h
 	<SFML/Graphics.hpp>
 	"StateManager.h"
 	"SplashState.h"
 
-1555064654 source:/home/juritobi/p/Dungerous/src/FactoriaProyectil.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/FactoriaProyectil.cpp
 	"../include/FactoriaProyectil.h"
 
-1555064654 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
+1554894761 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
 
-1555076639 source:/home/juritobi/p/Dungerous/src/Game.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	"../include/hud.h"
 	<SFML/Graphics.hpp>
@@ -28,7 +28,7 @@
 	<iostream>
 	"../include/App.h"
 
-1555076101 /home/juritobi/p/Dungerous/include/Game.h
+1555091200 /home/juritobi/p/Dungerous/include/Game.h
 	"Player.h"
 	<SFML/Graphics.hpp>
 	"InterfazEstado.h"
@@ -37,102 +37,103 @@
 1553696343 source:/home/juritobi/p/Dungerous/src/InterfazEstado.cpp
 	"InterfazEstado.h"
 
-1555076101 /home/juritobi/p/Dungerous/include/InterfazEstado.h
+1555091200 /home/juritobi/p/Dungerous/include/InterfazEstado.h
 	<SFML/Graphics.hpp>
 
-1555064654 source:/home/juritobi/p/Dungerous/src/Map.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Map.cpp
 	"../include/Map.h"
 
-1555064654 /home/juritobi/p/Dungerous/include/Map.h
+1554894761 /home/juritobi/p/Dungerous/include/Map.h
 
-1555064654 source:/home/juritobi/p/Dungerous/src/Menu.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Menu.cpp
 	"../include/Menu.h"
 
-1555064654 /home/juritobi/p/Dungerous/include/Menu.h
+1554894761 /home/juritobi/p/Dungerous/include/Menu.h
 
-1555064654 source:/home/juritobi/p/Dungerous/src/Pausa.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Pausa.cpp
 	"../include/Pausa.h"
 
-1555064654 /home/juritobi/p/Dungerous/include/Pausa.h
+1554894761 /home/juritobi/p/Dungerous/include/Pausa.h
 
-1555073530 source:/home/juritobi/p/Dungerous/src/Player.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Player.cpp
 	"../include/Player.h"
 	<SFML/Graphics.hpp>
 
-1555073530 /home/juritobi/p/Dungerous/include/Player.h
+1555091200 /home/juritobi/p/Dungerous/include/Player.h
 	<SFML/Graphics.hpp>
 	"hud.h"
 
-1555064654 source:/home/juritobi/p/Dungerous/src/Proyectil.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Proyectil.cpp
 	"../include/Proyectil.h"
 
-1555064654 /home/juritobi/p/Dungerous/include/Proyectil.h
+1554894761 /home/juritobi/p/Dungerous/include/Proyectil.h
 
-1555064654 source:/home/juritobi/p/Dungerous/src/Sala.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Sala.cpp
 	"../include/Sala.h"
 
-1555064654 /home/juritobi/p/Dungerous/include/Sala.h
+1554894761 /home/juritobi/p/Dungerous/include/Sala.h
 
-1555077415 source:/home/juritobi/p/Dungerous/src/StateManager.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/StateManager.cpp
 	"../include/StateManager.h"
 	"../include/SplashState.h"
 	<memory>
 	<stack>
 	<iostream>
 
-1555077415 /home/juritobi/p/Dungerous/include/StateManager.h
+1555091200 /home/juritobi/p/Dungerous/include/StateManager.h
 	<memory>
 	<stack>
 	"InterfazEstado.h"
 	"Game.h"
 
-1555064654 source:/home/juritobi/p/Dungerous/src/Tienda.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Tienda.cpp
 	"../include/Tienda.h"
 
-1555064654 /home/juritobi/p/Dungerous/include/Tienda.h
+1554894761 /home/juritobi/p/Dungerous/include/Tienda.h
 
-1555064654 source:/home/juritobi/p/Dungerous/src/Enemy.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Enemy.cpp
 	"../include/Enemy.h"
 
-1555064654 source:/home/juritobi/p/Dungerous/src/FactoriaEnemy.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/FactoriaEnemy.cpp
 	"../include/FactoriaEnemy.h"
 
-1555064654 source:/home/juritobi/p/Dungerous/src/Palanca.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Palanca.cpp
 	"../include/Palanca.h"
 
-1555064654 source:/home/juritobi/p/Dungerous/src/Portal.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Portal.cpp
 	"../include/Portal.h"
 
-1555064654 source:/home/juritobi/p/Dungerous/src/Puerta.cpp
+1555091200 source:/home/juritobi/p/Dungerous/src/Puerta.cpp
 	"../include/Puerta.h"
 
-1555064654 /home/juritobi/p/Dungerous/include/Enemy.h
+1555091200 /home/juritobi/p/Dungerous/include/Enemy.h
 
-1555064654 /home/juritobi/p/Dungerous/include/FactoriaEnemy.h
+1554894761 /home/juritobi/p/Dungerous/include/FactoriaEnemy.h
 
-1555064654 /home/juritobi/p/Dungerous/include/Palanca.h
+1554894761 /home/juritobi/p/Dungerous/include/Palanca.h
 
-1555064654 /home/juritobi/p/Dungerous/include/Portal.h
+1554894761 /home/juritobi/p/Dungerous/include/Portal.h
 
-1555064654 /home/juritobi/p/Dungerous/include/Puerta.h
+1554894761 /home/juritobi/p/Dungerous/include/Puerta.h
 
-1555077581 /home/juritobi/p/Dungerous/include/SplashState.h
+1555082577 /home/juritobi/p/Dungerous/include/SplashState.h
 	<SFML/Graphics.hpp>
 	"StateManager.h"
 	"Game.h"
 
-1555077581 source:/home/juritobi/p/Dungerous/src/SplashState.cpp
+1555082577 source:/home/juritobi/p/Dungerous/src/SplashState.cpp
 	<sstream>
 	"../include/SplashState.h"
 	<iostream>
 	"../include/App.h"
 
-1555082122 /home/juritobi/p/Dungerous/include/hud.h
+1555082577 /home/juritobi/p/Dungerous/include/hud.h
 
-1555067431 source:/home/juritobi/p/Dungerous/src/hud.cpp
+1555082577 source:/home/juritobi/p/Dungerous/src/hud.cpp
 	"../include/hud.h"
 	<SFML/Graphics.hpp>
 	<iostream>
+	"../include/AssetManager.h"
 
 1555075071 source:/home/carlos/Escritorio/FV/Dungerous/main.cpp
 	"include/App.h"
@@ -263,11 +264,11 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1555080445 /home/juritobi/p/Dungerous/include/AssetManager.h
+1555082462 /home/juritobi/p/Dungerous/include/AssetManager.h
 	<map>
 	<SFML/Graphics.hpp>
 
-1555080502 source:/home/juritobi/p/Dungerous/src/AssetManager.cpp
+1555082463 source:/home/juritobi/p/Dungerous/src/AssetManager.cpp
 	<SFML/Graphics.hpp>
 	"../include/AssetManager.h"
 	<iostream>
