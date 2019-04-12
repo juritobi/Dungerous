@@ -127,7 +127,7 @@
 	<iostream>
 	"../include/App.h"
 
-1555067431 /home/juritobi/p/Dungerous/include/hud.h
+1555082122 /home/juritobi/p/Dungerous/include/hud.h
 
 1555067431 source:/home/juritobi/p/Dungerous/src/hud.cpp
 	"../include/hud.h"
@@ -267,7 +267,8 @@
 	<map>
 	<SFML/Graphics.hpp>
 
-1555079682 source:/home/juritobi/p/Dungerous/src/AssetManager.cpp
+1555080502 source:/home/juritobi/p/Dungerous/src/AssetManager.cpp
 	<SFML/Graphics.hpp>
 	"../include/AssetManager.h"
+	<iostream>
 

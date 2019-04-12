@@ -14,12 +14,6 @@ class hud
         void loseLife();
 
     private:
-        sf::Texture tLife;
-        sf::Texture tPseta;
-        sf::Texture tVida;
-        sf::Texture tFuerza;
-        sf::Texture tVel;
-        sf::Font    mFont;
         sf::Text    txtCrono;
         sf::Text    txtPseta;
 
