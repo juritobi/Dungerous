@@ -11,6 +11,9 @@ class App
 		void					run();
 		static App*				getApp();
 
+        sf::RenderWindow		mWindow;
+        sf::View                mView;
+
     private:
         static App*             app;
         App();
@@ -21,7 +24,7 @@ class App
 
     private:
         static const sf::Time	minUpdateTime;
-        sf::RenderWindow		mWindow;
+
         StateManager            mStates;
 		//AssetManager            mAssets;
 		//InputManager            mInput;
@@ -30,7 +33,7 @@ class App
         sf::Clock               updateClock;
         sf::Time                updateStart;
         sf::Time                lastUpdateTime;
-        sf::View                mView;
+
 };
 
 #endif

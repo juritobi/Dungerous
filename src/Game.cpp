@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <fstream>
 #include <iostream>
+#include "../include/App.h"
 
 Game::Game()
 :mHud()
@@ -40,7 +41,7 @@ void Game::render(sf::RenderWindow* mWindow, sf::Time minUpdateTime, sf::Time up
     tick=updateTime/minUpdateTime;
 
     mPlayer.renderMove(tick);
-    mWindow->draw(mPlayer.getBody());
+    App::getApp()->mWindow.draw(mPlayer.getBody());
 
     mWindow->setView(hudView);
 

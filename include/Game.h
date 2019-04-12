@@ -1,10 +1,10 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 #include "InterfazEstado.h"
 #include "hud.h"
+
 
 class Game : public InterfazEstado {
     public:
@@ -25,4 +25,3 @@ class Game : public InterfazEstado {
 
 };
 
-#endif // GAME_H
