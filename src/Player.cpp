@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "../include/AssetManager.h"
 #include <iostream>
+#include "Colisiones.h"
 
 Player::Player(hud* hud)
 :box(sf::Vector2f(100,100))
@@ -20,10 +21,11 @@ Player::Player(hud* hud)
 ,derecha(false)
 ,parar(false)
 {
-    firstState.pos=sf::Vector2f(0,0);
+    firstState.pos=sf::Vector2f(100,100);
     firstState.hitbox=&hitb;
-    lastState.pos=sf::Vector2f(0,0);
-    lastState.hitbox=&hitb;
+    previousState=firstState;
+    prepre=firstState;
+    lastState=firstState;
     box.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
     box.setOrigin(box.getSize()/2.0f);
 }
@@ -137,6 +139,8 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 }
 void Player::update(sf::Time elapsedTime){
 
+    prepre=previousState;
+    previousState=firstState;
     firstState=lastState;
 
 	sf::Vector2f movement(0.f, 0.f);
@@ -180,12 +184,13 @@ void Player::update(sf::Time elapsedTime){
         }
     }
 
+
+
     animation.animar(fila, elapsedTime,derecha,parar,atacando);
 
     box.setTextureRect(animation.uvRect);
-
 	lastState.pos += movement * elapsedTime.asSeconds();
-
+    Colisiones::getColisiones()->entorno();
     parar=false;
 }
 void Player::loseLife(){
@@ -195,9 +200,6 @@ void Player::loseLife(){
 }
 //mueve al personaje en funcion de sus estados y el tick
 void Player::renderMove(float tick){
-
-
-
     box.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
     hitb.setPosition(box.getPosition()+sf::Vector2f(-15.0f,-5.0f));
 }
@@ -227,20 +229,8 @@ sf::Vector2f Player::getPosition(){
 
 
 void Player::colision(){
-    std::cout<<"cocooooo"<<std::endl;
-    /*if(lastState.pos.x>firstState.pos.x){
-        firstState.pos.x-=5;
-    }
-    else if(lastState.pos.x<firstState.pos.x){
-        firstState.pos.x+=5;
-    }
-    else if(lastState.pos.y>firstState.pos.y){
-        firstState.pos.y-=5;
-    }
-    else if(lastState.pos.y<firstState.pos.y){
-        firstState.pos.y+=5;
-    }*/
-    lastState=firstState;
+    lastState=prepre;
+    firstState=prepre;
 }
 
 

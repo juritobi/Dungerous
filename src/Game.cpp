@@ -31,7 +31,6 @@ Game::Game()
 
 
 void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
-
     if(key == sf::Keyboard::Escape){
         //abrir menu ingame
     }
@@ -44,15 +43,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 }
 
 void Game::update(sf::Time elapsedTime){
-    std::cout<<mPlayer.getRealPosition().x<<" -11 "<<std::endl;
     mPlayer.update(elapsedTime);
-    std::cout<<mPlayer.firstState.pos.x<<" - "<<mPlayer.lastState.pos.x<<" 1 "<<std::endl;
-    std::cout<<mPlayer.getRealPosition().x<<" 1 "<<std::endl;
-    Colisiones::getColisiones()->entorno();
-    std::cout<<mPlayer.getRealPosition().x<<" 2 "<<std::endl;
-    std::cout<<mPlayer.firstState.pos.x<<" - "<<mPlayer.lastState.pos.x<<" 2 "<<std::endl;
-
-
 }
 
 //calcula el tick para mover el personaje y dibuja

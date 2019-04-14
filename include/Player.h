@@ -27,11 +27,15 @@ class Player
         sf::RectangleShape getBody();
         sf::RectangleShape getHitb();
         sf::RectangleShape getEspada();
-        sf::Vector2f    getPosition();sf::Vector2f    getRealPosition();
+        sf::Vector2f    getPosition();
+
+        sf::Vector2f    getRealPosition();
+        sf::Vector2f    RealPosition(sf::Vector2f pos);
 
         void colision();
 
-
+        State prepre;
+        State previousState;
         State firstState;
         State lastState;
 

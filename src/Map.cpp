@@ -173,7 +173,7 @@ for(int l=0;l<=_numLayers;l++){
                 else{
                  data= data->NextSiblingElement("object");
                  generarcolision(cx,cy,objhei,objwid);
-                 std::cout<<id<<std::endl;
+                 //std::cout<<id<<std::endl;
 
                 }
 

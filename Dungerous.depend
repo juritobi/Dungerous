@@ -24,7 +24,7 @@
 	"hud.h"
 	"Map.h"
 
-1555262857 /home/juritobi/p/Dungerous/include/Player.h
+1555270922 /home/juritobi/p/Dungerous/include/Player.h
 	<SFML/Graphics.hpp>
 	"hud.h"
 	"Animation.h"
@@ -36,7 +36,7 @@
 	"StateManager.h"
 	"Game.h"
 
-1555256838 source:/home/juritobi/p/Dungerous/src/App.cpp
+1555268624 source:/home/juritobi/p/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -91,7 +91,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
 
-1555262831 source:/home/juritobi/p/Dungerous/src/Game.cpp
+1555269817 source:/home/juritobi/p/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	"../include/hud.h"
 	<SFML/Graphics.hpp>
@@ -125,11 +125,12 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Pausa.h
 
-1555263291 source:/home/juritobi/p/Dungerous/src/Player.cpp
+1555271572 source:/home/juritobi/p/Dungerous/src/Player.cpp
 	"../include/Player.h"
 	<SFML/Graphics.hpp>
 	"../include/AssetManager.h"
 	<iostream>
+	"Colisiones.h"
 
 1555091200 source:/home/juritobi/p/Dungerous/src/Portal.cpp
 	"../include/Portal.h"
@@ -186,7 +187,7 @@
 	<cstddef>
 	<cstdarg>
 
-1555261932 source:/home/juritobi/p/Dungerous/src/Colisiones.cpp
+1555271588 source:/home/juritobi/p/Dungerous/src/Colisiones.cpp
 	"Colisiones.h"
 	"Map.h"
 	"../include/Game.h"
