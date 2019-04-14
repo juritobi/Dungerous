@@ -18,6 +18,7 @@ class Game : public InterfazEstado {
         void            cambioSala();
         void            loadGame();
         void            saveGame();
+        Player*         getPlayer();
 
     private:
         static Game* game;

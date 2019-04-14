@@ -10,8 +10,6 @@ Player::Player(hud* hud)
 ,down(false)
 ,right(false)
 ,left(false)
-,firstState(sf::Vector2f(100,100))
-,lastState(sf::Vector2f(100,100))
 ,mHud(hud)
 ,life(3)
 ,hitb(sf::Vector2f(35.0f,50.0f))
@@ -22,6 +20,10 @@ Player::Player(hud* hud)
 ,derecha(false)
 ,parar(false)
 {
+    firstState.pos=sf::Vector2f(0,0);
+    firstState.hitbox=&hitb;
+    lastState.pos=sf::Vector2f(0,0);
+    lastState.hitbox=&hitb;
     box.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
     box.setOrigin(box.getSize()/2.0f);
 }
@@ -177,13 +179,12 @@ void Player::update(sf::Time elapsedTime){
 
         }
     }
-    std::cout<<movement.x<<"  --  "<<movement.y<<std::endl;
 
     animation.animar(fila, elapsedTime,derecha,parar,atacando);
 
     box.setTextureRect(animation.uvRect);
 
-	lastState += movement * elapsedTime.asSeconds();
+	lastState.pos += movement * elapsedTime.asSeconds();
 
     parar=false;
 }
@@ -194,12 +195,15 @@ void Player::loseLife(){
 }
 //mueve al personaje en funcion de sus estados y el tick
 void Player::renderMove(float tick){
-    box.setPosition(firstState.x*(1-tick)+lastState.x*tick,firstState.y*(1-tick)+lastState.y*tick);
+
+
+
+    box.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
     hitb.setPosition(box.getPosition()+sf::Vector2f(-15.0f,-5.0f));
 }
 
 void Player::setPosition(sf::Vector2f pos){
-    lastState=pos;
+    lastState.pos=pos;
 }
 
 
@@ -213,9 +217,30 @@ sf::RectangleShape Player::getEspada(){
     return espada;
 }
 
-sf::Vector2f Player::getPosition(){
+sf::Vector2f Player::getRealPosition(){
+    return box.getPosition();
+}
 
-    return lastState;
+sf::Vector2f Player::getPosition(){
+    return lastState.pos;
+}
+
+
+void Player::colision(){
+    std::cout<<"cocooooo"<<std::endl;
+    /*if(lastState.pos.x>firstState.pos.x){
+        firstState.pos.x-=5;
+    }
+    else if(lastState.pos.x<firstState.pos.x){
+        firstState.pos.x+=5;
+    }
+    else if(lastState.pos.y>firstState.pos.y){
+        firstState.pos.y-=5;
+    }
+    else if(lastState.pos.y<firstState.pos.y){
+        firstState.pos.y+=5;
+    }*/
+    lastState=firstState;
 }
 
 

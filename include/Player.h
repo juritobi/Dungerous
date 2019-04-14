@@ -9,7 +9,7 @@
 struct State
 {
     sf::Vector2f pos;
-    sf::RectangleShape hitbox;
+    sf::RectangleShape* hitbox;
 };
 
 class Player
@@ -27,7 +27,14 @@ class Player
         sf::RectangleShape getBody();
         sf::RectangleShape getHitb();
         sf::RectangleShape getEspada();
-        sf::Vector2f    getPosition();
+        sf::Vector2f    getPosition();sf::Vector2f    getRealPosition();
+
+        void colision();
+
+
+        State firstState;
+        State lastState;
+
 
     private:
 
@@ -51,9 +58,6 @@ class Player
 
 
         Animation animation;
-
-        sf::Vector2f    firstState;
-        sf::Vector2f    lastState;
 
         hud* mHud;
 

@@ -5,6 +5,7 @@
 #include <iostream>
 #include "../include/App.h"
 #include "../include/AssetManager.h"
+#include "../include/Colisiones.h"
 
 Game* Game::game=0;
 
@@ -43,8 +44,14 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 }
 
 void Game::update(sf::Time elapsedTime){
-
+    std::cout<<mPlayer.getRealPosition().x<<" -11 "<<std::endl;
     mPlayer.update(elapsedTime);
+    std::cout<<mPlayer.firstState.pos.x<<" - "<<mPlayer.lastState.pos.x<<" 1 "<<std::endl;
+    std::cout<<mPlayer.getRealPosition().x<<" 1 "<<std::endl;
+    Colisiones::getColisiones()->entorno();
+    std::cout<<mPlayer.getRealPosition().x<<" 2 "<<std::endl;
+    std::cout<<mPlayer.firstState.pos.x<<" - "<<mPlayer.lastState.pos.x<<" 2 "<<std::endl;
+
 
 }
 
@@ -60,6 +67,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     App::getApp()->mWindow.draw(*mMap);
     mMap->Mostrar(*mWindow);
     App::getApp()->mWindow.draw(mPlayer.getBody());
+    App::getApp()->mWindow.draw(mPlayer.getHitb());
 
     //App::getApp()->mWindow.draw(Map::getMap());
 
@@ -103,4 +111,8 @@ void Game::saveGame(){
     mPlayer.getPosition().y<<std::endl;
 
     myfile.close();
+}
+
+Player* Game::getPlayer(){
+    return &mPlayer;
 }
