@@ -25,5 +25,7 @@ class Game : public InterfazEstado {
         hud             mHud;
         float           tick;
 
+
+
 };
 

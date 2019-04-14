@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include "../include/App.h"
+#include "../include/AssetManager.h"
 
 Game* Game::game=0;
 
@@ -53,6 +54,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     mPlayer.renderMove(tick);
     App::getApp()->mWindow.draw(mPlayer.getBody());
+    //App::getApp()->mWindow.draw(mPlayer.getHitb());
     //App::getApp()->mWindow.draw(Map::getMap());
 
     mWindow->setView(hudView);
