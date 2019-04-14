@@ -12,6 +12,10 @@ Player::Player(hud* hud)
 ,down(false)
 ,right(false)
 ,left(false)
+,aup(false)
+,adown(false)
+,aright(false)
+,aleft(false)
 ,mHud(hud)
 ,life(3)
 ,hitb(sf::Vector2f(35.0f,50.0f))
@@ -21,6 +25,7 @@ Player::Player(hud* hud)
 ,derecha(false)
 ,parar(false)
 {
+
     firstState.pos=sf::Vector2f(100,100);
     firstState.hitbox=&hitb;
     lastState=firstState;
@@ -68,7 +73,7 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Player::update(sf::Time elapsedTime){
 
 	if(Catacar.getElapsedTime().asSeconds()>0.5){
-        std::cout<<"hollaaaaaa"<<std::endl;
+
         stateMovement();
 	}
     animate(elapsedTime);

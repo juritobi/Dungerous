@@ -3,7 +3,7 @@
 #include "../include/App.h"
 
 
-Enemy::Enemy(sf::Vector2u vec, Player* player, int* vida)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
+Enemy::Enemy(sf::Vector2u vec, Player* player, int vida)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
 :animar(0.1f,sf::Vector2u(4,4),"enem")
 ,direccion(sf::Vector2f(0,0))
 {
@@ -79,9 +79,17 @@ void Enemy::renderMove(float tick){
 }
 
 void Enemy::hitted(){
+    std::cout<<vida<<std::endl;
     sf::Vector2f vec = sf::Vector2f(body.getPosition()-player->getPosition());
     vec= App::getApp()->normalizar(vec);
     lastState.pos=lastState.pos+vec*speed;
+    if(vida>0)
+    vida = vida-1;
+
+    if(vida == 0)
+    body.setFillColor(sf::Color::Red);
+
+    std::cout<<vida<<std::endl;
 
 }
 

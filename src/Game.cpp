@@ -20,7 +20,7 @@ Game::Game()
 ,tick(0)
 ,mPlayer(&mHud)
 ,hudView()
-,enemigo1(sf::Vector2u (4,4), &mPlayer, &vida)
+,enemigo1(sf::Vector2u (4,4), &mPlayer, 3)
 {
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.065f));
     loadGame();
@@ -67,7 +67,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
     mWindow->draw(enemigo1.getbody());
-    mWindow->draw(enemigo1.getHitbox());
+    //mWindow->draw(enemigo1.getHitbox());
 
     //App::getApp()->mWindow.draw(Map::getMap());
 

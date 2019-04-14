@@ -204,3 +204,208 @@
 1555333978 /home/juritobi/p/Dungerous/include/Colisiones.h
 	"Game.h"
 
+1555271257 source:/home/jose/Dungerous/main.cpp
+	"include/App.h"
+	<iostream>
+
+1555274832 /home/jose/Dungerous/include/App.h
+	<SFML/Graphics.hpp>
+	"StateManager.h"
+	"SplashState.h"
+
+1555271257 /home/jose/Dungerous/include/StateManager.h
+	<memory>
+	<stack>
+	"InterfazEstado.h"
+	"Game.h"
+
+1555271257 /home/jose/Dungerous/include/InterfazEstado.h
+	<SFML/Graphics.hpp>
+
+1555271290 /home/jose/Dungerous/include/Game.h
+	"Player.h"
+	<SFML/Graphics.hpp>
+	"InterfazEstado.h"
+	"hud.h"
+	"Map.h"
+	"Enemy.h"
+
+1555274832 /home/jose/Dungerous/include/Player.h
+	<SFML/Graphics.hpp>
+	"hud.h"
+	"Animation.h"
+
+1555271257 /home/jose/Dungerous/include/hud.h
+
+1555271290 /home/jose/Dungerous/include/Animation.h
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1555271257 /home/jose/Dungerous/include/Map.h
+	<iostream>
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<tinyxml2.h>
+	<vector>
+
+1555271257 /home/jose/Dungerous/include/tinyxml2.h
+	<ctype.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stddef.h>
+	<cctype>
+	<climits>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<stdint.h>
+	<android/log.h>
+	<assert.h>
+
+1555276272 /home/jose/Dungerous/include/Enemy.h
+	<SFML/Graphics.hpp>
+	"Player.h"
+	<math.h>
+	<iostream>
+	"Animation.h"
+
+1555271257 /home/jose/Dungerous/include/SplashState.h
+	<SFML/Graphics.hpp>
+	"StateManager.h"
+	"Game.h"
+
+1555271290 source:/home/jose/Dungerous/src/Animation.cpp
+	"Animation.h"
+	"../include/AssetManager.h"
+	<iostream>
+
+1555271257 /home/jose/Dungerous/include/AssetManager.h
+	<map>
+	<SFML/Graphics.hpp>
+
+1555271290 source:/home/jose/Dungerous/src/App.cpp
+	"../include/App.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+	"../include/StateManager.h"
+	"../include/AssetManager.h"
+	"../include/Map.h"
+
+1555271257 source:/home/jose/Dungerous/src/AssetManager.cpp
+	<SFML/Graphics.hpp>
+	"../include/AssetManager.h"
+	<iostream>
+
+1555274832 source:/home/jose/Dungerous/src/Colisiones.cpp
+	"Colisiones.h"
+	"Map.h"
+
+1555274832 /home/jose/Dungerous/include/Colisiones.h
+	"Game.h"
+
+1555276480 source:/home/jose/Dungerous/src/Enemy.cpp
+	"../include/Enemy.h"
+	"../include/AssetManager.h"
+	"../include/App.h"
+
+1555271257 source:/home/jose/Dungerous/src/FactoriaEnemy.cpp
+	"../include/FactoriaEnemy.h"
+
+1555271257 /home/jose/Dungerous/include/FactoriaEnemy.h
+
+1555271257 source:/home/jose/Dungerous/src/FactoriaProyectil.cpp
+	"../include/FactoriaProyectil.h"
+
+1555271257 /home/jose/Dungerous/include/FactoriaProyectil.h
+
+1555276608 source:/home/jose/Dungerous/src/Game.cpp
+	"../include/Game.h"
+	"../include/hud.h"
+	<SFML/Graphics.hpp>
+	<fstream>
+	<iostream>
+	"../include/App.h"
+	"../include/AssetManager.h"
+	"../include/Colisiones.h"
+
+1555271257 source:/home/jose/Dungerous/src/hud.cpp
+	"../include/hud.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+	"../include/AssetManager.h"
+
+1555271257 source:/home/jose/Dungerous/src/Map.cpp
+	"Map.h"
+
+1555271257 source:/home/jose/Dungerous/src/Menu.cpp
+	"../include/Menu.h"
+
+1555271257 /home/jose/Dungerous/include/Menu.h
+
+1555271257 source:/home/jose/Dungerous/src/Palanca.cpp
+	"../include/Palanca.h"
+
+1555271257 /home/jose/Dungerous/include/Palanca.h
+
+1555271257 source:/home/jose/Dungerous/src/Pausa.cpp
+	"../include/Pausa.h"
+
+1555271257 /home/jose/Dungerous/include/Pausa.h
+
+1555276484 source:/home/jose/Dungerous/src/Player.cpp
+	"../include/Player.h"
+	<SFML/Graphics.hpp>
+	"../include/AssetManager.h"
+	<iostream>
+	"../include/Colisiones.h"
+	"../include/App.h"
+
+1555271257 source:/home/jose/Dungerous/src/Portal.cpp
+	"../include/Portal.h"
+
+1555271257 /home/jose/Dungerous/include/Portal.h
+
+1555271257 source:/home/jose/Dungerous/src/Proyectil.cpp
+	"../include/Proyectil.h"
+
+1555271257 /home/jose/Dungerous/include/Proyectil.h
+
+1555271257 source:/home/jose/Dungerous/src/Puerta.cpp
+	"../include/Puerta.h"
+
+1555271257 /home/jose/Dungerous/include/Puerta.h
+
+1555271257 source:/home/jose/Dungerous/src/Sala.cpp
+	"../include/Sala.h"
+
+1555271257 /home/jose/Dungerous/include/Sala.h
+
+1555271257 source:/home/jose/Dungerous/src/SplashState.cpp
+	<sstream>
+	"../include/SplashState.h"
+	<iostream>
+	"../include/App.h"
+	"../include/AssetManager.h"
+
+1555271257 source:/home/jose/Dungerous/src/StateManager.cpp
+	"../include/StateManager.h"
+	"../include/SplashState.h"
+	<memory>
+	<stack>
+	<iostream>
+
+1555271257 source:/home/jose/Dungerous/src/Tienda.cpp
+	"../include/Tienda.h"
+
+1555271257 /home/jose/Dungerous/include/Tienda.h
+
+1555271257 source:/home/jose/Dungerous/src/tinyxml2.cpp
+	"../include/tinyxml2.h"
+	<new>
+	<stddef.h>
+	<stdarg.h>
+	<cstddef>
+	<cstdarg>
+
