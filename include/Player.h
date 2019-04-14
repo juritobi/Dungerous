@@ -14,27 +14,30 @@ struct State
 
 class Player
 {
-
-
     public:
+        //Basicas
         Player(hud* hud);
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
         void            renderMove(float tick);
 
-        void            loseLife();
+        //segmentacion
         void            stateMovement(sf::Time elapsedTime);
         void            animate(sf::Time elapsedTime);
         void            espadazo();
 
-        void            setPosition(sf::Vector2f pos);
-        sf::RectangleShape getBody();
-        sf::RectangleShape getHitb();
-        sf::RectangleShape getEspada();
-        sf::Vector2f    getPosition();
+        //funciones cortas
+        void                colision();
+        void                setPosition(sf::Vector2f pos);
+        void                loseLife();
 
-        void colision();
+        //getters
+        sf::RectangleShape  getBody();
+        sf::RectangleShape  getHitb();
+        sf::RectangleShape  getEspada();
+        sf::Vector2f        getPosition();
 
+        //variables que convendria sacar de aqui
         State prepre;
         State previousState;
         State firstState;
@@ -43,16 +46,20 @@ class Player
 
     private:
 
-        float           speed;
+        Animation               animation;
+        hud*                    mHud;
+        sf::Clock               Catacar;
+
         sf::RectangleShape      box;
         sf::RectangleShape      hitb;
         sf::RectangleShape      espada;
-        int             life;
+        float                   speed;
+        int                     life;
 
-        sf::Vector2f movimiento;
-        unsigned int fila;
-        bool derecha;
-        bool parar;
+
+        unsigned int            fila;
+        bool                    derecha;
+        bool                    parar;
 
         bool            up;
         bool            down;
@@ -63,15 +70,8 @@ class Player
         bool            aright;
         bool            aleft;
 
-        bool            atacando;
-        bool            rodando;
 
 
-        Animation animation;
-
-        hud* mHud;
-
-        sf::Clock Catacar;
 
 };
 

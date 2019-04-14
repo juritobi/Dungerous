@@ -19,7 +19,7 @@ Colisiones::Colisiones()
 void Colisiones::entorno(){
 
     for (int i=0;i<Map::getMap()->muros.size();i++){
-        if(Game::getGame()->getPlayer()->lastState.hitbox->getGlobalBounds().intersects(Map::getMap()->muros[i]->getGlobalBounds())){
+        if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->muros[i]->getGlobalBounds())){
             Game::getGame()->getPlayer()->colision();
         }
     }

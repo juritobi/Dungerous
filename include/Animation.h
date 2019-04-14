@@ -7,7 +7,7 @@ class Animation
     public:
 
         Animation(float wstime, sf::Vector2u vec);
-        void animar(int fila, sf::Time duracion, bool derecha, bool parar, bool atacando);
+        void animar(int fila, sf::Time duracion, bool derecha, bool parar);
         sf::IntRect uvRect;
 
 

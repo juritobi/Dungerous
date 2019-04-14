@@ -16,7 +16,6 @@ Player::Player(hud* hud)
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
 ,animation( 0.1f,sf::Vector2u(5, 12))
-,movimiento(sf::Vector2f(0.f,0.f))
 ,fila(3)
 ,derecha(false)
 ,parar(false)
@@ -147,7 +146,7 @@ void Player::animate(sf::Time elapsedTime){
     }
 
 
-    animation.animar(fila, elapsedTime,derecha,parar,atacando);
+    animation.animar(fila, elapsedTime,derecha,parar);
     box.setTextureRect(animation.uvRect);
 }
 
@@ -197,7 +196,7 @@ sf::RectangleShape Player::getBody(){
     return box;
 }
 sf::RectangleShape Player::getHitb(){
-    return hitb;
+    return *lastState.hitbox;
 }
 sf::RectangleShape Player::getEspada(){
     return espada;
@@ -206,6 +205,7 @@ sf::RectangleShape Player::getEspada(){
 sf::Vector2f Player::getPosition(){
     return lastState.pos;
 }
+
 
 
 void Player::colision(){

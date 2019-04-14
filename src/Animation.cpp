@@ -16,7 +16,7 @@ Animation::Animation(float time, sf::Vector2u vect)
     uvRect.height=texture.getSize().y / float(vec.y);
 }
 
-void Animation::animar(int fila, sf::Time time, bool derecha, bool parar, bool atacando){
+void Animation::animar(int fila, sf::Time time, bool derecha, bool parar){
 
     duracion=time.asSeconds();
 
