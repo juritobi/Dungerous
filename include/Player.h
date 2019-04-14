@@ -16,6 +16,7 @@ class Player
 
         sf::RectangleShape getBody();
         sf::RectangleShape getHitb();
+        sf::RectangleShape getEspada();
         sf::Vector2f    getPosition();
 
     private:
@@ -44,6 +45,8 @@ class Player
         sf::Vector2f    lastState;
 
         hud* mHud;
+
+        sf::Clock Catacar;
 
 };
 

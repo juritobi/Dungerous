@@ -16,18 +16,15 @@ Animation::Animation(float time, sf::Vector2u vect)
     uvRect.height=texture.getSize().y / float(vec.y);
 }
 
-void Animation::animar(int fila, sf::Time time, bool derecha, bool parar){
+void Animation::animar(int fila, sf::Time time, bool derecha, bool parar, bool atacando){
 
     duracion=time.asSeconds();
-
-    std::cout<<fila<<std::endl;
 
     imactual.y = fila;
 
     timetotal += duracion;
 
-    if(parar)
-        timetotal=0;
+    if(parar) timetotal=0;
 
 
     if( fila!=0 && parar==false || fila!=1 && parar==false || fila!=2 && parar==false || fila!=3 && parar==false || fila!=7 && parar==false || fila!=8 && parar==false || fila!=9 && parar==false)
