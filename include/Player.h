@@ -21,16 +21,17 @@ class Player
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
         void            renderMove(float tick);
-        void            setPosition(sf::Vector2f pos);
-        void            loseLife();
 
+        void            loseLife();
+        void            stateMovement(sf::Time elapsedTime);
+        void            animate(sf::Time elapsedTime);
+        void            espadazo();
+
+        void            setPosition(sf::Vector2f pos);
         sf::RectangleShape getBody();
         sf::RectangleShape getHitb();
         sf::RectangleShape getEspada();
         sf::Vector2f    getPosition();
-
-        sf::Vector2f    getRealPosition();
-        sf::Vector2f    RealPosition(sf::Vector2f pos);
 
         void colision();
 
@@ -57,6 +58,11 @@ class Player
         bool            down;
         bool            right;
         bool            left;
+        bool            aup;
+        bool            adown;
+        bool            aright;
+        bool            aleft;
+
         bool            atacando;
         bool            rodando;
 

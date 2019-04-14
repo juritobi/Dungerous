@@ -58,7 +58,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     App::getApp()->mWindow.draw(*mMap);
     mMap->Mostrar(*mWindow);
     App::getApp()->mWindow.draw(mPlayer.getBody());
-    App::getApp()->mWindow.draw(mPlayer.getHitb());
+    App::getApp()->mWindow.draw(mPlayer.getEspada());
 
     //App::getApp()->mWindow.draw(Map::getMap());
 
