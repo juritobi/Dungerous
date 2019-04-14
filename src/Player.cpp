@@ -1,6 +1,7 @@
 #include "../include/Player.h"
 #include <SFML/Graphics.hpp>
 #include "../include/AssetManager.h"
+#include <iostream>
 
 Player::Player(hud* hud)
 :box(sf::Vector2f(100,100))
@@ -18,7 +19,7 @@ Player::Player(hud* hud)
 ,animation( 0.1f,sf::Vector2u(5, 12))
 ,movimiento(sf::Vector2f(0.f,0.f))
 ,fila(3)
-,derecha(true)
+,derecha(false)
 ,parar(false)
 {
     box.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
@@ -40,9 +41,9 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 	else if (key == sf::Keyboard::S){
         down=isPressed;
         if(isPressed){
-        fila=2;
-        parar=false;
-        derecha=false;
+            fila=2;
+            parar=false;
+            derecha=false;
         }
 	}
 
@@ -50,42 +51,105 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 	else if (key == sf::Keyboard::A){
         left = isPressed;
         if(isPressed){
-        fila=1;
-        derecha=false;
-        parar=false;
+            fila=1;
+            derecha=false;
+            parar=false;
         }
 	}
 
 	else if (key == sf::Keyboard::D){
         right = isPressed;
         if(isPressed){
-        fila=1;
-        parar=false;
-        derecha=true;
+            fila=1;
+            parar=false;
+            derecha=true;
+        }
+	}
+    else if (key == sf::Keyboard::Up){
+        atacando=isPressed;
+        if(isPressed){
+            fila=9;
+            parar=false;
+            derecha=false;
+        }
+    }
+	else if (key == sf::Keyboard::Down){
+        atacando=isPressed;
+        if(isPressed){
+            fila=8;
+            parar=false;
+            derecha=false;
         }
 	}
 
+
+	else if (key == sf::Keyboard::Left){
+        atacando=isPressed;
+        if(isPressed){
+            fila=7;
+            derecha=false;
+            parar=false;
+        }
+	}
+
+	else if (key == sf::Keyboard::Right){
+        atacando=isPressed;
+        if(isPressed){
+            fila=7;
+            parar=false;
+            derecha=true;
+        }
+	}
+    else if (key == sf::Keyboard::Space){
+        rodando=isPressed;
+        if(isPressed){
+            speed=500.f;
+        }
+        else
+        speed=300.f;
+	}
 }
+
 //actualiza el estado del personaje
 void Player::update(sf::Time elapsedTime){
 
     firstState=lastState;
 
 	sf::Vector2f movement(0.f, 0.f);
-	if (up)
-		movement.y -= speed;
-	if (down)
-		movement.y += speed;
-	if (left)
-		movement.x -= speed;
-	if (right)
-		movement.x += speed;
+    std::cout<<speed<<std::endl;
+    if(!atacando){
+        if (up)
+            movement.y -= speed;
+        if (down)
+            movement.y += speed;
+        if (left)
+            movement.x -= speed;
+        if (right)
+            movement.x += speed;
 
-    if(movement.x==0 && movement.y==0){
-        parar=true;
+        if(rodando){
+            if(movement.x>0)
+                fila=4;
+            if(movement.x<0){
+                derecha=false;
+                fila=4;
+            }
+            if(movement.y>0)
+                fila=6;
+            if(movement.y<0)
+                fila=5;
+        }
+
+        if(movement.x==0 && movement.y==0){
+            parar=true;
+        }
     }
+
+
     hitb.setPosition(box.getPosition()+sf::Vector2f(-15.0f,-5.0f));
+
     animation.animar(fila, elapsedTime,derecha,parar);
+
     box.setTextureRect(animation.uvRect);
 
 	lastState += movement * elapsedTime.asSeconds();

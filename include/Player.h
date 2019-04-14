@@ -34,6 +34,9 @@ class Player
         bool            down;
         bool            right;
         bool            left;
+        bool            atacando;
+        bool            rodando;
+
 
         Animation animation;
 

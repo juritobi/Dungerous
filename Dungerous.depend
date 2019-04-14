@@ -23,7 +23,7 @@
 	"InterfazEstado.h"
 	"hud.h"
 
-1555235070 /home/juritobi/p/Dungerous/include/Player.h
+1555240087 /home/juritobi/p/Dungerous/include/Player.h
 	<SFML/Graphics.hpp>
 	"hud.h"
 	"Animation.h"
@@ -35,7 +35,7 @@
 	"StateManager.h"
 	"Game.h"
 
-1555234014 source:/home/juritobi/p/Dungerous/src/App.cpp
+1555239322 source:/home/juritobi/p/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -123,10 +123,11 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Pausa.h
 
-1555237065 source:/home/juritobi/p/Dungerous/src/Player.cpp
+1555240377 source:/home/juritobi/p/Dungerous/src/Player.cpp
 	"../include/Player.h"
 	<SFML/Graphics.hpp>
 	"../include/AssetManager.h"
+	<iostream>
 
 1555091200 source:/home/juritobi/p/Dungerous/src/Portal.cpp
 	"../include/Portal.h"
@@ -170,7 +171,7 @@
 1555235515 /home/juritobi/p/Dungerous/include/Animation.h
 	<SFML/Graphics.hpp>
 
-1555237629 source:/home/juritobi/p/Dungerous/src/Animation.cpp
+1555241864 source:/home/juritobi/p/Dungerous/src/Animation.cpp
 	"Animation.h"
 	"../include/AssetManager.h"
 	<iostream>
