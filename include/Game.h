@@ -4,10 +4,12 @@
 #include <SFML/Graphics.hpp>
 #include "InterfazEstado.h"
 #include "hud.h"
+#include "Map.h"
 
 
 class Game : public InterfazEstado {
     public:
+
         static Game* getGame();
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
@@ -24,6 +26,8 @@ class Game : public InterfazEstado {
         sf::View        hudView;
         hud             mHud;
         float           tick;
+
+        Map*     mMap;
 
 
 

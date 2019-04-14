@@ -24,8 +24,6 @@ Player::Player(hud* hud)
 {
     box.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
     box.setOrigin(box.getSize()/2.0f);
-    hitb.setFillColor(sf::Color::Red);
-
 }
 //detecta las teclas pulsadas
 void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
@@ -181,8 +179,6 @@ void Player::update(sf::Time elapsedTime){
     }
     std::cout<<movement.x<<"  --  "<<movement.y<<std::endl;
 
-    hitb.setPosition(box.getPosition()+sf::Vector2f(-15.0f,-5.0f));
-
     animation.animar(fila, elapsedTime,derecha,parar,atacando);
 
     box.setTextureRect(animation.uvRect);
@@ -199,6 +195,7 @@ void Player::loseLife(){
 //mueve al personaje en funcion de sus estados y el tick
 void Player::renderMove(float tick){
     box.setPosition(firstState.x*(1-tick)+lastState.x*tick,firstState.y*(1-tick)+lastState.y*tick);
+    hitb.setPosition(box.getPosition()+sf::Vector2f(-15.0f,-5.0f));
 }
 
 void Player::setPosition(sf::Vector2f pos){

@@ -15,7 +15,7 @@ App::App()
     //siongleton init
     StateManager::getStateManager();
     AssetManager::getAssetManager();
-    Map::getMap();
+    //Map::getMap();
 
     StateManager::getStateManager()->AddState(SplashState::getSplashState());
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));

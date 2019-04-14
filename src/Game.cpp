@@ -23,6 +23,9 @@ Game::Game()
 {
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.065f));
     loadGame();
+    mMap= Map::getMap();
+    mMap->generarmatriz();
+    mMap->load("assets/map64.png",sf::Vector2u(64,64),mMap->_tilemap,16 ,16,3);
 }
 
 
@@ -53,7 +56,11 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     tick=updateTime/minUpdateTime;
 
     mPlayer.renderMove(tick);
+
+    App::getApp()->mWindow.draw(*mMap);
+    mMap->Mostrar(*mWindow);
     App::getApp()->mWindow.draw(mPlayer.getBody());
+
     //App::getApp()->mWindow.draw(Map::getMap());
 
     mWindow->setView(hudView);

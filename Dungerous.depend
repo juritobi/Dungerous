@@ -17,25 +17,26 @@
 1555091200 /home/juritobi/p/Dungerous/include/InterfazEstado.h
 	<SFML/Graphics.hpp>
 
-1555233028 /home/juritobi/p/Dungerous/include/Game.h
+1555257099 /home/juritobi/p/Dungerous/include/Game.h
 	"Player.h"
 	<SFML/Graphics.hpp>
 	"InterfazEstado.h"
 	"hud.h"
+	"Map.h"
 
-1555252763 /home/juritobi/p/Dungerous/include/Player.h
+1555258908 /home/juritobi/p/Dungerous/include/Player.h
 	<SFML/Graphics.hpp>
 	"hud.h"
 	"Animation.h"
 
-1555103010 /home/juritobi/p/Dungerous/include/hud.h
+1555253776 /home/juritobi/p/Dungerous/include/hud.h
 
-1555103010 /home/juritobi/p/Dungerous/include/SplashState.h
+1555253776 /home/juritobi/p/Dungerous/include/SplashState.h
 	<SFML/Graphics.hpp>
 	"StateManager.h"
 	"Game.h"
 
-1555239322 source:/home/juritobi/p/Dungerous/src/App.cpp
+1555256838 source:/home/juritobi/p/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -47,11 +48,11 @@
 	<map>
 	<SFML/Graphics.hpp>
 
-1555098087 /home/juritobi/p/Dungerous/include/Map.h
+1555257014 /home/juritobi/p/Dungerous/include/Map.h
 	<iostream>
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
-	"tinyxml2.h"
+	<tinyxml2.h>
 	<vector>
 
 1555098087 /home/juritobi/p/Dungerous/include/tinyxml2.h
@@ -90,7 +91,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
 
-1555253085 source:/home/juritobi/p/Dungerous/src/Game.cpp
+1555257576 source:/home/juritobi/p/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	"../include/hud.h"
 	<SFML/Graphics.hpp>
@@ -105,8 +106,8 @@
 	<iostream>
 	"../include/AssetManager.h"
 
-1555098087 source:/home/juritobi/p/Dungerous/src/Map.cpp
-	"../include/Map.h"
+1555257139 source:/home/juritobi/p/Dungerous/src/Map.cpp
+	"Map.h"
 
 1555091200 source:/home/juritobi/p/Dungerous/src/Menu.cpp
 	"../include/Menu.h"
@@ -123,7 +124,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Pausa.h
 
-1555253212 source:/home/juritobi/p/Dungerous/src/Player.cpp
+1555253776 source:/home/juritobi/p/Dungerous/src/Player.cpp
 	"../include/Player.h"
 	<SFML/Graphics.hpp>
 	"../include/AssetManager.h"
@@ -149,7 +150,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Sala.h
 
-1555175698 source:/home/juritobi/p/Dungerous/src/SplashState.cpp
+1555253776 source:/home/juritobi/p/Dungerous/src/SplashState.cpp
 	<sstream>
 	"../include/SplashState.h"
 	<iostream>
@@ -168,11 +169,19 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Tienda.h
 
-1555244826 /home/juritobi/p/Dungerous/include/Animation.h
+1555253697 /home/juritobi/p/Dungerous/include/Animation.h
 	<SFML/Graphics.hpp>
 
-1555244808 source:/home/juritobi/p/Dungerous/src/Animation.cpp
+1555253697 source:/home/juritobi/p/Dungerous/src/Animation.cpp
 	"Animation.h"
 	"../include/AssetManager.h"
 	<iostream>
+
+1555098087 source:/home/juritobi/p/Dungerous/src/tinyxml2.cpp
+	"../include/tinyxml2.h"
+	<new>
+	<stddef.h>
+	<stdarg.h>
+	<cstddef>
+	<cstdarg>
 

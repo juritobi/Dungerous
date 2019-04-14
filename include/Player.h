@@ -4,8 +4,18 @@
 #include <SFML/Graphics.hpp>
 #include "hud.h"
 #include "Animation.h"
+
+
+struct State
+{
+    sf::Vector2f pos;
+    sf::RectangleShape hitbox;
+};
+
 class Player
 {
+
+
     public:
         Player(hud* hud);
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
@@ -20,6 +30,7 @@ class Player
         sf::Vector2f    getPosition();
 
     private:
+
         float           speed;
         sf::RectangleShape      box;
         sf::RectangleShape      hitb;
