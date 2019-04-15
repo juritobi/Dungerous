@@ -4,7 +4,7 @@
 
 
 Enemy::Enemy(sf::Vector2u vec, Player* player, int* vida)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
-:animar(0.1f,sf::Vector2u(4,4))
+:animar(0.1f,sf::Vector2u(4,4),"enem")
 ,direccion(sf::Vector2f(0,0))
 {
     this->vec.x = vec.x;
@@ -14,7 +14,7 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int* vida)//comento cosas para pr
 
     fila = 0;
     derecha = true;
-    AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
+
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("enem"));
     body.setSize(sf::Vector2f(100.0f, 100.0f));
     //body.setTextureRect(sf::IntRect(100, 100, 100, 100));

@@ -6,7 +6,7 @@ class Animation
 {
     public:
 
-        Animation(float wstime, sf::Vector2u vec);
+        Animation(float wstime, sf::Vector2u vec,std::string text);
         void animar(int fila, sf::Time duracion, bool derecha, bool parar);
         sf::IntRect uvRect;
 

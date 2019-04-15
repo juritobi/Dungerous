@@ -2,7 +2,7 @@
 #include "../include/AssetManager.h"
 #include <iostream>
 
-Animation::Animation(float time, sf::Vector2u vect)
+Animation::Animation(float time, sf::Vector2u vect, std::string text)
 :vec(vect)
 ,swtime(time)
 ,timetotal(0.0f)
@@ -10,7 +10,7 @@ Animation::Animation(float time, sf::Vector2u vect)
 {
     imactual.x=0;
     imactual.y=0;
-    texture= AssetManager::getAssetManager()->GetTexture("player");
+    texture= AssetManager::getAssetManager()->GetTexture(text);
 
     uvRect.width=texture.getSize().x / float(vec.x);
     uvRect.height=texture.getSize().y / float(vec.y);
