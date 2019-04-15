@@ -97,7 +97,10 @@ void Player::stateMovement(sf::Time elapsedTime){
     if (right)
         movement.x += speed;
 
+
+
     lastState.pos += movement * elapsedTime.asSeconds();
+    lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-5.0f));//
 }
 
 void Player::animate(sf::Time elapsedTime){
@@ -209,8 +212,8 @@ sf::Vector2f Player::getPosition(){
 
 
 void Player::colision(){
-    lastState=prepre;
-    firstState=prepre;
+    lastState=firstState;
+    //firstState=prepre;
 }
 
 
