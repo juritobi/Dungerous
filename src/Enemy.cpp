@@ -26,23 +26,15 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int* vida)//comento cosas para pr
     body.setPosition(512.0f, 128.0f);
 
     hitb.setSize(sf::Vector2f(70.0f, 35.0f));
+    hitb.setOrigin(hitb.getSize()/2.0f);
     hitb.setPosition(body.getPosition());
 }
 
 void Enemy::update(){
     direccion=player->getPosition() - body.getPosition();
-    direccion=normalizar(direccion);
+    direccion=App::getApp()->normalizar(direccion);
     Animar();
     Mover();
-}
-
-sf::Vector2f Enemy::normalizar(sf::Vector2f vec)//se normaliza la dirección por la que tiene que perseguir
-{
-
-    float normalizar = sqrt((vec.x * vec.x) + (vec.y * vec.y));
-    vec=sf::Vector2f(vec.x/normalizar, vec.y/normalizar);
-    return vec;
-
 }
 
 void Enemy::Mover()//mueve al enemigo hacia el player
@@ -64,12 +56,12 @@ void Enemy::Mover()//mueve al enemigo hacia el player
 
 void Enemy::Animar()
 {
-    hitb.setPosition(body.getPosition()+sf::Vector2f(-35.0f,-30.0f));
+    //hitb.setPosition(body.getPosition()+sf::Vector2f(-35.0f,-30.0f));
 
     sf::Vector2f posicion(player->getBody().getPosition()-body.getPosition());
 
     if(posicion.x!=.0f || posicion.y!=0.0f)
-    posicion=normalizar(direccion);
+    posicion=App::getApp()->normalizar(direccion);
 
 
      fila=0;
@@ -82,27 +74,20 @@ void Enemy::Animar()
 
 void Enemy::renderMove(float tick){
 
-    std::cout<<lastState.pos.x<<std::endl;
     body.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
-    hitb.setPosition(body.getPosition()+sf::Vector2f(-15.0f,-5.0f));
+    hitb.setPosition(body.getPosition()+sf::Vector2f(0.f,-15.0f));
 }
 
 void Enemy::hitted(){
-    std::cout<<"*******************"<<std::endl;
-    std::cout<<lastState.pos.x<<std::endl;
     sf::Vector2f vec = sf::Vector2f(body.getPosition()-player->getPosition());
-    vec= normalizar(vec);
+    vec= App::getApp()->normalizar(vec);
     lastState.pos=lastState.pos+vec*speed;
-
-    std::cout<<lastState.pos.x<<std::endl;
 
 }
 
 sf::RectangleShape Enemy::getbody()//obtener el body
 {
-
     return body;
-
 }
 sf::RectangleShape Enemy::getHitbox()//obtener el body
 {

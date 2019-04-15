@@ -12,6 +12,7 @@ class Colisiones
 
         void entorno();
         void hostion();
+        void hostiado();
 
     private:
         static Colisiones* colisiones;

@@ -5,6 +5,8 @@
 #include "../include/AssetManager.h"
 #include "../include/Map.h"
 
+//peta por que la distancia del vector de solision es cerca de cero divide y cacatoa
+
 const sf::Time App::minUpdateTime = sf::milliseconds(60.f);
 App* App::app = 0;
 
@@ -100,6 +102,16 @@ void App::render(){
     StateManager::getStateManager()->GetActiveState()->render(minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
 
     mWindow.display();
+}
+
+
+sf::Vector2f App::normalizar(sf::Vector2f vec)//se normaliza la dirección por la que tiene que perseguir
+{
+
+    float normalizar = sqrt((vec.x * vec.x) + (vec.y * vec.y));
+    vec=sf::Vector2f(vec.x/normalizar, vec.y/normalizar);
+    return vec;
+
 }
 
 

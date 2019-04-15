@@ -3,7 +3,7 @@
 	"include/App.h"
 	<iostream>
 
-1555316133 /home/juritobi/p/Dungerous/include/App.h
+1555325783 /home/juritobi/p/Dungerous/include/App.h
 	<SFML/Graphics.hpp>
 	"StateManager.h"
 	"SplashState.h"
@@ -25,7 +25,7 @@
 	"Map.h"
 	"Enemy.h"
 
-1555320535 /home/juritobi/p/Dungerous/include/Player.h
+1555326275 /home/juritobi/p/Dungerous/include/Player.h
 	<SFML/Graphics.hpp>
 	"hud.h"
 	"Animation.h"
@@ -37,7 +37,7 @@
 	"StateManager.h"
 	"Game.h"
 
-1555322190 source:/home/juritobi/p/Dungerous/src/App.cpp
+1555325793 source:/home/juritobi/p/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -77,12 +77,12 @@
 	"../include/AssetManager.h"
 	<iostream>
 
-1555324932 source:/home/juritobi/p/Dungerous/src/Enemy.cpp
+1555326214 source:/home/juritobi/p/Dungerous/src/Enemy.cpp
 	"../include/Enemy.h"
 	"../include/AssetManager.h"
 	"../include/App.h"
 
-1555324133 /home/juritobi/p/Dungerous/include/Enemy.h
+1555325783 /home/juritobi/p/Dungerous/include/Enemy.h
 	<SFML/Graphics.hpp>
 	"Player.h"
 	<math.h>
@@ -99,7 +99,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
 
-1555324320 source:/home/juritobi/p/Dungerous/src/Game.cpp
+1555325783 source:/home/juritobi/p/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	"../include/hud.h"
 	<SFML/Graphics.hpp>
@@ -133,12 +133,13 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Pausa.h
 
-1555324320 source:/home/juritobi/p/Dungerous/src/Player.cpp
+1555326321 source:/home/juritobi/p/Dungerous/src/Player.cpp
 	"../include/Player.h"
 	<SFML/Graphics.hpp>
 	"../include/AssetManager.h"
 	<iostream>
-	"Colisiones.h"
+	"../include/Colisiones.h"
+	"../include/App.h"
 
 1555091200 source:/home/juritobi/p/Dungerous/src/Portal.cpp
 	"../include/Portal.h"
@@ -196,10 +197,10 @@
 	<cstddef>
 	<cstdarg>
 
-1555324457 source:/home/juritobi/p/Dungerous/src/Colisiones.cpp
+1555325783 source:/home/juritobi/p/Dungerous/src/Colisiones.cpp
 	"Colisiones.h"
 	"Map.h"
 
-1555322822 /home/juritobi/p/Dungerous/include/Colisiones.h
+1555325783 /home/juritobi/p/Dungerous/include/Colisiones.h
 	"Game.h"
 

@@ -16,6 +16,8 @@ class App
 
         sf::Time getElapsedTime();
 
+        sf::Vector2f                normalizar(sf::Vector2f vec);
+
     private:
         static App*             app;
         App();

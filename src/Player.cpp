@@ -2,7 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include "../include/AssetManager.h"
 #include <iostream>
-#include "Colisiones.h"
+#include "../include/Colisiones.h"
+#include "../include/App.h"
 
 Player::Player(hud* hud)
 :box(sf::Vector2f(100,100))
@@ -167,6 +168,15 @@ void Player::espadazo(){
     if(Catacar.getElapsedTime().asSeconds()>0.5){
         espada.setSize(sf::Vector2f(0,0));
     }
+}
+
+
+
+void Player::hitted(){
+    sf::Vector2f vec = box.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
+    vec= App::getApp()->normalizar(vec);
+    lastState.pos=lastState.pos+vec*100.f;
+
 }
 
 void Player::loseLife(){

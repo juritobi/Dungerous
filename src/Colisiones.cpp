@@ -30,3 +30,9 @@ void Colisiones::hostion(){
         mGame->getEnemigo()->hitted();
     }
 }
+
+void Colisiones::hostiado(){
+    if(mGame->getPlayer()->getHitb().getGlobalBounds().intersects(mGame->getEnemigo()->getHitbox().getGlobalBounds())){
+        mGame->getPlayer()->hitted();
+    }
+}

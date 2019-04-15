@@ -30,6 +30,7 @@ class Player
         void                colision();
         void                setPosition(sf::Vector2f pos);
         void                loseLife();
+        void                hitted();
 
         //getters
         sf::RectangleShape  getBody();

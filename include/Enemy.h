@@ -11,7 +11,7 @@ class Enemy
     public:
         Enemy(sf::Vector2u vec, Player* player, int* vida);
 
-        sf::Vector2f                normalizar(sf::Vector2f vec);
+
         sf::RectangleShape          getbody();
 
         void                        Mover();
