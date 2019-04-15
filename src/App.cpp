@@ -97,3 +97,8 @@ void App::render(){
 
     mWindow.display();
 }
+
+
+sf::Time App::getElapsedTime(){
+    return lastUpdateTime;
+}

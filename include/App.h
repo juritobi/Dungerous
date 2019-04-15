@@ -14,6 +14,8 @@ class App
         sf::RenderWindow		mWindow;
         sf::View                mView;
 
+        sf::Time getElapsedTime();
+
     private:
         static App*             app;
         App();
