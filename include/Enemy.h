@@ -13,12 +13,11 @@ class Enemy
     public:
         Enemy(sf::Vector2u vec, Player* player, int* vida);
 
-        virtual ~Enemy();
-
-        sf::Vector2f                Perseguir(sf::Vector2f direccion);
+        sf::Vector2f                Perseguir();
         sf::RectangleShape          getbody();
 
         void                        Mover(float x, float y);
+        void update();
 
         void Animar();
 
@@ -42,6 +41,8 @@ class Enemy
 
         Animation                   animar;
         sf::Vector2f                vec;
+
+        sf::Vector2f direccion;
 };
 
 #endif // ENEMY_H

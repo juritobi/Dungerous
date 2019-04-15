@@ -45,7 +45,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
 void Game::update(sf::Time elapsedTime){
     mPlayer.update(elapsedTime);
-    //enemigo1.update();
+    enemigo1.update();
 }
 
 //calcula el tick para mover el personaje y dibuja

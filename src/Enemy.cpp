@@ -4,7 +4,8 @@
 
 
 Enemy::Enemy(sf::Vector2u vec, Player* player, int* vida)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
-:animar(0.1f,sf::Vector2u(4,4))
+:animar(0.1f,sf::Vector2u(4,4),"enem")
+,direccion(sf::Vector2f(0,0))
 {
     this->vec.x = vec.x;
     this->vec.y = vec.y;
@@ -13,48 +14,32 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int* vida)//comento cosas para pr
 
     fila = 0;
     derecha = true;
-
     AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("enem"));
     body.setSize(sf::Vector2f(100.0f, 100.0f));
     //body.setTextureRect(sf::IntRect(100, 100, 100, 100));
     body.setOrigin(body.getSize()/2.0f);
     body.setPosition(512.0f, 128.0f);
-    body.setFillColor(sf::Color::Blue);
 
     hitb.setSize(sf::Vector2f(70.0f, 35.0f));
     hitb.setPosition(body.getPosition());
 }
 
-Enemy::~Enemy()
-{
-    //dtor
+void Enemy::update(){
+    Perseguir();
+    Animar();
+    //Mover();
 }
 
-sf::Vector2f Enemy::Perseguir(sf::Vector2f direccion)//se normaliza la dirección por la que tiene que perseguir
+sf::Vector2f Enemy::Perseguir()//se normaliza la dirección por la que tiene que perseguir
 {
 
-    float normalizar = sqrt((direccion.x * direccion.x) + (direccion.y * direccion.y));
-    sf::Vector2f normalizado(direccion.x/normalizar, direccion.y/normalizar);
-
-    return normalizado;
-
-}
-
-sf::RectangleShape Enemy::getbody()//obtener el body
-{
-
-    return body;
+    direccion=player->getPosition() - body.getPosition();
+    /*float normalizar = sqrt((direccion.x * direccion.x) + (direccion.y * direccion.y));
+    sf::Vector2f normalizado(direccion.x/normalizar, direccion.y/normalizar);*/
 
 }
 
-/*sf::Texture* Enemy::getTexture()//obtener la textura
-{
-
-    sf::Texture *textura = body.setTexture(&AssetManager::getAssetManager()->GetTexture("enem"));
-    return textura;
-
-}*/
 void Enemy::Mover(float x, float y)//mueve al enemigo hacia el player
 {
 
@@ -79,7 +64,7 @@ void Enemy::Animar()
     sf::Vector2f posicion(player->getBody().getPosition()-body.getPosition());
 
     if(posicion.x!=.0f || posicion.y!=0.0f)
-    posicion=Perseguir(posicion);
+    posicion=Perseguir();
 
 
      fila=0;
@@ -90,3 +75,11 @@ void Enemy::Animar()
      body.setTextureRect(animar.uvRect);
      body.move(velocidad*posicion);
 }
+
+sf::RectangleShape Enemy::getbody()//obtener el body
+{
+
+    return body;
+
+}
+

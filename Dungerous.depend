@@ -37,7 +37,7 @@
 	"StateManager.h"
 	"Game.h"
 
-1555316133 source:/home/juritobi/p/Dungerous/src/App.cpp
+1555318182 source:/home/juritobi/p/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -77,12 +77,12 @@
 	"../include/AssetManager.h"
 	<iostream>
 
-1555317334 source:/home/juritobi/p/Dungerous/src/Enemy.cpp
+1555318418 source:/home/juritobi/p/Dungerous/src/Enemy.cpp
 	"../include/Enemy.h"
 	"../include/AssetManager.h"
 	"../include/App.h"
 
-1555317348 /home/juritobi/p/Dungerous/include/Enemy.h
+1555317552 /home/juritobi/p/Dungerous/include/Enemy.h
 	<SFML/Graphics.hpp>
 	"Player.h"
 	<math.h>
@@ -99,7 +99,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/FactoriaProyectil.h
 
-1555317034 source:/home/juritobi/p/Dungerous/src/Game.cpp
+1555317481 source:/home/juritobi/p/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	"../include/hud.h"
 	<SFML/Graphics.hpp>
@@ -133,7 +133,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Pausa.h
 
-1555319652 source:/home/juritobi/p/Dungerous/src/Player.cpp
+1555319015 source:/home/juritobi/p/Dungerous/src/Player.cpp
 	"../include/Player.h"
 	<SFML/Graphics.hpp>
 	"../include/AssetManager.h"
@@ -179,10 +179,11 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Tienda.h
 
-1555278898 /home/juritobi/p/Dungerous/include/Animation.h
+1555318490 /home/juritobi/p/Dungerous/include/Animation.h
 	<SFML/Graphics.hpp>
+	<iostream>
 
-1555278898 source:/home/juritobi/p/Dungerous/src/Animation.cpp
+1555318497 source:/home/juritobi/p/Dungerous/src/Animation.cpp
 	"Animation.h"
 	"../include/AssetManager.h"
 	<iostream>

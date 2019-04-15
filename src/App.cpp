@@ -17,6 +17,8 @@ App::App()
     AssetManager::getAssetManager();
     //Map::getMap();
 
+
+
     StateManager::getStateManager()->AddState(SplashState::getSplashState());
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
     AssetManager::getAssetManager()->createTexture("player", "assets/completo.png");//yo no estoy aqui
