@@ -208,7 +208,7 @@
 	"include/App.h"
 	<iostream>
 
-1555344071 /home/carlos/Escritorio/FV/Dungerous/include/App.h
+1555344483 /home/carlos/Escritorio/FV/Dungerous/include/App.h
 	<SFML/Graphics.hpp>
 	"StateManager.h"
 	"SplashState.h"
@@ -222,22 +222,24 @@
 1555344071 /home/carlos/Escritorio/FV/Dungerous/include/InterfazEstado.h
 	<SFML/Graphics.hpp>
 
-1555344071 /home/carlos/Escritorio/FV/Dungerous/include/Game.h
+1555345911 /home/carlos/Escritorio/FV/Dungerous/include/Game.h
 	"Player.h"
 	<SFML/Graphics.hpp>
 	"InterfazEstado.h"
 	"hud.h"
 	"Map.h"
+	"Enemy.h"
 
-1555344071 /home/carlos/Escritorio/FV/Dungerous/include/Player.h
+1555345854 /home/carlos/Escritorio/FV/Dungerous/include/Player.h
 	<SFML/Graphics.hpp>
 	"hud.h"
 	"Animation.h"
 
-1555344071 /home/carlos/Escritorio/FV/Dungerous/include/hud.h
+1555343002 /home/carlos/Escritorio/FV/Dungerous/include/hud.h
 
-1555344071 /home/carlos/Escritorio/FV/Dungerous/include/Animation.h
+1555344483 /home/carlos/Escritorio/FV/Dungerous/include/Animation.h
 	<SFML/Graphics.hpp>
+	<iostream>
 
 1555344071 /home/carlos/Escritorio/FV/Dungerous/include/Map.h
 	<iostream>
@@ -267,7 +269,7 @@
 	"StateManager.h"
 	"Game.h"
 
-1555344071 source:/home/carlos/Escritorio/FV/Dungerous/src/Animation.cpp
+1555344483 source:/home/carlos/Escritorio/FV/Dungerous/src/Animation.cpp
 	"Animation.h"
 	"../include/AssetManager.h"
 	<iostream>
@@ -276,7 +278,7 @@
 	<map>
 	<SFML/Graphics.hpp>
 
-1555344071 source:/home/carlos/Escritorio/FV/Dungerous/src/App.cpp
+1555344483 source:/home/carlos/Escritorio/FV/Dungerous/src/App.cpp
 	"../include/App.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -289,17 +291,24 @@
 	"../include/AssetManager.h"
 	<iostream>
 
-1555344071 source:/home/carlos/Escritorio/FV/Dungerous/src/Colisiones.cpp
+1555344483 source:/home/carlos/Escritorio/FV/Dungerous/src/Colisiones.cpp
 	"Colisiones.h"
 	"Map.h"
-	"../include/Game.h"
 
-1555344071 /home/carlos/Escritorio/FV/Dungerous/include/Colisiones.h
+1555344483 /home/carlos/Escritorio/FV/Dungerous/include/Colisiones.h
+	"Game.h"
 
-1555344071 source:/home/carlos/Escritorio/FV/Dungerous/src/Enemy.cpp
+1555344483 source:/home/carlos/Escritorio/FV/Dungerous/src/Enemy.cpp
 	"../include/Enemy.h"
+	"../include/AssetManager.h"
+	"../include/App.h"
 
-1555344071 /home/carlos/Escritorio/FV/Dungerous/include/Enemy.h
+1555344483 /home/carlos/Escritorio/FV/Dungerous/include/Enemy.h
+	<SFML/Graphics.hpp>
+	"Player.h"
+	<math.h>
+	<iostream>
+	"Animation.h"
 
 1555344071 source:/home/carlos/Escritorio/FV/Dungerous/src/FactoriaEnemy.cpp
 	"../include/FactoriaEnemy.h"
@@ -311,7 +320,7 @@
 
 1555344071 /home/carlos/Escritorio/FV/Dungerous/include/FactoriaProyectil.h
 
-1555344071 source:/home/carlos/Escritorio/FV/Dungerous/src/Game.cpp
+1555346377 source:/home/carlos/Escritorio/FV/Dungerous/src/Game.cpp
 	"../include/Game.h"
 	"../include/hud.h"
 	<SFML/Graphics.hpp>
@@ -321,11 +330,11 @@
 	"../include/AssetManager.h"
 	"../include/Colisiones.h"
 
-1555344071 source:/home/carlos/Escritorio/FV/Dungerous/src/hud.cpp
+1555347323 source:/home/carlos/Escritorio/FV/Dungerous/src/hud.cpp
 	"../include/hud.h"
 	<SFML/Graphics.hpp>
 	<iostream>
-	"../include/AssetManager.h"
+	<sstream>
 
 1555344071 source:/home/carlos/Escritorio/FV/Dungerous/src/Map.cpp
 	"Map.h"
@@ -345,12 +354,13 @@
 
 1555344071 /home/carlos/Escritorio/FV/Dungerous/include/Pausa.h
 
-1555344071 source:/home/carlos/Escritorio/FV/Dungerous/src/Player.cpp
+1555346178 source:/home/carlos/Escritorio/FV/Dungerous/src/Player.cpp
 	"../include/Player.h"
 	<SFML/Graphics.hpp>
 	"../include/AssetManager.h"
 	<iostream>
-	"Colisiones.h"
+	"../include/Colisiones.h"
+	"../include/App.h"
 
 1555344071 source:/home/carlos/Escritorio/FV/Dungerous/src/Portal.cpp
 	"../include/Portal.h"

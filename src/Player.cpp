@@ -12,6 +12,10 @@ Player::Player(hud* hud)
 ,down(false)
 ,right(false)
 ,left(false)
+,aup(false)
+,adown(false)
+,aright(false)
+,aleft(false)
 ,mHud(hud)
 ,life(3)
 ,hitb(sf::Vector2f(35.0f,50.0f))
@@ -174,9 +178,9 @@ void Player::espadazo(){
 }
 
 
-void Player::loseLife(){
-    life--;
-    mHud->loseLife();
+void Player::loseLife(int i){
+    life=life-1;
+    mHud->loseLife(i);
 
 }
 //mueve al personaje en funcion de sus estados y el tick

@@ -14,7 +14,7 @@ class Game : public InterfazEstado {
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
         void            render(sf::Time minUpdateTime, sf::Time updateTime);
-
+        sf::Clock       cl;
         void            cambioSala();
         void            loadGame();
         void            saveGame();

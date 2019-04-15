@@ -29,7 +29,7 @@ class Player
         //funciones cortas
         void                colision();
         void                setPosition(sf::Vector2f pos);
-        void                loseLife();
+        void                loseLife(int i);
         void                hitted();
 
         //getters
