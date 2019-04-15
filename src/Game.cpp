@@ -21,8 +21,11 @@ Game::Game()
 ,mPlayer(&mHud)
 ,hudView()
 ,enemigo1(sf::Vector2u (4,4), &mPlayer, 3)
+,cl()
 {
-    hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.065f));
+    hudView.setSize(792,1008);
+    hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.1f));
+
     loadGame();
     mMap= Map::getMap();
     mMap->generarmatriz();
@@ -81,6 +84,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         mWindow->draw(mHud.getPup()[i]);
     }
     mWindow->draw(mHud.getTxtPseta());
+    mHud.setCrono(cl,125);
     mWindow->draw(mHud.getTxtCrono());
 
 

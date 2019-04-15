@@ -179,9 +179,9 @@ void Player::espadazo(){
 }
 
 
-void Player::loseLife(){
-    life--;
-    mHud->loseLife();
+void Player::loseLife(int i){
+    life=life-1;
+    mHud->loseLife(i);
 
 }
 //mueve al personaje en funcion de sus estados y el tick
