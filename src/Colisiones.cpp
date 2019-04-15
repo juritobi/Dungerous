@@ -1,6 +1,5 @@
 #include "Colisiones.h"
 #include "Map.h"
-#include "../include/Game.h"
 
 Colisiones* Colisiones::colisiones=0;
 
@@ -13,15 +12,28 @@ Colisiones* Colisiones::getColisiones(){
 
 Colisiones::Colisiones()
 {
-    //ctor
+    mGame=Game::getGame();
 }
 
-void Colisiones::entorno(){
+bool Colisiones::entorno(){
 
     for (int i=0;i<Map::getMap()->muros.size();i++){
-        if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->muros[i]->getGlobalBounds())){
-            Game::getGame()->getPlayer()->colision();
+        if(mGame->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->muros[i]->getGlobalBounds())){
+            mGame->getPlayer()->colision();
+            return true;
         }
     }
 
+}
+
+void Colisiones::hostion(){
+    if(mGame->getPlayer()->getEspada().getGlobalBounds().intersects(mGame->getEnemigo()->getHitbox().getGlobalBounds())){
+        mGame->getEnemigo()->hitted();
+    }
+}
+
+void Colisiones::hostiado(){
+    if(mGame->getPlayer()->getHitb().getGlobalBounds().intersects(mGame->getEnemigo()->getHitbox().getGlobalBounds())){
+        mGame->getPlayer()->hitted();
+    }
 }

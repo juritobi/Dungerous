@@ -2,7 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include "../include/AssetManager.h"
 #include <iostream>
-#include "Colisiones.h"
+#include "../include/Colisiones.h"
+#include "../include/App.h"
 
 Player::Player(hud* hud)
 :box(sf::Vector2f(100,100))
@@ -15,15 +16,13 @@ Player::Player(hud* hud)
 ,life(3)
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
-,animation( 0.1f,sf::Vector2u(5, 12))
+,animation( 0.1f,sf::Vector2u(5, 12),"player")
 ,fila(3)
 ,derecha(false)
 ,parar(false)
 {
     firstState.pos=sf::Vector2f(100,100);
     firstState.hitbox=&hitb;
-    previousState=firstState;
-    prepre=firstState;
     lastState=firstState;
     box.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
     box.setOrigin(box.getSize()/2.0f);
@@ -69,21 +68,19 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Player::update(sf::Time elapsedTime){
 
 	if(Catacar.getElapsedTime().asSeconds()>0.5){
-        stateMovement(elapsedTime);
+        std::cout<<"hollaaaaaa"<<std::endl;
+        stateMovement();
 	}
     animate(elapsedTime);
 
     espadazo();
-
-
-    Colisiones::getColisiones()->entorno();
 }
 
 
-void Player::stateMovement(sf::Time elapsedTime){
+void Player::stateMovement(){
 
-    prepre=previousState;
-    previousState=firstState;
+    sf::Time elapsedTime = App::getApp()->getElapsedTime();
+
     firstState=lastState;
 
     sf::Vector2f movement(0.f, 0.f);
@@ -100,7 +97,7 @@ void Player::stateMovement(sf::Time elapsedTime){
 
 
     lastState.pos += movement * elapsedTime.asSeconds();
-    lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-5.0f));//
+    lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-15.0f));//
 }
 
 void Player::animate(sf::Time elapsedTime){
@@ -144,7 +141,6 @@ void Player::animate(sf::Time elapsedTime){
 
 
     if(Catacar.getElapsedTime().asSeconds()<0.5){
-        std::cout<<Catacar.getElapsedTime().asSeconds()<<std::endl;
         parar=false;
     }
 
@@ -156,26 +152,27 @@ void Player::animate(sf::Time elapsedTime){
 void Player::espadazo(){
 
     if(aup){
-        espada.setSize(sf::Vector2f(30.0f,30.0f));
-        espada.setPosition(box.getPosition().x-15 , box.getPosition().y-70.0f);
+        espada.setSize(sf::Vector2f(50.0f,30.0f));
+        espada.setPosition(box.getPosition().x-25 , box.getPosition().y-50.0f);
     }
     if(adown){
-        espada.setSize(sf::Vector2f(30.0f,30.0f));
-        espada.setPosition(box.getPosition().x-15 , box.getPosition().y+40.0f);
+        espada.setSize(sf::Vector2f(50.0f,30.0f));
+        espada.setPosition(box.getPosition().x-25 , box.getPosition().y+20.0f);
     }
     if(aright){
-        espada.setSize(sf::Vector2f(30.0f,30.0f));
-        espada.setPosition(box.getPosition().x+40 , box.getPosition().y-15);
+        espada.setSize(sf::Vector2f(30.0f,50.0f));
+        espada.setPosition(box.getPosition().x+20 , box.getPosition().y-25);
     }
     if(aleft){
-        espada.setSize(sf::Vector2f(30.0f,30.0f));
-        espada.setPosition(box.getPosition().x-70, box.getPosition().y-15);
+        espada.setSize(sf::Vector2f(30.0f,50.0f));
+        espada.setPosition(box.getPosition().x-50, box.getPosition().y-25);
     }
 
     if(Catacar.getElapsedTime().asSeconds()>0.5){
         espada.setSize(sf::Vector2f(0,0));
     }
 }
+
 
 void Player::loseLife(){
     life--;
@@ -185,7 +182,7 @@ void Player::loseLife(){
 //mueve al personaje en funcion de sus estados y el tick
 void Player::renderMove(float tick){
     box.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
-    hitb.setPosition(box.getPosition()+sf::Vector2f(-15.0f,-5.0f));
+    hitb.setPosition(box.getPosition()+sf::Vector2f(-15.0f,-15.0f));
 }
 
 void Player::setPosition(sf::Vector2f pos){
@@ -211,9 +208,24 @@ sf::Vector2f Player::getPosition(){
 
 
 
+void Player::hitted(){
+    sf::Vector2f vec = box.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
+    vec= App::getApp()->normalizar(vec);
+    lastState.pos=lastState.pos+vec*multiplier;
+    lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-15.0f));
+
+    if(Colisiones::getColisiones()->entorno()){
+        multiplier=multiplier/2;
+        hitted();
+    }
+    stateMovement();
+    App::getApp()->invulnerabilidad.restart();
+
+    multiplier=100.f;
+}
+
 void Player::colision(){
     lastState=firstState;
-    //firstState=prepre;
 }
 
 

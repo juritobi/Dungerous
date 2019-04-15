@@ -22,7 +22,7 @@ class Player
         void            renderMove(float tick);
 
         //segmentacion
-        void            stateMovement(sf::Time elapsedTime);
+        void            stateMovement();
         void            animate(sf::Time elapsedTime);
         void            espadazo();
 
@@ -30,6 +30,7 @@ class Player
         void                colision();
         void                setPosition(sf::Vector2f pos);
         void                loseLife();
+        void                hitted();
 
         //getters
         sf::RectangleShape  getBody();
@@ -38,8 +39,6 @@ class Player
         sf::Vector2f        getPosition();
 
         //variables que convendria sacar de aqui
-        State prepre;
-        State previousState;
         State firstState;
         State lastState;
 
@@ -60,6 +59,7 @@ class Player
         unsigned int            fila;
         bool                    derecha;
         bool                    parar;
+        float                   multiplier;
 
         bool            up;
         bool            down;

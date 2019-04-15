@@ -8,7 +8,6 @@
 #include "../include/Colisiones.h"
 
 Game* Game::game=0;
-
 Game* Game::getGame(){
     if(game==0){
         game= new Game();
@@ -21,12 +20,14 @@ Game::Game()
 ,tick(0)
 ,mPlayer(&mHud)
 ,hudView()
+,enemigo1(sf::Vector2u (4,4), &mPlayer, &vida)
 {
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.065f));
     loadGame();
     mMap= Map::getMap();
     mMap->generarmatriz();
     mMap->load("assets/map64.png",sf::Vector2u(64,64),mMap->_tilemap,16 ,16,3);
+
 }
 
 
@@ -44,6 +45,11 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
 void Game::update(sf::Time elapsedTime){
     mPlayer.update(elapsedTime);
+    enemigo1.update();
+    Colisiones::getColisiones()->entorno();
+    Colisiones::getColisiones()->hostion();
+    if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
+        Colisiones::getColisiones()->hostiado();
 }
 
 //calcula el tick para mover el personaje y dibuja
@@ -54,11 +60,14 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     tick=updateTime/minUpdateTime;
 
     mPlayer.renderMove(tick);
+    enemigo1.renderMove(tick);
 
     App::getApp()->mWindow.draw(*mMap);
     mMap->Mostrar(*mWindow);
-    App::getApp()->mWindow.draw(mPlayer.getBody());
-    App::getApp()->mWindow.draw(mPlayer.getEspada());
+    mWindow->draw(mPlayer.getBody());
+    mWindow->draw(mPlayer.getEspada());
+    mWindow->draw(enemigo1.getbody());
+    mWindow->draw(enemigo1.getHitbox());
 
     //App::getApp()->mWindow.draw(Map::getMap());
 
@@ -107,3 +116,7 @@ void Game::saveGame(){
 Player* Game::getPlayer(){
     return &mPlayer;
 }
+Enemy* Game::getEnemigo(){
+    return &enemigo1;
+}
+

@@ -5,6 +5,8 @@
 #include "../include/AssetManager.h"
 #include "../include/Map.h"
 
+//peta por que la distancia del vector de solision es cerca de cero divide y cacatoa
+
 const sf::Time App::minUpdateTime = sf::milliseconds(60.f);
 App* App::app = 0;
 
@@ -12,13 +14,17 @@ App::App()
 :mWindow(sf::VideoMode(1920,1080),"Dungerous",sf::Style::Default)
 ,mView(sf::FloatRect(0,0,1920,1080))
 {
+    mWindow.setFramerateLimit(300);
     //siongleton init
     StateManager::getStateManager();
     AssetManager::getAssetManager();
     //Map::getMap();
 
+
+
     StateManager::getStateManager()->AddState(SplashState::getSplashState());
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
+    AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
     AssetManager::getAssetManager()->createTexture("player", "assets/completo.png");//yo no estoy aqui
 }
 
@@ -96,4 +102,19 @@ void App::render(){
     StateManager::getStateManager()->GetActiveState()->render(minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
 
     mWindow.display();
+}
+
+
+sf::Vector2f App::normalizar(sf::Vector2f vec)//se normaliza la dirección por la que tiene que perseguir
+{
+
+    float normalizar = sqrt((vec.x * vec.x) + (vec.y * vec.y));
+    vec=sf::Vector2f(vec.x/normalizar, vec.y/normalizar);
+    return vec;
+
+}
+
+
+sf::Time App::getElapsedTime(){
+    return lastUpdateTime;
 }

@@ -1,17 +1,24 @@
 #ifndef COLISIONES_H
 #define COLISIONES_H
 
+#include "Game.h"
+
+
 
 class Colisiones
 {
     public:
         static Colisiones* getColisiones();
 
-        void entorno();
+        bool entorno();
+        void hostion();
+        void hostiado();
 
     private:
         static Colisiones* colisiones;
         Colisiones();
+
+        Game* mGame;
 
 
 };
