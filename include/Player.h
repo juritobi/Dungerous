@@ -48,6 +48,7 @@ class Player
         Animation               animation;
         hud*                    mHud;
         sf::Clock               Catacar;
+        sf::Clock               Crodar;
 
         sf::RectangleShape      box;
         sf::RectangleShape      hitb;
@@ -61,6 +62,7 @@ class Player
         bool                    parar;
         float                   multiplier;
 
+        bool            rodando;
         bool            up;
         bool            down;
         bool            right;
