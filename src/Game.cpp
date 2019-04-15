@@ -48,7 +48,8 @@ void Game::update(sf::Time elapsedTime){
     enemigo1.update();
     Colisiones::getColisiones()->entorno();
     Colisiones::getColisiones()->hostion();
-    Colisiones::getColisiones()->hostiado();
+    if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
+        Colisiones::getColisiones()->hostiado();
 }
 
 //calcula el tick para mover el personaje y dibuja

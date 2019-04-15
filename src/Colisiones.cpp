@@ -15,11 +15,12 @@ Colisiones::Colisiones()
     mGame=Game::getGame();
 }
 
-void Colisiones::entorno(){
+bool Colisiones::entorno(){
 
     for (int i=0;i<Map::getMap()->muros.size();i++){
         if(mGame->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->muros[i]->getGlobalBounds())){
             mGame->getPlayer()->colision();
+            return true;
         }
     }
 

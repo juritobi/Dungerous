@@ -22,7 +22,7 @@ class Player
         void            renderMove(float tick);
 
         //segmentacion
-        void            stateMovement(sf::Time elapsedTime);
+        void            stateMovement();
         void            animate(sf::Time elapsedTime);
         void            espadazo();
 
@@ -59,6 +59,7 @@ class Player
         unsigned int            fila;
         bool                    derecha;
         bool                    parar;
+        float                   multiplier;
 
         bool            up;
         bool            down;

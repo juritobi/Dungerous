@@ -10,7 +10,7 @@ class Colisiones
     public:
         static Colisiones* getColisiones();
 
-        void entorno();
+        bool entorno();
         void hostion();
         void hostiado();
 

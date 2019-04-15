@@ -16,7 +16,8 @@ class App
 
         sf::Time getElapsedTime();
 
-        sf::Vector2f                normalizar(sf::Vector2f vec);
+        sf::Vector2f            normalizar(sf::Vector2f vec);
+        sf::Clock               invulnerabilidad;
 
     private:
         static App*             app;
@@ -28,6 +29,7 @@ class App
 
     private:
         static const sf::Time	minUpdateTime;
+
 
         sf::Clock               generalClock;
         sf::Clock               updateClock;

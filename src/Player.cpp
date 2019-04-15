@@ -68,7 +68,8 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Player::update(sf::Time elapsedTime){
 
 	if(Catacar.getElapsedTime().asSeconds()>0.5){
-        stateMovement(elapsedTime);
+        std::cout<<"hollaaaaaa"<<std::endl;
+        stateMovement();
 	}
     animate(elapsedTime);
 
@@ -76,7 +77,9 @@ void Player::update(sf::Time elapsedTime){
 }
 
 
-void Player::stateMovement(sf::Time elapsedTime){
+void Player::stateMovement(){
+
+    sf::Time elapsedTime = App::getApp()->getElapsedTime();
 
     firstState=lastState;
 
@@ -149,20 +152,20 @@ void Player::animate(sf::Time elapsedTime){
 void Player::espadazo(){
 
     if(aup){
-        espada.setSize(sf::Vector2f(30.0f,30.0f));
-        espada.setPosition(box.getPosition().x-15 , box.getPosition().y-50.0f);
+        espada.setSize(sf::Vector2f(50.0f,30.0f));
+        espada.setPosition(box.getPosition().x-25 , box.getPosition().y-50.0f);
     }
     if(adown){
-        espada.setSize(sf::Vector2f(30.0f,30.0f));
-        espada.setPosition(box.getPosition().x-15 , box.getPosition().y+20.0f);
+        espada.setSize(sf::Vector2f(50.0f,30.0f));
+        espada.setPosition(box.getPosition().x-25 , box.getPosition().y+20.0f);
     }
     if(aright){
-        espada.setSize(sf::Vector2f(30.0f,30.0f));
-        espada.setPosition(box.getPosition().x+20 , box.getPosition().y-15);
+        espada.setSize(sf::Vector2f(30.0f,50.0f));
+        espada.setPosition(box.getPosition().x+20 , box.getPosition().y-25);
     }
     if(aleft){
-        espada.setSize(sf::Vector2f(30.0f,30.0f));
-        espada.setPosition(box.getPosition().x-50, box.getPosition().y-15);
+        espada.setSize(sf::Vector2f(30.0f,50.0f));
+        espada.setPosition(box.getPosition().x-50, box.getPosition().y-25);
     }
 
     if(Catacar.getElapsedTime().asSeconds()>0.5){
@@ -170,14 +173,6 @@ void Player::espadazo(){
     }
 }
 
-
-
-void Player::hitted(){
-    sf::Vector2f vec = box.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
-    vec= App::getApp()->normalizar(vec);
-    lastState.pos=lastState.pos+vec*100.f;
-
-}
 
 void Player::loseLife(){
     life--;
@@ -212,6 +207,22 @@ sf::Vector2f Player::getPosition(){
 }
 
 
+
+void Player::hitted(){
+    sf::Vector2f vec = box.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
+    vec= App::getApp()->normalizar(vec);
+    lastState.pos=lastState.pos+vec*multiplier;
+    lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-15.0f));
+
+    if(Colisiones::getColisiones()->entorno()){
+        multiplier=multiplier/2;
+        hitted();
+    }
+    stateMovement();
+    App::getApp()->invulnerabilidad.restart();
+
+    multiplier=100.f;
+}
 
 void Player::colision(){
     lastState=firstState;
