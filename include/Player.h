@@ -38,8 +38,6 @@ class Player
         sf::Vector2f        getPosition();
 
         //variables que convendria sacar de aqui
-        State prepre;
-        State previousState;
         State firstState;
         State lastState;
 

@@ -8,6 +8,7 @@ Animation::Animation(float time, sf::Vector2u vect, std::string text)
 ,timetotal(0.0f)
 ,duracion(0)
 {
+
     imactual.x=0;
     imactual.y=0;
     texture= AssetManager::getAssetManager()->GetTexture(text);

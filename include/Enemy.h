@@ -6,20 +6,23 @@
 #include <iostream>
 #include "Animation.h"
 
-
-
 class Enemy
 {
     public:
         Enemy(sf::Vector2u vec, Player* player, int* vida);
 
-        sf::Vector2f                Perseguir();
+        sf::Vector2f                normalizar(sf::Vector2f vec);
         sf::RectangleShape          getbody();
 
-        void                        Mover(float x, float y);
+        void                        Mover();
         void update();
-
+        void renderMove(float tick);
         void Animar();
+        void hitted();
+        sf::RectangleShape getHitbox();
+
+        State firstState;
+        State lastState;
 
 
     protected:
@@ -30,7 +33,7 @@ class Enemy
         int*                        vida;
 
         float                       swtime;
-        float                       velocidad;
+        float                       speed;
 
         bool                        derecha;
 
@@ -40,9 +43,10 @@ class Enemy
         sf::RectangleShape          body;
 
         Animation                   animar;
-        sf::Vector2f                vec;
 
         sf::Vector2f direccion;
+
+
 };
 
 #endif // ENEMY_H

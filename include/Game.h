@@ -7,7 +7,6 @@
 #include "Map.h"
 #include "Enemy.h"
 
-
 class Game : public InterfazEstado {
     public:
 
@@ -20,6 +19,7 @@ class Game : public InterfazEstado {
         void            loadGame();
         void            saveGame();
         Player*         getPlayer();
+        Enemy*          getEnemigo();
 
     private:
         static Game* game;

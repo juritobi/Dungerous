@@ -46,6 +46,8 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Game::update(sf::Time elapsedTime){
     mPlayer.update(elapsedTime);
     enemigo1.update();
+    Colisiones::getColisiones()->entorno();
+    Colisiones::getColisiones()->hostion();
 }
 
 //calcula el tick para mover el personaje y dibuja
@@ -56,11 +58,14 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     tick=updateTime/minUpdateTime;
 
     mPlayer.renderMove(tick);
+    enemigo1.renderMove(tick);
 
     App::getApp()->mWindow.draw(*mMap);
     mMap->Mostrar(*mWindow);
-    App::getApp()->mWindow.draw(mPlayer.getBody());
+    mWindow->draw(mPlayer.getBody());
+    mWindow->draw(mPlayer.getEspada());
     mWindow->draw(enemigo1.getbody());
+    mWindow->draw(enemigo1.getHitbox());
 
     //App::getApp()->mWindow.draw(Map::getMap());
 
@@ -109,3 +114,7 @@ void Game::saveGame(){
 Player* Game::getPlayer(){
     return &mPlayer;
 }
+Enemy* Game::getEnemigo(){
+    return &enemigo1;
+}
+
