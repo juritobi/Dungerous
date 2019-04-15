@@ -77,6 +77,10 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 }
 void Player::update(sf::Time elapsedTime){
 
+    if(life==0){
+        box.setFillColor(sf::Color::Red);
+    }
+
 	if(Catacar.getElapsedTime().asSeconds()>0.5){
 
         stateMovement();
@@ -251,7 +255,7 @@ sf::Vector2f Player::getPosition(){
 
 void Player::hitted(){
 
-
+    loseLife(1);
     sf::Vector2f vec = box.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
     vec= App::getApp()->normalizar(vec);
     lastState.pos=lastState.pos+vec*multiplier;
