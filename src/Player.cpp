@@ -250,14 +250,19 @@ sf::Vector2f Player::getPosition(){
 
 
 void Player::hitted(){
+
+
     sf::Vector2f vec = box.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
     vec= App::getApp()->normalizar(vec);
     lastState.pos=lastState.pos+vec*multiplier;
     lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-15.0f));
 
     if(Colisiones::getColisiones()->entorno()){
-        multiplier=multiplier/2;
-        hitted();
+        if(multiplier>1){
+            multiplier=multiplier/2;
+            hitted();
+        }
+
     }
     stateMovement();
     App::getApp()->invulnerabilidad.restart();
