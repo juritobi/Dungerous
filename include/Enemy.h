@@ -9,17 +9,19 @@
 class Enemy
 {
     public:
-        Enemy(sf::Vector2u vec, Player* player, int* vida);
+        Enemy(sf::Vector2u vec, Player* player, int vida);
 
 
         sf::RectangleShape          getbody();
 
+
         void                        Mover();
-        void update();
-        void renderMove(float tick);
-        void Animar();
-        void hitted();
-        sf::RectangleShape getHitbox();
+        void                        update();
+        void                        renderMove(float tick);
+        void                        Animar();
+        void                        hitted();
+        void                        setVida(int i);
+        sf::RectangleShape          getHitbox();
 
         State firstState;
         State lastState;
@@ -29,14 +31,10 @@ class Enemy
 
     private://comento la textura a ver si fa bien o no
         Player*                     player;
-
-        int*                        vida;
-
+        int                         vida;
         float                       swtime;
         float                       speed;
-
         bool                        derecha;
-
         unsigned int                fila;
 
         sf::RectangleShape          hitb;

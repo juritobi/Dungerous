@@ -2,6 +2,7 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+<<<<<<< HEAD
 	<File name="src/App.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="219" topLine="0" />
@@ -20,6 +21,16 @@
 	<File name="src/Game.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="269" topLine="0" />
+=======
+	<File name="src/hud.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="src/Player.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3061" topLine="102" />
+>>>>>>> e8b7a969c687670bf5bdb7005fddb9fe7dc73759
 		</Cursor>
 	</File>
 	<File name="src/Menu.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -27,6 +38,7 @@
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="include/App.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="124" topLine="0" />
@@ -40,6 +52,21 @@
 	<File name="src/StateManager.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="72" topLine="0" />
+=======
+	<File name="include/Enemy.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="220" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/Player.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="103" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="src/Animation.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="208" topLine="0" />
+>>>>>>> e8b7a969c687670bf5bdb7005fddb9fe7dc73759
 		</Cursor>
 	</File>
 	<File name="src/Tienda.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -47,6 +74,7 @@
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="include/InterfazEstado.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="378" topLine="0" />
@@ -70,6 +98,36 @@
 	<File name="src/hud.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1423" topLine="14" />
+=======
+	<File name="include/Map.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="661" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/Game.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1746" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/App.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="264" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="src/Enemy.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2375" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="src/Colisiones.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="906" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/AssetManager.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="432" topLine="0" />
+>>>>>>> e8b7a969c687670bf5bdb7005fddb9fe7dc73759
 		</Cursor>
 	</File>
 	<File name="include/hud.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -77,6 +135,7 @@
 			<Cursor1 position="436" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="include/StateManager.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="195" topLine="0" />
@@ -85,6 +144,21 @@
 	<File name="include/Player.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="406" topLine="0" />
+=======
+	<File name="include/Animation.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="118" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/Game.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="620" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/Colisiones.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="209" topLine="0" />
+>>>>>>> e8b7a969c687670bf5bdb7005fddb9fe7dc73759
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
