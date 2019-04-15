@@ -69,6 +69,11 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
             if(isPressed) Catacar.restart();
         }
     }
+
+    if(key == sf::Keyboard::Space){
+        rodando = isPressed;
+    }
+
 }
 void Player::update(sf::Time elapsedTime){
 
@@ -109,44 +114,75 @@ void Player::animate(sf::Time elapsedTime){
 
     parar=true;
 
+    if(rodando && Crodar.getElapsedTime().asSeconds()<0.5){
+        speed=500;
+
+    }
+    else if(rodando && Crodar.getElapsedTime().asSeconds()>0.5 && Crodar.getElapsedTime().asSeconds()<1){
+        speed=300;
+        rodando=false;
+        std::cout <<"me reinicio"<<std::endl;
+
+    }
+    else if(rodando && Crodar.getElapsedTime().asSeconds()>1){
+        speed=300;
+        Crodar.restart();
+        std::cout <<"me reinicio parte 2"<<std::endl;
+    }
+    else{
+        speed=300;
+    }
+
     if(Catacar.getElapsedTime().asSeconds()>0.5){
         if(up){
             fila=0;
+            if(rodando)
+                fila=5;
             parar=false;
         }
         if(down){
             fila=2;
+            if(rodando)
+                fila=6;
             parar=false;
         }
         if(right){
             fila=1;
+            if(rodando)
+                fila=4;
             derecha=true;
             parar=false;
         }
         if(left){
             fila=1;
+            if(rodando)
+                fila=4;
             derecha=false;
             parar=false;
         }
     }
-    if(aup){
-        fila=9;
-    }
-    if(adown){
-        fila=8;
-    }
-    if(aright){
-        fila=7;
-        derecha=true;
-    }
-    if(aleft){
-        fila=7;
-        derecha=false;
-    }
+
+    if(parar)
+    {
+        if(aup){
+            fila=9;
+        }
+        if(adown){
+            fila=8;
+        }
+        if(aright){
+            fila=7;
+            derecha=true;
+        }
+        if(aleft){
+            fila=7;
+            derecha=false;
+        }
 
 
-    if(Catacar.getElapsedTime().asSeconds()<0.5){
-        parar=false;
+        if(Catacar.getElapsedTime().asSeconds()<0.5){
+            parar=false;
+        }
     }
 
 
