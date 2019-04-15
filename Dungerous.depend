@@ -133,7 +133,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Pausa.h
 
-1555319015 source:/home/juritobi/p/Dungerous/src/Player.cpp
+1555319320 source:/home/juritobi/p/Dungerous/src/Player.cpp
 	"../include/Player.h"
 	<SFML/Graphics.hpp>
 	"../include/AssetManager.h"
@@ -179,7 +179,7 @@
 
 1554894761 /home/juritobi/p/Dungerous/include/Tienda.h
 
-1555318490 /home/juritobi/p/Dungerous/include/Animation.h
+1555319383 /home/juritobi/p/Dungerous/include/Animation.h
 	<SFML/Graphics.hpp>
 	<iostream>
 

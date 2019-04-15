@@ -4,7 +4,7 @@
 
 
 Enemy::Enemy(sf::Vector2u vec, Player* player, int* vida)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
-:animar(0.1f,sf::Vector2u(4,4),"enem")
+:animar(0.1f,sf::Vector2u(4,4))
 ,direccion(sf::Vector2f(0,0))
 {
     this->vec.x = vec.x;
