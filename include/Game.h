@@ -20,11 +20,12 @@ class Game : public InterfazEstado {
         void            saveGame();
         Player*         getPlayer();
         Enemy*          getEnemigo();
+        Player          mPlayer;
 
     private:
         static Game* game;
         Game();
-        Player          mPlayer;
+
         sf::View        hudView;
         hud             mHud;
         float           tick;

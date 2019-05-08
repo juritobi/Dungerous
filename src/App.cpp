@@ -24,6 +24,7 @@ App::App()
 
     StateManager::getStateManager()->AddState(SplashState::getSplashState());
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
+
     AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
     AssetManager::getAssetManager()->createTexture("player", "assets/completo.png");//yo no estoy aqui
 }
@@ -84,6 +85,7 @@ void App::manageEvents(){
 				break;
 		}
 	}
+
 }
 
 void App::update(sf::Time elapsedTime){

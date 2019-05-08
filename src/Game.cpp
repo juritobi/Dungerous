@@ -25,16 +25,17 @@ Game::Game()
 {
     hudView.setSize(792,1008);
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.1f));
-
+    App::getApp()->mView.setCenter(sf::Vector2f(960.0f,8160.f));
     loadGame();
     mMap= Map::getMap();
     mMap->generarmatriz();
-    mMap->load("assets/map64.png",sf::Vector2u(64,64),mMap->_tilemap,16 ,16,3);
+    mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,136,4);
 
 }
 
 
 void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
+
     if(key == sf::Keyboard::Escape){
         //abrir menu ingame
     }
@@ -44,13 +45,16 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
     else{
         mPlayer.manageEvents(key, isPressed);
     }
+
 }
 
 void Game::update(sf::Time elapsedTime){
+
     mPlayer.update(elapsedTime);
     enemigo1.update();
     Colisiones::getColisiones()->entorno();
     Colisiones::getColisiones()->hostion();
+    mMap->camaramove(&mPlayer,&App::getApp()->mView);
     if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
         Colisiones::getColisiones()->hostiado();
 }
@@ -66,7 +70,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     enemigo1.renderMove(tick);
 
     App::getApp()->mWindow.draw(*mMap);
-    mMap->Mostrar(*mWindow);
+    //mMap->Mostrar(*mWindow);
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
     mWindow->draw(enemigo1.getbody());

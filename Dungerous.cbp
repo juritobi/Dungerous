@@ -50,7 +50,6 @@
 		<Unit filename="include/FactoriaEnemy.h" />
 		<Unit filename="include/FactoriaProyectil.h" />
 		<Unit filename="include/Game.h" />
-		<Unit filename="include/InterfazEstado.h" />
 		<Unit filename="include/Map.h" />
 		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Palanca.h" />
@@ -60,6 +59,7 @@
 		<Unit filename="include/Proyectil.h" />
 		<Unit filename="include/Puerta.h" />
 		<Unit filename="include/Sala.h" />
+		<Unit filename="include/Spawner.h" />
 		<Unit filename="include/SplashState.h" />
 		<Unit filename="include/StateManager.h" />
 		<Unit filename="include/Tienda.h" />
@@ -83,6 +83,7 @@
 		<Unit filename="src/Proyectil.cpp" />
 		<Unit filename="src/Puerta.cpp" />
 		<Unit filename="src/Sala.cpp" />
+		<Unit filename="src/Spawner.cpp" />
 		<Unit filename="src/SplashState.cpp" />
 		<Unit filename="src/StateManager.cpp" />
 		<Unit filename="src/Tienda.cpp" />

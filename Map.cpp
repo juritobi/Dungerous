@@ -27,12 +27,9 @@ bool Map::load(const std::string& tileset, sf::Vector2u tileSize, int*** level, 
         {
 
         int gid = level[k][j][i];
-
-
-        gid-=1;
 //        int gid = level[0][i][j];
 
-        if(gid==-1){
+        if(gid==0){
         }
         else{
 
@@ -85,9 +82,7 @@ void Map::generarmatriz()
 //Inicializa el tamaño del mapa-----------------------------------------------
 
 tinyxml2::XMLDocument doc;//carga el documento
-doc.LoadFile("assets/Mapa.tmx");
-
-
+doc.LoadFile("assets/mapa642.tmx");
 
 tinyxml2::XMLElement *map = doc.FirstChildElement("map");//coje el map element y lee lo necesario
 
@@ -112,20 +107,19 @@ while(layer){
 _numLayers++;
 layer=layer->NextSiblingElement("layer");
 }
-_numLayers=4;
 //esto es la inicializacion el array del mapa
 //crea el tilemap puntero a puntero a puntero de ints
 _tilemap=new int**[_numLayers];
 
 //rellena la altura para cada capa
-for(unsigned int i=0; i<_numLayers;i++)
+for(int i=0; i<_numLayers;i++)
 {
 
 _tilemap[i]=new int*[_height];
 }
 
 //rellena el width para altura de cada capa
-for(unsigned int l=0; l<_numLayers;l++)
+for(int l=0; l<_numLayers;l++)
 {
 
     for(int y=0;y<_height;y++)
@@ -146,83 +140,58 @@ int aux=0;
 bool next=true;
 
 
-for(unsigned int l=0;l<=_numLayers;l++){
+for(int l=0;l<=_numLayers;l++){
 
 
             if(l==1)
             data=map->FirstChildElement("layer")->NextSiblingElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
-            if(l==2)
+            if(l==2){
             data=map->FirstChildElement("objectgroup")->FirstChildElement("object");
-            if(l==3){
-            data=map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
-            next=true;
-            }
-            if(l==4){
-            data=map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
-            next=true;
             }
 
+    for(int y=0; y<_height;y++){
 
-    for(unsigned int y=0; y<_height;y++){
-
-        for(unsigned int x=0; x<_width;x++){
+        for(int x=0; x<_width;x++){
 
 
 
             if(l==0  || l==1){
             data->QueryIntAttribute("gid", &_tilemap[l][y][x]);
             data= data->NextSiblingElement("tile");
-            }
+            //std::cout<<"peto"<<std::endl;
+                    }
 
 
-            if((l==2 || l==3 || l==4) && next==true){
-            std::cout<<l<<std::endl;
+            if(l==2 && next==true){
+
             data->QueryIntAttribute("id",&id);
             data->QueryIntAttribute("x",&cx);
             data->QueryIntAttribute("y",&cy);
             data->QueryIntAttribute("width",&objwid);
             data->QueryIntAttribute("height",&objhei);
 
-                if(!data->NextSiblingElement("object") && l==2){
+                if(!data->NextSiblingElement("object")){
                 data= data->NextSiblingElement("object");
                 generarcolision(cx,cy,objhei,objwid);
                 next=false;
                 }
-                else if(l==2){
+                else{
                  data= data->NextSiblingElement("object");
                  generarcolision(cx,cy,objhei,objwid);
-                }
-                else if(!data->NextSiblingElement("object") && l==3){
-                data= data->NextSiblingElement("object");
-                generarpuerta(cx,cy,objhei,objwid);
-                next=false;
-                }
-                else if(l==3){
-                data= data->NextSiblingElement("object");
-                generarpuerta(cx,cy,objhei,objwid);
-                }
-                else if(!data->NextSiblingElement("object") && l==4){
-                data= data->NextSiblingElement("object");
-                generarpuerta(cx,cy,objhei,objwid);
-                next=false;
-                }
-                else if(l==4){
-                data= data->NextSiblingElement("object");
-                generarspawns(cx,cy,objhei,objwid);
-                }
+                 //std::cout<<id<<std::endl;
 
-
-
-                        }
-
-                    }
                 }
 
             }
 
+        }
+    }
+
+
 }
 
 
+}
 
 void Map::generarcolision(int x, int y, int h, int w)
 {
@@ -231,81 +200,27 @@ sf::RectangleShape *muro= new sf::RectangleShape();
 muro->setSize(sf::Vector2f(w,h));
 muro->setPosition(sf::Vector2f(x,y));
 muro->setFillColor(sf::Color::Red);
+
+
+
+
 muros.push_back(muro);
 
 }
 
 
-void Map::generarpuerta(int x, int y, int h, int w)
-{
-sf::RectangleShape *puerta= new sf::RectangleShape();
-puerta->setSize(sf::Vector2f(w,h));
-puerta->setPosition(sf::Vector2f(x,y));
-puerta->setFillColor(sf::Color::Red);
-puertas.push_back(puerta);
-
-
-}
-
-void Map::generarspawns(int x, int y, int h, int w)
-{
-sf::RectangleShape *spawn= new sf::RectangleShape();
-spawn->setSize(sf::Vector2f(w,h));
-spawn->setPosition(sf::Vector2f(x,y));
-spawn->setFillColor(sf::Color::Red);
-spawns.push_back(spawn);
-std::cout<<spawns.size()<<std::endl;
-
-}
-
-void Map::cambiopuertas()
-{
-
- for(unsigned k=0; k<3;k++){
-    for(unsigned int i=0; i<_width;i++){
-        for(unsigned int j=0; j<_height;j++)
-            {
-             if(_tilemap[k][j][i]==433)
-             _tilemap[k][j][i]=479;
-
-
-            }
-        }
-    }
-
-
-load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
-}
 
 void Map::Mostrar(sf::RenderWindow& window)
 {
 //std::cout<<muros.size()<<std::endl;
 
-for( unsigned int i=0; i<muros.size();i++)
+for( int i=0; i<muros.size();i++){
 window.draw(*muros[i]);
-for( unsigned int i=0; i<puertas.size();i++)
-window.draw(*puertas[i]);
 //std::cout<<muros[i]->getSize().x<<std::endl;
-
+}
 
 }
 
-
-void Map::camaramove(Player *player, sf::View *camara)
-{
-bool cambio=false;
-    for(unsigned int i=0; i<puertas.size();i++)
-    {
-        if(player->getHitb().getGlobalBounds().intersects(puertas[i]->getGlobalBounds()) && cambio==false){
-        player->setPosition(sf::Vector2f(player->getHitb().getPosition().x,player->getHitb().getPosition().y-200.0f));
-        camara->setCenter(sf::Vector2f(camara->getCenter().x,camara->getCenter().y-1088.0f));
-        cambio=true;
-        cambiopuertas();
-        }
-    }
-
-
-}
 
 
 

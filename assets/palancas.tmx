@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="64" tileheight="64" nextobjectid="2">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="64" tileheight="64" nextobjectid="3">
  <tileset firstgid="1" name="aaaaa" tilewidth="64" tileheight="64" tilecount="483">
   <image source="tileset.png" trans="ff00ff" width="1472" height="1344"/>
  </tileset>
@@ -3087,9 +3087,10 @@
    <tile gid="0"/>
   </data>
  </layer>
- <objectgroup name="Object Layer 1">
+ <objectgroup name="Object Layer 1" visible="0">
   <object id="1" x="662" y="70">
    <polyline points="0,0 -414,438 12,890 -594,890 -596,-12 -2,-12 0,-4"/>
   </object>
+  <object id="2" x="1482" y="-66"/>
  </objectgroup>
 </map>

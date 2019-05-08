@@ -5,7 +5,6 @@
 #include <SFML/System.hpp>
 #include <tinyxml2.h>
 #include <vector>
-#include "Player.h"
 
 
 
@@ -21,14 +20,8 @@ class Map : public sf::Drawable, public sf::Transformable
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         void generarmatriz();
         void generarcolision(int x, int y, int h, int w);
-        void generarpuerta(int x, int y, int h, int w);
-        void generarspawns(int x, int y, int h, int w);
-        void camaramove(Player *player, sf::View *camara);
-        void cambiopuertas();
         void Mostrar(sf::RenderWindow& window);
         std::vector<sf::RectangleShape*> muros;
-        std::vector<sf::RectangleShape*> puertas;
-        std::vector<sf::RectangleShape*> spawns;
         tinyxml2::XMLElement *data;
         tinyxml2::XMLElement *box;
         int ***_tilemap;

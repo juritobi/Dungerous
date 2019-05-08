@@ -26,7 +26,7 @@ Player::Player(hud* hud)
 ,parar(false)
 {
 
-    firstState.pos=sf::Vector2f(100,100);
+    firstState.pos=sf::Vector2f(960,8360);
     firstState.hitbox=&hitb;
     lastState=firstState;
     box.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
