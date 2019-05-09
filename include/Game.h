@@ -32,7 +32,7 @@ class Game : public InterfazEstado {
 
         Map*     mMap;
 
-        Enemy   enemigo1;
+        //Enemy   enemigo1;
 
         int vida=3;
 };

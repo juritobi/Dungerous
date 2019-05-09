@@ -25,15 +25,17 @@ bool Colisiones::entorno(){
     }
 
 }
-
+/*
 void Colisiones::hostion(){
     if(mGame->getPlayer()->getEspada().getGlobalBounds().intersects(mGame->getEnemigo()->getHitbox().getGlobalBounds())){
         mGame->getEnemigo()->hitted();
     }
 }
-
+*/
+/*
 void Colisiones::hostiado(){
     if(mGame->getPlayer()->getHitb().getGlobalBounds().intersects(mGame->getEnemigo()->getHitbox().getGlobalBounds())){
         mGame->getPlayer()->hitted();
     }
 }
+*/

@@ -1,21 +1,21 @@
 #ifndef SPAWNER_H
 #define SPAWNER_H
+#include <SFML/Graphics.hpp>
+#include "vector"
+#include "Enemy.h"
+
 
 
 class Spawner
 {
     public:
-
+        Spawner();
         virtual ~Spawner();
-        static Spawner* getSpawner();
-        void generarEnemigo();
+        void generarEnemigos();
 
     protected:
 
     private:
-
-    static Spawner*             spawn;
-    Spawner();
 };
 
 #endif // SPAWNER_H

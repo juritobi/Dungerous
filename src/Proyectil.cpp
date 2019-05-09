@@ -1,8 +1,9 @@
 #include "../include/Proyectil.h"
 
-Proyectil::Proyectil()
+Proyectil::Proyectil(sf::Vector2f pos)
 {
-    //ctor
+    body.setTexture(&AssetManager::getAssetManager()->GetTexture("fireball"));
+    body.setPosition(pos);
 }
 
 Proyectil::~Proyectil()

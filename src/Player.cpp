@@ -125,13 +125,13 @@ void Player::animate(sf::Time elapsedTime){
     else if(rodando && Crodar.getElapsedTime().asSeconds()>0.5 && Crodar.getElapsedTime().asSeconds()<1){
         speed=300;
         rodando=false;
-        std::cout <<"me reinicio"<<std::endl;
+//        std::cout <<"me reinicio"<<std::endl;
 
     }
     else if(rodando && Crodar.getElapsedTime().asSeconds()>1){
         speed=300;
         Crodar.restart();
-        std::cout <<"me reinicio parte 2"<<std::endl;
+     //   std::cout <<"me reinicio parte 2"<<std::endl;
     }
     else{
         speed=300;
@@ -252,7 +252,7 @@ sf::Vector2f Player::getPosition(){
 }
 
 
-
+/*
 void Player::hitted(){
 
     loseLife(1);
@@ -273,6 +273,7 @@ void Player::hitted(){
 
     multiplier=100.f;
 }
+*/
 
 void Player::colision(){
     lastState=firstState;

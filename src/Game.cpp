@@ -20,7 +20,6 @@ Game::Game()
 ,tick(0)
 ,mPlayer(&mHud)
 ,hudView()
-,enemigo1(sf::Vector2u (4,4), &mPlayer, 3)
 ,cl()
 {
     hudView.setSize(792,1008);
@@ -28,7 +27,7 @@ Game::Game()
     App::getApp()->mView.setCenter(sf::Vector2f(960.0f,8160.f));
     loadGame();
     mMap= Map::getMap();
-    mMap->generarmatriz();
+    mMap->generarmatriz(&mPlayer);
     mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,136,4);
 
 }
@@ -51,12 +50,17 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Game::update(sf::Time elapsedTime){
 
     mPlayer.update(elapsedTime);
-    enemigo1.update();
+
+    for(unsigned int i=0;i<mMap->enemigos.size();i++)
+    mMap->enemigos[i]->update();
     Colisiones::getColisiones()->entorno();
-    Colisiones::getColisiones()->hostion();
+    //Colisiones::getColisiones()->hostion();
     mMap->camaramove(&mPlayer,&App::getApp()->mView);
+
+    /*
     if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
         Colisiones::getColisiones()->hostiado();
+        */
 }
 
 //calcula el tick para mover el personaje y dibuja
@@ -67,14 +71,18 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     tick=updateTime/minUpdateTime;
 
     mPlayer.renderMove(tick);
-    enemigo1.renderMove(tick);
+//    enemigo1.renderMove(tick);
+    for(unsigned int i=0;i<mMap->enemigos.size();i++)
+    mMap->enemigos[i]->renderMove(tick);
+
+
 
     App::getApp()->mWindow.draw(*mMap);
     //mMap->Mostrar(*mWindow);
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
-    mWindow->draw(enemigo1.getbody());
-    //mWindow->draw(enemigo1.getHitbox());
+    for(unsigned int i=0;i<mMap->enemigos.size();i++)
+    mWindow->draw(mMap->enemigos[i]->getbody());
 
     //App::getApp()->mWindow.draw(Map::getMap());
 
@@ -87,6 +95,8 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     for(int i=0;i<mHud.getPup().size();i++){
         mWindow->draw(mHud.getPup()[i]);
     }
+
+
     mWindow->draw(mHud.getTxtPseta());
     mHud.setCrono(cl,125);
     mWindow->draw(mHud.getTxtCrono());
@@ -123,8 +133,5 @@ void Game::saveGame(){
 
 Player* Game::getPlayer(){
     return &mPlayer;
-}
-Enemy* Game::getEnemigo(){
-    return &enemigo1;
 }
 

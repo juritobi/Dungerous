@@ -5,11 +5,12 @@
 #include <math.h>
 #include <iostream>
 #include "Animation.h"
+#include "Proyectil.h"
 
 class Enemy
 {
     public:
-        Enemy(sf::Vector2u vec, Player* player, int vida);
+        Enemy(sf::Vector2u vec, Player* player, int vida, int type, sf::Vector2f pos);
 
 
         sf::RectangleShape          getbody();
@@ -30,7 +31,9 @@ class Enemy
     protected:
 
     private://comento la textura a ver si fa bien o no
+        std::vector<Proyectil*>     balas;
         Player*                     player;
+        float type;
         int                         vida;
         float                       swtime;
         float                       speed;
@@ -41,6 +44,7 @@ class Enemy
         sf::RectangleShape          body;
 
         Animation                   animar;
+        Animation                   animar2;
 
         sf::Vector2f direccion;
 

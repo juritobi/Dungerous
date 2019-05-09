@@ -79,9 +79,9 @@ target.draw(vertex,states);
 }
 
 
-void Map::generarmatriz()
+void Map::generarmatriz(Player *player)
 {
-
+this->player=player;
 //Inicializa el tamaño del mapa-----------------------------------------------
 
 tinyxml2::XMLDocument doc;//carga el documento
@@ -158,7 +158,7 @@ for(unsigned int l=0;l<=_numLayers;l++){
             next=true;
             }
             if(l==4){
-            data=map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
+            data=map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
             next=true;
             }
 
@@ -175,51 +175,51 @@ for(unsigned int l=0;l<=_numLayers;l++){
             }
 
 
-            if((l==2 || l==3 || l==4) && next==true){
-            std::cout<<l<<std::endl;
+            if((l==2 || l==3 || l==4)){
+
             data->QueryIntAttribute("id",&id);
             data->QueryIntAttribute("x",&cx);
             data->QueryIntAttribute("y",&cy);
             data->QueryIntAttribute("width",&objwid);
             data->QueryIntAttribute("height",&objhei);
 
-                if(!data->NextSiblingElement("object") && l==2){
+                if(data->NextSiblingElement("object") && l==2){
                 data= data->NextSiblingElement("object");
                 generarcolision(cx,cy,objhei,objwid);
-                next=false;
                 }
-                else if(l==2){
-                 data= data->NextSiblingElement("object");
-                 generarcolision(cx,cy,objhei,objwid);
-                }
-                else if(!data->NextSiblingElement("object") && l==3){
-                data= data->NextSiblingElement("object");
-                generarpuerta(cx,cy,objhei,objwid);
-                next=false;
-                }
-                else if(l==3){
+                else if(data->NextSiblingElement("object") && l==3){
                 data= data->NextSiblingElement("object");
                 generarpuerta(cx,cy,objhei,objwid);
                 }
-                else if(!data->NextSiblingElement("object") && l==4){
-                data= data->NextSiblingElement("object");
-                generarpuerta(cx,cy,objhei,objwid);
-                next=false;
-                }
-                else if(l==4){
-                data= data->NextSiblingElement("object");
-                generarspawns(cx,cy,objhei,objwid);
-                }
 
+                else if(data->NextSiblingElement("object") && l==4){
 
-
+                    if(data->FirstChildElement("ellipse")){
+                        data= data->NextSiblingElement("object");
+                        generarspawns(cx,cy,objhei,objwid,1);
+                        }
+                        else{
+                        data= data->NextSiblingElement("object");
+                        generarspawns(cx,cy,objhei,objwid,0);
                         }
 
                     }
+
+                else if(!data->NextSiblingElement("object") && l==4 && next==true){
+
+                     if(data->FirstChildElement("ellipse")){
+                        generarspawns(cx,cy,objhei,objwid,1);
+                        next=false;
+                        }
+                        else{
+                        generarspawns(cx,cy,objhei,objwid,0);
+                        next=false;
+                        }
+                    }
                 }
-
             }
-
+        }
+    }
 }
 
 
@@ -232,6 +232,8 @@ muro->setSize(sf::Vector2f(w,h));
 muro->setPosition(sf::Vector2f(x,y));
 muro->setFillColor(sf::Color::Red);
 muros.push_back(muro);
+muro=nullptr;
+delete muro;
 
 }
 
@@ -243,19 +245,26 @@ puerta->setSize(sf::Vector2f(w,h));
 puerta->setPosition(sf::Vector2f(x,y));
 puerta->setFillColor(sf::Color::Red);
 puertas.push_back(puerta);
-
+puerta=nullptr;
+delete puerta;
 
 }
 
-void Map::generarspawns(int x, int y, int h, int w)
+void Map::generarspawns(int x, int y, int h, int w, int type)
 {
-sf::RectangleShape *spawn= new sf::RectangleShape();
-spawn->setSize(sf::Vector2f(w,h));
-spawn->setPosition(sf::Vector2f(x,y));
-spawn->setFillColor(sf::Color::Red);
-spawns.push_back(spawn);
-std::cout<<spawns.size()<<std::endl;
+if(type==0){
+Enemy *enemigo= new Enemy(sf::Vector2u (4,4), player, 3,type,sf::Vector2f(x,y));
+enemigos.push_back(enemigo);
+enemigo=nullptr;
+delete enemigo;
+}
+if(type==1){
+Enemy *enemigo= new Enemy(sf::Vector2u (3,8), player, 3,type,sf::Vector2f(x,y));
+enemigos.push_back(enemigo);
+enemigo=nullptr;
+delete enemigo;
 
+}
 }
 
 void Map::cambiopuertas()
@@ -285,6 +294,7 @@ for( unsigned int i=0; i<muros.size();i++)
 window.draw(*muros[i]);
 for( unsigned int i=0; i<puertas.size();i++)
 window.draw(*puertas[i]);
+
 //std::cout<<muros[i]->getSize().x<<std::endl;
 
 

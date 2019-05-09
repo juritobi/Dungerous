@@ -3,42 +3,56 @@
 #include "../include/App.h"
 
 
-Enemy::Enemy(sf::Vector2u vec, Player* player, int vida)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
+Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f pos)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
 :animar(0.1f,sf::Vector2u(4,4),"enem")
+,animar2(0.25f,sf::Vector2u(8,3),"enem2")
 ,direccion(sf::Vector2f(0,0))
 {
-
-    firstState.pos=sf::Vector2f(500,500);
+    this->type=type;
+    firstState.pos=sf::Vector2f(pos.x,pos.y);
     firstState.hitbox=&hitb;
     lastState=firstState;
-
     speed=100.f;
     this->player = player;
     this->vida = vida;
 
-    fila = 0;
-    derecha = true;
 
+
+    derecha = true;
+    if(type==0){
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("enem"));
+    fila = 0;
     body.setSize(sf::Vector2f(100.0f, 100.0f));
+    }
+    else{
+    body.setTexture(&AssetManager::getAssetManager()->GetTexture("enem2"));
+    fila = 0;
+    body.setSize(sf::Vector2f(120.0f, 120.0f));
+    }
+
+
     //body.setTextureRect(sf::IntRect(100, 100, 100, 100));
     body.setOrigin(body.getSize()/2.0f);
-    body.setPosition(512.0f, 128.0f);
+    body.setPosition(pos);
 
     hitb.setSize(sf::Vector2f(70.0f, 35.0f));
     hitb.setOrigin(hitb.getSize()/2.0f);
     hitb.setPosition(body.getPosition());
+
 }
 
 void Enemy::update(){
     direccion=player->getPosition() - body.getPosition();
     direccion=App::getApp()->normalizar(direccion);
     Animar();
+    if(type==0)
     Mover();
+
 }
 
 void Enemy::Mover()//mueve al enemigo hacia el player
 {
+
     sf::Time elapsedTime = App::getApp()->getElapsedTime();
 
     firstState=lastState;
@@ -67,9 +81,14 @@ void Enemy::Animar()
      fila=0;
      derecha=true;
 
-
+     if(type==0){
      animar.animar(fila, App::getApp()->getElapsedTime(), derecha, false);
      body.setTextureRect(animar.uvRect);
+     }
+     else{
+     animar2.animar(fila, App::getApp()->getElapsedTime(), derecha, false);
+     body.setTextureRect(animar2.uvRect);
+     }
 }
 
 void Enemy::renderMove(float tick){
