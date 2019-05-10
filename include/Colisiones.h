@@ -13,6 +13,7 @@ class Colisiones
         bool entorno();
         void hostion();
         void hostiado();
+        void palanca();
 
     private:
         static Colisiones* colisiones;

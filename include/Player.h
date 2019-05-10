@@ -71,6 +71,7 @@ class Player
         bool            adown;
         bool            aright;
         bool            aleft;
+        bool            interactuando;
 
 
 

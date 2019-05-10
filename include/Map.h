@@ -7,6 +7,8 @@
 #include <vector>
 #include "Player.h"
 #include "Enemy.h"
+#include "Palanca.h"
+#include "PalancaManager.h"
 
 
 
