@@ -68,12 +68,16 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     mPlayer.renderMove(tick);
     enemigo1.renderMove(tick);
-
+    mPlayer.renderBalas(tick);
     App::getApp()->mWindow.draw(*mMap);
     //mMap->Mostrar(*mWindow);
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
     mWindow->draw(enemigo1.getbody());
+    for(int i=0; i < mPlayer.getBalas().size();i++){
+        mPlayer.getBalas()[i]->Update(App::getApp()->getElapsedTime());
+        mWindow->draw(mPlayer.getBalas()[i]->getBody());
+    }
     //mWindow->draw(enemigo1.getHitbox());
 
     //App::getApp()->mWindow.draw(Map::getMap());

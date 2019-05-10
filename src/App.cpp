@@ -27,6 +27,7 @@ App::App()
 
     AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
     AssetManager::getAssetManager()->createTexture("player", "assets/completo.png");//yo no estoy aqui
+    AssetManager::getAssetManager()->createTexture("flechas", "assets/flechas.png");//yo no existo parte 2
 }
 
 App* App::getApp(){
