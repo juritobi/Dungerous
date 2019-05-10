@@ -31,12 +31,14 @@ class Player
         void                setPosition(sf::Vector2f pos);
         void                loseLife(int i);
         void                hitted();
+        void                setsala(int i);
 
         //getters
         sf::RectangleShape  getBody();
         sf::RectangleShape  getHitb();
         sf::RectangleShape  getEspada();
         sf::Vector2f        getPosition();
+        int                 getsala();
 
         //variables que convendria sacar de aqui
         State firstState;
@@ -61,6 +63,7 @@ class Player
         bool                    derecha;
         bool                    parar;
         float                   multiplier;
+        float                   sala;
 
         bool            rodando;
         bool            up;

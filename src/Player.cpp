@@ -25,7 +25,7 @@ Player::Player(hud* hud)
 ,derecha(false)
 ,parar(false)
 {
-
+    sala=7;
     firstState.pos=sf::Vector2f(960,8360);
     firstState.hitbox=&hitb;
     lastState=firstState;
@@ -279,4 +279,11 @@ void Player::colision(){
     lastState=firstState;
 }
 
+void Player::setsala(int i)
+{
+sala-=1;
+}
 
+int Player::getsala(){
+return sala;
+}

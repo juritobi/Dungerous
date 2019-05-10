@@ -311,9 +311,46 @@ bool cambio=false;
         camara->setCenter(sf::Vector2f(camara->getCenter().x,camara->getCenter().y-1088.0f));
         cambio=true;
         cambiopuertas();
+        player->setsala(1);
+        for(unsigned int i=0; i<enemigos.size();i++)
+        enemigos[i]->getclock()->restart();
         }
-    }
 
+
+    }
+}
+void Map::asignarsala()
+{
+
+    for(unsigned int i=0; i<enemigos.size();i++)
+    {
+        if(enemigos[i]->getHitbox().getPosition().y>0.0f && enemigos[i]->getHitbox().getPosition().y<1080.0f)
+        enemigos[i]->setsala(0);
+
+        else if(enemigos[i]->getHitbox().getPosition().y>1080.0f && enemigos[i]->getHitbox().getPosition().y<2160.0f)
+        enemigos[i]->setsala(1);
+
+        else if(enemigos[i]->getHitbox().getPosition().y>2160.0f && enemigos[i]->getHitbox().getPosition().y<3240.0f)
+        enemigos[i]->setsala(2);
+
+        else if(enemigos[i]->getHitbox().getPosition().y>3240.0f && enemigos[i]->getHitbox().getPosition().y<4320.0f)
+        enemigos[i]->setsala(3);
+
+        else if(enemigos[i]->getHitbox().getPosition().y>4320.0f && enemigos[i]->getHitbox().getPosition().y<5400.0f)
+        enemigos[i]->setsala(4);
+
+        else if(enemigos[i]->getHitbox().getPosition().y>5400.0f && enemigos[i]->getHitbox().getPosition().y<6480.0f)
+        enemigos[i]->setsala(5);
+
+        else if(enemigos[i]->getHitbox().getPosition().y>6480.0f && enemigos[i]->getHitbox().getPosition().y<7560.0f)
+        enemigos[i]->setsala(6);
+
+        else if(enemigos[i]->getHitbox().getPosition().y>7560.0f && enemigos[i]->getHitbox().getPosition().y<8640.0f)
+        enemigos[i]->setsala(7);
+
+
+
+    }
 
 }
 

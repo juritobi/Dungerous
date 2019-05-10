@@ -5,9 +5,11 @@
 
 Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f pos)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
 :animar(0.1f,sf::Vector2u(4,4),"enem")
-,animar2(0.25f,sf::Vector2u(8,3),"enem2")
+,animar2(0.15f,sf::Vector2u(8,3),"enem2")
 ,direccion(sf::Vector2f(0,0))
 {
+    sala=0;
+    cd=(((double)rand()) / ((double)RAND_MAX))+1;
     this->type=type;
     firstState.pos=sf::Vector2f(pos.x,pos.y);
     firstState.hitbox=&hitb;
@@ -15,9 +17,6 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
     speed=100.f;
     this->player = player;
     this->vida = vida;
-
-
-
     derecha = true;
     if(type==0){
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("enem"));
@@ -45,13 +44,24 @@ void Enemy::update(){
     direccion=player->getPosition() - body.getPosition();
     direccion=App::getApp()->normalizar(direccion);
     Animar();
-    if(type==0)
-    Mover();
+
+
+    if(sala==player->getsala())
+    {
+        if(type==0)
+        Mover();
+
+        if(type==1 && delay.getElapsedTime().asSeconds()>cd){
+        disparar();
+        delay.restart();
+        }
+    }
 
 }
 
 void Enemy::Mover()//mueve al enemigo hacia el player
 {
+
 
     sf::Time elapsedTime = App::getApp()->getElapsedTime();
 
@@ -63,8 +73,20 @@ void Enemy::Mover()//mueve al enemigo hacia el player
 
 
 
+
     lastState.pos += movement * elapsedTime.asSeconds();
     lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-5.0f));
+
+
+}
+
+
+void Enemy::disparar()
+{
+
+Proyectil *bala= new Proyectil(hitb.getPosition(), player);
+balas.push_back(bala);
+
 
 }
 
@@ -78,14 +100,15 @@ void Enemy::Animar()
     posicion=App::getApp()->normalizar(direccion);
 
 
-     fila=0;
      derecha=true;
 
      if(type==0){
      animar.animar(fila, App::getApp()->getElapsedTime(), derecha, false);
+     fila=0;
      body.setTextureRect(animar.uvRect);
      }
      else{
+     fila=2;
      animar2.animar(fila, App::getApp()->getElapsedTime(), derecha, false);
      body.setTextureRect(animar2.uvRect);
      }
@@ -98,7 +121,7 @@ void Enemy::renderMove(float tick){
 }
 
 void Enemy::hitted(){
-    std::cout<<vida<<std::endl;
+
     sf::Vector2f vec = sf::Vector2f(body.getPosition()-player->getPosition());
     vec= App::getApp()->normalizar(vec);
     lastState.pos=lastState.pos+vec*speed;
@@ -108,8 +131,13 @@ void Enemy::hitted(){
     if(vida == 0)
     body.setFillColor(sf::Color::Red);
 
-    std::cout<<vida<<std::endl;
 
+
+}
+
+std::vector<Proyectil*> Enemy::getbalas()
+{
+return balas;
 }
 
 sf::RectangleShape Enemy::getbody()//obtener el body
@@ -119,5 +147,15 @@ sf::RectangleShape Enemy::getbody()//obtener el body
 sf::RectangleShape Enemy::getHitbox()//obtener el body
 {
     return hitb;
+}
+
+void Enemy::setsala(int i)
+{
+sala=i;
+}
+
+sf::Clock * Enemy::getclock()
+{
+return &delay;
 }
 

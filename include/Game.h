@@ -6,6 +6,7 @@
 #include "hud.h"
 #include "Map.h"
 #include "Enemy.h"
+#include "Proyectil.h"
 
 class Game : public InterfazEstado {
     public:

@@ -56,6 +56,13 @@ void Game::update(sf::Time elapsedTime){
     Colisiones::getColisiones()->entorno();
     //Colisiones::getColisiones()->hostion();
     mMap->camaramove(&mPlayer,&App::getApp()->mView);
+    mMap->asignarsala();
+
+
+    for(unsigned int i=0;i<mMap->enemigos.size();i++)
+        for(unsigned int j=0;j<mMap->enemigos[i]->getbalas().size();j++)
+         mMap->enemigos[i]->getbalas().at(j)->update();
+
 
     /*
     if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
@@ -82,7 +89,13 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
     for(unsigned int i=0;i<mMap->enemigos.size();i++)
+    {
     mWindow->draw(mMap->enemigos[i]->getbody());
+        for(unsigned int j=0;j<mMap->enemigos[i]->getbalas().size();j++){
+         mMap->enemigos[i]->getbalas().at(j)->renderMove(tick);
+         mWindow->draw(mMap->enemigos[i]->getbalas().at(j)->getbody());
+         }
+    }
 
     //App::getApp()->mWindow.draw(Map::getMap());
 

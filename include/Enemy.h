@@ -15,7 +15,7 @@ class Enemy
 
         sf::RectangleShape          getbody();
 
-
+        void                        setsala(int i);
         void                        Mover();
         void                        update();
         void                        renderMove(float tick);
@@ -23,6 +23,9 @@ class Enemy
         void                        hitted();
         void                        setVida(int i);
         sf::RectangleShape          getHitbox();
+        void                        disparar();
+        std::vector<Proyectil*>     getbalas();
+        sf::Clock *                   getclock();
 
         State firstState;
         State lastState;
@@ -47,6 +50,11 @@ class Enemy
         Animation                   animar2;
 
         sf::Vector2f direccion;
+        sf::Clock delay;
+
+        float                       cd;
+        float                       sala;
+
 
 
 };

@@ -26,6 +26,7 @@ class Map : public sf::Drawable, public sf::Transformable
         void generarspawns(int x, int y, int h, int w, int type);
         void camaramove(Player *player, sf::View *camara);
         void cambiopuertas();
+        void asignarsala();
         void Mostrar(sf::RenderWindow& window);
         std::vector<sf::RectangleShape*> muros;
         std::vector<sf::RectangleShape*> puertas;
