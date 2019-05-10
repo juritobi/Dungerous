@@ -5,12 +5,17 @@
 class Portal
 {
     public:
-        Portal();
-        virtual ~Portal();
+        Portal(sf::Vector2f poscion);
+        Portal(sf::Vector2f poscion, Portal* p);
 
-    protected:
+        void setDestino(Portal* p);
 
     private:
+
+        sf::Sprite sprite;
+        Animation animacion;
+        Portal* destino;
+
 };
 
 #endif // PORTAL_H

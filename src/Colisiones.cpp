@@ -38,6 +38,8 @@ void Colisiones::palanca(){
     }
 }
 
+void Colisiones::importalte(){
+}
 /*
 void Colisiones::hostion(){
     if(mGame->getPlayer()->getEspada().getGlobalBounds().intersects(mGame->getEnemigo()->getHitbox().getGlobalBounds())){
