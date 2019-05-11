@@ -25,6 +25,9 @@ App::App()
     StateManager::getStateManager()->AddState(SplashState::getSplashState());
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
 
+    AssetManager::getAssetManager()->createTexture("PVida","assets/vida.png");
+    AssetManager::getAssetManager()->createTexture("PFuerza","assets/fuerza.png");
+    AssetManager::getAssetManager()->createTexture("PAtaque","assets/velAt.png");
     AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
     AssetManager::getAssetManager()->createTexture("enem2","assets/enemy2.png");
     AssetManager::getAssetManager()->createTexture("player", "assets/completo.png");

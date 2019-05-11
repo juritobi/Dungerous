@@ -10,6 +10,7 @@
 #include "Palanca.h"
 #include "PalancaManager.h"
 #include "Tienda.h"
+#include "PowerUp.h"
 
 class Game : public InterfazEstado {
     public:
@@ -47,6 +48,7 @@ class Game : public InterfazEstado {
             sf::Vector2f(900,7760),
             sf::Vector2f(1100,7760)
         };
+        PowerUp* mPower[];
 
         int vida=3;
 };
