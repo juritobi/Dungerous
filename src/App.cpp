@@ -29,6 +29,7 @@ App::App()
     AssetManager::getAssetManager()->createTexture("enem2","assets/enemy2.png");
     AssetManager::getAssetManager()->createTexture("player", "assets/completo.png");
     AssetManager::getAssetManager()->createTexture("fireball", "assets/fireball.png");
+    AssetManager::getAssetManager()->createTexture("tienda", "assets/tienda.png");
 }
 App* App::getApp(){
 
