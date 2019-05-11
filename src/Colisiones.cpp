@@ -39,6 +39,12 @@ void Colisiones::palanca(){
 }
 
 void Colisiones::importalte(){
+    sf::FloatRect personaje = Game::getGame()->getPlayer()->getBody().getGlobalBounds();
+    for(int i = 0;i<Game::getGame()->getPortales().size();i++){
+        if(personaje.intersects(Game::getGame()->getPortales()[i]->getSprite().getGlobalBounds())){
+            std::cout<<"EEEEEEE"<<std::endl;
+        }
+    }
 
 }
 /*

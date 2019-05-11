@@ -25,6 +25,7 @@ class Game : public InterfazEstado {
         Player*         getPlayer();
         Enemy*          getEnemigo();
         Palanca*        getPalancas(int i);
+        std::vector<Portal*> getPortales();
         Player          mPlayer;
 
     private:

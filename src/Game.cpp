@@ -30,6 +30,7 @@ Game::Game()
     mMap->generarmatriz(&mPlayer);
     mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,136,4);
 
+    /*crear palancas*/
 
     std::vector<int> p1;
     p1.push_back(0);
@@ -46,7 +47,7 @@ Game::Game()
     for(int i =0;i<4;i++){
         palancas[i]= new Palanca(posicionPalanca[i],vect[i],manejadorPalanca);
     }
-
+    /*crear portales*/
     for(int i = 0 ; i<2;i++){
         portales.push_back(new Portal(posicionPortal[2*i]));
         portales.push_back(new Portal(posicionPortal[2*i+1],portales[2*i]));
@@ -76,6 +77,7 @@ void Game::update(sf::Time elapsedTime){
         portales[i]->letsGo();
     }
     Colisiones::getColisiones()->entorno();
+    Colisiones::getColisiones()->importalte();
     //Colisiones::getColisiones()->hostion();
     mMap->camaramove(&mPlayer,&App::getApp()->mView);
     mMap->asignarsala();
@@ -186,4 +188,7 @@ Player* Game::getPlayer(){
 
 Palanca* Game::getPalancas(int i){
     return palancas[i];
+}
+std::vector<Portal*> Game::getPortales(){
+    return portales;
 }
