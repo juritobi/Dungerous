@@ -8,6 +8,7 @@
 #include "Enemy.h"
 #include "Palanca.h"
 #include "PalancaManager.h"
+#include "Portal.h"
 
 class Game : public InterfazEstado {
     public:
@@ -37,6 +38,8 @@ class Game : public InterfazEstado {
         PalancaManager *manejadorPalanca;
 
         Map*     mMap;
+
+        std::vector<Portal*> portales;
 
         //Enemy   enemigo1;
 

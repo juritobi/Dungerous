@@ -47,6 +47,15 @@ Game::Game()
         palancas[i]= new Palanca(sf::Vector2f(500+200*i,7750),vect[i],manejadorPalanca);
     }
 
+    portales.push_back(new Portal(sf::Vector2f(50,8000)));
+    portales.push_back(new Portal(sf::Vector2f(400,8000),portales[0]));
+    portales[0]->setDestino(portales[1]);
+
+    portales.push_back(new Portal(sf::Vector2f(50,8300)));
+    portales.push_back(new Portal(sf::Vector2f(400,8300),portales[2]));
+    portales[2]->setDestino(portales[3]);
+
+
 }
 
 
@@ -67,6 +76,9 @@ void Game::update(sf::Time elapsedTime){
 
     for(unsigned int i=0;i<mMap->enemigos.size();i++)
     mMap->enemigos[i]->update();
+    for(int i = 0;i<portales.size();i++){
+        portales[i]->letsGo();
+    }
     Colisiones::getColisiones()->entorno();
     //Colisiones::getColisiones()->hostion();
     mMap->camaramove(&mPlayer,&App::getApp()->mView);
@@ -98,6 +110,10 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         mWindow->draw(palancas[i]->getSprite());
         mWindow->draw(manejadorPalanca->getSprite(i));
     }
+    for(int i = 0;i<portales.size();i++){
+        mWindow->draw(portales[i]->getSprite());
+    }
+
 
 
     mWindow->draw(mPlayer.getBody());

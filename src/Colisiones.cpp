@@ -39,6 +39,7 @@ void Colisiones::palanca(){
 }
 
 void Colisiones::importalte(){
+
 }
 /*
 void Colisiones::hostion(){
