@@ -9,6 +9,7 @@
 #include "Proyectil.h"
 #include "Palanca.h"
 #include "PalancaManager.h"
+#include "Tienda.h"
 
 class Game : public InterfazEstado {
     public:
@@ -36,6 +37,7 @@ class Game : public InterfazEstado {
 
         Palanca *palancas [4];
         PalancaManager *manejadorPalanca;
+        Tienda         *tienda;
 
         Map*     mMap;
 

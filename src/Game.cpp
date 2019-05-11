@@ -22,7 +22,7 @@ Game::Game()
 ,hudView()
 ,cl()
 {
-    hudView.setSize(792,1008);
+    hudView.setSize(762,7608.f);
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.1f));
     App::getApp()->mView.setCenter(sf::Vector2f(960.0f,8160.f));
     loadGame();
@@ -42,10 +42,11 @@ Game::Game()
     std::vector<int> p4;
     p4.push_back(3);
     std::vector<int> vect [4]={p1,p2,p3,p4};
-    manejadorPalanca=new PalancaManager(sf::Vector2f(50,7700));
+    manejadorPalanca=new PalancaManager(sf::Vector2f(450,7700));
     for(int i =0;i<4;i++){
         palancas[i]= new Palanca(sf::Vector2f(500+200*i,7750),vect[i],manejadorPalanca);
     }
+    tienda=new Tienda(sf::Vector2f(1200,8000));
 
 }
 
@@ -105,7 +106,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         mWindow->draw(palancas[i]->getSprite());
         mWindow->draw(manejadorPalanca->getSprite(i));
     }
-
+    mWindow->draw(tienda->getSprite());
 
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
