@@ -14,6 +14,7 @@ class Colisiones
         void hostion();
         void hostiado();
         void palanca();
+        void importalte();
 
     private:
         static Colisiones* colisiones;
