@@ -39,10 +39,24 @@ void Colisiones::palanca(){
 }
 
 void Colisiones::importalte(){
-    sf::FloatRect personaje = Game::getGame()->getPlayer()->getBody().getGlobalBounds();
+    Player* personaje = Game::getGame()->getPlayer();
     for(int i = 0;i<Game::getGame()->getPortales().size();i++){
-        if(personaje.intersects(Game::getGame()->getPortales()[i]->getSprite().getGlobalBounds())){
-            std::cout<<"EEEEEEE"<<std::endl;
+        if(personaje->getHitb().getGlobalBounds().intersects(Game::getGame()->getPortales()[i]->getSprite().getGlobalBounds())){
+            sf::Vector2f posicion = Game::getGame()->getPortales()[i]->getDestino()->getSprite().getPosition();
+            switch(Game::getGame()->getPortales()[i]->getDestino()->getDireccion()){
+            case 1 :
+                personaje->setPosition(sf::Vector2f(posicion.x,posicion.y-100));
+                break;
+            case 2 :
+                personaje->setPosition(sf::Vector2f(posicion.x+50,posicion.y));
+                break;
+            case 3 :
+                personaje->setPosition(sf::Vector2f(posicion.x,posicion.y+100));
+                break;
+            case 4 :
+                personaje->setPosition(sf::Vector2f(posicion.x-50,posicion.y));
+                break;
+            }
         }
     }
 

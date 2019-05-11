@@ -59,6 +59,8 @@ class Game : public InterfazEstado {
             sf::Vector2f(900,7260),
             sf::Vector2f(1100,7260)
         };
+        int direccionPortal [4] = {1,2,3,4};
+
 
 
 

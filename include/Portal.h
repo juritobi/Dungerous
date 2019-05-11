@@ -8,10 +8,12 @@
 class Portal
 {
     public:
-        Portal(sf::Vector2f posicion);
-        Portal(sf::Vector2f posicion, Portal* p);
+        Portal(sf::Vector2f posicion, int i);
+        Portal(sf::Vector2f posicion, Portal* p, int i);
 
         void setDestino(Portal* p);
+        Portal* getDestino();
+        int getDireccion();
 
         void letsGo();
 
@@ -22,6 +24,7 @@ class Portal
         sf::RectangleShape sprite;
         Animation animacion;
         Portal* destino;
+        int dir;
 
 };
 
