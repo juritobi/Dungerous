@@ -10,6 +10,7 @@
 #include "Palanca.h"
 #include "PalancaManager.h"
 #include "Portal.h"
+#include "Tienda.h"
 
 class Game : public InterfazEstado {
     public:
@@ -38,6 +39,7 @@ class Game : public InterfazEstado {
 
         Palanca *palancas [4];
         PalancaManager *manejadorPalanca;
+        Tienda         *tienda;
 
         Map*     mMap;
 

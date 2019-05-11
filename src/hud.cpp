@@ -29,13 +29,13 @@ hud::hud():mClock()
 
     txtCrono.setString("00:00");
     txtPseta.setString(ss.str());
-    txtPseta.setColor(sf::Color::White);
-    txtCrono.setColor(sf::Color::White);
+    txtPseta.setColor(sf::Color::Red);
+    txtCrono.setColor(sf::Color::Red);
 
-    txtPseta.setPosition(sf::Vector2f(830.f,150));
-    txtPseta.setScale(1,10);
-    txtCrono.setPosition(sf::Vector2f(460.f,150));
-    txtCrono.setScale(1,10);
+    txtPseta.setPosition(sf::Vector2f(740.f,-2605));
+    txtPseta.setScale(1,57);
+    txtCrono.setPosition(sf::Vector2f(800.f,-2605));
+    txtCrono.setScale(1,57);
 
 
     sPseta.setTexture(tPseta);
@@ -44,31 +44,31 @@ hud::hud():mClock()
     sFuerza=sf::Sprite(tFuerza);
     sVel=sf::Sprite(tVel);
 
-    sPseta.setPosition(sf::Vector2f(850.f,105));
-    sVida.setPosition(700.f,80);
-    sFuerza.setPosition(700.f,360);
-    sVel.setPosition(700.f,630);
+    sPseta.setPosition(sf::Vector2f(760.f,-3005));
+    sVida.setPosition(130.f,0);
+    sFuerza.setPosition(130.f,1560);
+    sVel.setPosition(130.f,3000);
 
-    sPseta.setScale(0.03,0.4);
-    sVida.setScale(0.07,1.1);
-    sFuerza.setScale(0.07,1.1);
-    sVel.setScale(0.07,1.1);
+    sPseta.setScale(0.03,3);
+    sVida.setScale(0.07,6);
+    sFuerza.setScale(0.07,6);
+    sVel.setScale(0.07,6);
 
     sPup.push_back(sVida);
     sPup.push_back(sFuerza);
     sPup.push_back(sVel);
 
-    sp.setScale(0.6,6.5);
+    sp.setScale(0.6,29.5);
 
 
     int dist=20;
     for (int i = 0;i<3;i++){
         sLife.push_back(sp);
         if(i==0){
-            sLife[i].setPosition(110,155);
+            sLife[i].setPosition(130,-2605);
         }
         else{
-            sLife[i].setPosition(sLife[0].getPosition().x+dist*(i),155);
+            sLife[i].setPosition(sLife[0].getPosition().x+dist*(i),-2605);
         }
 
 
