@@ -301,24 +301,6 @@ window.draw(*puertas[i]);
 }
 
 
-void Map::camaramove(Player *player, sf::View *camara)
-{
-bool cambio=false;
-    for(unsigned int i=0; i<puertas.size();i++)
-    {
-        if(player->getHitb().getGlobalBounds().intersects(puertas[i]->getGlobalBounds()) && cambio==false){
-        player->setPosition(sf::Vector2f(player->getHitb().getPosition().x,player->getHitb().getPosition().y-200.0f));
-        camara->setCenter(sf::Vector2f(camara->getCenter().x,camara->getCenter().y-1088.0f));
-        cambio=true;
-        cambiopuertas();
-        player->setsala(1);
-        for(unsigned int i=0; i<enemigos.size();i++)
-        enemigos[i]->getclock()->restart();
-        }
-
-
-    }
-}
 void Map::asignarsala()
 {
 
@@ -353,6 +335,37 @@ void Map::asignarsala()
     }
 
 }
+std::vector<Enemy*> Map::getenemigos(){
+return enemigos;
+}
+
+std::vector<sf::RectangleShape*> Map::getmuros()
+{
+return muros;
+}
+
+std::vector<sf::RectangleShape*> Map::getpuertas()
+{
+return puertas;
+}
+
+
+
+void Map::Purguepos(int i){
+
+delete enemigos[i];
+enemigos.erase(enemigos.begin()+i);
+
+}
+
+void Map::Purgueall()
+{
+
+
+}
+
+
+
 
 
 

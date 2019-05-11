@@ -15,7 +15,9 @@ class Enemy
 
         sf::RectangleShape          getbody();
 
+        void                        setexiste();
         void                        setsala(int i);
+        void                        Purguepos(int i);
         void                        Mover();
         void                        update();
         void                        renderMove(float tick);
@@ -25,7 +27,11 @@ class Enemy
         sf::RectangleShape          getHitbox();
         void                        disparar();
         std::vector<Proyectil*>     getbalas();
-        sf::Clock *                   getclock();
+        sf::Clock *                 getclock();
+        bool                        getexiste();
+        float                       gethp();
+        void                        sethp();
+
 
         State firstState;
         State lastState;
@@ -52,8 +58,10 @@ class Enemy
         sf::Vector2f direccion;
         sf::Clock delay;
 
+        float                       hp;
         float                       cd;
         float                       sala;
+        bool                        existe;
 
 
 

@@ -24,13 +24,14 @@ class Map : public sf::Drawable, public sf::Transformable
         void generarcolision(int x, int y, int h, int w);
         void generarpuerta(int x, int y, int h, int w);
         void generarspawns(int x, int y, int h, int w, int type);
-        void camaramove(Player *player, sf::View *camara);
         void cambiopuertas();
         void asignarsala();
+        void Purguepos(int i);
+        void Purgueall();
         void Mostrar(sf::RenderWindow& window);
-        std::vector<sf::RectangleShape*> muros;
-        std::vector<sf::RectangleShape*> puertas;
-        std::vector<Enemy*> enemigos;
+        std::vector<sf::RectangleShape*> getmuros();
+        std::vector<sf::RectangleShape*> getpuertas();
+        std::vector<Enemy*> getenemigos();
         tinyxml2::XMLElement *data;
         tinyxml2::XMLElement *box;
         int ***_tilemap;
@@ -59,6 +60,9 @@ class Map : public sf::Drawable, public sf::Transformable
     int _tilewidth;
     int _tileheight;
     int _numLayers=0;
+    std::vector<sf::RectangleShape*> muros;
+    std::vector<sf::RectangleShape*> puertas;
+    std::vector<Enemy*> enemigos;
 
     //int ***_tilemap;
  //   tinyxml2::XMLElement *data[];

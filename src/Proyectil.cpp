@@ -5,6 +5,7 @@ Proyectil::Proyectil(sf::Vector2f pos, Player *player):
 animation(0.1f,sf::Vector2u(5,1),"fireball")
 ,direccion(sf::Vector2f(0,0))
 {
+    calculado=false;
     firstState.pos=sf::Vector2f(pos.x,pos.y);
     lastState=firstState;
     this->player=player;
@@ -13,6 +14,7 @@ animation(0.1f,sf::Vector2u(5,1),"fireball")
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("fireball"));
     speed=500.0f;
     derecha=true;
+    existe=true;
 }
 
 Proyectil::~Proyectil()
@@ -68,4 +70,16 @@ void  Proyectil::renderMove(float tick)
 
   body.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
 
+}
+
+
+void Proyectil::setexiste()
+{
+std::cout<<"hola"<<std::endl;
+existe=false;
+}
+
+bool Proyectil::getexiste()
+{
+return existe;
 }

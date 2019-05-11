@@ -7,7 +7,7 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
 :animar(0.1f,sf::Vector2u(4,4),"enem")
 ,animar2(0.15f,sf::Vector2u(8,3),"enem2")
 ,direccion(sf::Vector2f(0,0))
-{
+{   existe=true;
     sala=0;
     cd=(((double)rand()) / ((double)RAND_MAX))+1;
     this->type=type;
@@ -22,11 +22,13 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("enem"));
     fila = 0;
     body.setSize(sf::Vector2f(100.0f, 100.0f));
+    hp=5;
     }
     else{
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("enem2"));
     fila = 0;
     body.setSize(sf::Vector2f(120.0f, 120.0f));
+    hp=3;
     }
 
 
@@ -86,6 +88,9 @@ void Enemy::disparar()
 
 Proyectil *bala= new Proyectil(hitb.getPosition(), player);
 balas.push_back(bala);
+bala=nullptr;
+delete bala;
+
 
 
 }
@@ -135,6 +140,14 @@ void Enemy::hitted(){
 
 }
 
+void Enemy::Purguepos(int i){
+
+delete balas[i];
+balas.erase(balas.begin()+i);
+
+}
+
+
 std::vector<Proyectil*> Enemy::getbalas()
 {
 return balas;
@@ -157,5 +170,24 @@ sala=i;
 sf::Clock * Enemy::getclock()
 {
 return &delay;
+}
+
+void Enemy::setexiste(){
+existe=false;
+}
+
+bool Enemy::getexiste()
+{
+return existe;
+}
+
+float Enemy::gethp()
+{
+return hp;
+}
+
+void Enemy::sethp()
+{
+hp-=1;
 }
 

@@ -12,12 +12,14 @@ class Proyectil
     public:
         Proyectil(sf::Vector2f pos, Player *player);
         virtual ~Proyectil();
-        sf::RectangleShape getbody();
+
+        sf::RectangleShape          getbody();
         void                        Mover();
         void                        update();
         void                        renderMove(float tick);
         void                        Animar();
-
+        void                        setexiste();
+        bool                        getexiste();
 
     protected:
 
@@ -33,7 +35,7 @@ class Proyectil
     State lastState;
     float speed;
     bool calculado;
-
+    bool existe;
 
 };
 
