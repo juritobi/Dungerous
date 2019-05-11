@@ -51,6 +51,7 @@ class Player
     private:
 
         Animation               animation;
+        Animation               animationAtaque;
         hud*                    mHud;
         sf::Clock               Catacar;
         sf::Clock               Crodar;
@@ -61,7 +62,7 @@ class Player
         float                   speed;
         int                     life;
         int                     damage;
-        int                     atackSpeed;
+        float                     atackSpeed;
 
 
         unsigned int            fila;

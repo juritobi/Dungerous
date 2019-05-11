@@ -34,7 +34,7 @@ void Colisiones::palanca(){
         sf::Vector2f vecResta(personaje-Game::getGame()->getPalancas(i)->getSprite().getPosition());
         if(sqrt(pow(vecResta.x,2)+pow(vecResta.y,2))<50){
             Game::getGame()->getPalancas(i)->activa();
-            Game::getGame()->getPlayer()->pickPu(1);
+            Game::getGame()->getPlayer()->pickPu(3);
         }
     }
 }

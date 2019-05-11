@@ -21,6 +21,7 @@ Player::Player(hud* hud)
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
 ,animation( 0.1f,sf::Vector2u(5, 12),"player")
+,animationAtaque( 0.1f,sf::Vector2u(5, 12),"player")
 ,fila(3)
 ,derecha(false)
 ,parar(false)
@@ -90,7 +91,7 @@ void Player::update(sf::Time elapsedTime){
         box.setFillColor(sf::Color::Red);
     }
 
-	if(Catacar.getElapsedTime().asSeconds()>0.5){
+	if(Catacar.getElapsedTime().asSeconds()>atackSpeed){
 
         stateMovement();
 	}
@@ -146,7 +147,7 @@ void Player::animate(sf::Time elapsedTime){
         speed=300;
     }
 
-    if(Catacar.getElapsedTime().asSeconds()>0.5){
+    if(Catacar.getElapsedTime().asSeconds()>atackSpeed){
         if(up){
             fila=0;
             if(rodando)
@@ -193,14 +194,19 @@ void Player::animate(sf::Time elapsedTime){
         }
 
 
-        if(Catacar.getElapsedTime().asSeconds()<0.5){
+        if(Catacar.getElapsedTime().asSeconds()<atackSpeed){
             parar=false;
         }
     }
 
-
-    animation.animar(fila, elapsedTime,derecha,parar);
-    box.setTextureRect(animation.uvRect);
+    if(fila==9||fila==8||fila==7){
+        animationAtaque.animar(fila, elapsedTime,derecha,parar);
+        box.setTextureRect(animationAtaque.uvRect);
+    }
+    else{
+        animation.animar(fila, elapsedTime,derecha,parar);
+        box.setTextureRect(animation.uvRect);
+    }
 }
 
 void Player::espadazo(){
@@ -222,7 +228,7 @@ void Player::espadazo(){
         espada.setPosition(box.getPosition().x-50, box.getPosition().y-25);
     }
 
-    if(Catacar.getElapsedTime().asSeconds()>0.5){
+    if(Catacar.getElapsedTime().asSeconds()>atackSpeed){
         espada.setSize(sf::Vector2f(0,0));
     }
 }
@@ -252,10 +258,14 @@ void Player::pickPu(int i){
             mHud->setLife(1);
             break;
 
-        /*case 2://fuerza
+        case 2://fuerza
             damage++;
+            break;
 
         case 3://vatt*/
+            atackSpeed-=0.1;
+            animationAtaque.setTime(atackSpeed/5);
+            break;
 
     }
 
