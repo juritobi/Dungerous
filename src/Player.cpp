@@ -24,6 +24,8 @@ Player::Player(hud* hud)
 ,fila(3)
 ,derecha(false)
 ,parar(false)
+,damage(1)
+,atackSpeed(0.5)
 {
     sala=7;
     firstState.pos=sf::Vector2f(960,8360);
@@ -229,8 +231,10 @@ void Player::espadazo(){
 void Player::loseLife(int i){
     life=life-1;
     mHud->loseLife(i);
-
 }
+
+
+
 //mueve al personaje en funcion de sus estados y el tick
 void Player::renderMove(float tick){
     box.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
@@ -241,7 +245,21 @@ void Player::setPosition(sf::Vector2f pos){
     lastState.pos=pos;
 }
 
+void Player::pickPu(int i){
+    switch(i){
+        case 1 :
+            life++;
+            mHud->setLife(1);
+            break;
 
+        /*case 2://fuerza
+            damage++;
+
+        case 3://vatt*/
+
+    }
+
+}
 
 
 sf::RectangleShape Player::getBody(){

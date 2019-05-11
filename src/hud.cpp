@@ -101,14 +101,13 @@ sf::Text hud::getTxtPseta(){
     return txtPseta;
 }
 void hud::setLife(int i){
-
     if(sLife.size()<7){
         sf::Sprite sp=sf::Sprite(tLife);
         for (int j = 0;j<i;j++){
             if(sLife.size()+1<=7){
                 sLife.push_back(sp);
-                sLife[sLife.size()-1].setScale(1,10);
-                sLife[sLife.size()-1].setPosition(sLife[sLife.size()-2].getPosition().x+35,155);
+                sLife[sLife.size()-1].setScale(0.6,29.5);
+                sLife[sLife.size()-1].setPosition(sLife[sLife.size()-2].getPosition().x+35,sLife[sLife.size()-2].getPosition().y+35);
             }
         }
     }

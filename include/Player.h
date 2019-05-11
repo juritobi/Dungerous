@@ -33,6 +33,9 @@ class Player
         void                hitted();
         void                setsala(int i);
 
+        void                pickPu(int i);
+
+
         //getters
         sf::RectangleShape  getBody();
         sf::RectangleShape  getHitb();
@@ -57,6 +60,8 @@ class Player
         sf::RectangleShape      espada;
         float                   speed;
         int                     life;
+        int                     damage;
+        int                     atackSpeed;
 
 
         unsigned int            fila;
