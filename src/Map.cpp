@@ -10,6 +10,9 @@ Map* Map::getMap(){
 }
 
 Map::Map(){
+
+
+
 }
 
 bool Map::load(const std::string& tileset, sf::Vector2u tileSize, int*** level, unsigned int width, unsigned int height, int numlayers)

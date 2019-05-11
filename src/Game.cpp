@@ -30,6 +30,23 @@ Game::Game()
     mMap->generarmatriz(&mPlayer);
     mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,136,4);
 
+
+    std::vector<int> p1;
+    p1.push_back(0);
+    p1.push_back(3);
+    std::vector<int> p2;
+    p2.push_back(1);
+    std::vector<int> p3;
+    p3.push_back(2);
+    p3.push_back(3);
+    std::vector<int> p4;
+    p4.push_back(3);
+    std::vector<int> vect [4]={p1,p2,p3,p4};
+    manejadorPalanca=new PalancaManager(sf::Vector2f(50,7700));
+    for(int i =0;i<4;i++){
+        palancas[i]= new Palanca(sf::Vector2f(500+200*i,7750),vect[i],manejadorPalanca);
+    }
+
 }
 
 
@@ -37,9 +54,6 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
     if(key == sf::Keyboard::Escape){
         //abrir menu ingame
-    }
-    else if(key == sf::Keyboard::E){
-        //abrir menu tienda---(falta una condicion pero no quiero que casque)
     }
     else{
         mPlayer.manageEvents(key, isPressed);
@@ -86,6 +100,13 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     App::getApp()->mWindow.draw(*mMap);
     //mMap->Mostrar(*mWindow);
+
+    for(int i = 0;i<4;i++){
+        mWindow->draw(palancas[i]->getSprite());
+        mWindow->draw(manejadorPalanca->getSprite(i));
+    }
+
+
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
     for(unsigned int i=0;i<mMap->enemigos.size();i++)
@@ -96,6 +117,9 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
          mWindow->draw(mMap->enemigos[i]->getbalas().at(j)->getbody());
          }
     }
+
+
+
 
     //App::getApp()->mWindow.draw(Map::getMap());
 
@@ -148,3 +172,6 @@ Player* Game::getPlayer(){
     return &mPlayer;
 }
 
+Palanca* Game::getPalancas(int i){
+    return palancas[i];
+}

@@ -1,5 +1,6 @@
 #include "Colisiones.h"
 #include "Map.h"
+#include "math.h"
 
 Colisiones* Colisiones::colisiones=0;
 
@@ -25,6 +26,18 @@ bool Colisiones::entorno(){
     }
 
 }
+
+void Colisiones::palanca(){
+    sf::Vector2f personaje = Game::getGame()->getPlayer()->getBody().getPosition();
+    for(int i = 0; i<4;i++){
+
+        sf::Vector2f vecResta(personaje-Game::getGame()->getPalancas(i)->getSprite().getPosition());
+        if(sqrt(pow(vecResta.x,2)+pow(vecResta.y,2))<50){
+            Game::getGame()->getPalancas(i)->activa();
+        }
+    }
+}
+
 /*
 void Colisiones::hostion(){
     if(mGame->getPlayer()->getEspada().getGlobalBounds().intersects(mGame->getEnemigo()->getHitbox().getGlobalBounds())){

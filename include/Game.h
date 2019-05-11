@@ -7,6 +7,8 @@
 #include "Map.h"
 #include "Enemy.h"
 #include "Proyectil.h"
+#include "Palanca.h"
+#include "PalancaManager.h"
 
 class Game : public InterfazEstado {
     public:
@@ -21,6 +23,7 @@ class Game : public InterfazEstado {
         void            saveGame();
         Player*         getPlayer();
         Enemy*          getEnemigo();
+        Palanca*        getPalancas(int i);
         Player          mPlayer;
 
     private:
@@ -30,6 +33,9 @@ class Game : public InterfazEstado {
         sf::View        hudView;
         hud             mHud;
         float           tick;
+
+        Palanca *palancas [4];
+        PalancaManager *manejadorPalanca;
 
         Map*     mMap;
 
