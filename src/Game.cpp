@@ -44,7 +44,7 @@ Game::Game()
     std::vector<int> vect [4]={p1,p2,p3,p4};
     manejadorPalanca=new PalancaManager(sf::Vector2f(50,7700));
     for(int i =0;i<4;i++){
-        palancas[i]= new Palanca(sf::Vector2f(500+200*i,7750),vect[i],manejadorPalanca);
+        palancas[i]= new Palanca(posicionPalanca[i],vect[i],manejadorPalanca);
     }
 
     portales.push_back(new Portal(sf::Vector2f(50,8000)));

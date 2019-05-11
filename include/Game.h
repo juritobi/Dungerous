@@ -40,9 +40,15 @@ class Game : public InterfazEstado {
 
         Map*     mMap;
 
+
         std::vector<Portal*> portales;
 
-        //Enemy   enemigo1;
+        sf::Vector2f posicionPalanca [4] = {
+            sf::Vector2f(500,7760),
+            sf::Vector2f(700,7760),
+            sf::Vector2f(900,7760),
+            sf::Vector2f(1100,7760)
+        };
 
         int vida=3;
 };
