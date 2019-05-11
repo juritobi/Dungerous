@@ -20,7 +20,7 @@ class Enemy
         void                        update();
         void                        renderMove(float tick);
         void                        Animar();
-        void                        hitted();
+        void                        hitted(int i);//pa cuando se hagan las colisiones, el entero que se le tiene que pasar por parametro es la fuerza del jugador
         void                        setVida(int i);
         sf::RectangleShape          getHitbox();
         void                        disparar();
