@@ -50,6 +50,15 @@ class Game : public InterfazEstado {
             sf::Vector2f(1100,7760)
         };
 
+        sf::Vector2f posicionPortal [4] = {
+            sf::Vector2f(500,7260),
+            sf::Vector2f(700,7260),
+            sf::Vector2f(900,7260),
+            sf::Vector2f(1100,7260)
+        };
+
+
+
         int vida=3;
 };
 

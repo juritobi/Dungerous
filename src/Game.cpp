@@ -47,15 +47,11 @@ Game::Game()
         palancas[i]= new Palanca(posicionPalanca[i],vect[i],manejadorPalanca);
     }
 
-    portales.push_back(new Portal(sf::Vector2f(50,8000)));
-    portales.push_back(new Portal(sf::Vector2f(400,8000),portales[0]));
-    portales[0]->setDestino(portales[1]);
-
-    portales.push_back(new Portal(sf::Vector2f(50,8300)));
-    portales.push_back(new Portal(sf::Vector2f(400,8300),portales[2]));
-    portales[2]->setDestino(portales[3]);
-
-
+    for(int i = 0 ; i<2;i++){
+        portales.push_back(new Portal(posicionPortal[2*i]));
+        portales.push_back(new Portal(posicionPortal[2*i+1],portales[2*i]));
+        portales[2*i]->setDestino(portales[2*i+1]);
+    }
 }
 
 
