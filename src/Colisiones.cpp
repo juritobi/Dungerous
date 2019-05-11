@@ -74,9 +74,37 @@ void Colisiones::espadaenemigo()
         }
     }
 
-    limpiar();
+    enemigo();
 
 }
+
+
+void Colisiones::enemigo()
+{
+
+     if(reloj2.getElapsedTime().asSeconds()>2.0f){
+
+    for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
+    if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbody().getGlobalBounds())){
+     Game::getGame()->getPlayer()->loseLife(1);
+     reloj2.restart();
+            }
+
+        for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++){
+            if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getbody().getGlobalBounds()))
+            {
+            Game::getGame()->getPlayer()->loseLife(1);
+            reloj2.restart();
+
+                }
+            }
+        }
+    }
+}
+
+
+
+
 
 void Colisiones::limpiar()
 {
@@ -93,4 +121,5 @@ void Colisiones::limpiar()
 
 
 }
+
 

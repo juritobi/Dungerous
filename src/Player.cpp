@@ -6,7 +6,7 @@
 #include "../include/App.h"
 
 Player::Player(hud* hud)
-:box(sf::Vector2f(100,100))
+:body(sf::Vector2f(85,85))
 ,speed(300.f)
 ,up(false)
 ,down(false)
@@ -29,8 +29,9 @@ Player::Player(hud* hud)
     firstState.pos=sf::Vector2f(960,8360);
     firstState.hitbox=&hitb;
     lastState=firstState;
-    box.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
-    box.setOrigin(box.getSize()/2.0f);
+    body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
+    body.setOrigin(body.getSize()/2.0f);
+
 }
 //detecta las teclas pulsadas
 void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
@@ -78,7 +79,7 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Player::update(sf::Time elapsedTime){
 
     if(life==0){
-        box.setFillColor(sf::Color::Red);
+        body.setFillColor(sf::Color::Red);
     }
 
 	if(Catacar.getElapsedTime().asSeconds()>0.5){
@@ -191,26 +192,26 @@ void Player::animate(sf::Time elapsedTime){
 
 
     animation.animar(fila, elapsedTime,derecha,parar);
-    box.setTextureRect(animation.uvRect);
+    body.setTextureRect(animation.uvRect);
 }
 
 void Player::espadazo(){
 
     if(aup){
         espada.setSize(sf::Vector2f(50.0f,30.0f));
-        espada.setPosition(box.getPosition().x-25 , box.getPosition().y-50.0f);
+        espada.setPosition(body.getPosition().x-25 , body.getPosition().y-50.0f);
     }
     if(adown){
         espada.setSize(sf::Vector2f(50.0f,30.0f));
-        espada.setPosition(box.getPosition().x-25 , box.getPosition().y+20.0f);
+        espada.setPosition(body.getPosition().x-25 , body.getPosition().y+20.0f);
     }
     if(aright){
         espada.setSize(sf::Vector2f(30.0f,50.0f));
-        espada.setPosition(box.getPosition().x+20 , box.getPosition().y-25);
+        espada.setPosition(body.getPosition().x+20 , body.getPosition().y-25);
     }
     if(aleft){
         espada.setSize(sf::Vector2f(30.0f,50.0f));
-        espada.setPosition(box.getPosition().x-50, box.getPosition().y-25);
+        espada.setPosition(body.getPosition().x-50, body.getPosition().y-25);
     }
 
     if(Catacar.getElapsedTime().asSeconds()>0.5){
@@ -226,8 +227,8 @@ void Player::loseLife(int i){
 }
 //mueve al personaje en funcion de sus estados y el tick
 void Player::renderMove(float tick){
-    box.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
-    hitb.setPosition(box.getPosition()+sf::Vector2f(-15.0f,-15.0f));
+    body.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
+    hitb.setPosition(body.getPosition()+sf::Vector2f(-15.0f,-15.0f));
 }
 
 void Player::setPosition(sf::Vector2f pos){
@@ -238,7 +239,7 @@ void Player::setPosition(sf::Vector2f pos){
 
 
 sf::RectangleShape Player::getBody(){
-    return box;
+    return body;
 }
 sf::RectangleShape Player::getHitb(){
     return *lastState.hitbox;
@@ -256,7 +257,7 @@ sf::Vector2f Player::getPosition(){
 void Player::hitted(){
 
     loseLife(1);
-    sf::Vector2f vec = box.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
+    sf::Vector2f vec = body.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
     vec= App::getApp()->normalizar(vec);
     lastState.pos=lastState.pos+vec*multiplier;
     lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-15.0f));

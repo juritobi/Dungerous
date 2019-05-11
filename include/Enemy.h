@@ -13,7 +13,7 @@ class Enemy
         Enemy(sf::Vector2u vec, Player* player, int vida, int type, sf::Vector2f pos);
 
 
-        sf::RectangleShape          getbody();
+
 
         void                        setexiste();
         void                        setsala(int i);
@@ -24,7 +24,7 @@ class Enemy
         void                        Animar();
         void                        hitted();
         void                        setVida(int i);
-        sf::RectangleShape          getHitbox();
+        sf::Sprite                   getbody();
         void                        disparar();
         std::vector<Proyectil*>     getbalas();
         sf::Clock *                 getclock();
@@ -49,8 +49,8 @@ class Enemy
         bool                        derecha;
         unsigned int                fila;
 
-        sf::RectangleShape          hitb;
-        sf::RectangleShape          body;
+        sf::Sprite                  body;
+
 
         Animation                   animar;
         Animation                   animar2;

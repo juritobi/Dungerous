@@ -112,7 +112,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     mHud.setCrono(cl,125);
     mWindow->draw(mHud.getTxtCrono());
 
-    Colisiones::getColisiones()->limpiar();
+
 
 
 }

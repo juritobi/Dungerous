@@ -16,12 +16,14 @@ class Colisiones
         void camaramove();
         void espadaenemigo();
         void limpiar();
+        void enemigo();
 
 
     private:
         static Colisiones* colisiones;
         Colisiones();
         sf::Clock reloj;
+        sf::Clock reloj2;
 
         Game* mGame;
 

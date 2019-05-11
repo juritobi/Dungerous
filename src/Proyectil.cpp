@@ -1,20 +1,19 @@
 #include "../include/Proyectil.h"
 #include "../include/App.h"
 
-Proyectil::Proyectil(sf::Vector2f pos, Player *player):
+Proyectil::Proyectil(sf::Vector2f pos):
 animation(0.1f,sf::Vector2u(5,1),"fireball")
 ,direccion(sf::Vector2f(0,0))
 {
     calculado=false;
     firstState.pos=sf::Vector2f(pos.x,pos.y);
     lastState=firstState;
-    this->player=player;
     body.setPosition(pos);
-    body.setSize(sf::Vector2f(100.0f,100.0f));
-    body.setTexture(&AssetManager::getAssetManager()->GetTexture("fireball"));
+    body.setTexture(AssetManager::getAssetManager()->GetTexture("fireball"));
     speed=500.0f;
     derecha=true;
     existe=true;
+    body.scale(sf::Vector2f(3.0f,3.0f));
 }
 
 Proyectil::~Proyectil()
@@ -22,7 +21,7 @@ Proyectil::~Proyectil()
     //dtor
 }
 
-sf::RectangleShape Proyectil::getbody()
+sf::Sprite Proyectil::getbody()
 {
 return body;
 }
@@ -52,8 +51,9 @@ void Proyectil::Mover(){
     sf::Time elapsedTime = App::getApp()->getElapsedTime();
 
     sf::Vector2f movement(0.f, 0.f);
+
     if(calculado==false){
-    direccion=player->getHitb().getPosition() - body.getPosition();
+    direccion=Game::getGame()->getPlayer()->getHitb().getPosition() - body.getPosition() - Game::getGame()->getPlayer()->getHitb().getSize();
     direccion=App::getApp()->normalizar(direccion);
     calculado=true;
     }
