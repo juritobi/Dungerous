@@ -5,7 +5,7 @@
 #include "../include/Colisiones.h"
 #include "../include/App.h"
 
-Player::Player(hud* hud)
+Player::Player()
 :box(sf::Vector2f(100,100))
 ,speed(300.f)
 ,up(false)
@@ -16,7 +16,6 @@ Player::Player(hud* hud)
 ,adown(false)
 ,aright(false)
 ,aleft(false)
-,mHud(hud)
 ,life(3)
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
@@ -228,7 +227,7 @@ void Player::espadazo(){
 
 void Player::loseLife(int i){
     life=life-1;
-    mHud->loseLife(i);
+    hud::getHud()->loseLife(i);
 
 }
 //mueve al personaje en funcion de sus estados y el tick

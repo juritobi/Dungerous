@@ -5,7 +5,7 @@
 class hud
 {
     public:
-        hud();
+        static hud* getHud();
         sf::Sprite getPseta();
         int getPsetaNum();
         std::vector<sf::Sprite> getLife();
@@ -20,6 +20,8 @@ class hud
         void loseCrono();
 
     private:
+        static hud* hudo;
+        hud();
         sf::Texture tLife;
         sf::Texture tPseta;
         sf::Texture tVida;

@@ -16,9 +16,8 @@ Game* Game::getGame(){
 }
 
 Game::Game()
-:mHud()
-,tick(0)
-,mPlayer(&mHud)
+:tick(0)
+,mPlayer()
 ,hudView()
 ,cl()
 {
@@ -142,18 +141,18 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     mWindow->setView(hudView);
 
-    mWindow->draw(mHud.getPseta());
-    for(int i=0;i<mHud.getLife().size();i++){
-        mWindow->draw(mHud.getLife()[i]);
+    mWindow->draw(hud::getHud()->getPseta());
+    for(int i=0;i<hud::getHud()->getLife().size();i++){
+        mWindow->draw(hud::getHud()->getLife()[i]);
     }
-    for(int i=0;i<mHud.getPup().size();i++){
-        mWindow->draw(mHud.getPup()[i]);
+    for(int i=0;i<hud::getHud()->getPup().size();i++){
+        mWindow->draw(hud::getHud()->getPup()[i]);
     }
 
 
-    mWindow->draw(mHud.getTxtPseta());
-    mHud.setCrono(cl,125);
-    mWindow->draw(mHud.getTxtCrono());
+    mWindow->draw(hud::getHud()->getTxtPseta());
+    hud::getHud()->setCrono(cl,125);
+    mWindow->draw(hud::getHud()->getTxtCrono());
 
 
 }
@@ -179,7 +178,7 @@ void Game::saveGame(){
     myfile.open("save.txt");
 
     myfile<<
-    960<<" "<<8360<<" "<<mHud.getPsetaNum()<<std::endl;
+    960<<" "<<8360<<" "<<hud::getHud()->getPsetaNum()<<std::endl;
 
     /*mPlayer.getPosition().x<<" "<<
     mPlayer.getPosition().y<<std::endl;*/

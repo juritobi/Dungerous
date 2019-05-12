@@ -3,7 +3,13 @@
 #include <iostream>
 #include <sstream>
 
-
+hud* hud::hudo=0;
+hud* hud::getHud(){
+    if(hudo==0){
+        hudo= new hud();
+    }
+    return hudo;
+}
 
 hud::hud():mClock()
 {

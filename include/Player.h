@@ -16,7 +16,7 @@ class Player
 {
     public:
         //Basicas
-        Player(hud* hud);
+        Player();
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
         void            renderMove(float tick);
@@ -48,7 +48,6 @@ class Player
     private:
 
         Animation               animation;
-        hud*                    mHud;
         sf::Clock               Catacar;
         sf::Clock               Crodar;
 

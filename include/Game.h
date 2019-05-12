@@ -34,7 +34,6 @@ class Game : public InterfazEstado {
         Game();
 
         sf::View        hudView;
-        hud             mHud;
         float           tick;
 
         Palanca *palancas [4];
