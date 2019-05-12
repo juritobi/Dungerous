@@ -24,7 +24,7 @@ bool Colisiones::entorno(){
         }
     }
 
-    camaramove();
+      espadaenemigo();
 
 }
 
@@ -42,10 +42,12 @@ void Colisiones::camaramove()
         Game::getGame()->getPlayer()->setsala(1);
         for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++)
         Map::getMap()->getenemigos()[i]->getclock()->restart();
+        Map::getMap()->reiniciapuertas();
+        Map::getMap()->setreinicio();
         }
     }
 
-    espadaenemigo();
+
 }
 
 
@@ -99,7 +101,10 @@ void Colisiones::enemigo()
                 }
             }
         }
+
     }
+
+     limpiar();
 }
 
 
@@ -108,17 +113,21 @@ void Colisiones::enemigo()
 
 void Colisiones::limpiar()
 {
-    for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
-        if(Map::getMap()->getenemigos().at(i)->getexiste()==false)
-            Map::getMap()->Purguepos(i);
-
-            for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++)
-                if(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getexiste()==false)
-                    Map::getMap()->getenemigos().at(i)->Purguepos(j);
 
 
+        for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
+            if(Map::getMap()->getenemigos().at(i)->getexiste()==false)
+                Map::getMap()->Purguepos(i);
+                if(Map::getMap()->getenemigos().size()>0){
+                for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++)
+                    if(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getexiste()==false)
+                        Map::getMap()->getenemigos().at(i)->Purguepos(j);
+
+
+        }
     }
 
+    camaramove();
 
 }
 

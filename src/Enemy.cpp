@@ -177,3 +177,8 @@ void Enemy::sethp()
 hp-=1;
 }
 
+int Enemy::getsala()
+{
+return sala;
+}
+

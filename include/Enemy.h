@@ -31,7 +31,7 @@ class Enemy
         bool                        getexiste();
         float                       gethp();
         void                        sethp();
-
+        int                         getsala();
 
         State firstState;
         State lastState;

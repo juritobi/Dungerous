@@ -82,6 +82,7 @@ target.draw(vertex,states);
 void Map::generarmatriz(Player *player)
 {
 this->player=player;
+reinicio=false;
 //Inicializa el tamaño del mapa-----------------------------------------------
 
 tinyxml2::XMLDocument doc;//carga el documento
@@ -141,7 +142,7 @@ for(unsigned int l=0; l<_numLayers;l++)
 
 this->data=map->FirstChildElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
 
-int aux=0;
+
 
 bool next=true;
 
@@ -286,6 +287,26 @@ void Map::cambiopuertas()
 load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
 }
 
+
+void Map::reiniciapuertas()
+{
+
+ for(unsigned k=0; k<3;k++){
+    for(unsigned int i=0; i<_width;i++){
+        for(unsigned int j=0; j<_height;j++)
+            {
+             if(_tilemap[k][j][i]==479)
+             _tilemap[k][j][i]=433;
+
+
+            }
+        }
+    }
+
+
+load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
+}
+
 void Map::Mostrar(sf::RenderWindow& window)
 {
 //std::cout<<muros.size()<<std::endl;
@@ -358,13 +379,28 @@ enemigos.erase(enemigos.begin()+i);
 
 }
 
-void Map::Purgueall()
+void Map::reiniciar()
 {
+int n=0;
+    for(unsigned int i=0; i<enemigos.size();i++)
+    {
+        if(enemigos[i]->getsala()==player->getsala())
+        n++;
 
 
+
+    }
+
+    if(n==0 && reinicio==false){
+    cambiopuertas();
+    reinicio=true;
+    }
 }
 
-
+void Map::setreinicio()
+{
+reinicio=false;
+}
 
 
 

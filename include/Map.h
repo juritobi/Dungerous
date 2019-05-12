@@ -24,11 +24,14 @@ class Map : public sf::Drawable, public sf::Transformable
         void generarcolision(int x, int y, int h, int w);
         void generarpuerta(int x, int y, int h, int w);
         void generarspawns(int x, int y, int h, int w, int type);
+        void reiniciapuertas();
         void cambiopuertas();
         void asignarsala();
         void Purguepos(int i);
         void Purgueall();
         void Mostrar(sf::RenderWindow& window);
+        void reiniciar();
+        void setreinicio();
         std::vector<sf::RectangleShape*> getmuros();
         std::vector<sf::RectangleShape*> getpuertas();
         std::vector<Enemy*> getenemigos();
@@ -63,6 +66,8 @@ class Map : public sf::Drawable, public sf::Transformable
     std::vector<sf::RectangleShape*> muros;
     std::vector<sf::RectangleShape*> puertas;
     std::vector<Enemy*> enemigos;
+    bool reinicio;
+
 
     //int ***_tilemap;
  //   tinyxml2::XMLElement *data[];
