@@ -166,11 +166,13 @@ void Game::loadGame(){
 
     float x;
 	float y;
+	int  z;
 	std::ifstream myfile;
 
 	myfile.open("save.txt");
-    myfile>> x >> y;
+    myfile>> x >> y >> z;
 	mPlayer.setPosition(sf::Vector2f(x,y));
+	hud::getHud()->setPseta(z);
 }
 
 void Game::saveGame(){
