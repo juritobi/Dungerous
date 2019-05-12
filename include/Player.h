@@ -32,6 +32,7 @@ class Player
         void                loseLife(int i);
         void                hitted();
         void                setsala(int i);
+        void                teleport(sf::Vector2f pos);
 
         //getters
         sf::RectangleShape  getBody();

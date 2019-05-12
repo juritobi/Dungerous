@@ -48,7 +48,7 @@ Game::Game()
     }
 
     /*crear portales*/
-    for(int i = 0 ; i<2;i++){
+    for(int i = 0 ; i<11;i++){
         portales.push_back(new Portal(posicionPortal[2*i],direccionPortal[2*i]));
         portales.push_back(new Portal(posicionPortal[2*i+1],portales[2*i],direccionPortal[2*i+1]));
         portales[2*i]->setDestino(portales[2*i+1]);

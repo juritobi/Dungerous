@@ -52,15 +52,53 @@ class Game : public InterfazEstado {
             sf::Vector2f(1100,7760)
         };
 
-        sf::Vector2f posicionPortal [4] = {
-            sf::Vector2f(500,7260),
-            sf::Vector2f(700,7260),
-            sf::Vector2f(900,7260),
-            sf::Vector2f(1100,7260)
+        sf::Vector2f posicionPortal [22] = {
+            sf::Vector2f(960+64*-4,6464-64*2),
+            sf::Vector2f(960+64*0,6464-64*5),
+
+            sf::Vector2f(960+64*4,6464-64*2),
+            sf::Vector2f(960+64*8,6464-64*6),
+
+            sf::Vector2f(960+64*11,6464-64*7.5),
+            sf::Vector2f(960+64*13,6464-64*14),
+
+            sf::Vector2f(960+64*8,6464-64*9),
+            sf::Vector2f(960+64*3,6464-64*9),
+
+            sf::Vector2f(960+64*-3,6464-64*9),
+            sf::Vector2f(960+64*-11,6464-64*7.5),
+
+            sf::Vector2f(960+64*-8,6464-64*9),
+            sf::Vector2f(960+64*-13,6464-64*14),
+
+            sf::Vector2f(960+64*-8,6464-64*6),
+            sf::Vector2f(960+64*-13,6464-64*1),
+
+            sf::Vector2f(960+64*-10,6464-64*3),
+            sf::Vector2f(960+64*-10,6464-64*12),
+
+            sf::Vector2f(960+64*-10,6464-64*14),
+            sf::Vector2f(960+64*13,6464-64*1),
+
+            sf::Vector2f(960+64*10,6464-64*3),
+            sf::Vector2f(960+64*10,6464-64*12),
+
+            sf::Vector2f(960+64*10,6464-64*14),
+            sf::Vector2f(960+64*0,6464-64*13),
         };
-        int direccionPortal [4] = {1,2,3,4};
-
-
+        int direccionPortal [22] = {
+            2,1,
+            4,2,
+            4,3,
+            2,4,
+            2,2,
+            4,3,
+            4,2,
+            4,4,
+            4,4,
+            2,2,
+            2,1
+        };
 
 
         int vida=3;

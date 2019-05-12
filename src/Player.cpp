@@ -240,6 +240,19 @@ void Player::setPosition(sf::Vector2f pos){
     lastState.pos=pos;
 }
 
+void Player::teleport(sf::Vector2f pos){
+
+    lastState.pos=pos;
+    lastState.hitbox->setPosition(lastState.pos);
+    firstState.pos=pos;
+    firstState.hitbox->setPosition(firstState.pos);
+    hitb.setPosition(lastState.pos);
+    box.setPosition(lastState.pos);
+
+    Catacar.restart();
+
+}
+
 
 
 
