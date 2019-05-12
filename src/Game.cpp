@@ -63,7 +63,6 @@ void Game::update(sf::Time elapsedTime){
 
     Colisiones::getColisiones()->entorno();
     mMap->reiniciar();
-
     /*
     if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
         Colisiones::getColisiones()->hostiado();

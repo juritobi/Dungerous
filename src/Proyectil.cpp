@@ -75,7 +75,6 @@ void  Proyectil::renderMove(float tick)
 
 void Proyectil::setexiste()
 {
-std::cout<<"hola"<<std::endl;
 existe=false;
 }
 

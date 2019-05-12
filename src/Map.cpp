@@ -283,7 +283,7 @@ void Map::cambiopuertas()
         }
     }
 
-
+std::cout<<"hola"<<std::endl;
 load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
 }
 
@@ -303,7 +303,7 @@ void Map::reiniciapuertas()
         }
     }
 
-
+std::cout<<"hola2"<<std::endl;
 load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
 }
 
@@ -383,13 +383,9 @@ void Map::reiniciar()
 {
 int n=0;
     for(unsigned int i=0; i<enemigos.size();i++)
-    {
         if(enemigos[i]->getsala()==player->getsala())
         n++;
 
-
-
-    }
 
     if(n==0 && reinicio==false){
     cambiopuertas();
