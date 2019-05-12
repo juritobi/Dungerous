@@ -94,6 +94,9 @@ std::vector<sf::Sprite> hud::getPup(){
 sf::Sprite hud::getPseta(){
     return sPseta;
 }
+int hud::getPsetaNum(){
+    return numPseta;
+}
 sf::Text hud::getTxtCrono(){
     return txtCrono;
 }

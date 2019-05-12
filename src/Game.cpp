@@ -178,9 +178,11 @@ void Game::saveGame(){
     std::ofstream myfile;
     myfile.open("save.txt");
 
-    myfile <<
-    mPlayer.getPosition().x<<" "<<
-    mPlayer.getPosition().y<<std::endl;
+    myfile<<
+    960<<" "<<8360<<" "<<mHud.getPsetaNum()<<std::endl;
+
+    /*mPlayer.getPosition().x<<" "<<
+    mPlayer.getPosition().y<<std::endl;*/
 
     myfile.close();
 }

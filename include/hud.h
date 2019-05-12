@@ -7,6 +7,7 @@ class hud
     public:
         hud();
         sf::Sprite getPseta();
+        int getPsetaNum();
         std::vector<sf::Sprite> getLife();
         std::vector<sf::Sprite> getPup();
         sf::Text getTxtPseta();
