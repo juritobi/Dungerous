@@ -45,17 +45,13 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
     if (key == sf::Keyboard::D)
         right = isPressed;
 
-    if (key == sf::Keyboard::Q){
+    if (key == sf::Keyboard::Return){
         if(relojDisparo.getElapsedTime().asSeconds() > 2){
             if(!disparo){
-                std::cout<<"iapapaua"<<std::endl;
-                std::cout<<disparo<<std::endl;
                 disparo=true;
                 relojDisparo.restart();
             }
             else{
-                std::cout<<"iapapaua parte 2"<<std::endl;
-                std::cout<<disparo<<std::endl;
                 disparo=false;
                 relojDisparo.restart();
             }

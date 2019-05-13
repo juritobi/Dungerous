@@ -2,14 +2,34 @@
 
 Proyectil::Proyectil(float x, float y, float ndireccion, sf::Vector2f posInicial):
 animation( 0.1f,sf::Vector2u(4, 1),"flechas")
+,calculado(false)
 {
-    std::cout<<"creo bala"<<std::endl;
     firstState=posInicial;
     lastState=firstState;
     direccion=ndireccion;
-    body.setSize(sf::Vector2f(x,y));
+    body.setScale(sf::Vector2f(0.5,0.5));
     body.setPosition(posInicial);
-    body.setTexture(&AssetManager::getAssetManager()->GetTexture("flechas"));
+    body.setTexture(AssetManager::getAssetManager()->GetTexture("flechas"));
+    varx = 0;
+    vary = 0;
+}
+
+Proyectil::Proyectil(float ndireccion, sf::Vector2f posInicial, int dirx, int diry, sf::Vector2f nuevadireccion):
+animation(0.1f,sf::Vector2u(4, 1),"fuego")
+,calculado(false)
+{
+    firstState.x=posInicial.x;
+    firstState.y=posInicial.y;
+    lastState=firstState;
+    direccion=ndireccion;
+    body.setScale(sf::Vector2f(4,4));
+
+    body.setPosition(posInicial);
+    body.setTexture(AssetManager::getAssetManager()->GetTexture("fuego"));
+    varx=dirx;
+    vary=diry;
+    vecDireccion=nuevadireccion;
+
 }
 
 Proyectil::~Proyectil()
@@ -17,7 +37,7 @@ Proyectil::~Proyectil()
     //dtor
 }
 
-sf::RectangleShape Proyectil::getBody(){
+sf::Sprite Proyectil::getBody(){
     return body;
 }
 
@@ -44,8 +64,31 @@ void Proyectil::Update(sf::Time elapsedTime){
         derecha=true;
 
     }
+    else if(direccion == 5.0f){
 
-     lastState += movement * elapsedTime.asSeconds();
+        if(vary>0){
+            movement.y +=300.0f;
+        }
+        else if (vary<0){
+            movement.y -=300.0f;
+        }
+        if(varx>0){
+            movement.x +=300.0f;
+            derecha=true;
+        }
+        else if(varx<0){
+            movement.x -=300.0f;
+        }
+    }
+    else if(direccion ==6.0f ){
+
+
+        movement.x=vecDireccion.x*300;
+        movement.y=vecDireccion.y*300;
+
+    }
+
+     lastState += movement* elapsedTime.asSeconds();
      animation.animar(0,elapsedTime,derecha, false);
      body.setTextureRect(animation.uvRect);
 

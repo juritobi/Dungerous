@@ -21,6 +21,7 @@ Game::Game()
 ,mPlayer(&mHud)
 ,hudView()
 ,enemigo1(sf::Vector2u (4,4), &mPlayer, 3)
+,boss(sf::Vector2u(3,8), &mPlayer, 3)
 ,cl()
 {
     hudView.setSize(792,1008);
@@ -52,6 +53,7 @@ void Game::update(sf::Time elapsedTime){
 
     mPlayer.update(elapsedTime);
     enemigo1.update();
+    boss.update();
     Colisiones::getColisiones()->entorno();
     Colisiones::getColisiones()->hostion();
     mMap->camaramove(&mPlayer,&App::getApp()->mView);
@@ -68,17 +70,24 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     mPlayer.renderMove(tick);
     enemigo1.renderMove(tick);
+    boss.renderMove(tick);
     mPlayer.renderBalas(tick);
+    boss.renderBalas(tick);
     App::getApp()->mWindow.draw(*mMap);
     //mMap->Mostrar(*mWindow);
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
     mWindow->draw(enemigo1.getbody());
+    mWindow->draw(boss.getbody());
     for(int i=0; i < mPlayer.getBalas().size();i++){
         mPlayer.getBalas()[i]->Update(App::getApp()->getElapsedTime());
         mWindow->draw(mPlayer.getBalas()[i]->getBody());
     }
-    //mWindow->draw(enemigo1.getHitbox());
+    for(int i=0; i < boss.getBalasBoss().size();i++){
+        boss.getBalasBoss()[i]->Update(App::getApp()->getElapsedTime());
+        mWindow->draw( boss.getBalasBoss()[i]->getBody());
+    }
+    //mWindow->draw(boss.getHitbox());
 
     //App::getApp()->mWindow.draw(Map::getMap());
 

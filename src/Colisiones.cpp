@@ -30,6 +30,16 @@ void Colisiones::hostion(){
     if(mGame->getPlayer()->getEspada().getGlobalBounds().intersects(mGame->getEnemigo()->getHitbox().getGlobalBounds())){
         mGame->getEnemigo()->hitted();
     }
+    for(int i = 0; i< mGame->getPlayer()->getBalas().size();i++){
+        if(mGame->getPlayer()->getBalas()[i]->getBody().getGlobalBounds().intersects(mGame->getEnemigo()->getHitbox().getGlobalBounds())){
+            mGame->getEnemigo()->hitted();
+            /*
+            esto me ha dicho juan que lo hace el que el pilota
+            delete mGame->getPlayer()->getBalas().at(i);
+            mGame->getPlayer()->getBalas().erase(mGame->getPlayer()->getBalas().begin()+i);
+            */
+        }
+    }
 }
 
 void Colisiones::hostiado(){
@@ -37,3 +47,6 @@ void Colisiones::hostiado(){
         mGame->getPlayer()->hitted();
     }
 }
+
+
+

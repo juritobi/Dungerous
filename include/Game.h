@@ -1,11 +1,11 @@
 #pragma once
-
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 #include "InterfazEstado.h"
 #include "hud.h"
 #include "Map.h"
 #include "Enemy.h"
+#include "Boss.h"
 
 class Game : public InterfazEstado {
     public:
@@ -33,6 +33,7 @@ class Game : public InterfazEstado {
         Map*     mMap;
 
         Enemy   enemigo1;
+        Boss    boss;
 
         int vida=3;
 };

@@ -11,20 +11,24 @@ class Proyectil
 {
     public:
         Proyectil(float x, float y, float ndireccion, sf::Vector2f posInicial);
+        Proyectil(float ndireccion, sf::Vector2f posInicial, int dirx, int diry, sf::Vector2f direccion);
         virtual ~Proyectil();
-        sf::RectangleShape getBody();
-        void setPosicion();
-        void Update(sf::Time elapsedTime);
-        void Render(float tick);
+        sf::Sprite                      getBody();
+        void                            setPosicion();
+        void                            Update(sf::Time elapsedTime);
+        void                            Render(float tick);
     protected:
 
     private:
-
-    sf::Vector2f lastState;
-    sf::Vector2f firstState;
-    Animation animation;
-    float direccion;
-    sf::RectangleShape body;
+        int                             varx;
+        int                             vary;
+        bool                            calculado;
+        sf::Vector2f                    vecDireccion;
+        sf::Vector2f                    lastState;
+        sf::Vector2f                    firstState;
+        Animation                       animation;
+        float                           direccion;
+        sf::Sprite                      body;
 };
 
 #endif // PROYECTIL_H
