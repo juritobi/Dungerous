@@ -43,7 +43,7 @@ Game::Game()
     std::vector<int> p4;
     p4.push_back(3);
     std::vector<int> vect [4]={p1,p2,p3,p4};
-    manejadorPalanca=new PalancaManager(sf::Vector2f(450,7700));
+    manejadorPalanca=new PalancaManager(sf::Vector2f(960+64*-2,2720));
     for(int i =0;i<4;i++){
         palancas[i]= new Palanca(posicionPalanca[i],vect[i],manejadorPalanca);
     }
@@ -101,6 +101,7 @@ void Game::update(sf::Time elapsedTime){
 
 
     mMap->reiniciar();
+    Purgue();
     /*
     if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
         Colisiones::getColisiones()->hostiado();
@@ -225,6 +226,14 @@ std::vector<Portal*> Game::getPortales(){
 
 Boss* Game::getBoss(){
 return boss;
+}
+
+void Game::Purgue()
+{
+    if(boss->gethp()==0){
+    boss==nullptr;
+    delete boss;
+    }
 }
 
 

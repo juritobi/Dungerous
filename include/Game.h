@@ -30,6 +30,7 @@ class Game : public InterfazEstado {
         Palanca*        getPalancas(int i);
         std::vector<Portal*> getPortales();
         Player          mPlayer;
+        void            Purgue();
 
     private:
         static Game* game;
@@ -46,13 +47,14 @@ class Game : public InterfazEstado {
 
         Boss*    boss;
 
+
         std::vector<Portal*> portales;
 
         sf::Vector2f posicionPalanca [4] = {
-            sf::Vector2f(500,7760),
-            sf::Vector2f(700,7760),
-            sf::Vector2f(900,7760),
-            sf::Vector2f(1100,7760)
+            sf::Vector2f(960+64*-6,2720+64*1.5),
+            sf::Vector2f(960+64*-6,2720+64*-1.5),
+            sf::Vector2f(960+64*6,2720+64*1.5),
+            sf::Vector2f(960+64*6,2720+64*-1.5)
         };
 
         sf::Vector2f posicionPortal [22] = {
