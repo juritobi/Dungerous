@@ -48,6 +48,7 @@ animationHachaBoss( 0.1f,sf::Vector2u(4, 1),"flechas")
     derecha=true;
     existe=true;
     body.scale(sf::Vector2f(3.0f,3.0f));
+    tipoBala=0;
 
 }
 
@@ -62,7 +63,7 @@ void Proyectil::Update(sf::Time elapsedTime){
     firstState=lastState;
 
     sf::Vector2f movement(0.f, 0.f);
-    if(tipoBala<0){
+    if(tipoBala>0){
         if(tipoBala == 1.0f){
             movement.y -= 500.0f;
         }
