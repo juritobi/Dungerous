@@ -246,28 +246,28 @@ void Player::espadazo(){
     }
     else{
         if(delayBalas.getElapsedTime().asSeconds() > 0.5){
-            if(aup){
+            if(aup && !adown && !aright && !aleft){
                 Proyectil* bala = new Proyectil(35.0f,35.0f, 1.0f,body.getPosition());
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
-            if(adown){
+            if(adown && !aup && !aright && !aleft){
                 Proyectil* bala = new Proyectil(35.0f,35.0f, 2.0f,body.getPosition());
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
-            if(aright){
+            if(aright && !adown && !aup && !aleft){
                 Proyectil* bala = new Proyectil(35.0f,35.0f, 3.0f,body.getPosition());
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
-            if(aleft){
+            if(aleft && !adown && !aright && !aup){
                 Proyectil* bala = new Proyectil(35.0f,35.0f, 4.0f,body.getPosition());
                 vecProyectil.push_back(bala);
                 bala=nullptr;
