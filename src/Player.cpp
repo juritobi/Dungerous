@@ -5,8 +5,9 @@
 #include "../include/Colisiones.h"
 #include "../include/App.h"
 
+
 Player::Player()
-:box(sf::Vector2f(100,100))
+:body(sf::Vector2f(85,85))
 ,speed(300.f)
 ,up(false)
 ,down(false)
@@ -23,13 +24,15 @@ Player::Player()
 ,fila(3)
 ,derecha(false)
 ,parar(false)
+,disparo(false)
 {
     sala=7;
     firstState.pos=sf::Vector2f(960,8360);
     firstState.hitbox=&hitb;
     lastState=firstState;
-    box.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
-    box.setOrigin(box.getSize()/2.0f);
+    body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
+    body.setOrigin(body.getSize()/2.0f);
+
 }
 //detecta las teclas pulsadas
 void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
@@ -49,6 +52,19 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
         left = isPressed;
     if (key == sf::Keyboard::D)
         right = isPressed;
+
+    if (key == sf::Keyboard::Return){
+        if(relojDisparo.getElapsedTime().asSeconds() > 2){
+            if(!disparo){
+                disparo=true;
+                relojDisparo.restart();
+            }
+            else{
+                disparo=false;
+                relojDisparo.restart();
+            }
+        }
+    }
 
      if (key == sf::Keyboard::Up){
         if(!(isPressed&&aup)){
@@ -84,11 +100,14 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Player::update(sf::Time elapsedTime){
 
     if(life==0){
-        box.setFillColor(sf::Color::Red);
+        body.setFillColor(sf::Color::Red);
     }
 
-	if(Catacar.getElapsedTime().asSeconds()>0.5){
+	if(!disparo && Catacar.getElapsedTime().asSeconds()>0.5){
 
+        stateMovement();
+	}
+	else if(disparo && !aup && !adown && !aleft && !aright){
         stateMovement();
 	}
     animate(elapsedTime);
@@ -113,7 +132,6 @@ void Player::stateMovement(){
         movement.x -= speed;
     if (right)
         movement.x += speed;
-
 
 
     lastState.pos += movement * elapsedTime.asSeconds();
@@ -144,31 +162,35 @@ void Player::animate(sf::Time elapsedTime){
     }
 
     if(Catacar.getElapsedTime().asSeconds()>0.5){
-        if(up){
-            fila=0;
-            if(rodando)
-                fila=5;
-            parar=false;
+        if(disparo && aup || adown || aleft || aright){
         }
-        if(down){
-            fila=2;
-            if(rodando)
-                fila=6;
-            parar=false;
-        }
-        if(right){
-            fila=1;
-            if(rodando)
-                fila=4;
-            derecha=true;
-            parar=false;
-        }
-        if(left){
-            fila=1;
-            if(rodando)
-                fila=4;
-            derecha=false;
-            parar=false;
+        else{
+            if(up){
+                fila=0;
+                if(rodando)
+                    fila=5;
+                parar=false;
+            }
+            if(down){
+                fila=2;
+                if(rodando)
+                    fila=6;
+                parar=false;
+            }
+            if(right){
+                fila=1;
+                if(rodando)
+                    fila=4;
+                derecha=true;
+                parar=false;
+            }
+            if(left){
+                fila=1;
+                if(rodando)
+                    fila=4;
+                derecha=false;
+                parar=false;
+            }
         }
     }
 
@@ -197,30 +219,65 @@ void Player::animate(sf::Time elapsedTime){
 
 
     animation.animar(fila, elapsedTime,derecha,parar);
-    box.setTextureRect(animation.uvRect);
+    body.setTextureRect(animation.uvRect);
 }
 
 void Player::espadazo(){
+    if(!disparo){
+        if(aup){
+            espada.setSize(sf::Vector2f(50.0f,30.0f));
+            espada.setPosition(body.getPosition().x-25 , body.getPosition().y-50.0f);
+        }
+        if(adown){
+            espada.setSize(sf::Vector2f(50.0f,30.0f));
+            espada.setPosition(body.getPosition().x-25 , body.getPosition().y+20.0f);
+        }
+        if(aright){
+            espada.setSize(sf::Vector2f(30.0f,50.0f));
+            espada.setPosition(body.getPosition().x+20 , body.getPosition().y-25);
+        }
+        if(aleft){
+            espada.setSize(sf::Vector2f(30.0f,50.0f));
+            espada.setPosition(body.getPosition().x-50, body.getPosition().y-25);
+        }
+        if(Catacar.getElapsedTime().asSeconds()>0.5){
+            espada.setSize(sf::Vector2f(0,0));
+        }
+    }
+    else{
+        if(delayBalas.getElapsedTime().asSeconds() > 0.5){
+            if(aup){
+                Proyectil* bala = new Proyectil(35.0f,35.0f, 1.0f,body.getPosition());
+                vecProyectil.push_back(bala);
+                bala=nullptr;
+                delete bala;
+                delayBalas.restart();
+            }
+            if(adown){
+                Proyectil* bala = new Proyectil(35.0f,35.0f, 2.0f,body.getPosition());
+                vecProyectil.push_back(bala);
+                bala=nullptr;
+                delete bala;
+                delayBalas.restart();
+            }
+            if(aright){
+                Proyectil* bala = new Proyectil(35.0f,35.0f, 3.0f,body.getPosition());
+                vecProyectil.push_back(bala);
+                bala=nullptr;
+                delete bala;
+                delayBalas.restart();
+            }
+            if(aleft){
+                Proyectil* bala = new Proyectil(35.0f,35.0f, 4.0f,body.getPosition());
+                vecProyectil.push_back(bala);
+                bala=nullptr;
+                delete bala;
+                delayBalas.restart();
 
-    if(aup){
-        espada.setSize(sf::Vector2f(50.0f,30.0f));
-        espada.setPosition(box.getPosition().x-25 , box.getPosition().y-50.0f);
-    }
-    if(adown){
-        espada.setSize(sf::Vector2f(50.0f,30.0f));
-        espada.setPosition(box.getPosition().x-25 , box.getPosition().y+20.0f);
-    }
-    if(aright){
-        espada.setSize(sf::Vector2f(30.0f,50.0f));
-        espada.setPosition(box.getPosition().x+20 , box.getPosition().y-25);
-    }
-    if(aleft){
-        espada.setSize(sf::Vector2f(30.0f,50.0f));
-        espada.setPosition(box.getPosition().x-50, box.getPosition().y-25);
-    }
+            }
 
-    if(Catacar.getElapsedTime().asSeconds()>0.5){
-        espada.setSize(sf::Vector2f(0,0));
+        }
+
     }
 }
 
@@ -232,9 +289,21 @@ void Player::loseLife(int i){
 }
 //mueve al personaje en funcion de sus estados y el tick
 void Player::renderMove(float tick){
-    box.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
-    hitb.setPosition(box.getPosition()+sf::Vector2f(-15.0f,-15.0f));
+
+    body.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
+    hitb.setPosition(body.getPosition()+sf::Vector2f(-15.0f,-15.0f));
+
+
 }
+
+void Player::renderBalas(float tick){
+    for(int i = 0; i < vecProyectil.size();i++){
+
+        vecProyectil[i]->Render(tick);
+    }
+}
+
+
 
 void Player::setPosition(sf::Vector2f pos){
     lastState.pos=pos;
@@ -247,7 +316,7 @@ void Player::teleport(sf::Vector2f pos){
     firstState.pos=pos;
     firstState.hitbox->setPosition(firstState.pos);
     hitb.setPosition(lastState.pos);
-    box.setPosition(lastState.pos);
+    body.setPosition(lastState.pos);
 
     Catacar.restart();
 
@@ -257,7 +326,7 @@ void Player::teleport(sf::Vector2f pos){
 
 
 sf::RectangleShape Player::getBody(){
-    return box;
+    return body;
 }
 sf::RectangleShape Player::getHitb(){
     return *lastState.hitbox;
@@ -270,12 +339,15 @@ sf::Vector2f Player::getPosition(){
     return lastState.pos;
 }
 
+std::vector<Proyectil*> Player::getBalas(){
+    return vecProyectil;
+}
 
 /*
 void Player::hitted(){
 
     loseLife(1);
-    sf::Vector2f vec = box.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
+    sf::Vector2f vec = body.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
     vec= App::getApp()->normalizar(vec);
     lastState.pos=lastState.pos+vec*multiplier;
     lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-15.0f));

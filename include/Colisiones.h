@@ -2,6 +2,8 @@
 #define COLISIONES_H
 
 #include "Game.h"
+#include "Map.h"
+#include "App.h"
 
 
 
@@ -11,14 +13,24 @@ class Colisiones
         static Colisiones* getColisiones();
 
         bool entorno();
-        void hostion();
-        void hostiado();
+
+
         void palanca();
         void importalte();
+
+        void camaramove();
+        void espadaenemigo();
+        void limpiar();
+        void enemigo();
+
+
+
 
     private:
         static Colisiones* colisiones;
         Colisiones();
+        sf::Clock reloj;
+        sf::Clock reloj2;
 
         Game* mGame;
 

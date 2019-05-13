@@ -1,11 +1,11 @@
 #pragma once
-
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 #include "InterfazEstado.h"
 #include "hud.h"
 #include "Map.h"
 #include "Enemy.h"
+#include "Boss.h"
 #include "Proyectil.h"
 #include "Palanca.h"
 #include "PalancaManager.h"
@@ -25,6 +25,7 @@ class Game : public InterfazEstado {
         void            saveGame();
         Player*         getPlayer();
         Enemy*          getEnemigo();
+        Boss*           getBoss();
         Palanca*        getPalancas(int i);
         std::vector<Portal*> getPortales();
         Player          mPlayer;
@@ -42,6 +43,7 @@ class Game : public InterfazEstado {
 
         Map*     mMap;
 
+        Boss*    boss;
 
         std::vector<Portal*> portales;
 

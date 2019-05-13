@@ -27,6 +27,9 @@ App::App()
 
     AssetManager::getAssetManager()->createTexture("portal","assets/portal.png");
     AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
+    AssetManager::getAssetManager()->createTexture("flechas", "assets/flechas.png");//yo no existo parte 2
+    AssetManager::getAssetManager()->createTexture("boss", "assets/dragon.png");
+    AssetManager::getAssetManager()->createTexture("fuego", "assets/fuego.png");
     AssetManager::getAssetManager()->createTexture("enem2","assets/enemy2.png");
     AssetManager::getAssetManager()->createTexture("player", "assets/completo.png");
     AssetManager::getAssetManager()->createTexture("fireball", "assets/fireball.png");

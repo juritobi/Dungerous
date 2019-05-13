@@ -1,6 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-
+#include "Proyectil.h"
 #include <SFML/Graphics.hpp>
 #include "hud.h"
 #include "Animation.h"
@@ -20,7 +20,7 @@ class Player
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
         void            renderMove(float tick);
-
+        void renderBalas(float tick);
         //segmentacion
         void            stateMovement();
         void            animate(sf::Time elapsedTime);
@@ -39,7 +39,9 @@ class Player
         sf::RectangleShape  getHitb();
         sf::RectangleShape  getEspada();
         sf::Vector2f        getPosition();
+        std::vector<Proyectil*> getBalas();
         int                 getsala();
+
 
         //variables que convendria sacar de aqui
         State firstState;
@@ -51,8 +53,10 @@ class Player
         Animation               animation;
         sf::Clock               Catacar;
         sf::Clock               Crodar;
+        sf::Clock               relojDisparo;
+        sf::Clock               delayBalas;
 
-        sf::RectangleShape      box;
+        sf::RectangleShape      body;
         sf::RectangleShape      hitb;
         sf::RectangleShape      espada;
         float                   speed;
@@ -65,6 +69,8 @@ class Player
         float                   multiplier;
         float                   sala;
 
+        std::vector<Proyectil*> vecProyectil;
+
         bool            rodando;
         bool            up;
         bool            down;
@@ -74,6 +80,7 @@ class Player
         bool            adown;
         bool            aright;
         bool            aleft;
+        bool            disparo;
         bool            interactuando;
 
 
