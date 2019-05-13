@@ -283,7 +283,7 @@ void Map::cambiopuertas()
         }
     }
 
-std::cout<<"hola"<<std::endl;
+
 load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
 }
 
