@@ -99,6 +99,7 @@ void Game::update(sf::Time elapsedTime){
 
 
     mMap->reiniciar();
+    Purgue();
     /*
     if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
         Colisiones::getColisiones()->hostiado();
@@ -223,6 +224,14 @@ std::vector<Portal*> Game::getPortales(){
 
 Boss* Game::getBoss(){
 return boss;
+}
+
+void Game::Purgue()
+{
+    if(boss->gethp()==0){
+    boss==nullptr;
+    delete boss;
+    }
 }
 
 

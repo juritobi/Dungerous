@@ -29,6 +29,7 @@ class Game : public InterfazEstado {
         Palanca*        getPalancas(int i);
         std::vector<Portal*> getPortales();
         Player          mPlayer;
+        void            Purgue();
 
     private:
         static Game* game;
@@ -44,6 +45,7 @@ class Game : public InterfazEstado {
         Map*     mMap;
 
         Boss*    boss;
+
 
         std::vector<Portal*> portales;
 

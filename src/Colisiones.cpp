@@ -131,6 +131,19 @@ void Colisiones::espadaenemigo()
 
             }
 
+
+    for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
+        if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds())){
+         Game::getGame()->getBoss()->sethp();
+        reloj.restart();
+        }
+
+
+
+    if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getEspada().getGlobalBounds())){
+    Game::getGame()->getBoss()->sethp();
+    reloj.restart();
+    }
     }
     enemigo();
 
@@ -158,8 +171,14 @@ void Colisiones::enemigo()
             }
         }
 
-    }
+    if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
+     Game::getGame()->getPlayer()->loseLife(1);
+     reloj2.restart();
 
+        }
+
+
+    }
      limpiar();
 }
 
