@@ -48,10 +48,10 @@ class Game : public InterfazEstado {
         std::vector<Portal*> portales;
 
         sf::Vector2f posicionPalanca [4] = {
-            sf::Vector2f(960+64*3,4836+64*2),
-            sf::Vector2f(960+64*3,4836+64*-2),
-            sf::Vector2f(960+64*-3,4836+64*2),
-            sf::Vector2f(960+64*-3,4836+64*-2)
+            sf::Vector2f(960+64*-6,2720+64*1.5),
+            sf::Vector2f(960+64*-6,2720+64*-1.5),
+            sf::Vector2f(960+64*6,2720+64*1.5),
+            sf::Vector2f(960+64*6,2720+64*-1.5)
         };
 
         sf::Vector2f posicionPortal [22] = {
