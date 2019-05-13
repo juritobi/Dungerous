@@ -3,7 +3,7 @@
 Tienda::Tienda(sf::Vector2f pos)
 {
     sprite.setPosition(pos);
-    sprite.setSize(sf::Vector2f(357.0f, 214.0f));
+    sprite.setSize(sf::Vector2f(557.0f, 314.0f));
     sprite.setTexture(&AssetManager::getAssetManager()->GetTexture("tienda"));
 }
 

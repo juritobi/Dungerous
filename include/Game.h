@@ -12,6 +12,8 @@
 #include "Portal.h"
 #include "Tienda.h"
 #include "Pausa.h"
+#include "PowerUp.h"
+
 
 class Game : public InterfazEstado {
     public:
@@ -91,6 +93,7 @@ class Game : public InterfazEstado {
             sf::Vector2f(960+64*10,6464-64*14),
             sf::Vector2f(960+64*0,6464-64*13),
         };
+
         int direccionPortal [22] = {
             2,1,
             4,2,
@@ -104,6 +107,9 @@ class Game : public InterfazEstado {
             2,2,
             2,1
         };
+
+
+        PowerUp* mPower[];
 
 
         int vida=3;

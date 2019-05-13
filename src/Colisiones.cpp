@@ -1,7 +1,7 @@
 #include "Colisiones.h"
 #include "Map.h"
 #include "math.h"
-
+#include "GameOver.h"
 Colisiones* Colisiones::colisiones=0;
 
 Colisiones* Colisiones::getColisiones(){
@@ -10,6 +10,7 @@ Colisiones* Colisiones::getColisiones(){
     }
     return colisiones;
 }
+
 
 Colisiones::Colisiones()
 {
@@ -36,10 +37,9 @@ void Colisiones::palanca(){
         sf::Vector2f vecResta(personaje-Game::getGame()->getPalancas(i)->getSprite().getPosition());
         if(sqrt(pow(vecResta.x,2)+pow(vecResta.y,2))<50){
             Game::getGame()->getPalancas(i)->activa();
-            /*if(i==0){
-                Game::getGame()->cambioSala();
-            }
-            hud::getHud()->setPseta(1);*/
+
+            //Game::getGame()->getPlayer()->pickPu(3);
+
         }
     }
 }
@@ -144,11 +144,9 @@ void Colisiones::espadaenemigo()
     Game::getGame()->getBoss()->sethp();
     reloj.restart();
     }
-    }
     enemigo();
-
 }
-
+}
 
 void Colisiones::enemigo()
 {
@@ -211,3 +209,12 @@ void Colisiones::limpiar()
 
 }
 
+
+void Colisiones::muerte(){
+
+     if (hud::getHud()->getLife().size() <= 0){
+        StateManager::getStateManager()->AddState(GameOver::getGameOver(), true);
+        GameOver::getGameOver()->posNuevo();
+     }
+
+}
