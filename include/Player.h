@@ -55,6 +55,7 @@ class Player
         sf::Clock               Crodar;
         sf::Clock               relojDisparo;
         sf::Clock               delayBalas;
+        sf::Clock               relojInvulnerable;
 
         sf::RectangleShape      body;
         sf::RectangleShape      hitb;
@@ -71,6 +72,7 @@ class Player
 
         std::vector<Proyectil*> vecProyectil;
 
+        bool            invulnerable;
         bool            rodando;
         bool            up;
         bool            down;

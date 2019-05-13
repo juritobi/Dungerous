@@ -25,6 +25,7 @@ Player::Player()
 ,derecha(false)
 ,parar(false)
 ,disparo(false)
+,invulnerable(false)
 {
     sala=7;
     firstState.pos=sf::Vector2f(960,8360);
@@ -98,6 +99,10 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
 }
 void Player::update(sf::Time elapsedTime){
+
+    if(relojInvulnerable.getElapsedTime().asSeconds() >2 && invulnerable){
+        invulnerable=false;
+    }
 
     if(life==0){
         body.setFillColor(sf::Color::Red);
@@ -224,7 +229,8 @@ void Player::animate(sf::Time elapsedTime){
 
 void Player::espadazo(){
     if(!disparo){
-        if(aup){
+        if(aup
+){
             espada.setSize(sf::Vector2f(50.0f,30.0f));
             espada.setPosition(body.getPosition().x-25 , body.getPosition().y-50.0f);
         }
@@ -245,7 +251,7 @@ void Player::espadazo(){
         }
     }
     else{
-        if(delayBalas.getElapsedTime().asSeconds() > 2){
+        if(delayBalas.getElapsedTime().asSeconds() > 0.5){
             if(aup && !adown && !aright && !aleft){
                 Proyectil* bala = new Proyectil(35.0f,35.0f, 1.0f,body.getPosition());
                 vecProyectil.push_back(bala);
@@ -283,8 +289,13 @@ void Player::espadazo(){
 
 
 void Player::loseLife(int i){
-    life=life-1;
-    hud::getHud()->loseLife(i);
+std::cout<<"he perdido vida"<<std::endl;
+    if(!invulnerable){
+        life=life-1;
+        hud::getHud()->loseLife(i);
+        invulnerable = true;
+        relojInvulnerable.restart();
+    }
 
 }
 //mueve al personaje en funcion de sus estados y el tick
