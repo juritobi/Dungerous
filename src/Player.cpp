@@ -107,7 +107,7 @@ void Player::update(sf::Time elapsedTime){
 
         stateMovement();
 	}
-	else if(disparo && !aup && !adown && !aleft && !aright){
+	else if(disparo && !aup && !adown && !aleft && !aright && Catacar.getElapsedTime().asSeconds()>0.5){
         stateMovement();
 	}
     animate(elapsedTime);
@@ -245,7 +245,7 @@ void Player::espadazo(){
         }
     }
     else{
-        if(delayBalas.getElapsedTime().asSeconds() > 0.5){
+        if(delayBalas.getElapsedTime().asSeconds() > 2){
             if(aup && !adown && !aright && !aleft){
                 Proyectil* bala = new Proyectil(35.0f,35.0f, 1.0f,body.getPosition());
                 vecProyectil.push_back(bala);
@@ -319,6 +319,7 @@ void Player::teleport(sf::Vector2f pos){
     body.setPosition(lastState.pos);
 
     Catacar.restart();
+    std::cout<<Catacar.getElapsedTime().asMilliseconds()<<std::endl;
 
 }
 

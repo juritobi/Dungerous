@@ -19,9 +19,9 @@ Game::Game()
 :tick(0)
 ,mPlayer()
 ,hudView()
-,boss(sf::Vector2u(3,8), &mPlayer, 3)
 ,cl()
 {
+    boss=new Boss(sf::Vector2u(3,8), &mPlayer, 3);
     hudView.setSize(762,7608.f);
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.1f));
     App::getApp()->mView.setCenter(sf::Vector2f(960.0f,8160.f));
@@ -43,7 +43,7 @@ Game::Game()
     std::vector<int> p4;
     p4.push_back(3);
     std::vector<int> vect [4]={p1,p2,p3,p4};
-    manejadorPalanca=new PalancaManager(sf::Vector2f(450,7700));
+    manejadorPalanca=new PalancaManager(sf::Vector2f(960+64*-2,2720));
     for(int i =0;i<4;i++){
         palancas[i]= new Palanca(posicionPalanca[i],vect[i],manejadorPalanca);
     }
@@ -62,8 +62,10 @@ Game::Game()
 
 void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
-    if(key == sf::Keyboard::Escape){
-        //abrir menu ingame
+    if(key == sf::Keyboard::P){
+        Pausa::getPausa()->posNuevo();
+        StateManager::getStateManager()->AddState(Pausa::getPausa(), true);
+
     }
     else{
         mPlayer.manageEvents(key, isPressed);
@@ -75,7 +77,7 @@ void Game::update(sf::Time elapsedTime){
 
     mPlayer.update(elapsedTime);
 
-    boss.update();
+    boss->update();
 
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
     mMap->getenemigos()[i]->update();
@@ -99,6 +101,7 @@ void Game::update(sf::Time elapsedTime){
 
 
     mMap->reiniciar();
+    Purgue();
     /*
     if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
         Colisiones::getColisiones()->hostiado();
@@ -114,9 +117,9 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     mPlayer.renderMove(tick);
 
-    boss.renderMove(tick);
+    boss->renderMove(tick);
     mPlayer.renderBalas(tick);
-    boss.renderBalas(tick);
+    boss->renderBalas(tick);
 
 //    enemigo1.renderMove(tick);
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
@@ -136,14 +139,14 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
-    mWindow->draw(boss.getbody());
+    mWindow->draw(boss->getbody());
     for(int i=0; i < mPlayer.getBalas().size();i++){
         mPlayer.getBalas()[i]->Update(App::getApp()->getElapsedTime());
         mWindow->draw(mPlayer.getBalas()[i]->getBody());
     }
-    for(int i=0; i < boss.getBalasBoss().size();i++){
-        boss.getBalasBoss()[i]->Update(App::getApp()->getElapsedTime());
-        mWindow->draw( boss.getBalasBoss()[i]->getBody());
+    for(int i=0; i < boss->getBalasBoss().size();i++){
+        boss->getBalasBoss()[i]->Update(App::getApp()->getElapsedTime());
+        mWindow->draw( boss->getBalasBoss()[i]->getBody());
     }
     //mWindow->draw(boss.getHitbox());
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
@@ -219,6 +222,18 @@ Palanca* Game::getPalancas(int i){
 }
 std::vector<Portal*> Game::getPortales(){
     return portales;
+}
+
+Boss* Game::getBoss(){
+return boss;
+}
+
+void Game::Purgue()
+{
+    if(boss->gethp()==0){
+    boss==nullptr;
+    delete boss;
+    }
 }
 
 
