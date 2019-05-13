@@ -10,30 +10,31 @@
 class Proyectil
 {
     public:
-        Proyectil(sf::Vector2f pos, Player *player);
+        Proyectil(sf::Vector2f pos);
         virtual ~Proyectil();
-        sf::RectangleShape getbody();
+
+        sf::Sprite        getbody();
         void                        Mover();
         void                        update();
         void                        renderMove(float tick);
         void                        Animar();
-
+        void                        setexiste();
+        bool                        getexiste();
 
     protected:
 
     private:
-    Player *player;
     bool derecha;
     int fila;
     Animation animation;
     sf::Vector2f direccion;
     sf::Texture txt;
-    sf::RectangleShape body;
+    sf::Sprite body;
     State firstState;
     State lastState;
     float speed;
     bool calculado;
-
+    bool existe;
 
 };
 

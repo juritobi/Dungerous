@@ -13,19 +13,25 @@ class Enemy
         Enemy(sf::Vector2u vec, Player* player, int vida, int type, sf::Vector2f pos);
 
 
-        sf::RectangleShape          getbody();
 
+
+        void                        setexiste();
         void                        setsala(int i);
+        void                        Purguepos(int i);
         void                        Mover();
         void                        update();
         void                        renderMove(float tick);
         void                        Animar();
         void                        hitted();
         void                        setVida(int i);
-        sf::RectangleShape          getHitbox();
+        sf::Sprite                   getbody();
         void                        disparar();
         std::vector<Proyectil*>     getbalas();
-        sf::Clock *                   getclock();
+        sf::Clock *                 getclock();
+        bool                        getexiste();
+        float                       gethp();
+        void                        sethp();
+        int                         getsala();
 
         State firstState;
         State lastState;
@@ -43,8 +49,8 @@ class Enemy
         bool                        derecha;
         unsigned int                fila;
 
-        sf::RectangleShape          hitb;
-        sf::RectangleShape          body;
+        sf::Sprite                  body;
+
 
         Animation                   animar;
         Animation                   animar2;
@@ -52,8 +58,10 @@ class Enemy
         sf::Vector2f direccion;
         sf::Clock delay;
 
+        float                       hp;
         float                       cd;
         float                       sala;
+        bool                        existe;
 
 
 

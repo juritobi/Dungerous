@@ -74,23 +74,29 @@ void Game::update(sf::Time elapsedTime){
 
     mPlayer.update(elapsedTime);
 
-    for(unsigned int i=0;i<mMap->enemigos.size();i++)
-    mMap->enemigos[i]->update();
+
+    for(unsigned int i=0;i<mMap->getenemigos().size();i++)
+    mMap->getenemigos()[i]->update();
     for(int i = 0;i<portales.size();i++){
         portales[i]->letsGo();
     }
     Colisiones::getColisiones()->entorno();
     Colisiones::getColisiones()->importalte();
     //Colisiones::getColisiones()->hostion();
-    mMap->camaramove(&mPlayer,&App::getApp()->mView);
+
+
+    for(unsigned int i=0;i<mMap->getenemigos().size();i++)
+    mMap->getenemigos()[i]->update();
+
     mMap->asignarsala();
 
 
-    for(unsigned int i=0;i<mMap->enemigos.size();i++)
-        for(unsigned int j=0;j<mMap->enemigos[i]->getbalas().size();j++)
-         mMap->enemigos[i]->getbalas().at(j)->update();
+    for(unsigned int i=0;i<mMap->getenemigos().size();i++)
+        for(unsigned int j=0;j<mMap->getenemigos()[i]->getbalas().size();j++)
+         mMap->getenemigos()[i]->getbalas().at(j)->update();
 
 
+    mMap->reiniciar();
     /*
     if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
         Colisiones::getColisiones()->hostiado();
@@ -106,8 +112,8 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     mPlayer.renderMove(tick);
 //    enemigo1.renderMove(tick);
-    for(unsigned int i=0;i<mMap->enemigos.size();i++)
-    mMap->enemigos[i]->renderMove(tick);
+    for(unsigned int i=0;i<mMap->getenemigos().size();i++)
+    mMap->getenemigos()[i]->renderMove(tick);
 
 
 
@@ -125,12 +131,12 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
-    for(unsigned int i=0;i<mMap->enemigos.size();i++)
+    for(unsigned int i=0;i<mMap->getenemigos().size();i++)
     {
-    mWindow->draw(mMap->enemigos[i]->getbody());
-        for(unsigned int j=0;j<mMap->enemigos[i]->getbalas().size();j++){
-         mMap->enemigos[i]->getbalas().at(j)->renderMove(tick);
-         mWindow->draw(mMap->enemigos[i]->getbalas().at(j)->getbody());
+    mWindow->draw(mMap->getenemigos()[i]->getbody());
+        for(unsigned int j=0;j<mMap->getenemigos()[i]->getbalas().size();j++){
+         mMap->getenemigos()[i]->getbalas().at(j)->renderMove(tick);
+         mWindow->draw(mMap->getenemigos()[i]->getbalas().at(j)->getbody());
          }
     }
 
@@ -153,6 +159,8 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     mWindow->draw(hud::getHud()->getTxtPseta());
     hud::getHud()->setCrono(cl,125);
     mWindow->draw(hud::getHud()->getTxtCrono());
+
+
 
 
 }
@@ -192,9 +200,14 @@ Player* Game::getPlayer(){
     return &mPlayer;
 }
 
+
 Palanca* Game::getPalancas(int i){
     return palancas[i];
 }
 std::vector<Portal*> Game::getPortales(){
     return portales;
 }
+
+
+
+

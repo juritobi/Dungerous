@@ -85,6 +85,7 @@ target.draw(vertex,states);
 void Map::generarmatriz(Player *player)
 {
 this->player=player;
+reinicio=false;
 //Inicializa el tamaño del mapa-----------------------------------------------
 
 tinyxml2::XMLDocument doc;//carga el documento
@@ -144,7 +145,7 @@ for(unsigned int l=0; l<_numLayers;l++)
 
 this->data=map->FirstChildElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
 
-int aux=0;
+
 
 bool next=true;
 
@@ -289,6 +290,26 @@ void Map::cambiopuertas()
 load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
 }
 
+
+void Map::reiniciapuertas()
+{
+
+ for(unsigned k=0; k<3;k++){
+    for(unsigned int i=0; i<_width;i++){
+        for(unsigned int j=0; j<_height;j++)
+            {
+             if(_tilemap[k][j][i]==479)
+             _tilemap[k][j][i]=433;
+
+
+            }
+        }
+    }
+
+std::cout<<"hola2"<<std::endl;
+load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
+}
+
 void Map::Mostrar(sf::RenderWindow& window)
 {
 //std::cout<<muros.size()<<std::endl;
@@ -304,51 +325,33 @@ window.draw(*puertas[i]);
 }
 
 
-void Map::camaramove(Player *player, sf::View *camara)
-{
-bool cambio=false;
-    for(unsigned int i=0; i<puertas.size();i++)
-    {
-        if(player->getHitb().getGlobalBounds().intersects(puertas[i]->getGlobalBounds()) && cambio==false){
-        player->setPosition(sf::Vector2f(player->getHitb().getPosition().x,player->getHitb().getPosition().y-200.0f));
-        camara->setCenter(sf::Vector2f(camara->getCenter().x,camara->getCenter().y-1088.0f));
-        cambio=true;
-        cambiopuertas();
-        player->setsala(1);
-        for(unsigned int i=0; i<enemigos.size();i++)
-        enemigos[i]->getclock()->restart();
-        }
-
-
-    }
-}
 void Map::asignarsala()
 {
 
     for(unsigned int i=0; i<enemigos.size();i++)
     {
-        if(enemigos[i]->getHitbox().getPosition().y>0.0f && enemigos[i]->getHitbox().getPosition().y<1080.0f)
+        if(enemigos[i]->getbody().getPosition().y>0.0f && enemigos[i]->getbody().getPosition().y<1080.0f)
         enemigos[i]->setsala(0);
 
-        else if(enemigos[i]->getHitbox().getPosition().y>1080.0f && enemigos[i]->getHitbox().getPosition().y<2160.0f)
+        else if(enemigos[i]->getbody().getPosition().y>1080.0f && enemigos[i]->getbody().getPosition().y<2160.0f)
         enemigos[i]->setsala(1);
 
-        else if(enemigos[i]->getHitbox().getPosition().y>2160.0f && enemigos[i]->getHitbox().getPosition().y<3240.0f)
+        else if(enemigos[i]->getbody().getPosition().y>2160.0f && enemigos[i]->getbody().getPosition().y<3240.0f)
         enemigos[i]->setsala(2);
 
-        else if(enemigos[i]->getHitbox().getPosition().y>3240.0f && enemigos[i]->getHitbox().getPosition().y<4320.0f)
+        else if(enemigos[i]->getbody().getPosition().y>3240.0f && enemigos[i]->getbody().getPosition().y<4320.0f)
         enemigos[i]->setsala(3);
 
-        else if(enemigos[i]->getHitbox().getPosition().y>4320.0f && enemigos[i]->getHitbox().getPosition().y<5400.0f)
+        else if(enemigos[i]->getbody().getPosition().y>4320.0f && enemigos[i]->getbody().getPosition().y<5400.0f)
         enemigos[i]->setsala(4);
 
-        else if(enemigos[i]->getHitbox().getPosition().y>5400.0f && enemigos[i]->getHitbox().getPosition().y<6480.0f)
+        else if(enemigos[i]->getbody().getPosition().y>5400.0f && enemigos[i]->getbody().getPosition().y<6480.0f)
         enemigos[i]->setsala(5);
 
-        else if(enemigos[i]->getHitbox().getPosition().y>6480.0f && enemigos[i]->getHitbox().getPosition().y<7560.0f)
+        else if(enemigos[i]->getbody().getPosition().y>6480.0f && enemigos[i]->getbody().getPosition().y<7560.0f)
         enemigos[i]->setsala(6);
 
-        else if(enemigos[i]->getHitbox().getPosition().y>7560.0f && enemigos[i]->getHitbox().getPosition().y<8640.0f)
+        else if(enemigos[i]->getbody().getPosition().y>7560.0f && enemigos[i]->getbody().getPosition().y<8640.0f)
         enemigos[i]->setsala(7);
 
 
@@ -356,6 +359,48 @@ void Map::asignarsala()
     }
 
 }
+std::vector<Enemy*> Map::getenemigos(){
+return enemigos;
+}
+
+std::vector<sf::RectangleShape*> Map::getmuros()
+{
+return muros;
+}
+
+std::vector<sf::RectangleShape*> Map::getpuertas()
+{
+return puertas;
+}
+
+
+
+void Map::Purguepos(int i){
+
+delete enemigos[i];
+enemigos.erase(enemigos.begin()+i);
+
+}
+
+void Map::reiniciar()
+{
+int n=0;
+    for(unsigned int i=0; i<enemigos.size();i++)
+        if(enemigos[i]->getsala()==player->getsala())
+        n++;
+
+
+    if(n==0 && reinicio==false){
+    cambiopuertas();
+    reinicio=true;
+    }
+}
+
+void Map::setreinicio()
+{
+reinicio=false;
+}
+
 
 
 

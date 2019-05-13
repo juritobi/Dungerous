@@ -52,7 +52,7 @@ class Player
         sf::Clock               Catacar;
         sf::Clock               Crodar;
 
-        sf::RectangleShape      box;
+        sf::RectangleShape      body;
         sf::RectangleShape      hitb;
         sf::RectangleShape      espada;
         float                   speed;
