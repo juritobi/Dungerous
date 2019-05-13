@@ -1,6 +1,7 @@
 #include <sstream>
 #include "../include/SplashState.h"
 #include <iostream>
+#include "Menu.h"
 #include "../include/App.h"
 #include "../include/AssetManager.h"
 SplashState* SplashState::splashState = 0;
@@ -24,7 +25,8 @@ SplashState::SplashState()
 void SplashState::manageEvents(sf::Keyboard::Key key, bool isPressed)
 {
         if(key == sf::Keyboard::Space||key == sf::Keyboard::Return){
-            StateManager::getStateManager()->AddState(Game::getGame(), true);
+            if(isPressed)
+            StateManager::getStateManager()->AddState(Menu::getMenu(), true);
         }
 }
 
@@ -32,7 +34,7 @@ void SplashState::update(sf::Time elapsedTime)
 {
     if (_clock.getElapsedTime().asSeconds() > 5)
     {
-        StateManager::getStateManager()->AddState(Game::getGame(), true);
+        StateManager::getStateManager()->AddState(Menu::getMenu(), true);
     }
 }
 
