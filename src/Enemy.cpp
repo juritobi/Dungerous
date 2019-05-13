@@ -20,12 +20,12 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
     if(type==0){
     body.setTexture(AssetManager::getAssetManager()->GetTexture("enem"));
     fila = 0;
-    hp=5;
+    hp=2;
     }
     else{
     body.setTexture(AssetManager::getAssetManager()->GetTexture("enem2"));
     fila = 0;
-    hp=3;
+    hp=1;
     }
 
 

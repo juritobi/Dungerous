@@ -25,6 +25,7 @@ class Colisiones
 
 
 
+
     private:
         static Colisiones* colisiones;
         Colisiones();

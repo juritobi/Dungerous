@@ -27,7 +27,7 @@ class Boss
         void                        Embestir(sf::Time elapsedTime);
         sf::Vector2f                firstState;
         sf::Vector2f                lastState;
-
+        int                         getsala();
         std::vector<Proyectil*>     getBalasBoss();
 
 
@@ -43,7 +43,8 @@ class Boss
         bool                        atacando;
         bool                        embistiendo;
         int                         ataqueRandom;
-
+        int                         sala;
+        int                         hp;
 
 
 

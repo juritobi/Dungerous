@@ -79,7 +79,7 @@ void Colisiones::camaramove()
             for(unsigned int i=0; i<Map::getMap()->getpuertas().size();i++)
             {
                 if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getpuertas()[i]->getGlobalBounds()) && cambio==false){
-                Game::getGame()->getGame()->getPlayer()->setPosition(sf::Vector2f( Game::getGame()->getGame()->getPlayer()->getHitb().getPosition().x, Game::getGame()->getGame()->getPlayer()->getHitb().getPosition().y-200.0f));
+                Game::getGame()->getGame()->getPlayer()->setPosition(sf::Vector2f( 960.0f, Game::getGame()->getGame()->getPlayer()->getHitb().getPosition().y-200.0f));
                 App::getApp()->mView.setCenter(sf::Vector2f( App::getApp()->mView.getCenter().x, App::getApp()->mView.getCenter().y-1088.0f));
                 cambio=true;
                 Map::getMap()->cambiopuertas();
@@ -118,9 +118,20 @@ void Colisiones::espadaenemigo()
             }
         }
 
+
+
+    for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
+        for(unsigned int j=0; j<Map::getMap()->getenemigos().size();j++)
+            if(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(j)->getbody().getGlobalBounds()))
+            {
+                Map::getMap()->getenemigos().at(j)->sethp();
+                reloj.restart();
+                if(Map::getMap()->getenemigos().at(j)->gethp()==0)
+                Map::getMap()->getenemigos().at(j)->setexiste();
+
+            }
+
     }
-
-
     enemigo();
 
 }

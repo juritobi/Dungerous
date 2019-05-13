@@ -25,6 +25,7 @@ class Game : public InterfazEstado {
         void            saveGame();
         Player*         getPlayer();
         Enemy*          getEnemigo();
+        Boss*           getBoss();
         Palanca*        getPalancas(int i);
         std::vector<Portal*> getPortales();
         Player          mPlayer;
@@ -42,7 +43,7 @@ class Game : public InterfazEstado {
 
         Map*     mMap;
 
-        Boss    boss;
+        Boss*    boss;
 
         std::vector<Portal*> portales;
 

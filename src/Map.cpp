@@ -1,4 +1,5 @@
 #include "Map.h"
+#include "Game.h"
 
 Map* Map::mapa=0;
 
@@ -387,6 +388,9 @@ void Map::reiniciar()
 int n=0;
     for(unsigned int i=0; i<enemigos.size();i++)
         if(enemigos[i]->getsala()==player->getsala())
+        n++;
+
+    if(Game::getGame()->getBoss()->getsala()==player->getsala())
         n++;
 
 

@@ -9,10 +9,10 @@ Boss::Boss(sf::Vector2u vec, Player* player, int vida)//comento cosas para proba
 ,atacando(false)
 {
 
-    firstState=sf::Vector2f(960,8000);
-
+    firstState=sf::Vector2f(960,600);
+    vida=10;
     lastState=firstState;
-
+    sala=0;
     embistiendo=false;
     speed=100.f;
     this->player = player;
@@ -36,10 +36,14 @@ Boss::~Boss()
 }
 
 void Boss::update(){
+
+    if(Game::getGame()->getBoss()->getsala()==player->getsala()){
     direccion=player->getPosition() - body.getPosition();
     direccion=App::getApp()->normalizar(direccion);
-    Animar();
+
     Mover();
+    }
+    Animar();
 }
 
 void Boss::Mover()//mueve al enemigo hacia el player
@@ -249,5 +253,9 @@ sf::Sprite Boss::getbody()//obtener el body
 
 std::vector<Proyectil*> Boss::getBalasBoss(){
     return vecBalasBoss;
+}
+
+int Boss::getsala(){
+return sala;
 }
 
