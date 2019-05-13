@@ -11,6 +11,7 @@
 #include "PalancaManager.h"
 #include "Portal.h"
 #include "Tienda.h"
+#include "Pausa.h"
 
 class Game : public InterfazEstado {
     public:

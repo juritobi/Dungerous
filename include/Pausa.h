@@ -1,16 +1,30 @@
-#ifndef PAUSA_H
-#define PAUSA_H
+#pragma once
+
+#include <SFML/Graphics.hpp>
+#include "InterfazEstado.h"
+#include "Game.h"
+#include "Menu.h"
 
 
-class Pausa
-{
-    public:
-        Pausa();
-        virtual ~Pausa();
+	class Pausa : public InterfazEstado
+	{
+	public:
+        static Pausa* getPausa();
+        void  manageEvents(sf::Keyboard::Key key, bool isPressed);
+        void  update(sf::Time elapsedTime);
+        void  render(sf::Time minUpdateTime, sf::Time updateTime);
+        void  posNuevo();
 
-    protected:
+	private:
 
-    private:
-};
+		Pausa();
 
-#endif // PAUSA_H
+		sf::RectangleShape background;
+        sf::Sprite _homeButton;
+		sf::Sprite _playButton;
+
+        static Pausa* pausa;
+
+	};
+
+

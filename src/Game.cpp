@@ -62,8 +62,10 @@ Game::Game()
 
 void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
-    if(key == sf::Keyboard::Escape){
-        //abrir menu ingame
+    if(key == sf::Keyboard::P){
+        Pausa::getPausa()->posNuevo();
+        StateManager::getStateManager()->AddState(Pausa::getPausa(), true);
+
     }
     else{
         mPlayer.manageEvents(key, isPressed);
