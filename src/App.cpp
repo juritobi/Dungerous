@@ -26,10 +26,13 @@ App::App()
 
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
 
+    AssetManager::getAssetManager()->createTexture("portal","assets/portal.png");
     AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
-    AssetManager::getAssetManager()->createTexture("player", "assets/completo.png");//yo no estoy aqui
+    AssetManager::getAssetManager()->createTexture("enem2","assets/enemy2.png");
+    AssetManager::getAssetManager()->createTexture("player", "assets/completo.png");
+    AssetManager::getAssetManager()->createTexture("fireball", "assets/fireball.png");
+    AssetManager::getAssetManager()->createTexture("tienda", "assets/tienda.png");
 }
-
 App* App::getApp(){
 
     if (app == 0)

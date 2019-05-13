@@ -13,6 +13,7 @@ Animation::Animation(float time, sf::Vector2u vect, std::string text)
     imactual.y=0;
     texture= AssetManager::getAssetManager()->GetTexture(text);
 
+
     uvRect.width=texture.getSize().x / float(vec.x);
     uvRect.height=texture.getSize().y / float(vec.y);
 }
