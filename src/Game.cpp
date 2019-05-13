@@ -42,7 +42,7 @@ Game::Game()
     std::vector<int> p4;
     p4.push_back(3);
     std::vector<int> vect [4]={p1,p2,p3,p4};
-    manejadorPalanca=new PalancaManager(sf::Vector2f(450,7700));
+    manejadorPalanca=new PalancaManager(sf::Vector2f(960,4836));
     for(int i =0;i<4;i++){
         palancas[i]= new Palanca(posicionPalanca[i],vect[i],manejadorPalanca);
     }
