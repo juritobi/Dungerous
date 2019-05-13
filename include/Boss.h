@@ -29,6 +29,8 @@ class Boss
         sf::Vector2f                lastState;
         int                         getsala();
         std::vector<Proyectil*>     getBalasBoss();
+        void                        sethp();
+        int                         gethp();
 
 
     protected:
@@ -44,7 +46,7 @@ class Boss
         bool                        embistiendo;
         int                         ataqueRandom;
         int                         sala;
-        int                         hp;
+
 
 
 

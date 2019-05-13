@@ -10,7 +10,7 @@ Boss::Boss(sf::Vector2u vec, Player* player, int vida)//comento cosas para proba
 {
 
     firstState=sf::Vector2f(960,600);
-    vida=10;
+    vida=vida;
     lastState=firstState;
     sala=0;
     embistiendo=false;
@@ -41,8 +41,10 @@ void Boss::update(){
     direccion=player->getPosition() - body.getPosition();
     direccion=App::getApp()->normalizar(direccion);
 
+    std::cout<<vida<<std::endl;
+
     Mover();
-    }
+   }
     Animar();
 }
 
@@ -259,3 +261,12 @@ int Boss::getsala(){
 return sala;
 }
 
+void Boss::sethp()
+{
+vida--;
+}
+
+int Boss::gethp()
+{
+return vida;
+}
