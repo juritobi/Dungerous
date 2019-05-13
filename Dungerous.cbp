@@ -35,6 +35,7 @@
 					<Add library="sfml-graphics" />
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
+					<Add library="sfml-audio" />
 				</Linker>
 			</Target>
 		</Build>
@@ -54,6 +55,7 @@
 		<Unit filename="include/Map.h" />
 		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Palanca.h" />
+		<Unit filename="include/PalancaManager.h" />
 		<Unit filename="include/Pausa.h" />
 		<Unit filename="include/Player.h" />
 		<Unit filename="include/Portal.h" />
@@ -79,6 +81,7 @@
 		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Palanca.cpp" />
+		<Unit filename="src/PalancaManager.cpp" />
 		<Unit filename="src/Pausa.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Portal.cpp" />

@@ -7,17 +7,24 @@
 #include "Animation.h"
 
 
+
 class Proyectil
 {
     public:
+
         Proyectil(float x, float y, float ndireccion, sf::Vector2f posInicial);
         Proyectil(float ndireccion, sf::Vector2f posInicial, int dirx, int diry, sf::Vector2f direccion);
-        virtual ~Proyectil();
+
+        Proyectil(sf::Vector2f pos);
+
         sf::Sprite                      getBody();
-        void                            setPosicion();
         void                            Update(sf::Time elapsedTime);
         void                            Render(float tick);
-    protected:
+
+        void                        Mover();
+        void                        Animar();
+        void                        setexiste();
+        bool                        getexiste();
 
     private:
         int                             varx;
@@ -26,9 +33,20 @@ class Proyectil
         sf::Vector2f                    vecDireccion;
         sf::Vector2f                    lastState;
         sf::Vector2f                    firstState;
-        Animation                       animation;
-        float                           direccion;
+        Animation                       animationBolaFuego;
+        Animation                       animationHachaBoss;
+        float                           tipoBala;
         sf::Sprite                      body;
+
+        bool derecha;
+        int fila;
+        sf::Vector2f direccion;
+
+        float speed;
+        bool existe;
+
+
+    private:
 };
 
 #endif // PROYECTIL_H

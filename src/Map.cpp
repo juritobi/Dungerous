@@ -10,6 +10,9 @@ Map* Map::getMap(){
 }
 
 Map::Map(){
+
+
+
 }
 
 bool Map::load(const std::string& tileset, sf::Vector2u tileSize, int*** level, unsigned int width, unsigned int height, int numlayers)
@@ -79,9 +82,10 @@ target.draw(vertex,states);
 }
 
 
-void Map::generarmatriz()
+void Map::generarmatriz(Player *player)
 {
-
+this->player=player;
+reinicio=false;
 //Inicializa el tamaño del mapa-----------------------------------------------
 
 tinyxml2::XMLDocument doc;//carga el documento
@@ -141,7 +145,7 @@ for(unsigned int l=0; l<_numLayers;l++)
 
 this->data=map->FirstChildElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
 
-int aux=0;
+
 
 bool next=true;
 
@@ -158,7 +162,7 @@ for(unsigned int l=0;l<=_numLayers;l++){
             next=true;
             }
             if(l==4){
-            data=map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
+            data=map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
             next=true;
             }
 
@@ -175,51 +179,51 @@ for(unsigned int l=0;l<=_numLayers;l++){
             }
 
 
-            if((l==2 || l==3 || l==4) && next==true){
-            std::cout<<l<<std::endl;
+            if((l==2 || l==3 || l==4)){
+
             data->QueryIntAttribute("id",&id);
             data->QueryIntAttribute("x",&cx);
             data->QueryIntAttribute("y",&cy);
             data->QueryIntAttribute("width",&objwid);
             data->QueryIntAttribute("height",&objhei);
 
-                if(!data->NextSiblingElement("object") && l==2){
+                if(data->NextSiblingElement("object") && l==2){
                 data= data->NextSiblingElement("object");
                 generarcolision(cx,cy,objhei,objwid);
-                next=false;
                 }
-                else if(l==2){
-                 data= data->NextSiblingElement("object");
-                 generarcolision(cx,cy,objhei,objwid);
-                }
-                else if(!data->NextSiblingElement("object") && l==3){
-                data= data->NextSiblingElement("object");
-                generarpuerta(cx,cy,objhei,objwid);
-                next=false;
-                }
-                else if(l==3){
+                else if(data->NextSiblingElement("object") && l==3){
                 data= data->NextSiblingElement("object");
                 generarpuerta(cx,cy,objhei,objwid);
                 }
-                else if(!data->NextSiblingElement("object") && l==4){
-                data= data->NextSiblingElement("object");
-                generarpuerta(cx,cy,objhei,objwid);
-                next=false;
-                }
-                else if(l==4){
-                data= data->NextSiblingElement("object");
-                generarspawns(cx,cy,objhei,objwid);
-                }
 
+                else if(data->NextSiblingElement("object") && l==4){
 
-
+                    if(data->FirstChildElement("ellipse")){
+                        data= data->NextSiblingElement("object");
+                        generarspawns(cx,cy,objhei,objwid,1);
+                        }
+                        else{
+                        data= data->NextSiblingElement("object");
+                        generarspawns(cx,cy,objhei,objwid,0);
                         }
 
                     }
+
+                else if(!data->NextSiblingElement("object") && l==4 && next==true){
+
+                     if(data->FirstChildElement("ellipse")){
+                        generarspawns(cx,cy,objhei,objwid,1);
+                        next=false;
+                        }
+                        else{
+                        generarspawns(cx,cy,objhei,objwid,0);
+                        next=false;
+                        }
+                    }
                 }
-
             }
-
+        }
+    }
 }
 
 
@@ -232,6 +236,8 @@ muro->setSize(sf::Vector2f(w,h));
 muro->setPosition(sf::Vector2f(x,y));
 muro->setFillColor(sf::Color::Red);
 muros.push_back(muro);
+muro=nullptr;
+delete muro;
 
 }
 
@@ -243,19 +249,26 @@ puerta->setSize(sf::Vector2f(w,h));
 puerta->setPosition(sf::Vector2f(x,y));
 puerta->setFillColor(sf::Color::Red);
 puertas.push_back(puerta);
-
+puerta=nullptr;
+delete puerta;
 
 }
 
-void Map::generarspawns(int x, int y, int h, int w)
+void Map::generarspawns(int x, int y, int h, int w, int type)
 {
-sf::RectangleShape *spawn= new sf::RectangleShape();
-spawn->setSize(sf::Vector2f(w,h));
-spawn->setPosition(sf::Vector2f(x,y));
-spawn->setFillColor(sf::Color::Red);
-spawns.push_back(spawn);
-std::cout<<spawns.size()<<std::endl;
+if(type==0){
+Enemy *enemigo= new Enemy(sf::Vector2u (4,4), player, 3,type,sf::Vector2f(x,y));
+enemigos.push_back(enemigo);
+enemigo=nullptr;
+delete enemigo;
+}
+if(type==1){
+Enemy *enemigo= new Enemy(sf::Vector2u (3,8), player, 3,type,sf::Vector2f(x,y));
+enemigos.push_back(enemigo);
+enemigo=nullptr;
+delete enemigo;
 
+}
 }
 
 void Map::cambiopuertas()
@@ -277,6 +290,26 @@ void Map::cambiopuertas()
 load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
 }
 
+
+void Map::reiniciapuertas()
+{
+
+ for(unsigned k=0; k<3;k++){
+    for(unsigned int i=0; i<_width;i++){
+        for(unsigned int j=0; j<_height;j++)
+            {
+             if(_tilemap[k][j][i]==479)
+             _tilemap[k][j][i]=433;
+
+
+            }
+        }
+    }
+
+std::cout<<"hola2"<<std::endl;
+load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
+}
+
 void Map::Mostrar(sf::RenderWindow& window)
 {
 //std::cout<<muros.size()<<std::endl;
@@ -285,27 +318,89 @@ for( unsigned int i=0; i<muros.size();i++)
 window.draw(*muros[i]);
 for( unsigned int i=0; i<puertas.size();i++)
 window.draw(*puertas[i]);
+
 //std::cout<<muros[i]->getSize().x<<std::endl;
 
 
 }
 
 
-void Map::camaramove(Player *player, sf::View *camara)
+void Map::asignarsala()
 {
-bool cambio=false;
-    for(unsigned int i=0; i<puertas.size();i++)
+
+    for(unsigned int i=0; i<enemigos.size();i++)
     {
-        if(player->getHitb().getGlobalBounds().intersects(puertas[i]->getGlobalBounds()) && cambio==false){
-        player->setPosition(sf::Vector2f(player->getHitb().getPosition().x,player->getHitb().getPosition().y-200.0f));
-        camara->setCenter(sf::Vector2f(camara->getCenter().x,camara->getCenter().y-1088.0f));
-        cambio=true;
-        cambiopuertas();
-        }
+        if(enemigos[i]->getbody().getPosition().y>0.0f && enemigos[i]->getbody().getPosition().y<1080.0f)
+        enemigos[i]->setsala(0);
+
+        else if(enemigos[i]->getbody().getPosition().y>1080.0f && enemigos[i]->getbody().getPosition().y<2160.0f)
+        enemigos[i]->setsala(1);
+
+        else if(enemigos[i]->getbody().getPosition().y>2160.0f && enemigos[i]->getbody().getPosition().y<3240.0f)
+        enemigos[i]->setsala(2);
+
+        else if(enemigos[i]->getbody().getPosition().y>3240.0f && enemigos[i]->getbody().getPosition().y<4320.0f)
+        enemigos[i]->setsala(3);
+
+        else if(enemigos[i]->getbody().getPosition().y>4320.0f && enemigos[i]->getbody().getPosition().y<5400.0f)
+        enemigos[i]->setsala(4);
+
+        else if(enemigos[i]->getbody().getPosition().y>5400.0f && enemigos[i]->getbody().getPosition().y<6480.0f)
+        enemigos[i]->setsala(5);
+
+        else if(enemigos[i]->getbody().getPosition().y>6480.0f && enemigos[i]->getbody().getPosition().y<7560.0f)
+        enemigos[i]->setsala(6);
+
+        else if(enemigos[i]->getbody().getPosition().y>7560.0f && enemigos[i]->getbody().getPosition().y<8640.0f)
+        enemigos[i]->setsala(7);
+
+
+
     }
 
+}
+std::vector<Enemy*> Map::getenemigos(){
+return enemigos;
+}
+
+std::vector<sf::RectangleShape*> Map::getmuros()
+{
+return muros;
+}
+
+std::vector<sf::RectangleShape*> Map::getpuertas()
+{
+return puertas;
+}
+
+
+
+void Map::Purguepos(int i){
+
+delete enemigos[i];
+enemigos.erase(enemigos.begin()+i);
 
 }
+
+void Map::reiniciar()
+{
+int n=0;
+    for(unsigned int i=0; i<enemigos.size();i++)
+        if(enemigos[i]->getsala()==player->getsala())
+        n++;
+
+
+    if(n==0 && reinicio==false){
+    cambiopuertas();
+    reinicio=true;
+    }
+}
+
+void Map::setreinicio()
+{
+reinicio=false;
+}
+
 
 
 

@@ -5,8 +5,9 @@
 #include "../include/Colisiones.h"
 #include "../include/App.h"
 
-Player::Player(hud* hud)
-:box(sf::Vector2f(100,100))
+
+Player::Player()
+:body(sf::Vector2f(85,85))
 ,speed(300.f)
 ,up(false)
 ,down(false)
@@ -16,7 +17,6 @@ Player::Player(hud* hud)
 ,adown(false)
 ,aright(false)
 ,aleft(false)
-,mHud(hud)
 ,life(3)
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
@@ -26,15 +26,23 @@ Player::Player(hud* hud)
 ,parar(false)
 ,disparo(false)
 {
-
+    sala=7;
     firstState.pos=sf::Vector2f(960,8360);
     firstState.hitbox=&hitb;
     lastState=firstState;
-    box.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
-    box.setOrigin(box.getSize()/2.0f);
+    body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
+    body.setOrigin(body.getSize()/2.0f);
+
 }
 //detecta las teclas pulsadas
 void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
+
+    if(key== sf::Keyboard::E){
+        if(isPressed){
+            Colisiones::getColisiones()->palanca();
+        }
+    }
+
 
     if (key == sf::Keyboard::W)
         up=isPressed;
@@ -92,7 +100,7 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Player::update(sf::Time elapsedTime){
 
     if(life==0){
-        box.setFillColor(sf::Color::Red);
+        body.setFillColor(sf::Color::Red);
     }
 
 	if(!disparo && Catacar.getElapsedTime().asSeconds()>0.5){
@@ -141,13 +149,13 @@ void Player::animate(sf::Time elapsedTime){
     else if(rodando && Crodar.getElapsedTime().asSeconds()>0.5 && Crodar.getElapsedTime().asSeconds()<1){
         speed=300;
         rodando=false;
-        std::cout <<"me reinicio"<<std::endl;
+//        std::cout <<"me reinicio"<<std::endl;
 
     }
     else if(rodando && Crodar.getElapsedTime().asSeconds()>1){
         speed=300;
         Crodar.restart();
-        std::cout <<"me reinicio parte 2"<<std::endl;
+     //   std::cout <<"me reinicio parte 2"<<std::endl;
     }
     else{
         speed=300;
@@ -211,28 +219,27 @@ void Player::animate(sf::Time elapsedTime){
 
 
     animation.animar(fila, elapsedTime,derecha,parar);
-    box.setTextureRect(animation.uvRect);
+    body.setTextureRect(animation.uvRect);
 }
 
 void Player::espadazo(){
     if(!disparo){
         if(aup){
             espada.setSize(sf::Vector2f(50.0f,30.0f));
-            espada.setPosition(box.getPosition().x-25 , box.getPosition().y-50.0f);
+            espada.setPosition(body.getPosition().x-25 , body.getPosition().y-50.0f);
         }
         if(adown){
             espada.setSize(sf::Vector2f(50.0f,30.0f));
-            espada.setPosition(box.getPosition().x-25 , box.getPosition().y+20.0f);
+            espada.setPosition(body.getPosition().x-25 , body.getPosition().y+20.0f);
         }
         if(aright){
             espada.setSize(sf::Vector2f(30.0f,50.0f));
-            espada.setPosition(box.getPosition().x+20 , box.getPosition().y-25);
+            espada.setPosition(body.getPosition().x+20 , body.getPosition().y-25);
         }
         if(aleft){
             espada.setSize(sf::Vector2f(30.0f,50.0f));
-            espada.setPosition(box.getPosition().x-50, box.getPosition().y-25);
+            espada.setPosition(body.getPosition().x-50, body.getPosition().y-25);
         }
-
         if(Catacar.getElapsedTime().asSeconds()>0.5){
             espada.setSize(sf::Vector2f(0,0));
         }
@@ -240,28 +247,28 @@ void Player::espadazo(){
     else{
         if(delayBalas.getElapsedTime().asSeconds() > 0.5){
             if(aup){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 1.0f,box.getPosition());
+                Proyectil* bala = new Proyectil(35.0f,35.0f, 1.0f,body.getPosition());
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
             if(adown){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 2.0f,box.getPosition());
+                Proyectil* bala = new Proyectil(35.0f,35.0f, 2.0f,body.getPosition());
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
             if(aright){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 3.0f,box.getPosition());
+                Proyectil* bala = new Proyectil(35.0f,35.0f, 3.0f,body.getPosition());
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
             if(aleft){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 4.0f,box.getPosition());
+                Proyectil* bala = new Proyectil(35.0f,35.0f, 4.0f,body.getPosition());
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
@@ -277,13 +284,15 @@ void Player::espadazo(){
 
 void Player::loseLife(int i){
     life=life-1;
-    mHud->loseLife(i);
+    hud::getHud()->loseLife(i);
 
 }
 //mueve al personaje en funcion de sus estados y el tick
 void Player::renderMove(float tick){
-    box.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
-    hitb.setPosition(box.getPosition()+sf::Vector2f(-15.0f,-15.0f));
+
+    body.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
+    hitb.setPosition(body.getPosition()+sf::Vector2f(-15.0f,-15.0f));
+
 
 }
 
@@ -300,11 +309,24 @@ void Player::setPosition(sf::Vector2f pos){
     lastState.pos=pos;
 }
 
+void Player::teleport(sf::Vector2f pos){
+
+    lastState.pos=pos;
+    lastState.hitbox->setPosition(lastState.pos);
+    firstState.pos=pos;
+    firstState.hitbox->setPosition(firstState.pos);
+    hitb.setPosition(lastState.pos);
+    body.setPosition(lastState.pos);
+
+    Catacar.restart();
+
+}
+
 
 
 
 sf::RectangleShape Player::getBody(){
-    return box;
+    return body;
 }
 sf::RectangleShape Player::getHitb(){
     return *lastState.hitbox;
@@ -321,11 +343,11 @@ std::vector<Proyectil*> Player::getBalas(){
     return vecProyectil;
 }
 
-
+/*
 void Player::hitted(){
 
     loseLife(1);
-    sf::Vector2f vec = box.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
+    sf::Vector2f vec = body.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
     vec= App::getApp()->normalizar(vec);
     lastState.pos=lastState.pos+vec*multiplier;
     lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-15.0f));
@@ -342,9 +364,17 @@ void Player::hitted(){
 
     multiplier=100.f;
 }
+*/
 
 void Player::colision(){
     lastState=firstState;
 }
 
+void Player::setsala(int i)
+{
+sala-=1;
+}
 
+int Player::getsala(){
+return sala;
+}

@@ -16,7 +16,7 @@ class Player
 {
     public:
         //Basicas
-        Player(hud* hud);
+        Player();
         void            manageEvents(sf::Keyboard::Key key, bool isPressed);
         void            update(sf::Time elapsedTime);
         void            renderMove(float tick);
@@ -31,6 +31,8 @@ class Player
         void                setPosition(sf::Vector2f pos);
         void                loseLife(int i);
         void                hitted();
+        void                setsala(int i);
+        void                teleport(sf::Vector2f pos);
 
         //getters
         sf::RectangleShape  getBody();
@@ -38,6 +40,7 @@ class Player
         sf::RectangleShape  getEspada();
         sf::Vector2f        getPosition();
         std::vector<Proyectil*> getBalas();
+        int                 getsala();
 
 
         //variables que convendria sacar de aqui
@@ -48,13 +51,12 @@ class Player
     private:
 
         Animation               animation;
-        hud*                    mHud;
         sf::Clock               Catacar;
         sf::Clock               Crodar;
         sf::Clock               relojDisparo;
         sf::Clock               delayBalas;
 
-        sf::RectangleShape      box;
+        sf::RectangleShape      body;
         sf::RectangleShape      hitb;
         sf::RectangleShape      espada;
         float                   speed;
@@ -65,6 +67,7 @@ class Player
         bool                    derecha;
         bool                    parar;
         float                   multiplier;
+        float                   sala;
 
         std::vector<Proyectil*> vecProyectil;
 
@@ -78,6 +81,7 @@ class Player
         bool            aright;
         bool            aleft;
         bool            disparo;
+        bool            interactuando;
 
 
 
