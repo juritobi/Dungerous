@@ -10,6 +10,7 @@ class Animation
         void animar(int fila, sf::Time duracion, bool derecha, bool parar);
         sf::IntRect uvRect;
 
+        void setTime(float x);
 
 
     private:
