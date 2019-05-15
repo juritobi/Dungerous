@@ -33,6 +33,7 @@ class Game : public InterfazEstado {
         std::vector<Portal*> getPortales();
         Player          mPlayer;
         void            Purgue();
+        std::vector<PowerUp*> getPup();
 
     private:
         static Game* game;
@@ -109,7 +110,7 @@ class Game : public InterfazEstado {
         };
 
 
-        PowerUp* mPower[];
+        std::vector<PowerUp*> mPower;
 
 
         int vida=3;

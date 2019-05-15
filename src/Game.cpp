@@ -56,10 +56,10 @@ Game::Game()
     }
 
     tienda=new Tienda(sf::Vector2f(1200,8000));
-    mPower[3];
-    mPower[0]=new PowerUp(sf::Vector2f(1270,8180),1);
+    mPower.push_back(new PowerUp(sf::Vector2f(1270,8180),1));
+    /*mPower[0]=new PowerUp(sf::Vector2f(1270,8180),1);
     mPower[1]=new PowerUp(sf::Vector2f(1200,8000),2);
-    mPower[2]=new PowerUp(sf::Vector2f(1200,8000),3);
+    mPower[2]=new PowerUp(sf::Vector2f(1200,8000),3);*/
 
 
 }
@@ -91,6 +91,7 @@ void Game::update(sf::Time elapsedTime){
     }
     Colisiones::getColisiones()->entorno();
     Colisiones::getColisiones()->importalte();
+    Colisiones::getColisiones()->pup();
     //Colisiones::getColisiones()->hostion();
 
 
@@ -141,7 +142,13 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         mWindow->draw(portales[i]->getSprite());
     }
     mWindow->draw(tienda->getSprite());
-    mWindow->draw(mPower[0]->getSprite());
+
+
+    for (int i =0;i<mPower.size();i++){
+
+        mWindow->draw(mPower[i]->getSprite());
+    }
+
 
 
     mWindow->draw(mPlayer.getBody());
@@ -242,6 +249,10 @@ void Game::Purgue()
     delete boss;
     }
 }
+std::vector<PowerUp*> Game::getPup(){
+    return mPower;
+}
+
 
 
 
