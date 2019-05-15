@@ -22,7 +22,7 @@ class Colisiones
         void espadaenemigo();
         void limpiar();
         void enemigo();
-
+        void muerte();
 
 
 

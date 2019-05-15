@@ -1,7 +1,7 @@
 #include "Colisiones.h"
 #include "Map.h"
 #include "math.h"
-
+#include "GameOver.h"
 Colisiones* Colisiones::colisiones=0;
 
 Colisiones* Colisiones::getColisiones(){
@@ -10,6 +10,7 @@ Colisiones* Colisiones::getColisiones(){
     }
     return colisiones;
 }
+
 
 Colisiones::Colisiones()
 {
@@ -203,3 +204,12 @@ void Colisiones::limpiar()
 
 }
 
+
+void Colisiones::muerte(){
+
+     if (hud::getHud()->getLife().size() <= 0){
+        StateManager::getStateManager()->AddState(GameOver::getGameOver(), true);
+        GameOver::getGameOver()->posNuevo();
+     }
+
+}
