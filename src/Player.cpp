@@ -21,10 +21,13 @@ Player::Player()
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
 ,animation( 0.1f,sf::Vector2u(5, 12),"player")
+,animationAtaque( 0.1f,sf::Vector2u(5, 12),"player")
 ,fila(3)
 ,derecha(false)
 ,parar(false)
 ,disparo(false)
+,damage(1)
+,atackSpeed(0.5)
 {
     sala=7;
     firstState.pos=sf::Vector2f(960,8360);
@@ -103,8 +106,7 @@ void Player::update(sf::Time elapsedTime){
         body.setFillColor(sf::Color::Red);
     }
 
-	if(!disparo && Catacar.getElapsedTime().asSeconds()>0.5){
-
+	if(!disparo && Catacar.getElapsedTime().asSeconds()>atackSpeed){
         stateMovement();
 	}
 	else if(disparo && !aup && !adown && !aleft && !aright && Catacar.getElapsedTime().asSeconds()>0.5){
@@ -161,8 +163,9 @@ void Player::animate(sf::Time elapsedTime){
         speed=300;
     }
 
-    if(Catacar.getElapsedTime().asSeconds()>0.5){
+    if(Catacar.getElapsedTime().asSeconds()>atackSpeed){
         if(disparo && aup || adown || aleft || aright){
+
         }
         else{
             if(up){
@@ -212,7 +215,7 @@ void Player::animate(sf::Time elapsedTime){
         }
 
 
-        if(Catacar.getElapsedTime().asSeconds()<0.5){
+        if(Catacar.getElapsedTime().asSeconds()<atackSpeed){
             parar=false;
         }
     }
@@ -220,6 +223,16 @@ void Player::animate(sf::Time elapsedTime){
 
     animation.animar(fila, elapsedTime,derecha,parar);
     body.setTextureRect(animation.uvRect);
+
+    if(fila==9||fila==8||fila==7){
+        animationAtaque.animar(fila, elapsedTime,derecha,parar);
+        body.setTextureRect(animationAtaque.uvRect);
+    }
+    else{
+        animation.animar(fila, elapsedTime,derecha,parar);
+        body.setTextureRect(animation.uvRect);
+    }
+
 }
 
 void Player::espadazo(){
@@ -278,15 +291,20 @@ void Player::espadazo(){
 
         }
 
+    if(Catacar.getElapsedTime().asSeconds()>atackSpeed){
+        espada.setSize(sf::Vector2f(0,0));
     }
+}
 }
 
 
 void Player::loseLife(int i){
     life=life-1;
     hud::getHud()->loseLife(i);
-
 }
+
+
+
 //mueve al personaje en funcion de sus estados y el tick
 void Player::renderMove(float tick){
 
@@ -323,7 +341,24 @@ void Player::teleport(sf::Vector2f pos){
 
 }
 
+void Player::pickPu(int i){
+    switch(i){
+        case 1 :
+            life++;
+            mHud->setLife(1);
+            break;
 
+        case 2://fuerza
+            damage++;
+            break;
+
+        case 3://vatt*/
+            atackSpeed-=0.1;
+            animationAtaque.setTime(atackSpeed/5);
+            break;
+    }
+
+}
 
 
 sf::RectangleShape Player::getBody(){
