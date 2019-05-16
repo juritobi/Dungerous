@@ -18,7 +18,8 @@ class hud
         void setPseta(int i);
         bool setCrono(sf::Clock c, int i);
         void loseCrono();
-
+        sf::Time sumaTiempo;
+        sf::Clock tiempoPausa;
     private:
         static hud* hudo;
         hud();
