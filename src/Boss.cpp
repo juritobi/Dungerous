@@ -163,42 +163,42 @@ void Boss::AtaqueRandom(sf::Time elapsedTime){
 
 void Boss::Octogonal(){
     //std::cout<<"entro a octogonal"<<std::endl;
-    Proyectil* bala1 = new Proyectil(5.0f,body.getPosition(),1,0,direccion);
+    Proyectil* bala1 = new Proyectil(5.0f,body.getPosition(),1,0);
     vecBalasBoss.push_back(bala1);
     bala1=nullptr;
     delete bala1;
 
-    Proyectil* bala2 = new Proyectil(5.0f,body.getPosition(),1,1,direccion);
+    Proyectil* bala2 = new Proyectil(5.0f,body.getPosition(),1,1);
     vecBalasBoss.push_back(bala2);
     bala2=nullptr;
     delete bala2;
 
-    Proyectil* bala3 = new Proyectil(5.0f,body.getPosition(),1,-1,direccion);
+    Proyectil* bala3 = new Proyectil(5.0f,body.getPosition(),1,-1);
     vecBalasBoss.push_back(bala3);
     bala3=nullptr;
     delete bala3;
 
-    Proyectil* bala4 = new Proyectil(5.0f,body.getPosition(),-1,-1,direccion);
+    Proyectil* bala4 = new Proyectil(5.0f,body.getPosition(),-1,-1);
     vecBalasBoss.push_back(bala4);
     bala4=nullptr;
     delete bala4;
 
-    Proyectil* bala5 = new Proyectil(5.0f,body.getPosition(),-1,0,direccion);
+    Proyectil* bala5 = new Proyectil(5.0f,body.getPosition(),-1,0);
     vecBalasBoss.push_back(bala5);
     bala5=nullptr;
     delete bala5;
 
-    Proyectil* bala6 = new Proyectil(5.0f,body.getPosition(),-1,1,direccion);
+    Proyectil* bala6 = new Proyectil(5.0f,body.getPosition(),-1,1);
     vecBalasBoss.push_back(bala6);
     bala6=nullptr;
     delete bala6;
 
-    Proyectil* bala7 = new Proyectil(5.0f,body.getPosition(),0,1,direccion);
+    Proyectil* bala7 = new Proyectil(5.0f,body.getPosition(),0,1);
     vecBalasBoss.push_back(bala7);
     bala7=nullptr;
     delete bala7;
 
-    Proyectil* bala8 = new Proyectil(5.0f,body.getPosition(),0,-1,direccion);
+    Proyectil* bala8 = new Proyectil(5.0f,body.getPosition(),0,-1);
     vecBalasBoss.push_back(bala8);
     bala8=nullptr;
     delete bala8;
@@ -206,7 +206,7 @@ void Boss::Octogonal(){
 }
 
 void Boss::Lanzallamas(){
-    Proyectil* bala1 = new Proyectil(6.0f,body.getPosition(),1,0, direccion);
+    Proyectil* bala1 = new Proyectil(6.0f,body.getPosition(),1,0);
     vecBalasBoss.push_back(bala1);
     bala1=nullptr;
     delete bala1;

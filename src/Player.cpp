@@ -245,30 +245,33 @@ void Player::espadazo(){
         }
     }
     else{
+
         if(delayBalas.getElapsedTime().asSeconds() > 0.5){
             if(aup){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 1.0f,body.getPosition());
+
+                Proyectil* bala = new Proyectil(1.0f,hitb.getPosition(),0,0);
                 vecProyectil.push_back(bala);
+
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
             if(adown){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 2.0f,body.getPosition());
+                Proyectil* bala = new Proyectil(2.0f,hitb.getPosition(),0,0);
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
             if(aright){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 3.0f,body.getPosition());
+                Proyectil* bala = new Proyectil(3.0f,hitb.getPosition(),0,0);
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
             if(aleft){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 4.0f,body.getPosition());
+                Proyectil* bala = new Proyectil(4.0f,hitb.getPosition(),0,0);
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
@@ -279,6 +282,7 @@ void Player::espadazo(){
         }
 
     }
+
 }
 
 
@@ -378,4 +382,9 @@ sala-=1;
 
 int Player::getsala(){
 return sala;
+}
+
+int Player::getlife()
+{
+return life;
 }

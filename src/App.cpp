@@ -35,7 +35,9 @@ App::App()
     AssetManager::getAssetManager()->createTexture("player", "assets/completo.png");
     AssetManager::getAssetManager()->createTexture("fireball", "assets/fireball.png");
     AssetManager::getAssetManager()->createTexture("tienda", "assets/tienda.png");
+    AssetManager::getAssetManager()->createTexture("muerte", "assets/Muerte.png");
 }
+
 App* App::getApp(){
 
     if (app == 0)
@@ -47,12 +49,15 @@ App* App::getApp(){
 }
 
 void App::run(){
+
+
     generalClock.restart();
     updateClock.restart();
     updateStart = generalClock.getElapsedTime();
 
     while (mWindow.isOpen())
 	{
+
 
         StateManager::getStateManager()->ProcessStateChanges();
         if(generalClock.getElapsedTime() - updateStart > minUpdateTime){

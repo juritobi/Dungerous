@@ -20,6 +20,7 @@ Game::Game()
 ,mPlayer()
 ,hudView()
 ,cl()
+,dead(0.2f,sf::Vector2u(6, 1),"muerte")
 {
     boss=new Boss(sf::Vector2u(3,8), &mPlayer, 3);
     hudView.setSize(762,7608.f);
@@ -73,6 +74,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
 void Game::update(sf::Time elapsedTime){
 
+
     mPlayer.update(elapsedTime);
 
     boss->update();
@@ -100,6 +102,8 @@ void Game::update(sf::Time elapsedTime){
 
     mMap->reiniciar();
     Purgue();
+
+
     /*
     if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
         Colisiones::getColisiones()->hostiado();
@@ -232,6 +236,11 @@ void Game::Purgue()
     boss==nullptr;
     delete boss;
     }
+}
+
+Animation Game::getdead()
+{
+return dead;
 }
 
 

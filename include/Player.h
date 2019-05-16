@@ -41,6 +41,7 @@ class Player
         sf::Vector2f        getPosition();
         std::vector<Proyectil*> getBalas();
         int                 getsala();
+        int                 getlife();
 
 
         //variables que convendria sacar de aqui

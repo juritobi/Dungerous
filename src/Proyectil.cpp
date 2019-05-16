@@ -1,6 +1,6 @@
 #include "../include/Proyectil.h"
 #include "../include/App.h"
-
+/*
 Proyectil::Proyectil(float x, float y, float ndireccion, sf::Vector2f posInicial):
 animationHachaBoss( 0.1f,sf::Vector2u(4, 1),"flechas")
 ,animationBolaFuego(0.1f,sf::Vector2u(5,1),"fireball")
@@ -15,25 +15,36 @@ animationHachaBoss( 0.1f,sf::Vector2u(4, 1),"flechas")
     varx = 0;
     vary = 0;
 }
-
-Proyectil::Proyectil(float ndireccion, sf::Vector2f posInicial, int dirx, int diry, sf::Vector2f nuevadireccion):
-animationHachaBoss( 0.1f,sf::Vector2u(4, 1),"fuego")
-,animationBolaFuego(0.1f,sf::Vector2u(5,1),"fireball")
+*/
+Proyectil::Proyectil(float ndireccion, sf::Vector2f posInicial, int dirx, int diry):
+Boss(0.1f,sf::Vector2u(4, 1),"fuego")
+,Hacha(0.1f,sf::Vector2u(4, 1),"flechas")
+,BolaFuego(0.1f,sf::Vector2u(5, 1),"fireball")
 ,calculado(false)
 {
+
     firstState.x=posInicial.x;
     firstState.y=posInicial.y;
     lastState=firstState;
     tipoBala=ndireccion;
-    body.setScale(sf::Vector2f(4,4));
-
+    //body.setScale(sf::Vector2f(4,4));
+    speed=500.0f;
+    existe=true;
     body.setPosition(posInicial);
-    body.setTexture(AssetManager::getAssetManager()->GetTexture("fuego"));
     varx=dirx;
     vary=diry;
-    vecDireccion=nuevadireccion;
-}
 
+
+     if(tipoBala>=1 && tipoBala<=4)
+     body.setTexture(AssetManager::getAssetManager()->GetTexture("flechas"));
+     else if(tipoBala==5 || tipoBala==6)
+     body.setTexture(AssetManager::getAssetManager()->GetTexture("fuego"));
+     else if(tipoBala==0)
+     body.setTexture(AssetManager::getAssetManager()->GetTexture("fireball"));
+
+
+}
+/*
 Proyectil::Proyectil(sf::Vector2f pos):
 animationHachaBoss( 0.1f,sf::Vector2u(4, 1),"flechas")
 ,animationBolaFuego(0.1f,sf::Vector2u(5,1),"fireball")
@@ -51,7 +62,7 @@ animationHachaBoss( 0.1f,sf::Vector2u(4, 1),"flechas")
     tipoBala=0;
 
 }
-
+*/
 sf::Sprite Proyectil::getBody(){
     return body;
 }
@@ -96,17 +107,26 @@ void Proyectil::Update(sf::Time elapsedTime){
             }
         }
         else if(tipoBala ==6.0f ){
-
-            movement.x=vecDireccion.x*300;
-            movement.y=vecDireccion.y*300;
+            Mover();
 
         }
 
      lastState += movement* elapsedTime.asSeconds();
-     animationHachaBoss.animar(0,elapsedTime,derecha, false);
-     body.setTextureRect(animationHachaBoss.uvRect);
+
+
+
+
+     if(tipoBala>=1 && tipoBala<=4){
+     Hacha.animar(0,elapsedTime,derecha, false);
+     body.setTextureRect(Hacha.uvRect);
+     }
+     else if(tipoBala==5 || tipoBala==6){
+     Boss.animar(0,elapsedTime,derecha, false);
+     body.setTextureRect(Boss.uvRect);
+     }
+
     }
-    else{
+    else if(tipoBala==0){
         Animar();
         Mover();
     }
@@ -123,8 +143,8 @@ void Proyectil::Animar()
 
 
      fila=0;
-     animationBolaFuego.animar(fila, App::getApp()->getElapsedTime(), derecha, false);
-     body.setTextureRect(animationBolaFuego.uvRect);
+     BolaFuego.animar(fila, App::getApp()->getElapsedTime(), derecha, false);
+     body.setTextureRect(BolaFuego.uvRect);
 
 
 
