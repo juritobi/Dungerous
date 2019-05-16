@@ -55,7 +55,7 @@ void Pausa::posNuevo(){
 	{
 
       if(key == sf::Keyboard::L||key == sf::Keyboard::Return){
-
+            hud::getHud()->sumaTiempo = hud::getHud()->tiempoPausa.getElapsedTime()+hud::getHud()->sumaTiempo;
             StateManager::getStateManager()->AddState(Game::getGame(), true);
         }
          if(key == sf::Keyboard::M){

@@ -6,6 +6,7 @@
 #include "../include/App.h"
 #include "../include/AssetManager.h"
 #include "../include/Colisiones.h"
+#include "Victory.h"
 
 Game* Game::game=0;
 Game* Game::getGame(){
@@ -29,7 +30,7 @@ Game::Game()
     mMap= Map::getMap();
     mMap->generarmatriz(&mPlayer);
     mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,136,4);
-
+    sf::Clock aux;
     /*crear palancas*/
 
     std::vector<int> p1;
@@ -69,6 +70,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
     if(key == sf::Keyboard::P){
         Pausa::getPausa()->posNuevo();
+        hud::getHud()->tiempoPausa.restart();
         StateManager::getStateManager()->AddState(Pausa::getPausa(), true);
 
     }
@@ -239,8 +241,8 @@ return boss;
 void Game::Purgue()
 {
     if(boss->gethp()==0){
-    boss==nullptr;
-    delete boss;
+
+    StateManager::getStateManager()->AddState(Victory::getVictory(), true);
     }
 }
 
