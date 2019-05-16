@@ -13,6 +13,7 @@ hud* hud::getHud(){
 
 hud::hud():mClock()
 {
+
     vVida=1;
     posAdd=120.f;
     vFuerza=1;
@@ -127,7 +128,8 @@ void hud::setPseta(int i){
 }
 bool hud::setCrono(sf::Clock c,int i){
     bool fin=false;
-    int countdown=i-c.getElapsedTime().asSeconds();
+    int countdown=i-c.getElapsedTime().asSeconds()+sumaTiempo.asSeconds();
+
     int minut=0;
     int sec=0;
     std::string cero1="";

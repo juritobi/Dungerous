@@ -9,5 +9,4 @@ Tienda::Tienda(sf::Vector2f pos)
 
 sf::RectangleShape Tienda::getSprite(){
     return sprite;
-
 }
