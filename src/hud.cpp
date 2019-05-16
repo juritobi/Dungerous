@@ -69,7 +69,7 @@ hud::hud():mClock()
 
 
     int dist=20;
-    for (int i = 0;i<3;i++){
+    /*for (int i = 0;i<3;i++){
         sLife.push_back(sp);
         if(i==0){
             sLife[i].setPosition(130,-2605);
@@ -79,7 +79,7 @@ hud::hud():mClock()
         }
 
 
-    }
+    }*/
 
 }
 void hud::loseLife(int i){
@@ -117,8 +117,7 @@ void hud::setLife(int i){
             if(sLife.size()+1<=7){
                 sLife.push_back(sp);
                 sLife[sLife.size()-1].setScale(0.6,29.5);
-                sLife[sLife.size()-1].setPosition(sLife[sLife.size()-2].getPosition().x+35,sLife[sLife.size()-2].getPosition().y+35);
-
+                sLife[sLife.size()-1].setPosition(130+20*(sLife.size()-1),-2605.f);
             }
         }
     }

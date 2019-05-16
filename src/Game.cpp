@@ -63,6 +63,7 @@ Game::Game()
     mPower[1]=new PowerUp(sf::Vector2f(1200,8000),2);
     mPower[2]=new PowerUp(sf::Vector2f(1200,8000),3);
 
+    hud::getHud()->setLife(mPlayer.getlife());
 
 }
 
