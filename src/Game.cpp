@@ -91,7 +91,10 @@ void Game::update(sf::Time elapsedTime){
     }
     Colisiones::getColisiones()->entorno();
     Colisiones::getColisiones()->importalte();
+
     Colisiones::getColisiones()->pup();
+
+    Colisiones::getColisiones()->muerte();
     //Colisiones::getColisiones()->hostion();
 
 
