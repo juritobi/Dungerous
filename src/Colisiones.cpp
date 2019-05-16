@@ -169,28 +169,36 @@ void Colisiones::enemigo()
 
      if(reloj2.getElapsedTime().asSeconds()>2.0f){
 
-    for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
-    if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbody().getGlobalBounds())){
-     Game::getGame()->getPlayer()->loseLife(1);
-     reloj2.restart();
-            }
+        for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
+        if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbody().getGlobalBounds())){
+         Game::getGame()->getPlayer()->loseLife(1);
+         reloj2.restart();
+                }
 
-        for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++){
-            if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getBody().getGlobalBounds()))
-            {
-            Game::getGame()->getPlayer()->loseLife(1);
-            reloj2.restart();
+            for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++){
+                if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getBody().getGlobalBounds()))
+                {
+                Game::getGame()->getPlayer()->loseLife(1);
+                reloj2.restart();
 
+                    }
                 }
             }
+
+        if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
+         Game::getGame()->getPlayer()->loseLife(1);
+         reloj2.restart();
+
         }
 
-    if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
-     Game::getGame()->getPlayer()->loseLife(1);
-     reloj2.restart();
-
+        for(unsigned int k=0; k<Game::getGame()->getBoss()->getBalasBoss().size(); k++){
+            if(Game::getGame()->getBoss()->getBalasBoss().at(k)->getBody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
+             std::cout<<"me ha dado una bala del boss"<<std::endl;
+                Game::getGame()->getPlayer()->loseLife(1);
+                reloj2.restart();
+                break;
+            }
         }
-
 
     }
      limpiar();

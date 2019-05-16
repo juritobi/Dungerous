@@ -12,10 +12,10 @@ class Proyectil
 {
     public:
 
-        Proyectil(float x, float y, float ndireccion, sf::Vector2f posInicial);
-        Proyectil(float ndireccion, sf::Vector2f posInicial, int dirx, int diry, sf::Vector2f direccion);
 
-        Proyectil(sf::Vector2f pos);
+        Proyectil(float ndireccion, sf::Vector2f posInicial, int dirx, int diry);
+
+
 
         sf::Sprite                      getBody();
         void                            Update(sf::Time elapsedTime);
@@ -27,14 +27,16 @@ class Proyectil
         bool                        getexiste();
 
     private:
+
         int                             varx;
         int                             vary;
         bool                            calculado;
         sf::Vector2f                    vecDireccion;
         sf::Vector2f                    lastState;
         sf::Vector2f                    firstState;
-        Animation                       animationBolaFuego;
-        Animation                       animationHachaBoss;
+        Animation                       BolaFuego;
+        Animation                       Hacha;
+        Animation                       Boss;
         float                           tipoBala;
         sf::Sprite                      body;
 

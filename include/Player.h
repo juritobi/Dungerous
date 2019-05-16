@@ -44,6 +44,7 @@ class Player
         sf::Vector2f        getPosition();
         std::vector<Proyectil*> getBalas();
         int                 getsala();
+        int                 getlife();
 
 
         //variables que convendria sacar de aqui
@@ -61,6 +62,7 @@ class Player
         sf::Clock               Crodar;
         sf::Clock               relojDisparo;
         sf::Clock               delayBalas;
+        sf::Clock               relojInvulnerable;
 
         sf::RectangleShape      body;
         sf::RectangleShape      hitb;
@@ -79,6 +81,7 @@ class Player
 
         std::vector<Proyectil*> vecProyectil;
 
+        bool            invulnerable;
         bool            rodando;
         bool            up;
         bool            down;

@@ -11,8 +11,12 @@
 #include "PalancaManager.h"
 #include "Portal.h"
 #include "Tienda.h"
+
+#include "Animation.h"
+
 #include "Pausa.h"
 #include "PowerUp.h"
+
 
 
 class Game : public InterfazEstado {
@@ -35,10 +39,12 @@ class Game : public InterfazEstado {
         void            Purgue();
         std::vector<PowerUp*> getPup();
         void borrarPup(int i);
+        Animation          getdead();
 
     private:
         static Game* game;
         Game();
+
 
         sf::View        hudView;
         float           tick;
@@ -48,7 +54,7 @@ class Game : public InterfazEstado {
         Tienda         *tienda;
 
         Map*     mMap;
-
+        Animation dead;
         Boss*    boss;
 
 

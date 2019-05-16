@@ -381,6 +381,9 @@ void Map::Purguepos(int i){
 delete enemigos[i];
 enemigos.erase(enemigos.begin()+i);
 
+sf::RectangleShape *muerte=new sf::RectangleShape();
+
+
 }
 
 void Map::reiniciar()

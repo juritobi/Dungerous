@@ -26,6 +26,7 @@ Player::Player()
 ,derecha(false)
 ,parar(false)
 ,disparo(false)
+,invulnerable(false)
 ,damage(1)
 ,atackSpeed(0.5)
 {
@@ -101,6 +102,10 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
 }
 void Player::update(sf::Time elapsedTime){
+
+    if(relojInvulnerable.getElapsedTime().asSeconds() >2 && invulnerable){
+        invulnerable=false;
+    }
 
     if(life==0){
         body.setFillColor(sf::Color::Red);
@@ -237,7 +242,7 @@ void Player::animate(sf::Time elapsedTime){
 
 void Player::espadazo(){
     if(!disparo){
-        if(aup){
+        if(aup)           {
             espada.setSize(sf::Vector2f(50.0f,30.0f));
             espada.setPosition(body.getPosition().x-25 , body.getPosition().y-50.0f);
         }
@@ -258,30 +263,47 @@ void Player::espadazo(){
         }
     }
     else{
+
         if(delayBalas.getElapsedTime().asSeconds() > 0.5){
-            if(aup){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 1.0f,body.getPosition());
+
+
+            if(aup && !adown && !aright && !aleft){
+                Proyectil* bala = new Proyectil(1.0f,hitb.getPosition(),0,0);
+
+                vecProyectil.push_back(bala);
+
+                bala=nullptr;
+                delete bala;
+                delayBalas.restart();
+            }
+
+
+
+            if(adown && !aup && !aright && !aleft){
+                Proyectil* bala = new Proyectil(2.0f,hitb.getPosition(),0,0);
+
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
-            if(adown){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 2.0f,body.getPosition());
-                vecProyectil.push_back(bala);
-                bala=nullptr;
-                delete bala;
-                delayBalas.restart();
-            }
+
             if(aright){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 3.0f,body.getPosition());
+                Proyectil* bala = new Proyectil(3.0f,hitb.getPosition(),0,0);
+
+            if(aright && !adown && !aup && !aleft){
+                Proyectil* bala = new Proyectil(3.0f,hitb.getPosition(),0,0);
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
             }
-            if(aleft){
-                Proyectil* bala = new Proyectil(35.0f,35.0f, 4.0f,body.getPosition());
+
+
+
+
+            if(aleft && !adown && !aright && !aup){
+                Proyectil* bala = new Proyectil(4.0f,hitb.getPosition(),0,0);
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
@@ -294,13 +316,21 @@ void Player::espadazo(){
     if(Catacar.getElapsedTime().asSeconds()>atackSpeed){
         espada.setSize(sf::Vector2f(0,0));
     }
+
+}
 }
 }
 
 
 void Player::loseLife(int i){
-    life=life-1;
-    hud::getHud()->loseLife(i);
+std::cout<<"he perdido vida"<<std::endl;
+    if(!invulnerable){
+        life=life-1;
+        hud::getHud()->loseLife(i);
+        invulnerable = true;
+        relojInvulnerable.restart();
+    }
+
 }
 
 
@@ -415,4 +445,9 @@ sala-=1;
 
 int Player::getsala(){
 return sala;
+}
+
+int Player::getlife()
+{
+return life;
 }

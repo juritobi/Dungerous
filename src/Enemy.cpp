@@ -82,7 +82,7 @@ void Enemy::Mover()//mueve al enemigo hacia el player
 void Enemy::disparar()
 {
 
-Proyectil *bala= new Proyectil(body.getPosition());
+Proyectil *bala= new Proyectil(0,body.getPosition(),0,0);
 balas.push_back(bala);
 bala=nullptr;
 delete bala;
