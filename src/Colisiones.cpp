@@ -46,16 +46,14 @@ void Colisiones::palanca(){
 
 void Colisiones::pup(){
 
-    Player* personaje= Game::getGame()->getPlayer();
-    std::vector<PowerUp*> pups = Game::getGame()->getPup();
 
-    for(int i = 0; i<pups.size() && i>=0 ;i++ ){
-        if(personaje->getHitb().getGlobalBounds().intersects(pups[i]->getSprite().getGlobalBounds())){
-            std::cout<<"no sa borrao pero entro"<<std::endl;
-            personaje->pickPu(pups[i]->getTipo());
-            pups.erase(pups.begin());
-            i--;
-            std::cout<<"sa borrao"<<std::endl;
+    for(int i = 0; i<Game::getGame()->getPup().size() && i>=0 ;i++ ){
+        if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Game::getGame()->getPup()[i]->getSprite().getGlobalBounds())&&hud::getHud()->getPsetaNum()>0){
+
+            Game::getGame()->getPlayer()->pickPu(Game::getGame()->getPup()[i]->getTipo());
+            Game::getGame()->borrarPup(i);
+            hud::getHud()->setPseta(-1);
+
         }
     }
 

@@ -57,6 +57,13 @@ Game::Game()
 
     tienda=new Tienda(sf::Vector2f(1200,8000));
     mPower.push_back(new PowerUp(sf::Vector2f(1270,8180),1));
+    mPower.push_back(new PowerUp(sf::Vector2f(1370,8180),2));
+    mPower.push_back(new PowerUp(sf::Vector2f(1370,8180),2));
+    mPower.push_back(new PowerUp(sf::Vector2f(1370,8180),2));
+    mPower.push_back(new PowerUp(sf::Vector2f(1470,8180),3));
+    mPower.push_back(new PowerUp(sf::Vector2f(1700,8380),3));
+    mPower.push_back(new PowerUp(sf::Vector2f(1470,8580),3));
+
     /*mPower[0]=new PowerUp(sf::Vector2f(1270,8180),1);
     mPower[1]=new PowerUp(sf::Vector2f(1200,8000),2);
     mPower[2]=new PowerUp(sf::Vector2f(1200,8000),3);*/
@@ -256,7 +263,10 @@ std::vector<PowerUp*> Game::getPup(){
     return mPower;
 }
 
-
+void Game::borrarPup(int i){
+    delete mPower[i];
+    mPower.erase(mPower.begin()+i);
+}
 
 
 

@@ -14,6 +14,7 @@ hud* hud::getHud(){
 hud::hud():mClock()
 {
     vVida=1;
+    posAdd=120.f;
     vFuerza=1;
     vVel=1;
     numPseta=0;
@@ -55,15 +56,11 @@ hud::hud():mClock()
     sFuerza.setPosition(130.f,1560);
     sVel.setPosition(130.f,3000);
 
-    sPseta.setScale(0.03,3);
+
     sVida.setScale(0.07,6);
     sFuerza.setScale(0.07,6);
     sVel.setScale(0.07,6);
-
-    sPup.push_back(sVida);
-    sPup.push_back(sFuerza);
-    sPup.push_back(sVel);
-
+    sPseta.setScale(0.03,3);
     sp.setScale(0.6,29.5);
 
 
@@ -116,7 +113,7 @@ void hud::setLife(int i){
             if(sLife.size()+1<=7){
                 sLife.push_back(sp);
                 sLife[sLife.size()-1].setScale(0.6,29.5);
-                sLife[sLife.size()-1].setPosition(sLife[sLife.size()-2].getPosition().x+35,sLife[sLife.size()-2].getPosition().y+35);
+                sLife[sLife.size()-1].setPosition(sLife[sLife.size()-2].getPosition().x+20,sLife[sLife.size()-2].getPosition().y+35);
 
             }
         }
@@ -154,12 +151,25 @@ bool hud::setCrono(sf::Clock c,int i){
     return fin;
 }
 void hud::setPup(int i){
-    int posAdd=550.f;
+
+
+
+
+
+
+
+
+
     if(i==1){
         if(vVida<4){
             sf::Sprite sVida2=sf::Sprite(tVida);
-            sVida2.setPosition(posAdd+40*vVida,80);
             sVida2.setScale(0.15,1.1);
+            if(vVida==0){
+                sVida2.setPosition(posAdd+4*vVida,80);
+            }
+
+
+
             sPup.push_back(sVida2);
             vVida++;
         }
@@ -167,8 +177,8 @@ void hud::setPup(int i){
     }else if(i==2){
         if(vFuerza<4){
             sf::Sprite sFuerza2=sf::Sprite(tFuerza);
-            sFuerza2.setPosition(posAdd+40*vFuerza,360);
-            sFuerza2.setScale(0.15,1.1);
+            sFuerza2.setScale(0.07,6);
+            sFuerza2.setPosition(posAdd+17*(vFuerza-1),1560);
             sPup.push_back(sFuerza2);
             vFuerza++;
         }
@@ -176,8 +186,8 @@ void hud::setPup(int i){
     else{
         if(vVel<4){
             sf::Sprite sVel2=sf::Sprite(tVel);
-            sVel2.setPosition(posAdd+40*vVel,630);
-             sVel2.setScale(0.15,1.1);
+            sVel2.setScale(0.07,6);
+            sVel2.setPosition(posAdd+17*(vVel-1),3000);
             sPup.push_back(sVel2);
             vVel++;
         }

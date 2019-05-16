@@ -34,6 +34,7 @@ class Game : public InterfazEstado {
         Player          mPlayer;
         void            Purgue();
         std::vector<PowerUp*> getPup();
+        void borrarPup(int i);
 
     private:
         static Game* game;
