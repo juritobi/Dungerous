@@ -52,6 +52,7 @@
 		<Unit filename="include/FactoriaEnemy.h" />
 		<Unit filename="include/FactoriaProyectil.h" />
 		<Unit filename="include/Game.h" />
+		<Unit filename="include/GameOver.h" />
 		<Unit filename="include/Map.h" />
 		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Palanca.h" />
@@ -78,6 +79,7 @@
 		<Unit filename="src/FactoriaEnemy.cpp" />
 		<Unit filename="src/FactoriaProyectil.cpp" />
 		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/GameOver.cpp" />
 		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Palanca.cpp" />

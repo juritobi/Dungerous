@@ -34,6 +34,9 @@ class Player
         void                setsala(int i);
         void                teleport(sf::Vector2f pos);
 
+        void                pickPu(int i);
+
+
         //getters
         sf::RectangleShape  getBody();
         sf::RectangleShape  getHitb();
@@ -52,16 +55,22 @@ class Player
     private:
 
         Animation               animation;
+
+        Animation               animationAtaque;
+        hud*                    mHud;
         sf::Clock               Catacar;
         sf::Clock               Crodar;
         sf::Clock               relojDisparo;
         sf::Clock               delayBalas;
+        sf::Clock               relojInvulnerable;
 
         sf::RectangleShape      body;
         sf::RectangleShape      hitb;
         sf::RectangleShape      espada;
         float                   speed;
         int                     life;
+        int                     damage;
+        float                     atackSpeed;
 
 
         unsigned int            fila;
@@ -72,6 +81,7 @@ class Player
 
         std::vector<Proyectil*> vecProyectil;
 
+        bool            invulnerable;
         bool            rodando;
         bool            up;
         bool            down;

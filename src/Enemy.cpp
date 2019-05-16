@@ -121,13 +121,13 @@ void Enemy::renderMove(float tick){
 
 }
 
-void Enemy::hitted(){
+/*void Enemy::hitted(){
 
     sf::Vector2f vec = sf::Vector2f(body.getPosition()-player->getPosition());
     vec= App::getApp()->normalizar(vec);
     lastState.pos=lastState.pos+vec*speed;
 
-}
+}*/
 
 void Enemy::Purguepos(int i){
 

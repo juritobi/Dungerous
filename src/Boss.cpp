@@ -41,7 +41,7 @@ void Boss::update(){
     direccion=player->getPosition() - body.getPosition();
     direccion=App::getApp()->normalizar(direccion);
 
-    std::cout<<vida<<std::endl;
+
 
     Mover();
    }

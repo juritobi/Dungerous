@@ -57,14 +57,21 @@ Game::Game()
     }
 
     tienda=new Tienda(sf::Vector2f(1200,8000));
+    mPower[3];
+    mPower[0]=new PowerUp(sf::Vector2f(1270,8180),1);
+    mPower[1]=new PowerUp(sf::Vector2f(1200,8000),2);
+    mPower[2]=new PowerUp(sf::Vector2f(1200,8000),3);
+
 
 }
 
 
 void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
-    if(key == sf::Keyboard::Escape){
-        //abrir menu ingame
+    if(key == sf::Keyboard::P){
+        Pausa::getPausa()->posNuevo();
+        StateManager::getStateManager()->AddState(Pausa::getPausa(), true);
+
     }
     else{
         mPlayer.manageEvents(key, isPressed);
@@ -86,6 +93,7 @@ void Game::update(sf::Time elapsedTime){
     }
     Colisiones::getColisiones()->entorno();
     Colisiones::getColisiones()->importalte();
+    Colisiones::getColisiones()->muerte();
     //Colisiones::getColisiones()->hostion();
 
 
@@ -138,6 +146,8 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         mWindow->draw(portales[i]->getSprite());
     }
     mWindow->draw(tienda->getSprite());
+    mWindow->draw(mPower[0]->getSprite());
+
 
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());

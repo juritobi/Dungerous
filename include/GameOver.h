@@ -6,10 +6,10 @@
 #include "Menu.h"
 
 
-	class Pausa : public InterfazEstado
+	class GameOver : public InterfazEstado
 	{
 	public:
-        static Pausa* getPausa();
+        static GameOver* getGameOver();
         void  manageEvents(sf::Keyboard::Key key, bool isPressed);
         void  update(sf::Time elapsedTime);
         void  render(sf::Time minUpdateTime, sf::Time updateTime);
@@ -17,14 +17,15 @@
 
 	private:
 
-		Pausa();
+		GameOver();
 
 		sf::RectangleShape background;
-        sf::Sprite _homeButton;
-		sf::Sprite _playButton;
+        //sf::Sprite _homeButton;
+		//sf::Sprite _playButton;
 
-        static Pausa* pausa;
+        static GameOver* gameOver;
 
 	};
+
 
 

@@ -1,7 +1,7 @@
 #include "Colisiones.h"
 #include "Map.h"
 #include "math.h"
-
+#include "GameOver.h"
 Colisiones* Colisiones::colisiones=0;
 
 Colisiones* Colisiones::getColisiones(){
@@ -10,6 +10,7 @@ Colisiones* Colisiones::getColisiones(){
     }
     return colisiones;
 }
+
 
 Colisiones::Colisiones()
 {
@@ -36,10 +37,9 @@ void Colisiones::palanca(){
         sf::Vector2f vecResta(personaje-Game::getGame()->getPalancas(i)->getSprite().getPosition());
         if(sqrt(pow(vecResta.x,2)+pow(vecResta.y,2))<50){
             Game::getGame()->getPalancas(i)->activa();
-            /*if(i==0){
-                Game::getGame()->cambioSala();
-            }
-            hud::getHud()->setPseta(1);*/
+
+            //Game::getGame()->getPlayer()->pickPu(3);
+
         }
     }
 }
@@ -144,39 +144,45 @@ void Colisiones::espadaenemigo()
     Game::getGame()->getBoss()->sethp();
     reloj.restart();
     }
-    }
     enemigo();
-
 }
-
+}
 
 void Colisiones::enemigo()
 {
 
      if(reloj2.getElapsedTime().asSeconds()>2.0f){
 
-    for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
-    if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbody().getGlobalBounds())){
-     Game::getGame()->getPlayer()->loseLife(1);
-     reloj2.restart();
-            }
+        for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
+        if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbody().getGlobalBounds())){
+         Game::getGame()->getPlayer()->loseLife(1);
+         reloj2.restart();
+                }
 
-        for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++){
-            if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getBody().getGlobalBounds()))
-            {
-            Game::getGame()->getPlayer()->loseLife(1);
-            reloj2.restart();
+            for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++){
+                if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getBody().getGlobalBounds()))
+                {
+                Game::getGame()->getPlayer()->loseLife(1);
+                reloj2.restart();
 
+                    }
                 }
             }
+
+        if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
+         Game::getGame()->getPlayer()->loseLife(1);
+         reloj2.restart();
+
         }
 
-    if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
-     Game::getGame()->getPlayer()->loseLife(1);
-     reloj2.restart();
-
+        for(unsigned int k=0; k<Game::getGame()->getBoss()->getBalasBoss().size(); k++){
+            if(Game::getGame()->getBoss()->getBalasBoss().at(k)->getBody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
+             std::cout<<"me ha dado una bala del boss"<<std::endl;
+                Game::getGame()->getPlayer()->loseLife(1);
+                reloj2.restart();
+                break;
+            }
         }
-
 
     }
      limpiar();
@@ -203,3 +209,12 @@ void Colisiones::limpiar()
 
 }
 
+
+void Colisiones::muerte(){
+
+     if (hud::getHud()->getLife().size() <= 0){
+        StateManager::getStateManager()->AddState(GameOver::getGameOver(), true);
+        GameOver::getGameOver()->posNuevo();
+     }
+
+}

@@ -59,3 +59,7 @@ void Animation::animar(int fila, sf::Time time, bool derecha, bool parar){
       uvRect.width=-abs(uvRect.width);
     }
 }
+
+void Animation::setTime(float x){
+    swtime=x;
+}
