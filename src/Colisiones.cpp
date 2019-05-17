@@ -43,6 +43,21 @@ void Colisiones::palanca(){
         }
     }
 }
+void Colisiones::pup(){
+
+
+    for(int i = 0; i<Game::getGame()->getTienda()->getPup().size() && i>=0 ;i++ ){
+        if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Game::getGame()->getTienda()->getPup()[i]->getSprite().getGlobalBounds())&&hud::getHud()->getPsetaNum()>0){
+            Game::getGame()->getPlayer()->pickPu(Game::getGame()->getTienda()->getPup()[i]->getTipo());
+            Game::getGame()->getTienda()->borrarPup(i);
+            hud::getHud()->setPseta(-1);
+            std::cout<<"voooy";
+        }
+    }
+
+
+}
+
 
 void Colisiones::importalte(){
     Player* personaje = Game::getGame()->getPlayer();

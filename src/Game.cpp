@@ -92,6 +92,8 @@ void Game::update(sf::Time elapsedTime){
     Colisiones::getColisiones()->entorno();
     Colisiones::getColisiones()->importalte();
     Colisiones::getColisiones()->muerte();
+
+    Colisiones::getColisiones()->pup();
     //Colisiones::getColisiones()->hostion();
 
 
@@ -158,8 +160,9 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         mWindow->draw(portales[i]->getSprite());
     }
     mWindow->draw(tienda->getSprite());
-    mWindow->draw(mPower[0]->getSprite());
-
+    for(int i=0;i<tienda->getPup().size();i++){
+        mWindow->draw(tienda->getPup()[i]->getSprite());
+    }
 
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
@@ -264,12 +267,17 @@ void Game::Purgue()
 
 void Game::lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam)
 {
+
 reiniciar.restart();
 muerte=new sf::RectangleShape();
 muerte->setTexture(&AssetManager::getAssetManager()->GetTexture("muerte"));
 muerte->setSize(tam);
 muerte->setPosition(pos);
-
 }
+
+Tienda* Game::getTienda(){
+    return tienda;
+}
+
 
 

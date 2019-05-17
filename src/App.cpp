@@ -15,6 +15,7 @@ App::App()
 :mWindow(sf::VideoMode(1920,1080),"Dungerous",sf::Style::Default)
 ,mView(sf::FloatRect(0,0,1920,1080))
 {
+    std::srand(std::time(nullptr));
     mWindow.setFramerateLimit(300);
     //siongleton init
     StateManager::getStateManager();
