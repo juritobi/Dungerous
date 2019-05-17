@@ -17,10 +17,10 @@ Player::Player()
 ,adown(false)
 ,aright(false)
 ,aleft(false)
-,life(3)
+,life(7)
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
-,animation( 0.1f,sf::Vector2u(6, 27),"player")
+,animation( 0.2f,sf::Vector2u(6, 27),"player")
 ,animationAtaque( 0.1f,sf::Vector2u(6, 27),"player")
 ,fila(3)
 ,derecha(false)
@@ -150,7 +150,7 @@ void Player::animate(sf::Time elapsedTime){
     parar=true;
 
     if(rodando && Crodar.getElapsedTime().asSeconds()<0.5){
-        speed=500;
+        speed=800;
 
     }
     else if(rodando && Crodar.getElapsedTime().asSeconds()>0.5 && Crodar.getElapsedTime().asSeconds()<1){

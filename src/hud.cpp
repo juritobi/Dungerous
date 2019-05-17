@@ -13,6 +13,7 @@ hud* hud::getHud(){
 
 hud::hud():mClock()
 {
+
     vVida=1;
     vFuerza=1;
     vVel=1;
@@ -68,17 +69,8 @@ hud::hud():mClock()
 
 
     int dist=20;
-    for (int i = 0;i<85;i++){
-        sLife.push_back(sp);
-        if(i==0){
-            sLife[i].setPosition(130,-2605);
-        }
-        else{
-            sLife[i].setPosition(sLife[0].getPosition().x+dist*(i),-2605);
-        }
 
 
-    }
 
 }
 void hud::loseLife(int i){
@@ -116,8 +108,7 @@ void hud::setLife(int i){
             if(sLife.size()+1<=7){
                 sLife.push_back(sp);
                 sLife[sLife.size()-1].setScale(0.6,29.5);
-                sLife[sLife.size()-1].setPosition(sLife[sLife.size()-2].getPosition().x+35,sLife[sLife.size()-2].getPosition().y+35);
-
+                sLife[sLife.size()-1].setPosition(130+20*(sLife.size()-1),-2605.f);
             }
         }
     }
@@ -130,7 +121,8 @@ void hud::setPseta(int i){
 }
 bool hud::setCrono(sf::Clock c,int i){
     bool fin=false;
-    int countdown=i-c.getElapsedTime().asSeconds();
+    int countdown=i-c.getElapsedTime().asSeconds()+sumaTiempo.asSeconds();
+
     int minut=0;
     int sec=0;
     std::string cero1="";

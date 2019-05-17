@@ -5,6 +5,8 @@
 #include "../include/AssetManager.h"
 #include "../include/Map.h"
 
+
+
 //peta por que la distancia del vector de solision es cerca de cero divide y cacatoa
 
 const sf::Time App::minUpdateTime = sf::milliseconds(60.f);

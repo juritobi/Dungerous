@@ -34,6 +34,8 @@ class Map : public sf::Drawable, public sf::Transformable
         void Mostrar(sf::RenderWindow& window);
         void reiniciar();
         void setreinicio();
+        void setmatando();
+        sf::RectangleShape getmuerte();
         std::vector<sf::RectangleShape*> getmuros();
         std::vector<sf::RectangleShape*> getpuertas();
         std::vector<Enemy*> getenemigos();
@@ -43,6 +45,9 @@ class Map : public sf::Drawable, public sf::Transformable
         int _width;
         int _height;
         int numlayers;
+        bool matando;
+        bool  getmatando();
+
 
         int id;
         int cx;
@@ -57,9 +62,11 @@ class Map : public sf::Drawable, public sf::Transformable
     protected:
 
     private:
+    sf::RectangleShape muerte;
         Player *player;
         static Map* mapa;
         Map();
+        Animation dead;
     sf::VertexArray vertex;
     sf::Texture tile;
     int _tilewidth;
