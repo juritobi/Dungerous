@@ -55,6 +55,9 @@ void Pausa::posNuevo(){
 	{
 
       if(key == sf::Keyboard::L||key == sf::Keyboard::Return){
+          for(int i =0; i<Map::getMap()->getenemigos().size();i++){
+            Map::getMap()->getenemigos()[i]->getclock()->restart();
+          }
             hud::getHud()->sumaTiempo = hud::getHud()->tiempoPausa.getElapsedTime()+hud::getHud()->sumaTiempo;
             StateManager::getStateManager()->AddState(Game::getGame(), true);
         }
