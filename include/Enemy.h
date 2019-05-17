@@ -57,6 +57,7 @@ class Enemy
 
         sf::Vector2f direccion;
         sf::Clock delay;
+        sf::Clock damages;
 
         float                       hp;
         float                       cd;

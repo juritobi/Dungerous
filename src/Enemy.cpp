@@ -5,7 +5,7 @@
 
 Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f pos)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
 :animar(0.1f,sf::Vector2u(4,4),"enem")
-,animar2(0.15f,sf::Vector2u(8,3),"enem2")
+,animar2(0.15f,sf::Vector2u(8,4),"enem2")
 ,direccion(sf::Vector2f(0,0))
 {   existe=true;
     sala=0;
@@ -25,7 +25,7 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
     else{
     body.setTexture(AssetManager::getAssetManager()->GetTexture("enem2"));
     fila = 0;
-    hp=1;
+    hp=3;
     }
 
 
@@ -98,21 +98,27 @@ void Enemy::Animar()
     sf::Vector2f posicion(player->getBody().getPosition()-body.getPosition());
 
     if(posicion.x!=.0f || posicion.y!=0.0f)
-    posicion=App::getApp()->normalizar(direccion);
+        posicion=App::getApp()->normalizar(direccion);
 
 
-     derecha=true;
+    derecha=true;
 
-     if(type==0){
-     animar.animar(fila, App::getApp()->getElapsedTime(), derecha, false);
-     fila=0;
-     body.setTextureRect(animar.uvRect);
-     }
-     else{
-     fila=2;
-     animar2.animar(fila, App::getApp()->getElapsedTime(), derecha, false);
-     body.setTextureRect(animar2.uvRect);
-     }
+    if(type==0){
+        animar.animar(fila, App::getApp()->getElapsedTime(), derecha, false);
+         fila=0;
+         body.setTextureRect(animar.uvRect);
+    }
+    else{
+        if(damages.getElapsedTime().asSeconds() < 0.5)
+        {
+            fila=3;
+        }
+        else{
+            fila=2;
+        }
+        animar2.animar(fila, App::getApp()->getElapsedTime(), derecha, false);
+        body.setTextureRect(animar2.uvRect);
+    }
 }
 
 void Enemy::renderMove(float tick){
@@ -174,7 +180,8 @@ return hp;
 
 void Enemy::sethp()
 {
-hp-=1;
+    hp-=1;
+    damages.restart();
 }
 
 int Enemy::getsala()
