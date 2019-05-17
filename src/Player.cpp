@@ -375,16 +375,18 @@ void Player::pickPu(int i){
     switch(i){
         case 1 :
             life++;
-            mHud->setLife(1);
+            hud::getHud()->setLife(1);
             break;
 
         case 2://fuerza
             damage++;
+            hud::getHud()->setPup(2);
             break;
 
         case 3://vatt*/
             atackSpeed-=0.1;
             animationAtaque.setTime(atackSpeed/5);
+            hud::getHud()->setPup(3);
             break;
     }
 

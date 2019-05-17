@@ -33,6 +33,7 @@ class Game : public InterfazEstado {
         Player*         getPlayer();
         Enemy*          getEnemigo();
         Boss*           getBoss();
+        Tienda*         getTienda();
         Palanca*        getPalancas(int i);
         std::vector<Portal*> getPortales();
         Player          mPlayer;
