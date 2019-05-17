@@ -4,6 +4,7 @@
 #include "../include/StateManager.h"
 #include "../include/AssetManager.h"
 #include "../include/Map.h"
+#include "Game.h"
 
 //peta por que la distancia del vector de solision es cerca de cero divide y cacatoa
 
@@ -93,6 +94,18 @@ void App::manageEvents(){
                 }
 				StateManager::getStateManager()->GetActiveState()->manageEvents(event.key.code,true);
 
+                if(event.key.code == sf::Keyboard::G)
+				{
+                    if(Game::getGame()->getPlayer()->getgod()==false){
+                    Game::getGame()->getPlayer()->setgod(1);
+                    break;
+                    }
+                    if(Game::getGame()->getPlayer()->getgod()==true){
+                    Game::getGame()->getPlayer()->setgod(0);
+                    break;
+                    }
+                }
+
 				break;
             case sf::Event::KeyReleased:
 				StateManager::getStateManager()->GetActiveState()->manageEvents(event.key.code,false);
@@ -103,6 +116,8 @@ void App::manageEvents(){
 				break;
 		}
 	}
+
+
 
 }
 
