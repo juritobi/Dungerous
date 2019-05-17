@@ -57,19 +57,7 @@ Game::Game()
         portales[2*i]->setDestino(portales[2*i+1]);
     }
 
-    tienda=new Tienda(sf::Vector2f(1200,8000));
-    mPower.push_back(new PowerUp(sf::Vector2f(1270,8180),1));
-    mPower.push_back(new PowerUp(sf::Vector2f(1370,8180),2));
-    mPower.push_back(new PowerUp(sf::Vector2f(1370,8180),2));
-    mPower.push_back(new PowerUp(sf::Vector2f(1370,8180),2));
-    mPower.push_back(new PowerUp(sf::Vector2f(1470,8180),3));
-    mPower.push_back(new PowerUp(sf::Vector2f(1700,8380),3));
-    mPower.push_back(new PowerUp(sf::Vector2f(1470,8580),3));
-
-    /*mPower[0]=new PowerUp(sf::Vector2f(1270,8180),1);
-    mPower[1]=new PowerUp(sf::Vector2f(1200,8000),2);
-    mPower[2]=new PowerUp(sf::Vector2f(1200,8000),3);*/
-
+    tienda=new Tienda(sf::Vector2f(1200,7950));
 
 }
 
@@ -160,9 +148,9 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     mWindow->draw(tienda->getSprite());
 
 
-    for (int i =0;i<mPower.size();i++){
+    for (int i =0;i<tienda->getPup().size();i++){
 
-        mWindow->draw(mPower[i]->getSprite());
+        mWindow->draw(tienda->getPup()[i]->getSprite());
     }
 
 
@@ -265,21 +253,18 @@ void Game::Purgue()
     StateManager::getStateManager()->AddState(Victory::getVictory(), true);
     }
 }
-std::vector<PowerUp*> Game::getPup(){
-    return mPower;
-}
 
 
-void Game::borrarPup(int i){
-    delete mPower[i];
-    mPower.erase(mPower.begin()+i);
-}
+
+
 
 Animation Game::getdead()
 {
 return dead;
 }
 
-
+Tienda* Game::getTienda(){
+    return tienda;
+}
 
 
