@@ -9,7 +9,7 @@ Boss::Boss(sf::Vector2u vec, Player* player, int vida)//comento cosas para proba
 ,atacando(false)
 {
 
-    firstState=sf::Vector2f(960,600);
+    firstState=sf::Vector2f(960,400);
     vida=vida;
     lastState=firstState;
     sala=0;
@@ -37,14 +37,16 @@ Boss::~Boss()
 
 void Boss::update(){
 
-    if(Game::getGame()->getBoss()->getsala()==player->getsala()){
+    if(Game::getGame()->getBoss()->getsala()==player->getsala() && !golpeado){
     direccion=player->getPosition() - body.getPosition();
     direccion=App::getApp()->normalizar(direccion);
 
-
-
     Mover();
-   }
+    }
+    if(golpeado && delayGolpeo.getElapsedTime().asSeconds() > 0.25){
+        golpeado = false;
+    }
+
     Animar();
 }
 
@@ -131,6 +133,7 @@ void Boss::AtaqueRandom(sf::Time elapsedTime){
     }
     if(delayAtaqueRandom.getElapsedTime().asSeconds() > 3 && delayAtaqueRandom.getElapsedTime().asSeconds() < 6){
     atacando=true;
+    golpeado=false;
     speed=0.0f;
         if(ataqueRandom == 0){
             if(delayOctogonal.getElapsedTime().asSeconds() > 0.1f){
@@ -156,6 +159,7 @@ void Boss::AtaqueRandom(sf::Time elapsedTime){
         atacando=false;
         speed=100.0f;
         embistiendo=false;
+        golpeado=false;
     }
 
 
@@ -227,6 +231,15 @@ void Boss::Embestir(sf::Time elapsedTime){
 
 }
 
+void Boss::colision(){
+    if(atacando){
+        delayAtaqueRandom.restart();
+        atacando=false;
+        speed=100.0f;
+        embistiendo=false;
+    }
+}
+
 void Boss::renderBalas(float tick){
     for(int i = 0; i < vecBalasBoss.size();i++){
         vecBalasBoss[i]->Render(tick);
@@ -240,6 +253,7 @@ void Boss::hitted(){
     lastState=lastState+vec*speed;
     if(vida>0)
     vida = vida-1;
+    golpeado = true;
 
 
 
@@ -261,9 +275,15 @@ int Boss::getsala(){
 return sala;
 }
 
+
+int Boss::getRandom(){
+return ataqueRandom;
+}
+
 void Boss::sethp()
 {
 vida--;
+golpeado=true;
 }
 
 int Boss::gethp()

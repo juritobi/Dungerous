@@ -35,7 +35,7 @@ Boss(0.1f,sf::Vector2u(4, 1),"fuego")
     vary=diry;
 
 
-     if(tipoBala>=1 && tipoBala<=4)
+     if(tipoBala>=1 && tipoBala < 5)
      body.setTexture(AssetManager::getAssetManager()->GetTexture("flechas"));
      else if(tipoBala==5 || tipoBala==6)
      body.setTexture(AssetManager::getAssetManager()->GetTexture("fuego"));

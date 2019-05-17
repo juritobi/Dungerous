@@ -118,8 +118,6 @@ void Colisiones::espadaenemigo()
             }
         }
 
-
-
     for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
         for(unsigned int j=0; j<Map::getMap()->getenemigos().size();j++)
             if(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(j)->getbody().getGlobalBounds()))
@@ -184,6 +182,11 @@ void Colisiones::enemigo()
             }
         }
 
+    }
+    for (int l=0;l<Map::getMap()->getmuros().size();l++){
+        if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Map::getMap()->getmuros()[l]->getGlobalBounds()) && Game::getGame()->getBoss()->getRandom() == 2){
+            Game::getGame()->getBoss()->colision();
+        }
     }
      limpiar();
 }

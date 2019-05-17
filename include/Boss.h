@@ -31,7 +31,8 @@ class Boss
         std::vector<Proyectil*>     getBalasBoss();
         void                        sethp();
         int                         gethp();
-
+        int                         getRandom();
+        void                        colision();
 
     protected:
 
@@ -46,7 +47,7 @@ class Boss
         bool                        embistiendo;
         int                         ataqueRandom;
         int                         sala;
-
+        bool                        golpeado;
 
 
 
@@ -61,6 +62,7 @@ class Boss
         sf::Vector2f                cargar;
         sf::Vector2f                direccion;
 
+        sf::Clock                   delayGolpeo;
         sf::Clock                   delayAtaqueRandom;
         sf::Clock                   delayDisparos;
         sf::Clock                   delayOctogonal;
