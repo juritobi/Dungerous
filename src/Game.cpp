@@ -57,11 +57,8 @@ Game::Game()
     }
 
     tienda=new Tienda(sf::Vector2f(1200,8000));
-    mPower[3];
-    mPower[0]=new PowerUp(sf::Vector2f(1270,8180),1);
-    mPower[1]=new PowerUp(sf::Vector2f(1200,8000),2);
-    mPower[2]=new PowerUp(sf::Vector2f(1200,8000),3);
 
+    mPower.push_back(new PowerUp(sf::Vector2f(150,150),1));
 
 }
 
