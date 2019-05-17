@@ -12,7 +12,7 @@ Map* Map::getMap(){
 
 Map::Map(){
 
-matando==false;
+matando=false;
 muerte=sf::RectangleShape();
 
 
