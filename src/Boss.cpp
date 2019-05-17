@@ -20,8 +20,8 @@ Boss::Boss(sf::Vector2u vec, Player* player, int vida)//comento cosas para proba
     boolAtaque = false;
     fila = 3;
     derecha = true;
-
     body.setTexture(AssetManager::getAssetManager()->GetTexture("boss"));
+    body.setOrigin(20.0f,17.5f);
 
     body.setScale(5,5);
     //body.setTextureRect(sf::IntRect(100, 100, 100, 100));

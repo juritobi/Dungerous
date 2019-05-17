@@ -30,12 +30,15 @@ Player::Player()
 ,damage(1)
 ,atackSpeed(0.5)
 {
+
     sala=7;
     firstState.pos=sf::Vector2f(960,8360);
     firstState.hitbox=&hitb;
     lastState=firstState;
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
-    body.setOrigin(body.getSize()/2.0f);
+     body.setOrigin(40.0f,40.0f);
+
+
 
 }
 //detecta las teclas pulsadas
@@ -142,7 +145,7 @@ void Player::stateMovement(){
 
 
     lastState.pos += movement * elapsedTime.asSeconds();
-    lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-15.0f));//
+    lastState.hitbox->setPosition(lastState.pos);//
 }
 
 void Player::animate(sf::Time elapsedTime){
@@ -232,10 +235,14 @@ void Player::animate(sf::Time elapsedTime){
     if(fila==9||fila==8||fila==7){
         animationAtaque.animar(fila, elapsedTime,derecha,parar);
         body.setTextureRect(animationAtaque.uvRect);
+
+        //hitb.setOrigin(hitb.getSize()/4.0f);
     }
     else{
         animation.animar(fila, elapsedTime,derecha,parar);
         body.setTextureRect(animation.uvRect);
+        //body.setOrigin(body.getSize()/2.0f);
+        //hitb.setOrigin(hitb.getSize()/4.0f);
     }
 
 }

@@ -35,12 +35,18 @@ Boss(0.1f,sf::Vector2u(4, 1),"fuego")
     vary=diry;
 
 
-     if(tipoBala>=1 && tipoBala<=4)
-     body.setTexture(AssetManager::getAssetManager()->GetTexture("flechas"));
-     else if(tipoBala==5 || tipoBala==6)
-     body.setTexture(AssetManager::getAssetManager()->GetTexture("fuego"));
-     else if(tipoBala==0)
-     body.setTexture(AssetManager::getAssetManager()->GetTexture("fireball"));
+     if(tipoBala>=1 && tipoBala<5){
+        body.setTexture(AssetManager::getAssetManager()->GetTexture("flechas"));
+        body.setOrigin(50.0f,50.0f);
+     }
+     else if(tipoBala==5 || tipoBala==6){
+        body.setTexture(AssetManager::getAssetManager()->GetTexture("fuego"));
+        body.setOrigin(17.5f,17.5f);
+     }
+     else if(tipoBala==0){
+        body.setTexture(AssetManager::getAssetManager()->GetTexture("fireball"));
+        body.setOrigin(20.0f,15.5f);
+     }
 
 
 }
