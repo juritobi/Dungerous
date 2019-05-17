@@ -49,6 +49,21 @@ void Colisiones::palanca(){
         }
     }
 }
+void Colisiones::pup(){
+
+
+    for(int i = 0; i<Game::getGame()->getTienda()->getPup().size() && i>=0 ;i++ ){
+        if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Game::getGame()->getTienda()->getPup()[i]->getSprite().getGlobalBounds())&&hud::getHud()->getPsetaNum()>0){
+            Game::getGame()->getPlayer()->pickPu(Game::getGame()->getTienda()->getPup()[i]->getTipo());
+            Game::getGame()->getTienda()->borrarPup(i);
+            hud::getHud()->setPseta(-1);
+            std::cout<<"voooy";
+        }
+    }
+
+
+}
+
 
 void Colisiones::importalte(){
     Player* personaje = Game::getGame()->getPlayer();
@@ -160,7 +175,7 @@ void Colisiones::espadaenemigo()
 
 void Colisiones::enemigo()
 {
-
+    if(Game::getGame()->getPlayer()->getgod()==false){
      if(reloj2.getElapsedTime().asSeconds()>2.0f){
 
         for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
@@ -195,6 +210,7 @@ void Colisiones::enemigo()
         }
 
     }
+  }
      limpiar();
 }
 

@@ -4,7 +4,7 @@
 
 
 Boss::Boss(sf::Vector2u vec, Player* player, int vida)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
-:animar(0.1f,sf::Vector2u(3,8),"boss")
+:animar(0.1f,sf::Vector2u(4,12),"boss")
 ,direccion(sf::Vector2f(0,0))
 ,atacando(false)
 {
