@@ -116,7 +116,7 @@ class Game : public InterfazEstado {
         };
 
 
-        PowerUp* mPower[];
+        std::vector<PowerUp*> mPower;
 
 
         int vida=3;
