@@ -37,7 +37,8 @@ class Game : public InterfazEstado {
         std::vector<Portal*> getPortales();
         Player          mPlayer;
         void            Purgue();
-        Animation          getdead();
+        void            lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam);
+
 
     private:
         static Game* game;
@@ -46,7 +47,7 @@ class Game : public InterfazEstado {
 
         sf::View        hudView;
         float           tick;
-
+        sf::RectangleShape     *muerte;
         Palanca *palancas [4];
         PalancaManager *manejadorPalanca;
         Tienda         *tienda;
@@ -54,6 +55,8 @@ class Game : public InterfazEstado {
         Map*     mMap;
         Animation dead;
         Boss*    boss;
+
+        sf::Clock reiniciar;
 
 
         std::vector<Portal*> portales;

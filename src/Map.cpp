@@ -12,6 +12,8 @@ Map* Map::getMap(){
 
 Map::Map(){
 
+matando==false;
+muerte=sf::RectangleShape();
 
 
 }
@@ -378,12 +380,14 @@ return puertas;
 
 void Map::Purguepos(int i){
 
+matando=true;
+muerte.setPosition(enemigos[i]->getbody().getPosition());
+muerte.setSize(sf::Vector2f(200.0f,200.0f));
+Game::getGame()->lanzarmuerte(muerte.getPosition(), muerte.getSize());
+
+
 delete enemigos[i];
 enemigos.erase(enemigos.begin()+i);
-
-sf::RectangleShape *muerte=new sf::RectangleShape();
-
-
 }
 
 void Map::reiniciar()
@@ -407,6 +411,22 @@ void Map::setreinicio()
 {
 reinicio=false;
 }
+
+sf::RectangleShape Map::getmuerte()
+{
+return muerte;
+}
+
+bool Map::getmatando()
+{
+return matando;
+}
+
+void Map::setmatando(){
+matando=false;
+}
+
+
 
 
 

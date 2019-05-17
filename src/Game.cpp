@@ -22,6 +22,7 @@ Game::Game()
 ,cl()
 ,dead(0.2f,sf::Vector2u(6, 1),"muerte")
 {
+
     boss=new Boss(sf::Vector2u(3,8), &mPlayer, 3);
     hudView.setSize(762,7608.f);
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.1f));
@@ -105,6 +106,22 @@ void Game::update(sf::Time elapsedTime){
          mMap->getenemigos()[i]->getbalas().at(j)->Update(App::getApp()->getElapsedTime());
 
 
+
+    if(mMap->getMap()->getmatando()==true && reiniciar.getElapsedTime().asSeconds()<1.2f)
+    {
+    dead.animar(0, App::getApp()->getElapsedTime(), true, false);
+    std::cout<<"hola3"<<std::endl;
+    muerte->setTextureRect(dead.uvRect);
+    std::cout<<"hola4"<<std::endl;
+    }
+    if(reiniciar.getElapsedTime().asSeconds()>1.1f && mMap->getMap()->getmatando()==true){
+    dead=Animation(0.2f,sf::Vector2u(6, 1),"muerte");
+    mMap->getMap()->setmatando();
+    delete muerte;
+    }
+
+    std::cout<<"holal"<<std::endl;
+
     mMap->reiniciar();
     Purgue();
 
@@ -167,6 +184,8 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
          }
     }
 
+    if(mMap->getMap()->getmatando()==true)
+        mWindow->draw(*muerte);
 
     //App::getApp()->mWindow.draw(Map::getMap());
 
@@ -245,11 +264,14 @@ void Game::Purgue()
     }
 }
 
-Animation Game::getdead()
+void Game::lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam)
 {
-return dead;
+reiniciar.restart();
+muerte=new sf::RectangleShape();
+muerte->setTexture(&AssetManager::getAssetManager()->GetTexture("muerte"));
+muerte->setSize(tam);
+muerte->setPosition(pos);
+
 }
-
-
 
 
