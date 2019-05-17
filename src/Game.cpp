@@ -22,6 +22,7 @@ Game::Game()
 ,cl()
 ,dead(0.2f,sf::Vector2u(6, 1),"muerte")
 {
+
     boss=new Boss(sf::Vector2u(3,8), &mPlayer, 3);
     hudView.setSize(762,7608.f);
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.1f));
@@ -91,6 +92,8 @@ void Game::update(sf::Time elapsedTime){
     Colisiones::getColisiones()->entorno();
     Colisiones::getColisiones()->importalte();
     Colisiones::getColisiones()->muerte();
+
+    Colisiones::getColisiones()->pup();
     //Colisiones::getColisiones()->hostion();
 
 
@@ -103,6 +106,20 @@ void Game::update(sf::Time elapsedTime){
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
         for(unsigned int j=0;j<mMap->getenemigos()[i]->getbalas().size();j++)
          mMap->getenemigos()[i]->getbalas().at(j)->Update(App::getApp()->getElapsedTime());
+
+
+
+    if(mMap->getMap()->getmatando()==true && reiniciar.getElapsedTime().asSeconds()<1.2f)
+    {
+    dead.animar(0, App::getApp()->getElapsedTime(), true, false);
+    muerte->setTextureRect(dead.uvRect);
+    }
+    if(reiniciar.getElapsedTime().asSeconds()>1.1f && mMap->getMap()->getmatando()==true){
+    dead=Animation(0.2f,sf::Vector2u(6, 1),"muerte");
+    mMap->getMap()->setmatando();
+    delete muerte;
+    }
+
 
 
     mMap->reiniciar();
@@ -143,8 +160,9 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         mWindow->draw(portales[i]->getSprite());
     }
     mWindow->draw(tienda->getSprite());
-    mWindow->draw(mPower[0]->getSprite());
-
+    for(int i=0;i<tienda->getPup().size();i++){
+        mWindow->draw(tienda->getPup()[i]->getSprite());
+    }
 
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
@@ -167,6 +185,8 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
          }
     }
 
+    if(mMap->getMap()->getmatando()==true)
+        mWindow->draw(*muerte);
 
     //App::getApp()->mWindow.draw(Map::getMap());
 
@@ -245,11 +265,19 @@ void Game::Purgue()
     }
 }
 
-Animation Game::getdead()
+void Game::lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam)
 {
-return dead;
+
+reiniciar.restart();
+muerte=new sf::RectangleShape();
+muerte->setTexture(&AssetManager::getAssetManager()->GetTexture("muerte"));
+muerte->setSize(tam);
+muerte->setPosition(pos);
 }
 
+Tienda* Game::getTienda(){
+    return tienda;
+}
 
 
 

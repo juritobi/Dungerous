@@ -17,7 +17,7 @@ class Colisiones
 
         void palanca();
         void importalte();
-
+        void pup();
         void camaramove();
         void espadaenemigo();
         void limpiar();

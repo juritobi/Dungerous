@@ -30,6 +30,7 @@ Player::Player()
 ,damage(1)
 ,atackSpeed(0.5)
 {
+    god=false;
     sala=7;
     firstState.pos=sf::Vector2f(960,8360);
     firstState.hitbox=&hitb;
@@ -461,16 +462,18 @@ void Player::pickPu(int i){
     switch(i){
         case 1 :
             life++;
-            mHud->setLife(1);
+            hud::getHud()->setLife(1);
             break;
 
         case 2://fuerza
             damage++;
+            hud::getHud()->setPup(2);
             break;
 
         case 3://vatt*/
             atackSpeed-=0.1;
             animationAtaque.setTime(atackSpeed/5);
+            hud::getHud()->setPup(3);
             break;
     }
 
@@ -534,4 +537,16 @@ return sala;
 int Player::getlife()
 {
 return life;
+}
+
+bool Player::getgod(){
+return god;
+}
+
+void Player::setgod(int i)
+{
+    if(i==0)
+    god=false;
+    else
+    god=true;
 }

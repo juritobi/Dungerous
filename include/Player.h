@@ -38,6 +38,9 @@ class Player
 
 
         //getters
+        bool god;
+        void setgod(int i);
+        bool getgod();
         sf::RectangleShape  getBody();
         sf::RectangleShape  getHitb();
         sf::RectangleShape  getEspada();
