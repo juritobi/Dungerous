@@ -149,7 +149,6 @@ void Colisiones::espadaenemigo()
 void Colisiones::enemigo()
 {
 
- if(Game::getGame()->getPlayer()->getgod()==false){
      if(reloj2.getElapsedTime().asSeconds()>2.0f){
 
         for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
@@ -189,9 +188,7 @@ void Colisiones::enemigo()
             Game::getGame()->getBoss()->colision();
         }
     }
- }
      limpiar();
-
 }
 
 
