@@ -19,11 +19,13 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
     derecha = true;
     if(type==0){
     body.setTexture(AssetManager::getAssetManager()->GetTexture("enem"));
+    body.setOrigin(16.0f,24.0f);
     fila = 0;
     hp=2;
     }
     else{
     body.setTexture(AssetManager::getAssetManager()->GetTexture("enem2"));
+    body.setOrigin(30.0f,30.0f);
     fila = 0;
     hp=3;
     }

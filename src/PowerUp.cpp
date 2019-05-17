@@ -10,8 +10,10 @@ PowerUp::PowerUp(sf::Vector2f pos, int i)
         sprite.setScale(0.17,0.17);
     }else if(tipo==2){
         sprite.setTexture(AssetManager::getAssetManager()->GetTexture("PFuerza"));
+        sprite.setScale(0.17,0.17);
     }else{
         sprite.setTexture(AssetManager::getAssetManager()->GetTexture("PAtaque"));
+        sprite.setScale(0.17,0.17);
     }
 
 

@@ -25,6 +25,12 @@ bool Colisiones::entorno(){
             return true;
         }
     }
+    std::cout<<Game::getGame()->getBoss()->getRandom()<<std::endl;
+     for (int i=0;i<Map::getMap()->getmuros().size();i++){
+        if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds()) && Game::getGame()->getBoss()->getRandom() == 2){
+            Game::getGame()->getBoss()->resetAtaque();
+        }
+     }
       espadaenemigo();
 
 }
@@ -43,6 +49,21 @@ void Colisiones::palanca(){
         }
     }
 }
+void Colisiones::pup(){
+
+
+    for(int i = 0; i<Game::getGame()->getTienda()->getPup().size() && i>=0 ;i++ ){
+        if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Game::getGame()->getTienda()->getPup()[i]->getSprite().getGlobalBounds())&&hud::getHud()->getPsetaNum()>0){
+            Game::getGame()->getPlayer()->pickPu(Game::getGame()->getTienda()->getPup()[i]->getTipo());
+            Game::getGame()->getTienda()->borrarPup(i);
+            hud::getHud()->setPseta(-1);
+            std::cout<<"voooy";
+        }
+    }
+
+
+}
+
 
 void Colisiones::importalte(){
     Player* personaje = Game::getGame()->getPlayer();
@@ -138,7 +159,11 @@ void Colisiones::espadaenemigo()
         reloj.restart();
         }
 
-
+     for(unsigned int i=0; i<Game::getGame()->getBoss()->getBalasBoss().size();i++){
+         if(Game::getGame()->getBoss()->getBalasBoss().at(i)->getBody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
+            Game::getGame()->getPlayer()->loseLife(1);
+         }
+     }
 
     if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getEspada().getGlobalBounds())){
     Game::getGame()->getBoss()->sethp();
@@ -150,7 +175,7 @@ void Colisiones::espadaenemigo()
 
 void Colisiones::enemigo()
 {
-
+    if(Game::getGame()->getPlayer()->getgod()==false){
      if(reloj2.getElapsedTime().asSeconds()>2.0f){
 
         for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
@@ -185,6 +210,7 @@ void Colisiones::enemigo()
         }
 
     }
+  }
      limpiar();
 }
 
