@@ -30,6 +30,7 @@ Player::Player()
 ,damage(1)
 ,atackSpeed(0.5)
 {
+    god=false;
     sala=7;
     firstState.pos=sf::Vector2f(960,8360);
     firstState.hitbox=&hitb;
@@ -102,6 +103,9 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
 }
 void Player::update(sf::Time elapsedTime){
+
+
+
 
     if(relojInvulnerable.getElapsedTime().asSeconds() >2 && invulnerable){
         invulnerable=false;
@@ -515,4 +519,16 @@ return sala;
 int Player::getlife()
 {
 return life;
+}
+
+bool Player::getgod(){
+return god;
+}
+
+void Player::setgod(int i)
+{
+    if(i==0)
+    god=false;
+    else
+    god=true;
 }
