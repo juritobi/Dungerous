@@ -110,9 +110,7 @@ void Game::update(sf::Time elapsedTime){
     if(mMap->getMap()->getmatando()==true && reiniciar.getElapsedTime().asSeconds()<1.2f)
     {
     dead.animar(0, App::getApp()->getElapsedTime(), true, false);
-    std::cout<<"hola3"<<std::endl;
     muerte->setTextureRect(dead.uvRect);
-    std::cout<<"hola4"<<std::endl;
     }
     if(reiniciar.getElapsedTime().asSeconds()>1.1f && mMap->getMap()->getmatando()==true){
     dead=Animation(0.2f,sf::Vector2u(6, 1),"muerte");
@@ -120,7 +118,7 @@ void Game::update(sf::Time elapsedTime){
     delete muerte;
     }
 
-    std::cout<<"holal"<<std::endl;
+
 
     mMap->reiniciar();
     Purgue();
