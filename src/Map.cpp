@@ -1,5 +1,7 @@
 #include "Map.h"
 #include "Game.h"
+#include "App.h"
+
 
 Map* Map::mapa=0;
 
@@ -10,9 +12,11 @@ Map* Map::getMap(){
     return mapa;
 }
 
-Map::Map(){
-
-
+Map::Map():
+dead(0.2f,sf::Vector2u(6, 1),"muerte")
+{
+matando==false;
+muerte=sf::RectangleShape();
 
 }
 
@@ -378,10 +382,15 @@ return puertas;
 
 void Map::Purguepos(int i){
 
+
+matando=true;
+muerte.setPosition(enemigos[i]->getbody().getPosition());
+muerte.setSize(sf::Vector2f(200.0f,200.0f));
+Game::getGame()->lanzarmuerte(muerte.getPosition(), muerte.getSize());
+
 delete enemigos[i];
 enemigos.erase(enemigos.begin()+i);
 
-sf::RectangleShape *muerte=new sf::RectangleShape();
 
 
 }
@@ -407,6 +416,21 @@ void Map::setreinicio()
 {
 reinicio=false;
 }
+
+sf::RectangleShape Map::getmuerte()
+{
+return muerte;
+}
+
+bool Map::getmatando()
+{
+return matando;
+}
+
+void Map::setmatando(){
+matando=false;
+}
+
 
 
 
