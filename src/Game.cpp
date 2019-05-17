@@ -143,8 +143,9 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         mWindow->draw(portales[i]->getSprite());
     }
     mWindow->draw(tienda->getSprite());
-    mWindow->draw(mPower[0]->getSprite());
-
+    for(int i=0;i<tienda->getPup().size();i++){
+        mWindow->draw(tienda->getPup()[i]->getSprite());
+    }
 
     mWindow->draw(mPlayer.getBody());
     mWindow->draw(mPlayer.getEspada());
