@@ -31,6 +31,8 @@ class Boss
         std::vector<Proyectil*>     getBalasBoss();
         void                        sethp();
         int                         gethp();
+        int                         getRandom();
+        void                        resetAtaque();
 
 
     protected:
@@ -46,7 +48,7 @@ class Boss
         bool                        embistiendo;
         int                         ataqueRandom;
         int                         sala;
-
+        bool                        boolAtaque;
 
 
 

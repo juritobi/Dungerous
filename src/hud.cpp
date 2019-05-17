@@ -68,7 +68,7 @@ hud::hud():mClock()
 
 
     int dist=20;
-    for (int i = 0;i<3;i++){
+    for (int i = 0;i<10;i++){
         sLife.push_back(sp);
         if(i==0){
             sLife[i].setPosition(130,-2605);

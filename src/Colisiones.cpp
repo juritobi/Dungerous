@@ -25,6 +25,12 @@ bool Colisiones::entorno(){
             return true;
         }
     }
+    std::cout<<Game::getGame()->getBoss()->getRandom()<<std::endl;
+     for (int i=0;i<Map::getMap()->getmuros().size();i++){
+        if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds()) && Game::getGame()->getBoss()->getRandom() == 2){
+            Game::getGame()->getBoss()->resetAtaque();
+        }
+     }
       espadaenemigo();
 
 }

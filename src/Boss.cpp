@@ -17,7 +17,7 @@ Boss::Boss(sf::Vector2u vec, Player* player, int vida)//comento cosas para proba
     speed=100.f;
     this->player = player;
     this->vida = vida;
-
+    boolAtaque = false;
     fila = 3;
     derecha = true;
 
@@ -125,8 +125,11 @@ void Boss::renderMove(float tick){
 
 void Boss::AtaqueRandom(sf::Time elapsedTime){
 
-    if(delayAtaqueRandom.getElapsedTime().asSeconds() < 3){
+    if(delayAtaqueRandom.getElapsedTime().asSeconds() < 3 && !boolAtaque){
+
         ataqueRandom = rand()%3;
+        boolAtaque=true;
+
         cargar=posicionMov;
     }
     if(delayAtaqueRandom.getElapsedTime().asSeconds() > 3 && delayAtaqueRandom.getElapsedTime().asSeconds() < 6){
@@ -156,6 +159,7 @@ void Boss::AtaqueRandom(sf::Time elapsedTime){
         atacando=false;
         speed=100.0f;
         embistiendo=false;
+        boolAtaque=false;
     }
 
 
@@ -233,6 +237,18 @@ void Boss::renderBalas(float tick){
     }
 }
 
+int Boss::getRandom(){
+    return ataqueRandom;
+}
+
+void Boss::resetAtaque(){
+    delayAtaqueRandom.restart();
+    boolAtaque=false;
+    atacando=false;
+    speed=100.0f;
+    embistiendo=false;
+}
+
 void Boss::hitted(){
 
     sf::Vector2f vec = sf::Vector2f(body.getPosition()-player->getPosition());
@@ -240,11 +256,6 @@ void Boss::hitted(){
     lastState=lastState+vec*speed;
     if(vida>0)
     vida = vida-1;
-
-
-
-    std::cout<<vida<<std::endl;
-
 }
 
 sf::Sprite Boss::getbody()//obtener el body
