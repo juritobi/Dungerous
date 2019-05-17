@@ -60,6 +60,7 @@
 		<Unit filename="include/Pausa.h" />
 		<Unit filename="include/Player.h" />
 		<Unit filename="include/Portal.h" />
+		<Unit filename="include/PowerUp.h" />
 		<Unit filename="include/Proyectil.h" />
 		<Unit filename="include/Puerta.h" />
 		<Unit filename="include/Sala.h" />
@@ -87,6 +88,7 @@
 		<Unit filename="src/Pausa.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Portal.cpp" />
+		<Unit filename="src/PowerUp.cpp" />
 		<Unit filename="src/Proyectil.cpp" />
 		<Unit filename="src/Puerta.cpp" />
 		<Unit filename="src/Sala.cpp" />
