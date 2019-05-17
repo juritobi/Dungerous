@@ -31,7 +31,12 @@ Game::Game()
     mMap= Map::getMap();
     mMap->generarmatriz(&mPlayer);
     mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,136,4);
+
     sf::Clock aux;
+
+
+
+
     /*crear palancas*/
 
     std::vector<int> p1;
@@ -64,6 +69,7 @@ Game::Game()
     mPower[2]=new PowerUp(sf::Vector2f(1200,8000),3);
 
     hud::getHud()->setLife(mPlayer.getlife());
+
 
 }
 
@@ -110,7 +116,16 @@ void Game::update(sf::Time elapsedTime){
         for(unsigned int j=0;j<mMap->getenemigos()[i]->getbalas().size();j++)
          mMap->getenemigos()[i]->getbalas().at(j)->Update(App::getApp()->getElapsedTime());
 
-
+    if(mMap->getMap()->getmatando()==true && reiniciar.getElapsedTime().asSeconds()<1.2f)
+    {
+    dead.animar(0, App::getApp()->getElapsedTime(), true, false);
+    muerte->setTextureRect(dead.uvRect);
+    }
+    if(reiniciar.getElapsedTime().asSeconds()>1.1f && mMap->getMap()->getmatando()==true){
+    dead=Animation(0.2f,sf::Vector2u(6, 1),"muerte");
+    mMap->getMap()->setmatando();
+    delete muerte;
+    }
     mMap->reiniciar();
     Purgue();
 
@@ -133,6 +148,9 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     boss->renderMove(tick);
     mPlayer.renderBalas(tick);
     boss->renderBalas(tick);
+
+
+
 
 //    enemigo1.renderMove(tick);
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
@@ -172,6 +190,12 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
          mWindow->draw(mMap->getenemigos()[i]->getbalas().at(j)->getBody());
          }
     }
+
+
+      if(mMap->getMap()->getmatando()==true)
+        mWindow->draw(*muerte);
+
+
 
 
     //App::getApp()->mWindow.draw(Map::getMap());
@@ -251,10 +275,16 @@ void Game::Purgue()
     }
 }
 
-Animation Game::getdead()
+void Game::lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam)
 {
-return dead;
+reiniciar.restart();
+muerte=new sf::RectangleShape();
+muerte->setTexture(&AssetManager::getAssetManager()->GetTexture("muerte"));
+muerte->setSize(tam);
+muerte->setPosition(pos);
+
 }
+
 
 
 
