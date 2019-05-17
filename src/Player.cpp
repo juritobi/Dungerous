@@ -20,8 +20,8 @@ Player::Player()
 ,life(3)
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
-,animation( 0.1f,sf::Vector2u(5, 12),"player")
-,animationAtaque( 0.1f,sf::Vector2u(5, 12),"player")
+,animation( 0.1f,sf::Vector2u(6, 27),"player")
+,animationAtaque( 0.1f,sf::Vector2u(6, 27),"player")
 ,fila(3)
 ,derecha(false)
 ,parar(false)
@@ -174,29 +174,59 @@ void Player::animate(sf::Time elapsedTime){
         }
         else{
             if(up){
-                fila=0;
-                if(rodando)
-                    fila=5;
+                if(invulnerable){
+                    fila=26;
+                    if(rodando)
+                        fila=18;
+                }
+                else{
+                    fila=0;
+                    if(rodando)
+                        fila=5;
+                }
                 parar=false;
             }
             if(down){
-                fila=2;
-                if(rodando)
-                    fila=6;
+                if(invulnerable){
+                    fila=25;
+                    if(rodando)
+                        fila=20;
+                }
+                else{
+                    fila=2;
+                    if(rodando)
+                        fila=6;
+                }
                 parar=false;
             }
             if(right){
-                fila=1;
-                if(rodando)
-                    fila=4;
-                derecha=true;
+                if(invulnerable){
+                    fila=24;
+                    if(rodando)
+                        fila=18;
+                    derecha=true;
+                }
+                else{
+                    fila=1;
+                    if(rodando)
+                        fila=4;
+                    derecha=true;
+                }
                 parar=false;
             }
             if(left){
-                fila=1;
-                if(rodando)
-                    fila=4;
-                derecha=false;
+                if(invulnerable){
+                    fila=24;
+                    if(rodando)
+                        fila=18;
+                    derecha=false;
+                }
+                else{
+                    fila=1;
+                    if(rodando)
+                        fila=4;
+                    derecha=false;
+                }
                 parar=false;
             }
         }
@@ -204,21 +234,80 @@ void Player::animate(sf::Time elapsedTime){
 
     if(parar)
     {
-        if(aup){
-            fila=9;
+        if(!disparo){
+            if(aup){
+                if(!invulnerable){
+                    fila=9;
+                }
+                else{
+                    fila=17;
+                }
+            }
+            if(adown){
+                if(!invulnerable)
+                {
+                    fila=8;
+                }
+                else{
+                    fila=16;
+                }
+            }
+            if(aright){
+                if(!invulnerable){
+                    fila=7;
+                }
+                else{
+                    fila=15;
+                }
+                derecha=true;
+            }
+            if(aleft){
+                if(!invulnerable)
+                {
+                    fila=7;
+                }
+                else{
+                    fila=15;
+                }
+                derecha=false;
+            }
         }
-        if(adown){
-            fila=8;
+        else{
+            if(aup){
+                if(!invulnerable){
+                    fila=23;
+                }
+                else{
+                    fila=26;
+                }
+            }
+            if(adown){
+                if(!invulnerable){
+                    fila=22;
+                }
+                else{
+                    fila=25;
+                }
+            }
+            if(aright){
+                if(!invulnerable){
+                    fila=21;
+                }
+                else{
+                    fila=24;
+                }
+                derecha=true;
+            }
+            if(aleft){
+                if(!invulnerable){
+                    fila=21;
+                }
+                else{
+                    fila=24;
+                }
+                derecha=false;
+            }
         }
-        if(aright){
-            fila=7;
-            derecha=true;
-        }
-        if(aleft){
-            fila=7;
-            derecha=false;
-        }
-
 
         if(Catacar.getElapsedTime().asSeconds()<atackSpeed){
             parar=false;
@@ -229,7 +318,7 @@ void Player::animate(sf::Time elapsedTime){
     animation.animar(fila, elapsedTime,derecha,parar);
     body.setTextureRect(animation.uvRect);
 
-    if(fila==9||fila==8||fila==7){
+    if(fila==9||fila==8||fila==7||fila==16||fila==15||fila==17){
         animationAtaque.animar(fila, elapsedTime,derecha,parar);
         body.setTextureRect(animationAtaque.uvRect);
     }
@@ -288,8 +377,8 @@ void Player::espadazo(){
                 delayBalas.restart();
             }
 
-            if(aright){
-                Proyectil* bala = new Proyectil(3.0f,hitb.getPosition(),0,0);
+           // if(aright){
+              //  Proyectil* bala = new Proyectil(3.0f,hitb.getPosition(),0,0);
 
             if(aright && !adown && !aup && !aleft){
                 Proyectil* bala = new Proyectil(3.0f,hitb.getPosition(),0,0);
@@ -298,9 +387,6 @@ void Player::espadazo(){
                 delete bala;
                 delayBalas.restart();
             }
-
-
-
 
             if(aleft && !adown && !aright && !aup){
                 Proyectil* bala = new Proyectil(4.0f,hitb.getPosition(),0,0);
@@ -311,7 +397,7 @@ void Player::espadazo(){
 
             }
 
-        }
+        //}
 
     if(Catacar.getElapsedTime().asSeconds()>atackSpeed){
         espada.setSize(sf::Vector2f(0,0));
