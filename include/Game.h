@@ -34,7 +34,6 @@ class Game : public InterfazEstado {
         Enemy*          getEnemigo();
         Boss*           getBoss();
         Palanca*        getPalancas(int i);
-        Tienda*         getTienda();
         std::vector<Portal*> getPortales();
         Player          mPlayer;
         void            Purgue();
@@ -117,6 +116,7 @@ class Game : public InterfazEstado {
         };
 
 
+        std::vector<PowerUp*> mPower;
 
 
         int vida=3;

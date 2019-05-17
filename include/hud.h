@@ -40,9 +40,7 @@ class hud
         int         vVida;
         int         vVel;
         int         vFuerza;
-        int         tiempo;
-        int         posAdd;
-                      //provisional
+        int         tiempo; //provisional
 
         std::vector<sf::Sprite> sLife;
         std::vector<sf::Sprite> sPup;

@@ -62,13 +62,16 @@ Game::Game()
         portales[2*i]->setDestino(portales[2*i+1]);
     }
 
+    tienda=new Tienda(sf::Vector2f(1200,8000));
 
+    mPower.push_back(new PowerUp(sf::Vector2f(1270,8180),1));
 
+   /* mPower[3];
+    mPower[0]=new PowerUp(sf::Vector2f(1270,8180),1);
+    mPower[1]=new PowerUp(sf::Vector2f(1200,8000),2);
+    mPower[2]=new PowerUp(sf::Vector2f(1200,8000),3);*/
 
     hud::getHud()->setLife(mPlayer.getlife());
-
-
-    tienda=new Tienda(sf::Vector2f(1200,7950));
 
 
 }
@@ -102,9 +105,6 @@ void Game::update(sf::Time elapsedTime){
     }
     Colisiones::getColisiones()->entorno();
     Colisiones::getColisiones()->importalte();
-
-    Colisiones::getColisiones()->pup();
-
     Colisiones::getColisiones()->muerte();
     //Colisiones::getColisiones()->hostion();
 
@@ -170,13 +170,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         mWindow->draw(portales[i]->getSprite());
     }
     mWindow->draw(tienda->getSprite());
-
-
-    for (int i =0;i<tienda->getPup().size();i++){
-
-        mWindow->draw(tienda->getPup()[i]->getSprite());
-    }
-
+    mWindow->draw(mPower[0]->getSprite());
 
 
     mWindow->draw(mPlayer.getBody());
@@ -284,7 +278,6 @@ void Game::Purgue()
     }
 }
 
-
 void Game::lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam)
 {
 reiniciar.restart();
@@ -295,9 +288,7 @@ muerte->setPosition(pos);
 
 }
 
-Tienda* Game::getTienda(){
-    return tienda;
-}
+
 
 
 
