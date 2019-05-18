@@ -7,6 +7,7 @@ Boss(0.1f,sf::Vector2u(4, 1),"fuego")
 ,BolaFuego(0.1f,sf::Vector2u(5, 1),"fireball")
 ,calculado(false)
 {
+    muro=false;
     mover=true;
     firstState.x=posInicial.x;
     firstState.y=posInicial.y;
@@ -165,6 +166,30 @@ void Proyectil::setmover()
 {
 mover=false;
 }
+
 bool Proyectil::getMover(){
     return mover;
+
+
+void Proyectil::setmuro()
+{
+    if(muro==false){
+    muro=true;
+    mur.restart();
+    }
+}
+
+bool Proyectil::getmuro(){
+return muro;
+}
+
+sf::Clock Proyectil::getmur()
+{
+return mur;
+}
+
+void Proyectil::setmur()
+{
+mur.restart();
+
 }

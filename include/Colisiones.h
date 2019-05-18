@@ -32,7 +32,7 @@ class Colisiones
         Colisiones();
         sf::Clock reloj;
         sf::Clock reloj2;
-
+        sf::Clock hachas;
         Game* mGame;
 
 

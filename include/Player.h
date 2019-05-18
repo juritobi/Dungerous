@@ -33,7 +33,9 @@ class Player
         void                hitted();
         void                setsala(int i);
         void                teleport(sf::Vector2f pos);
-
+        void                purgue(int i);
+        sf::Clock                   getmur();
+        sf::Clock                   setmur();
         void                pickPu(int i);
 
 
@@ -67,6 +69,7 @@ class Player
         sf::Clock               relojDisparo;
         sf::Clock               delayBalas;
         sf::Clock               relojInvulnerable;
+        sf::Clock                       mur;
 
         sf::RectangleShape      body;
         sf::RectangleShape      hitb;

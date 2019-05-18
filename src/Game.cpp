@@ -156,7 +156,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     mMap->getenemigos()[i]->renderMove(tick);
 
     App::getApp()->mWindow.draw(*mMap);
-    mMap->Mostrar(*mWindow);
+    //mMap->Mostrar(*mWindow);
 
     for(int i = 0;i<4;i++){
         mWindow->draw(palancas[i]->getSprite());
@@ -171,9 +171,10 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     }
 
     mWindow->draw(mPlayer->getBody());
-    mWindow->draw(mPlayer->getHitb());
+   // mWindow->draw(mPlayer->getHitb());
     mWindow->draw(mPlayer->getEspada());
     mWindow->draw(boss->getbody());
+
     for(int i=0; i < mPlayer->getBalas().size();i++){
         mPlayer->getBalas()[i]->Update(App::getApp()->getElapsedTime());
         mWindow->draw(mPlayer->getBalas()[i]->getBody());
