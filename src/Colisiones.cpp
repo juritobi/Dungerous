@@ -185,6 +185,7 @@ void Colisiones::espadaenemigo()
         }
 
 
+
     if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getEspada().getGlobalBounds())){
     Game::getGame()->getBoss()->sethp();
     reloj.restart();
