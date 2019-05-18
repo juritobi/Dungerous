@@ -68,6 +68,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
     if(key == sf::Keyboard::P){
         Pausa::getPausa()->posNuevo();
+        hud::getHud()->tiempoPausa.restart();
         StateManager::getStateManager()->AddState(Pausa::getPausa(), true);
 
     }
@@ -260,8 +261,7 @@ return boss;
 void Game::Purgue()
 {
     if(boss->gethp()==0){
-    boss==nullptr;
-    delete boss;
+    hud::getHud()->tiempoPausa.restart();
     }
 }
 
