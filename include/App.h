@@ -18,6 +18,7 @@ class App
 
         sf::Vector2f            normalizar(sf::Vector2f vec);
         sf::Clock               invulnerabilidad;
+        sf::Clock               changeStateWait;
 
     private:
         static App*             app;

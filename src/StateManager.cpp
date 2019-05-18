@@ -3,6 +3,7 @@
 #include <memory>
 #include <stack>
 #include <iostream>
+#include <App.h>
 
 StateManager* StateManager::stateManager = 0;
 
@@ -44,6 +45,7 @@ void  StateManager::ProcessStateChanges( ){
          _isRemoving = false;
     }
      if(_isAdding){
+            App::getApp()->changeStateWait.restart();
             if(!_states.empty( )){
                 if(_isReplacing){
                     _states.pop( );

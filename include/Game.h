@@ -39,7 +39,7 @@ class Game : public InterfazEstado {
         Player*          mPlayer;
         void            Purgue();
         void            lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f og);
-
+        void restart();
 
     private:
         static Game* game;

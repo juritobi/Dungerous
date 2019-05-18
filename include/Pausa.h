@@ -4,7 +4,6 @@
 #include "InterfazEstado.h"
 #include "Game.h"
 #include "Menu.h"
-#define MAX_NUMBER_OF_ITEMS 2
 
 
 	class Pausa : public InterfazEstado
@@ -31,7 +30,7 @@
 
         int selectedItemIndex;
         sf::Font font;
-        sf::Text pausaList[MAX_NUMBER_OF_ITEMS];
+        sf::Text pausaList[3];
 
 	};
 

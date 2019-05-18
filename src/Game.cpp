@@ -69,14 +69,6 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
         Pausa::getPausa()->posNuevo();
         hud::getHud()->tiempoPausa.restart();
         StateManager::getStateManager()->AddState(Pausa::getPausa(), true);
-        mPlayer=nullptr;
-        delete mPlayer;
-        mPlayer=new Player();
-        hud::getHud()->restart();
-        Colisiones::getColisiones()->restart();
-        mMap->restart();
-        game=new Game();
-
     }
     else{
         mPlayer->manageEvents(key, isPressed);
@@ -291,5 +283,13 @@ Tienda* Game::getTienda(){
     return tienda;
 }
 
-
+void Game::restart(){
+        mPlayer=nullptr;
+        delete mPlayer;
+        mPlayer=new Player();
+        hud::getHud()->restart();
+        Colisiones::getColisiones()->restart();
+        mMap->restart();
+        game=new Game();
+}
 
