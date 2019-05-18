@@ -137,7 +137,7 @@ void Colisiones::espadaenemigo()
         if(Game::getGame()->getPlayer()->getEspada().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(i)->getbody().getGlobalBounds())){
               if(Map::getMap()->getenemigos().at(i)->gethp()>0)
               Map::getMap()->getenemigos().at(i)->sethp();
-              if(Map::getMap()->getenemigos().at(i)->gethp()==0)
+              if(Map::getMap()->getenemigos().at(i)->gethp()<=0)
               Map::getMap()->getenemigos().at(i)->setexiste();
               reloj.restart();
               }
@@ -160,7 +160,7 @@ void Colisiones::espadaenemigo()
             {
                 Map::getMap()->getenemigos().at(j)->sethp();
                 reloj.restart();
-                if(Map::getMap()->getenemigos().at(j)->gethp()==0)
+                if(Map::getMap()->getenemigos().at(j)->gethp()<=0)
                 Map::getMap()->getenemigos().at(j)->setexiste();
 
             }

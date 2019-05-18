@@ -27,7 +27,7 @@ Player::Player()
 ,parar(false)
 ,disparo(false)
 ,invulnerable(false)
-,damage(1)
+,damage(2)
 ,atackSpeed(0.5)
 {
     god=false;
@@ -549,6 +549,11 @@ return sala;
 int Player::getlife()
 {
 return life;
+}
+
+int Player::getStrength()
+{
+return damage;
 }
 
 bool Player::getgod(){

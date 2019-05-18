@@ -11,7 +11,7 @@
 #include "PalancaManager.h"
 #include "Portal.h"
 #include "Tienda.h"
-
+#include "Victory.h"
 #include "Animation.h"
 
 #include "Pausa.h"

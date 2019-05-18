@@ -260,8 +260,8 @@ return boss;
 
 void Game::Purgue()
 {
-    if(boss->gethp()==0){
-    hud::getHud()->tiempoPausa.restart();
+    if(boss->gethp()<=0){
+        StateManager::getStateManager()->AddState(Victory::getVictory(), true);
     }
 }
 

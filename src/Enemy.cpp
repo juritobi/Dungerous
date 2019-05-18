@@ -182,7 +182,8 @@ return hp;
 
 void Enemy::sethp()
 {
-    hp-=1;
+    std::cout<<Game::getGame()->getPlayer()->getStrength()<<"----------------------------------------------"<<std::endl;
+    hp-=Game::getGame()->getPlayer()->getStrength();
     damages.restart();
 }
 
