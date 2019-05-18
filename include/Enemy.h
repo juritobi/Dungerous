@@ -47,6 +47,7 @@ class Enemy
         float                       swtime;
         float                       speed;
         bool                        derecha;
+        bool                        calculoColision;
         unsigned int                fila;
 
         sf::Sprite                  body;

@@ -1,21 +1,6 @@
 #include "../include/Proyectil.h"
 #include "../include/App.h"
-/*
-Proyectil::Proyectil(float x, float y, float ndireccion, sf::Vector2f posInicial):
-animationHachaBoss( 0.1f,sf::Vector2u(4, 1),"flechas")
-,animationBolaFuego(0.1f,sf::Vector2u(5,1),"fireball")
-,calculado(false)
-{
-    firstState=posInicial;
-    lastState=firstState;
-    tipoBala=ndireccion;
-    body.setScale(sf::Vector2f(0.5,0.5));
-    body.setPosition(posInicial);
-    body.setTexture(AssetManager::getAssetManager()->GetTexture("flechas"));
-    varx = 0;
-    vary = 0;
-}
-*/
+
 Proyectil::Proyectil(float ndireccion, sf::Vector2f posInicial, int dirx, int diry):
 Boss(0.1f,sf::Vector2u(4, 1),"fuego")
 ,Hacha(0.1f,sf::Vector2u(4, 1),"flechas")
@@ -27,7 +12,6 @@ Boss(0.1f,sf::Vector2u(4, 1),"fuego")
     firstState.y=posInicial.y;
     lastState=firstState;
     tipoBala=ndireccion;
-    //body.setScale(sf::Vector2f(4,4));
     speed=500.0f;
     existe=true;
     body.setPosition(posInicial);
@@ -51,25 +35,7 @@ Boss(0.1f,sf::Vector2u(4, 1),"fuego")
 
 
 }
-/*
-Proyectil::Proyectil(sf::Vector2f pos):
-animationHachaBoss( 0.1f,sf::Vector2u(4, 1),"flechas")
-,animationBolaFuego(0.1f,sf::Vector2u(5,1),"fireball")
-,direccion(sf::Vector2f(0,0))
-{
-    calculado=false;
-    firstState=sf::Vector2f(pos.x,pos.y);
-    lastState=firstState;
-    body.setPosition(pos);
-    body.setTexture(AssetManager::getAssetManager()->GetTexture("fireball"));
-    speed=500.0f;
-    derecha=true;
-    existe=true;
-    body.scale(sf::Vector2f(3.0f,3.0f));
-    tipoBala=0;
 
-}
-*/
 sf::Sprite Proyectil::getBody(){
     return body;
 }

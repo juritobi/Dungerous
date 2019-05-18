@@ -7,7 +7,9 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
 :animar(0.1f,sf::Vector2u(4,4),"enem")
 ,animar2(0.15f,sf::Vector2u(8,4),"enem2")
 ,direccion(sf::Vector2f(0,0))
-{   existe=true;
+{
+    calculoColision = false;
+    existe=true;
     sala=0;
     cd=(((double)rand()) / ((double)RAND_MAX))+1;
     this->type=type;
@@ -17,27 +19,21 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
     this->player = player;
     this->vida = vida;
     derecha = true;
+
     if(type==0){
-    body.setTexture(AssetManager::getAssetManager()->GetTexture("enem"));
-    body.setOrigin(16.0f,16.0f);
-    fila = 0;
-    hp=2;
+        body.setTexture(AssetManager::getAssetManager()->GetTexture("enem"));
+        body.setOrigin(16.0f,16.0f);
+        fila = 0;
+        hp=2;
     }
     else{
-    body.setTexture(AssetManager::getAssetManager()->GetTexture("enem2"));
-    body.setOrigin(15.0f,15.0f);
-    fila = 0;
-    hp=3;
+        body.setTexture(AssetManager::getAssetManager()->GetTexture("enem2"));
+        body.setOrigin(30.0f,30.0f);
+        fila = 0;
+        hp=3;
     }
-
-
-    //body.setTextureRect(sf::IntRect(100, 100, 100, 100));
-
     body.setPosition(pos);
     body.setScale(sf::Vector2f(2.0f,2.0f));
-
-
-
 }
 
 void Enemy::update(){
@@ -68,12 +64,18 @@ void Enemy::Mover()//mueve al enemigo hacia el player
     firstState=lastState;
 
     sf::Vector2f movement(0.f, 0.f);
+    if(damages.getElapsedTime().asSeconds()<0.3 && type==0){
 
+            direccion.x = direccion.x*-1;
+            direccion.y = direccion.y*-1;
+            speed = 500.0f;
+
+
+    }
+    if(damages.getElapsedTime().asSeconds()>0.3 && type==0){
+        speed = 100.0f;
+    }
     movement=direccion*speed;
-
-
-
-
     lastState.pos += movement * elapsedTime.asSeconds();
 
 
@@ -95,8 +97,6 @@ delete bala;
 
 void Enemy::Animar()
 {
-    //hitb.setPosition(body.getPosition()+sf::Vector2f(-35.0f,-30.0f));
-
     sf::Vector2f posicion(player->getBody().getPosition()-body.getPosition());
 
     if(posicion.x!=.0f || posicion.y!=0.0f)

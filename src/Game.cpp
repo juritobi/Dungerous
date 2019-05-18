@@ -176,7 +176,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         boss->getBalasBoss()[i]->Update(App::getApp()->getElapsedTime());
         mWindow->draw( boss->getBalasBoss()[i]->getBody());
     }
-    mWindow->draw(mPlayer.getHitb());
+    //mWindow->draw(mPlayer.getHitb());
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
     {
     mWindow->draw(mMap->getenemigos()[i]->getbody());
