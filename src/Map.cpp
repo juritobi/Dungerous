@@ -309,7 +309,6 @@ void Map::reiniciapuertas()
         }
     }
 
-std::cout<<"hola2"<<std::endl;
 load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
 }
 
@@ -428,7 +427,9 @@ void Map::setmatando(){
 matando=false;
 }
 
-
+void Map::restart(){
+    mapa=new Map();
+}
 
 
 

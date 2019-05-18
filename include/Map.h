@@ -48,6 +48,8 @@ class Map : public sf::Drawable, public sf::Transformable
         bool matando;
         bool  getmatando();
 
+        void restart();
+
         int id;
         int cx;
         int cy;

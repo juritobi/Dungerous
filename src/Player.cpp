@@ -54,8 +54,6 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
         }
     }
 
-    std::cout<<"soy juan el mago"<<std::endl;;
-
 
     if (key == sf::Keyboard::W)
         up=isPressed;
@@ -165,13 +163,11 @@ void Player::animate(sf::Time elapsedTime){
     else if(rodando && Crodar.getElapsedTime().asSeconds()>0.5 && Crodar.getElapsedTime().asSeconds()<1){
         speed=300;
         rodando=false;
-//        std::cout <<"me reinicio"<<std::endl;
 
     }
     else if(rodando && Crodar.getElapsedTime().asSeconds()>1){
         speed=300;
         Crodar.restart();
-     //   std::cout <<"me reinicio parte 2"<<std::endl;
     }
     else{
         speed=300;

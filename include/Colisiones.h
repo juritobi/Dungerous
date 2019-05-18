@@ -24,6 +24,7 @@ class Colisiones
         void enemigo();
         void muerte();
 
+        void restart();
 
 
     private:

@@ -70,6 +70,9 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
         Pausa::getPausa()->posNuevo();
         hud::getHud()->tiempoPausa.restart();
         StateManager::getStateManager()->AddState(Pausa::getPausa(), true);
+        Colisiones::getColisiones()->restart();
+        mMap->restart();
+        game=new Game();
 
     }
     else{
@@ -146,12 +149,11 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     mPlayer.renderBalas(tick);
     boss->renderBalas(tick);
 
-//    enemigo1.renderMove(tick);
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
     mMap->getenemigos()[i]->renderMove(tick);
 
     App::getApp()->mWindow.draw(*mMap);
-    //mMap->Mostrar(*mWindow);
+    mMap->Mostrar(*mWindow);
 
     for(int i = 0;i<4;i++){
         mWindow->draw(palancas[i]->getSprite());
@@ -166,6 +168,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     }
 
     mWindow->draw(mPlayer.getBody());
+    mWindow->draw(mPlayer.getHitb());
     mWindow->draw(mPlayer.getEspada());
     mWindow->draw(boss->getbody());
     for(int i=0; i < mPlayer.getBalas().size();i++){
@@ -261,8 +264,10 @@ return boss;
 void Game::Purgue()
 {
     if(boss->gethp()<=0){
+        game= new Game();
         StateManager::getStateManager()->AddState(Victory::getVictory(), true);
     }
+
 }
 
 void Game::lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f og)

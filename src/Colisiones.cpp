@@ -20,7 +20,9 @@ Colisiones::Colisiones()
 bool Colisiones::entorno(){
 
     for (int i=0;i<Map::getMap()->getmuros().size();i++){
+
         if(mGame->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
+             std::cout<<"choco"<<std::endl;
             mGame->getPlayer()->colision();
             return true;
         }
@@ -37,7 +39,6 @@ bool Colisiones::entorno(){
         for(unsigned int j=0; j<Map::getMap()->getmuros().size();j++){
             if(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getmuros().at(j)->getGlobalBounds())){
             Game::getGame()->getPlayer()->getBalas().at(i)->setmover();
-            std::cout<<"hola"<<std::endl;
                 }
             }
         }
@@ -70,7 +71,6 @@ void Colisiones::pup(){
             Game::getGame()->getPlayer()->pickPu(Game::getGame()->getTienda()->getPup()[i]->getTipo());
             Game::getGame()->getTienda()->borrarPup(i);
             hud::getHud()->setPseta(-1);
-            std::cout<<"voooy";
         }
     }
 
@@ -215,7 +215,6 @@ void Colisiones::enemigo()
 
         for(unsigned int k=0; k<Game::getGame()->getBoss()->getBalasBoss().size(); k++){
             if(Game::getGame()->getBoss()->getBalasBoss().at(k)->getBody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
-             std::cout<<"me ha dado una bala del boss"<<std::endl;
                 Game::getGame()->getPlayer()->loseLife(1);
                 reloj2.restart();
                 break;
@@ -256,4 +255,8 @@ void Colisiones::muerte(){
         GameOver::getGameOver()->posNuevo();
      }
 
+}
+
+void Colisiones::restart(){
+    colisiones=new Colisiones();
 }
