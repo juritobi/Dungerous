@@ -48,6 +48,7 @@ class Player
         std::vector<Proyectil*> getBalas();
         int                 getsala();
         int                 getlife();
+        int                 getStrength();
 
 
         //variables que convendria sacar de aqui
