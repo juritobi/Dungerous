@@ -7,7 +7,8 @@ PalancaManager::PalancaManager(sf::Vector2f posicion)
 
         indicadores[i].setTexture(AssetManager::getAssetManager()->GetTexture("calaveras"));
         indicadores[i].setTextureRect(sf::IntRect(0,0,64,64));
-        indicadores[i].setPosition(posicion.x+i*64,posicion.y);
+        indicadores[i].setOrigin(indicadores[i].getTextureRect().width/2,indicadores[i].getTextureRect().height/2);
+        indicadores[i].setPosition(posicion.x+i*64*1.3,posicion.y);
         activaciones[i]=false;
         terminado=false;
 
