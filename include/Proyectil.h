@@ -26,10 +26,13 @@ class Proyectil
         void                        setexiste();
         bool                        getexiste();
         void                        setmover();
+        bool                        getMover();
+
         void                        setmuro();
         bool                        getmuro();
         sf::Clock                   getmur();
         void                        setmur();
+
 
 
 

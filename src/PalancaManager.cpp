@@ -1,6 +1,6 @@
 #include "PalancaManager.h"
 #include <iostream>
-PalancaManager::PalancaManager(sf::Vector2f posicion)
+PalancaManager::PalancaManager(sf::Vector2f posicion,int s)
 {
     for(int i=0;i<4;i++){
 
@@ -11,7 +11,7 @@ PalancaManager::PalancaManager(sf::Vector2f posicion)
         indicadores[i].setPosition(posicion.x+i*64*1.3,posicion.y);
         activaciones[i]=false;
         terminado=false;
-
+        sala=s;
 
     }
 }
@@ -50,4 +50,8 @@ void PalancaManager::activa( std::vector<int> toActivate){
 
 sf::Sprite PalancaManager::getSprite(int i){
     return indicadores[i];
+}
+
+bool PalancaManager::getTerminado(){
+    return terminado;
 }
