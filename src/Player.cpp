@@ -33,10 +33,14 @@ Player::Player()
     god=false;
     sala=7;
     firstState.pos=sf::Vector2f(960,8360);
+    body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
+    body.setOrigin(42.5f,42.5f);
+    hitb.setOrigin(17.5f,25.0f);
+    hitb.setPosition(firstState.pos.x-15,firstState.pos.y-15);
+    hitb.setFillColor(sf::Color::Red);
     firstState.hitbox=&hitb;
     lastState=firstState;
-    body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
-     body.setOrigin(40.0f,40.0f);
+
 
 
 
@@ -49,6 +53,8 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
             Colisiones::getColisiones()->palanca();
         }
     }
+
+    std::cout<<"soy juan el mago"<<std::endl;;
 
 
     if (key == sf::Keyboard::W)
@@ -432,7 +438,7 @@ std::cout<<"he perdido vida"<<std::endl;
 void Player::renderMove(float tick){
 
     body.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
-    hitb.setPosition(body.getPosition()+sf::Vector2f(-15.0f,-15.0f));
+    hitb.setPosition(body.getPosition());
 
 
 }

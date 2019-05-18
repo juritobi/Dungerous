@@ -101,7 +101,7 @@ class Game : public InterfazEstado {
             sf::Vector2f(960+64*10,6464-64*12),
 
             sf::Vector2f(960+64*10,6464-64*14),
-            sf::Vector2f(960+64*0,6464-64*13),
+            sf::Vector2f(960+64*0,6464-64*12),
         };
 
         int direccionPortal [22] = {
