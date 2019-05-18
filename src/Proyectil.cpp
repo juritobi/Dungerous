@@ -170,7 +170,7 @@ mover=false;
 bool Proyectil::getMover(){
     return mover;
 
-
+}
 void Proyectil::setmuro()
 {
     if(muro==false){
