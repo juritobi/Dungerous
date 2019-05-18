@@ -165,3 +165,6 @@ void Proyectil::setmover()
 {
 mover=false;
 }
+bool Proyectil::getMover(){
+    return mover;
+}

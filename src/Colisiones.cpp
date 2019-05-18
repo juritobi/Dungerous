@@ -155,7 +155,7 @@ void Colisiones::espadaenemigo()
 
     for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
         for(unsigned int j=0; j<Map::getMap()->getenemigos().size();j++)
-            if(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(j)->getbody().getGlobalBounds()))
+            if(Game::getGame()->getPlayer()->getBalas().at(i)->getMover()&&Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(j)->getbody().getGlobalBounds()))
             {
                 Map::getMap()->getenemigos().at(j)->sethp();
                 reloj.restart();

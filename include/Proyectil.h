@@ -26,7 +26,7 @@ class Proyectil
         void                        setexiste();
         bool                        getexiste();
         void                        setmover();
-
+        bool                        getMover();
 
     private:
 
