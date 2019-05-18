@@ -19,13 +19,13 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
     derecha = true;
     if(type==0){
     body.setTexture(AssetManager::getAssetManager()->GetTexture("enem"));
-    body.setOrigin(16.0f,24.0f);
+    body.setOrigin(16.0f,16.0f);
     fila = 0;
     hp=2;
     }
     else{
     body.setTexture(AssetManager::getAssetManager()->GetTexture("enem2"));
-    body.setOrigin(30.0f,30.0f);
+    body.setOrigin(15.0f,15.0f);
     fila = 0;
     hp=3;
     }
@@ -41,7 +41,7 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
 }
 
 void Enemy::update(){
-    direccion=player->getHitb().getPosition() - body.getPosition()- Game::getGame()->getPlayer()->getHitb().getSize();
+    direccion=player->getHitb().getPosition() - body.getPosition();
     direccion=App::getApp()->normalizar(direccion);
     Animar();
 

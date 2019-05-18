@@ -165,7 +165,7 @@ void Proyectil::Mover(){
     sf::Vector2f movement(0.f, 0.f);
 
     if(calculado==false){
-    direccion=Game::getGame()->getPlayer()->getHitb().getPosition() - body.getPosition() - Game::getGame()->getPlayer()->getHitb().getSize();
+    direccion=Game::getGame()->getPlayer()->getHitb().getPosition() - body.getPosition();
     direccion=App::getApp()->normalizar(direccion);
     calculado=true;
     }

@@ -63,10 +63,6 @@ hud::hud():mClock()
     sp.setScale(0.6,29.5);
 
 
-
-
-
-
     int dist=20;
     for (int i = 0;i<10;i++){
         sLife.push_back(sp);
