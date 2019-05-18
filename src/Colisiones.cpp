@@ -19,14 +19,12 @@ Colisiones::Colisiones()
 bool Colisiones::entorno(){
 
     Player* personaje = Game::getGame()->getPlayer();
+
     for (int i=0;i<Map::getMap()->getmuros().size();i++){
-
         if(personaje->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
-
             personaje->colision();
             return true;
-
-
+            }
         }
 
          for (int i=0;i<Map::getMap()->getmuros().size();i++){
@@ -34,24 +32,18 @@ bool Colisiones::entorno(){
                 Game::getGame()->getBoss()->resetAtaque();
             }
          }
-
-
-
           for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++){
             for(unsigned int j=0; j<Map::getMap()->getmuros().size();j++){
                 if(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getmuros().at(j)->getGlobalBounds())){
                 Game::getGame()->getPlayer()->getBalas().at(i)->setmover();
                 Game::getGame()->getPlayer()->getBalas().at(i)->setmuro();
 
-
+                }
             }
         }
-    }
 
 
-
-      espadaenemigo();
- }
+ espadaenemigo();
 
 
 }
