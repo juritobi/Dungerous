@@ -17,7 +17,7 @@ Player::Player()
 ,adown(false)
 ,aright(false)
 ,aleft(false)
-,life(3)
+,life(4)
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
 ,animation( 0.1f,sf::Vector2u(6, 27),"player")
@@ -41,7 +41,7 @@ Player::Player()
     firstState.hitbox=&hitb;
     lastState=firstState;
 
-
+    hud::getHud()->setLife(life);
 
 
 }
