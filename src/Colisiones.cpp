@@ -173,7 +173,7 @@ void Colisiones::espadaenemigo()
         }
 
      for(unsigned int i=0; i<Game::getGame()->getBoss()->getBalasBoss().size();i++){
-         if(Game::getGame()->getBoss()->getBalasBoss().at(i)->getBody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
+         if(Game::getGame()->getBoss()->getBalasBoss().at(i)->getBody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getHitb().getGlobalBounds())){
             Game::getGame()->getPlayer()->loseLife(1);
          }
      }
