@@ -382,8 +382,10 @@ void Map::Purguepos(int i){
 
 matando=true;
 muerte.setPosition(enemigos[i]->getbody().getPosition());
-muerte.setSize(sf::Vector2f(200.0f,200.0f));
-Game::getGame()->lanzarmuerte(muerte.getPosition(), muerte.getSize());
+muerte.setSize(sf::Vector2f(50.0f,50.0f));
+muerte.setOrigin(enemigos[i]->getbody().getOrigin());
+
+Game::getGame()->lanzarmuerte(muerte.getPosition(), muerte.getSize(), muerte.getOrigin());
 
 
 delete enemigos[i];
