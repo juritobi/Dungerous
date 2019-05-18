@@ -25,12 +25,16 @@ class Proyectil
         void                        Animar();
         void                        setexiste();
         bool                        getexiste();
+        void                        setmover();
+
 
     private:
 
+        bool                            mover;
         int                             varx;
         int                             vary;
         bool                            calculado;
+        sf::Vector2f                    movement;
         sf::Vector2f                    vecDireccion;
         sf::Vector2f                    lastState;
         sf::Vector2f                    firstState;
