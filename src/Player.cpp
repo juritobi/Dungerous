@@ -27,7 +27,7 @@ Player::Player()
 ,parar(false)
 ,disparo(false)
 ,invulnerable(false)
-,damage(2)
+,damage(1)
 ,atackSpeed(0.5)
 {
     god=false;

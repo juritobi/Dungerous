@@ -159,6 +159,7 @@ void Colisiones::espadaenemigo()
             if(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getenemigos().at(j)->getbody().getGlobalBounds()))
             {
                 Map::getMap()->getenemigos().at(j)->sethp();
+                Game::getGame()->getPlayer()->getBalas().at(i)->setexiste();
                 reloj.restart();
                 if(Map::getMap()->getenemigos().at(j)->gethp()<=0)
                 Map::getMap()->getenemigos().at(j)->setexiste();
@@ -243,13 +244,16 @@ void Colisiones::limpiar()
             }
 
 
-            for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++){
-            std::cout<<Game::getGame()->getPlayer()->getBalas().at(i)->getmuro()<<std::endl;
-            std::cout<<Game::getGame()->getPlayer()->getBalas().at(i)->getmur().getElapsedTime().asSeconds()<<std::endl;
+            for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
                 if(Game::getGame()->getPlayer()->getBalas().at(i)->getmuro()==true && Game::getGame()->getPlayer()->getBalas().at(i)->getmur().getElapsedTime().asSeconds()>5.0f)
-                    Game::getGame()->getPlayer()->purgue(i);
+                Game::getGame()->getPlayer()->purgue(i);
 
-            }
+
+            for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
+                if(Game::getGame()->getPlayer()->getBalas().at(i)->getexiste()==false)
+                Game::getGame()->getPlayer()->purgue(i);
+
+
 
 
 
