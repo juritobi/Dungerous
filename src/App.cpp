@@ -69,6 +69,12 @@ void App::run(){
     generalClock.restart();
     updateClock.restart();
     updateStart = generalClock.getElapsedTime();
+    sf::Music       funcionaputa;
+    if(!funcionaputa.openFromFile("assets/musica.ogg")){
+        std::cout<<"No funca";
+    }
+    funcionaputa.setVolume(50);
+    funcionaputa.play();
 
     while (mWindow.isOpen())
 	{

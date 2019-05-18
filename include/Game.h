@@ -13,7 +13,7 @@
 #include "Tienda.h"
 #include "Victory.h"
 #include "Animation.h"
-
+#include <SFML/Audio.hpp>
 #include "Pausa.h"
 #include "PowerUp.h"
 
