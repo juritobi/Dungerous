@@ -29,6 +29,8 @@ App::App()
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
 
 
+    AssetManager::getAssetManager()->createFont("font1", "assets/font.otf");
+
     AssetManager::getAssetManager()->createTexture("portal","assets/portal.png");
 
     AssetManager::getAssetManager()->createTexture("PVida","assets/vida.png");

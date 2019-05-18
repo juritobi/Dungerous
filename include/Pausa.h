@@ -4,6 +4,7 @@
 #include "InterfazEstado.h"
 #include "Game.h"
 #include "Menu.h"
+#define MAX_NUMBER_OF_ITEMS 2
 
 
 	class Pausa : public InterfazEstado
@@ -14,6 +15,9 @@
         void  update(sf::Time elapsedTime);
         void  render(sf::Time minUpdateTime, sf::Time updateTime);
         void  posNuevo();
+         void MoveUp();
+        void MoveDown();
+        int GetPressedItem(){return selectedItemIndex;}
 
 	private:
 
@@ -25,6 +29,11 @@
 
         static Pausa* pausa;
 
+        int selectedItemIndex;
+        sf::Font font;
+        sf::Text pausaList[MAX_NUMBER_OF_ITEMS];
+
 	};
+
 
 
