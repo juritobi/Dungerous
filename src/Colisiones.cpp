@@ -107,6 +107,18 @@ void Colisiones::camaramove()
         if(Map::getMap()->getenemigos()[i]->getsala()==Game::getGame()->getPlayer()->getsala())
         n++;
 
+        if(Game::getGame()->getPlayer()->getsala()==2){
+            std::cout<<"Sala 2"<<std::endl;
+            if(Game::getGame()->getPalancaM()->getTerminado()){
+                std::cout<<"Si paso"<<std::endl;
+                n=0;
+            }
+            else{
+            std::cout<<"No paso"<<std::endl;
+                n++;
+            }
+        }
+
     bool cambio=false;
         if(n==0){
             for(unsigned int i=0; i<Map::getMap()->getpuertas().size();i++)
@@ -172,11 +184,6 @@ void Colisiones::espadaenemigo()
         reloj.restart();
         }
 
-     for(unsigned int i=0; i<Game::getGame()->getBoss()->getBalasBoss().size();i++){
-         if(Game::getGame()->getBoss()->getBalasBoss().at(i)->getBody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getHitb().getGlobalBounds())){
-            Game::getGame()->getPlayer()->loseLife(1);
-         }
-     }
 
     if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getEspada().getGlobalBounds())){
     Game::getGame()->getBoss()->sethp();

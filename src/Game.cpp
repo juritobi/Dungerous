@@ -44,7 +44,7 @@ Game::Game()
     std::vector<int> p4;
     p4.push_back(3);
     std::vector<int> vect [4]={p1,p2,p3,p4};
-    manejadorPalanca=new PalancaManager(sf::Vector2f(960+64*-2,2720));
+    manejadorPalanca=new PalancaManager(sf::Vector2f(960+64*-2,2720),2);
     for(int i =0;i<4;i++){
         palancas[i]= new Palanca(posicionPalanca[i],vect[i],manejadorPalanca);
     }
@@ -291,5 +291,7 @@ Tienda* Game::getTienda(){
     return tienda;
 }
 
-
+PalancaManager* Game::getPalancaM(){
+    return manejadorPalanca;
+}
 
