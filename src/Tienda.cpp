@@ -7,13 +7,13 @@ Tienda::Tienda(sf::Vector2f pos)
         int x;
         int y=pos.y+270;
         if(i==0){
-            x=pos.x+90;
+            x=pos.x+70;
         }
         else if(i==1){
-            x=pos.x+180;
+            x=pos.x+160;
         }
         else{
-            x=pos.x+280;
+            x=pos.x+260;
         }
         PowerUp* p=new PowerUp(sf::Vector2f(x,y),rand()%3+1);
         mPower.push_back(p);
