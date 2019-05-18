@@ -37,6 +37,8 @@ App::App()
     AssetManager::getAssetManager()->createTexture("PFuerza","assets/fuerza.png");
     AssetManager::getAssetManager()->createTexture("PAtaque","assets/velAt.png");
 
+    AssetManager::getAssetManager()->createTexture("calavera","assets/calavera.png");
+
     AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
     AssetManager::getAssetManager()->createTexture("flechas", "assets/flechas.png");//yo no existo parte 2
     AssetManager::getAssetManager()->createTexture("boss", "assets/dragon.png");
