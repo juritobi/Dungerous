@@ -39,7 +39,7 @@ App::App()
 
     AssetManager::getAssetManager()->createTexture("calavera","assets/calavera.png");
     AssetManager::getAssetManager()->createTexture("calaveraRoja","assets/calavera.png");
-
+    AssetManager::getAssetManager()->createTexture("calaveras","assets/calaveras.png");
 
 
     AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");

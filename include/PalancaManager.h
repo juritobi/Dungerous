@@ -2,6 +2,7 @@
 #define PALANCAMANAGER_H
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include "AssetManager.h"
 
 class PalancaManager
 {
@@ -9,12 +10,12 @@ class PalancaManager
         PalancaManager(sf::Vector2f posicion);
         void activa( std::vector<int> toActivate);
 
-        sf::CircleShape getSprite(int i);
+        sf::Sprite getSprite(int i);
 
     private:
 
         bool activaciones [4];
-        sf::CircleShape indicadores [4];
+        sf::Sprite indicadores [4];
         bool terminado;
 };
 

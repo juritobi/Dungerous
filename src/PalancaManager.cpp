@@ -4,9 +4,10 @@ PalancaManager::PalancaManager(sf::Vector2f posicion)
 {
     for(int i=0;i<4;i++){
 
-        indicadores[i].setRadius(10.f);
-        indicadores[i].setFillColor(sf::Color::Red);
-        indicadores[i].setPosition(posicion.x+i*20,posicion.y);
+
+        indicadores[i].setTexture(AssetManager::getAssetManager()->GetTexture("calaveras"));
+        indicadores[i].setTextureRect(sf::IntRect(0,0,64,64));
+        indicadores[i].setPosition(posicion.x+i*64,posicion.y);
         activaciones[i]=false;
         terminado=false;
 
@@ -23,13 +24,13 @@ void PalancaManager::activa( std::vector<int> toActivate){
             std::cout<<toActivate[i]<<std::endl;
             if(activaciones[toActivate[i]]){
                 activaciones[toActivate[i]]=false;
-                indicadores[toActivate[i]].setFillColor(sf::Color::Red);
+                indicadores[toActivate[i]].setTextureRect(sf::IntRect(0,0,64,64));
             }
 
             else{
 
                 activaciones[toActivate[i]]=true;
-                indicadores[toActivate[i]].setFillColor(sf::Color::Green);
+                indicadores[toActivate[i]].setTextureRect(sf::IntRect(64,0,64,64));
             }
         }
 
@@ -46,6 +47,6 @@ void PalancaManager::activa( std::vector<int> toActivate){
 }
 
 
-sf::CircleShape PalancaManager::getSprite(int i){
+sf::Sprite PalancaManager::getSprite(int i){
     return indicadores[i];
 }
