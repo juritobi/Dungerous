@@ -90,11 +90,7 @@ void Game::update(sf::Time elapsedTime){
     for(int i = 0;i<portales.size();i++){
         portales[i]->letsGo();
     }
-    Colisiones::getColisiones()->entorno();
-    Colisiones::getColisiones()->importalte();
-    Colisiones::getColisiones()->muerte();
 
-    Colisiones::getColisiones()->pup();
     //Colisiones::getColisiones()->hostion();
 
 
@@ -121,6 +117,10 @@ void Game::update(sf::Time elapsedTime){
     delete muerte;
     }
 
+    Colisiones::getColisiones()->entorno();
+    Colisiones::getColisiones()->importalte();
+    Colisiones::getColisiones()->muerte();
+    Colisiones::getColisiones()->pup();
 
 
     mMap->reiniciar();
@@ -176,7 +176,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         boss->getBalasBoss()[i]->Update(App::getApp()->getElapsedTime());
         mWindow->draw( boss->getBalasBoss()[i]->getBody());
     }
-    //mWindow->draw(mPlayer.getHitb());
+
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
     {
     mWindow->draw(mMap->getenemigos()[i]->getbody());
@@ -265,13 +265,16 @@ void Game::Purgue()
     }
 }
 
-void Game::lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam)
+void Game::lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f og)
 {
 
 reiniciar.restart();
 muerte=new sf::RectangleShape();
 muerte->setTexture(&AssetManager::getAssetManager()->GetTexture("muerte"));
 muerte->setSize(tam);
+muerte->setScale(sf::Vector2f(3.5f,3.5f));
+muerte->setOrigin(og);
+
 muerte->setPosition(pos);
 }
 

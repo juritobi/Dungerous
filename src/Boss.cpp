@@ -22,7 +22,7 @@ Boss::Boss(sf::Vector2u vec, Player* player, int vida)//comento cosas para proba
     derecha = true;
     body.setTexture(AssetManager::getAssetManager()->GetTexture("boss"));
     body.setOrigin(20.0f,17.5f);
-
+    ataqueRandom=0;
     body.setScale(5,5);
     //body.setTextureRect(sf::IntRect(100, 100, 100, 100));
 

@@ -7,7 +7,7 @@ Boss(0.1f,sf::Vector2u(4, 1),"fuego")
 ,BolaFuego(0.1f,sf::Vector2u(5, 1),"fireball")
 ,calculado(false)
 {
-
+    mover=true;
     firstState.x=posInicial.x;
     firstState.y=posInicial.y;
     lastState=firstState;
@@ -21,16 +21,19 @@ Boss(0.1f,sf::Vector2u(4, 1),"fuego")
      body.setTexture(AssetManager::getAssetManager()->GetTexture("flechas"));
      body.setScale(0.5f,0.5f);
      body.setOrigin(50.0f,50.0f);
+     body.setTextureRect(Hacha.uvRect);
      }
      else if(tipoBala==5 || tipoBala==6){
      body.setTexture(AssetManager::getAssetManager()->GetTexture("fuego"));
      body.setScale(3.5f,3.5f);
      body.setOrigin(17.5f,17.5f);
+     body.setTextureRect(Boss.uvRect);
      }
      else if(tipoBala==0){
      body.setTexture(AssetManager::getAssetManager()->GetTexture("fireball"));
      body.setScale(3.5f,3.5f);
      body.setOrigin(20.0f,15.5f);
+     body.setTextureRect(BolaFuego.uvRect);
      }
 
 
@@ -46,7 +49,7 @@ void Proyectil::Update(sf::Time elapsedTime){
 
     firstState=lastState;
 
-    sf::Vector2f movement(0.f, 0.f);
+    sf::Vector2f movement(0.0f, 0.0f);
     if(tipoBala>0){
         if(tipoBala == 1.0f){
             movement.y -= 500.0f;
@@ -90,6 +93,7 @@ void Proyectil::Update(sf::Time elapsedTime){
 
 
      if(tipoBala>=1 && tipoBala<=4){
+     if(mover==true)
      Hacha.animar(0,elapsedTime,derecha, false);
      body.setTextureRect(Hacha.uvRect);
      }
@@ -108,6 +112,8 @@ void Proyectil::Update(sf::Time elapsedTime){
 }
 
 void Proyectil::Render(float tick){
+
+    if(mover==true)
     body.setPosition(firstState.x*(1-tick)+lastState.x*tick,firstState.y*(1-tick)+lastState.y*tick);
 }
 
@@ -125,10 +131,11 @@ void Proyectil::Animar()
 
 void Proyectil::Mover(){
 
+
     firstState=lastState;
     sf::Time elapsedTime = App::getApp()->getElapsedTime();
 
-    sf::Vector2f movement(0.f, 0.f);
+    movement=sf::Vector2f(0.f, 0.f);
 
     if(calculado==false){
     direccion=Game::getGame()->getPlayer()->getHitb().getPosition() - body.getPosition();
@@ -152,4 +159,9 @@ existe=false;
 bool Proyectil::getexiste()
 {
 return existe;
+}
+
+void Proyectil::setmover()
+{
+mover=false;
 }

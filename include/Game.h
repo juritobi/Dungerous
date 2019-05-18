@@ -38,7 +38,7 @@ class Game : public InterfazEstado {
         std::vector<Portal*> getPortales();
         Player          mPlayer;
         void            Purgue();
-        void            lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam);
+        void            lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f og);
 
 
     private:
