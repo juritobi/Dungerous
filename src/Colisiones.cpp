@@ -232,33 +232,45 @@ void Colisiones::enemigo()
 
 void Colisiones::limpiar()
 {
+
+
         for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++)
             if(Map::getMap()->getenemigos().at(i)->getexiste()==false)
                 Map::getMap()->Purguepos(i);
 
-        for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
+
+        for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++)
                 for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++)
                         if(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getexiste()==false)
                             Map::getMap()->getenemigos().at(i)->Purguepos(j);
-            }
 
 
-            for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
-                if(Game::getGame()->getPlayer()->getBalas().at(i)->getmuro()==true && Game::getGame()->getPlayer()->getBalas().at(i)->getmur().getElapsedTime().asSeconds()>5.0f)
-                Game::getGame()->getPlayer()->purgue(i);
+
+        for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++)
+                for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++)
+                        if(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getmur().getElapsedTime().asSeconds()>5.0f)
+                            Map::getMap()->getenemigos().at(i)->Purguepos(j);
 
 
-            for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
-                if(Game::getGame()->getPlayer()->getBalas().at(i)->getexiste()==false)
-                Game::getGame()->getPlayer()->purgue(i);
 
 
+        for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
+            if(Game::getGame()->getPlayer()->getBalas().at(i)->getmuro()==true && Game::getGame()->getPlayer()->getBalas().at(i)->getmur().getElapsedTime().asSeconds()>5.0f)
+            Game::getGame()->getPlayer()->purgue(i);
+
+
+
+        for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
+            if(Game::getGame()->getPlayer()->getBalas().at(i)->getexiste()==false)
+            Game::getGame()->getPlayer()->purgue(i);
 
 
 
     camaramove();
 
 }
+
+
 
 
 void Colisiones::muerte(){

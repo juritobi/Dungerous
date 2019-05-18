@@ -86,6 +86,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
 void Game::update(sf::Time elapsedTime){
 
+    std::cout<<"hola"<<std::endl;
 
     mPlayer->update(elapsedTime);
 
@@ -96,6 +97,8 @@ void Game::update(sf::Time elapsedTime){
     for(int i = 0;i<portales.size();i++){
         portales[i]->letsGo();
     }
+
+
 
     //Colisiones::getColisiones()->hostion();
 
@@ -172,7 +175,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     mWindow->draw(mPlayer->getBody());
    // mWindow->draw(mPlayer->getHitb());
-    mWindow->draw(mPlayer->getEspada());
+    //mWindow->draw(mPlayer->getEspada());
     mWindow->draw(boss->getbody());
 
     for(int i=0; i < mPlayer->getBalas().size();i++){
