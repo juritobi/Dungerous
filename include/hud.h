@@ -22,6 +22,8 @@ class hud
         sf::Time sumaTiempo;
         sf::Clock tiempoPausa;
 
+        void restart();
+
 
     private:
         static hud* hudo;

@@ -36,7 +36,7 @@ class Game : public InterfazEstado {
         Tienda*         getTienda();
         Palanca*        getPalancas(int i);
         std::vector<Portal*> getPortales();
-        Player          mPlayer;
+        Player*          mPlayer;
         void            Purgue();
         void            lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f og);
 

@@ -17,19 +17,18 @@ Game* Game::getGame(){
 
 Game::Game()
 :tick(0)
-,mPlayer()
 ,hudView()
 ,cl()
 ,dead(0.2f,sf::Vector2u(6, 1),"muerte")
 {
-
-    boss=new Boss(sf::Vector2u(3,8), &mPlayer, 3);
+    mPlayer= new Player();
+    boss=new Boss(sf::Vector2u(3,8), mPlayer, 3);
     hudView.setSize(762,7608.f);
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.1f));
     App::getApp()->mView.setCenter(sf::Vector2f(960.0f,8160.f));
     loadGame();
     mMap= Map::getMap();
-    mMap->generarmatriz(&mPlayer);
+    mMap->generarmatriz(mPlayer);
     mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,136,4);
 
     /*crear palancas*/
@@ -70,13 +69,17 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
         Pausa::getPausa()->posNuevo();
         hud::getHud()->tiempoPausa.restart();
         StateManager::getStateManager()->AddState(Pausa::getPausa(), true);
+        mPlayer=nullptr;
+        delete mPlayer;
+        mPlayer=new Player();
+        hud::getHud()->restart();
         Colisiones::getColisiones()->restart();
         mMap->restart();
         game=new Game();
 
     }
     else{
-        mPlayer.manageEvents(key, isPressed);
+        mPlayer->manageEvents(key, isPressed);
     }
 
 }
@@ -84,7 +87,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Game::update(sf::Time elapsedTime){
 
 
-    mPlayer.update(elapsedTime);
+    mPlayer->update(elapsedTime);
 
     boss->update();
 
@@ -143,10 +146,10 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
     tick=updateTime/minUpdateTime;
 
-    mPlayer.renderMove(tick);
+    mPlayer->renderMove(tick);
 
     boss->renderMove(tick);
-    mPlayer.renderBalas(tick);
+    mPlayer->renderBalas(tick);
     boss->renderBalas(tick);
 
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
@@ -167,13 +170,13 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
         mWindow->draw(tienda->getPup()[i]->getSprite());
     }
 
-    mWindow->draw(mPlayer.getBody());
-    mWindow->draw(mPlayer.getHitb());
-    mWindow->draw(mPlayer.getEspada());
+    mWindow->draw(mPlayer->getBody());
+    mWindow->draw(mPlayer->getHitb());
+    mWindow->draw(mPlayer->getEspada());
     mWindow->draw(boss->getbody());
-    for(int i=0; i < mPlayer.getBalas().size();i++){
-        mPlayer.getBalas()[i]->Update(App::getApp()->getElapsedTime());
-        mWindow->draw(mPlayer.getBalas()[i]->getBody());
+    for(int i=0; i < mPlayer->getBalas().size();i++){
+        mPlayer->getBalas()[i]->Update(App::getApp()->getElapsedTime());
+        mWindow->draw(mPlayer->getBalas()[i]->getBody());
     }
     for(int i=0; i < boss->getBalasBoss().size();i++){
         boss->getBalasBoss()[i]->Update(App::getApp()->getElapsedTime());
@@ -228,7 +231,7 @@ void Game::loadGame(){
 
 	myfile.open("save.txt");
     myfile>> x >> y >> z;
-	mPlayer.setPosition(sf::Vector2f(x,y));
+	mPlayer->setPosition(sf::Vector2f(x,y));
 	hud::getHud()->setPseta(z);
 }
 
@@ -239,14 +242,14 @@ void Game::saveGame(){
     myfile<<
     960<<" "<<8360<<" "<<hud::getHud()->getPsetaNum()<<std::endl;
 
-    /*mPlayer.getPosition().x<<" "<<
-    mPlayer.getPosition().y<<std::endl;*/
+    /*mPlayer->getPosition().x<<" "<<
+    mPlayer->getPosition().y<<std::endl;*/
 
     myfile.close();
 }
 
 Player* Game::getPlayer(){
-    return &mPlayer;
+    return mPlayer;
 }
 
 

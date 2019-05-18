@@ -173,3 +173,6 @@ void hud::setPup(int i){
     }
 }
 
+void hud::restart(){
+    hudo=new hud();
+}

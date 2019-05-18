@@ -14,16 +14,15 @@ Colisiones* Colisiones::getColisiones(){
 
 Colisiones::Colisiones()
 {
-    mGame=Game::getGame();
 }
 
 bool Colisiones::entorno(){
-
+    Player* personaje = Game::getGame()->getPlayer();
     for (int i=0;i<Map::getMap()->getmuros().size();i++){
 
-        if(mGame->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
-             std::cout<<"choco"<<std::endl;
-            mGame->getPlayer()->colision();
+        if(personaje->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
+
+            personaje->colision();
             return true;
         }
     }
