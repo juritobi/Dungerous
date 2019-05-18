@@ -253,6 +253,10 @@ void Colisiones::limpiar()
 
 
 
+        for(unsigned int i=0; i<Game::getGame()->getBoss()->getBalasBoss().size();i++)
+            if(Game::getGame()->getBoss()->getBalasBoss().at(i)->getmur().getElapsedTime().asSeconds()>5.0f)
+            Game::getGame()->getBoss()->Purgue(i);
+
 
         for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
             if(Game::getGame()->getPlayer()->getBalas().at(i)->getmuro()==true && Game::getGame()->getPlayer()->getBalas().at(i)->getmur().getElapsedTime().asSeconds()>5.0f)
