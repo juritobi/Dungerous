@@ -33,7 +33,7 @@ class Boss
         int                         gethp();
         int                         getRandom();
         void                        resetAtaque();
-
+        void                        Purgue(int i);
 
     protected:
 

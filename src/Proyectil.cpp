@@ -38,6 +38,8 @@ Boss(0.1f,sf::Vector2u(4, 1),"fuego")
      }
 
 
+
+
 }
 
 sf::Sprite Proyectil::getBody(){
@@ -53,34 +55,34 @@ void Proyectil::Update(sf::Time elapsedTime){
     sf::Vector2f movement(0.0f, 0.0f);
     if(tipoBala>0){
         if(tipoBala == 1.0f){
-            movement.y -= 500.0f;
+            movement.y -= speed;
         }
         else if(tipoBala == 2.0f){
-            movement.y += 500.0f;
+            movement.y += speed;
         }
         else if(tipoBala == 4.0f){
-            movement.x -= 500.0f;
+            movement.x -= speed;
 
         }
         else if(tipoBala == 3.0f){
-            movement.x += 500.0f;
+            movement.x += speed;
             derecha=true;
 
         }
         else if(tipoBala == 5.0f){
 
             if(vary>0){
-                movement.y +=300.0f;
+                movement.y +=speed;
             }
             else if (vary<0){
-                movement.y -=300.0f;
+                movement.y -=speed;
             }
             if(varx>0){
-                movement.x +=300.0f;
+                movement.x +=speed;
                 derecha=true;
             }
             else if(varx<0){
-                movement.x -=300.0f;
+                movement.x -=speed;
             }
         }
         else if(tipoBala ==6.0f ){

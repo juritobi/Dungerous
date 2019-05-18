@@ -281,3 +281,9 @@ int Boss::gethp()
 {
 return vida;
 }
+
+
+void Boss::Purgue(int i){
+delete vecBalasBoss[i];
+vecBalasBoss.erase(vecBalasBoss.begin()+i);
+}

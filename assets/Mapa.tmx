@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="136" tilewidth="64" tileheight="64" nextobjectid="432">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="136" tilewidth="64" tileheight="64" nextobjectid="434">
  <tileset firstgid="1" name="THIS" tilewidth="64" tileheight="64" tilecount="506">
   <image source="THIS.png" width="1472" height="1408"/>
  </tileset>
@@ -8308,27 +8308,10 @@
   <object id="431" x="1330.3" y="8663.64"/>
  </objectgroup>
  <objectgroup name="spawn">
-  <object id="282" x="922" y="7012">
+  <object id="432" x="1209.09" y="6906.06">
    <ellipse/>
   </object>
-  <object id="283" x="1576" y="6950">
-   <ellipse/>
-  </object>
-  <object id="284" x="370" y="7304"/>
-  <object id="347" x="192" y="4474">
-   <ellipse/>
-  </object>
-  <object id="348" x="1720" y="4448">
-   <ellipse/>
-  </object>
-  <object id="349" x="932" y="4904"/>
-  <object id="375" x="478" y="3648">
-   <ellipse/>
-  </object>
-  <object id="376" x="700" y="4026">
-   <ellipse/>
-  </object>
-  <object id="378" x="1298" y="3482">
+  <object id="433" x="1260.61" y="7163.64">
    <ellipse/>
   </object>
  </objectgroup>
