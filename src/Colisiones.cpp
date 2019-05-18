@@ -19,28 +19,29 @@ Colisiones::Colisiones()
 
 bool Colisiones::entorno(){
 
-    for (int i=0;i<Map::getMap()->getmuros().size();i++){
-        if(mGame->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
-            mGame->getPlayer()->colision();
-            return true;
-        }
-    }
-
-     for (int i=0;i<Map::getMap()->getmuros().size();i++){
-        if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds()) && Game::getGame()->getBoss()->getRandom() == 2){
-            Game::getGame()->getBoss()->resetAtaque();
-        }
-     }
-
-
-      for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++){
-        for(unsigned int j=0; j<Map::getMap()->getmuros().size();j++){
-            if(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getmuros().at(j)->getGlobalBounds())){
-            Game::getGame()->getPlayer()->getBalas().at(i)->setmover();
-            std::cout<<"hola"<<std::endl;
-                }
+        for (int i=0;i<Map::getMap()->getmuros().size();i++){
+            if(mGame->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
+                mGame->getPlayer()->colision();
+                return true;
             }
         }
+
+         for (int i=0;i<Map::getMap()->getmuros().size();i++){
+            if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds()) && Game::getGame()->getBoss()->getRandom() == 2){
+                Game::getGame()->getBoss()->resetAtaque();
+            }
+         }
+
+
+          for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++){
+            for(unsigned int j=0; j<Map::getMap()->getmuros().size();j++){
+                if(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getmuros().at(j)->getGlobalBounds())){
+                Game::getGame()->getPlayer()->getBalas().at(i)->setmover();
+                Game::getGame()->getPlayer()->getBalas().at(i)->setmuro();
+
+            }
+        }
+    }
 
 
 
@@ -70,7 +71,6 @@ void Colisiones::pup(){
             Game::getGame()->getPlayer()->pickPu(Game::getGame()->getTienda()->getPup()[i]->getTipo());
             Game::getGame()->getTienda()->borrarPup(i);
             hud::getHud()->setPseta(-1);
-            std::cout<<"voooy";
         }
     }
 
@@ -215,7 +215,6 @@ void Colisiones::enemigo()
 
         for(unsigned int k=0; k<Game::getGame()->getBoss()->getBalasBoss().size(); k++){
             if(Game::getGame()->getBoss()->getBalasBoss().at(k)->getBody().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBody().getGlobalBounds())){
-             std::cout<<"me ha dado una bala del boss"<<std::endl;
                 Game::getGame()->getPlayer()->loseLife(1);
                 reloj2.restart();
                 break;
@@ -237,11 +236,21 @@ void Colisiones::limpiar()
             if(Map::getMap()->getenemigos().at(i)->getexiste()==false)
                 Map::getMap()->Purguepos(i);
 
-    for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
-            for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++)
-                    if(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getexiste()==false)
-                        Map::getMap()->getenemigos().at(i)->Purguepos(j);
-        }
+        for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++){
+                for(unsigned int j=0; j<Map::getMap()->getenemigos().at(i)->getbalas().size();j++)
+                        if(Map::getMap()->getenemigos().at(i)->getbalas().at(j)->getexiste()==false)
+                            Map::getMap()->getenemigos().at(i)->Purguepos(j);
+            }
+
+
+            for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++){
+            std::cout<<Game::getGame()->getPlayer()->getBalas().at(i)->getmuro()<<std::endl;
+            std::cout<<Game::getGame()->getPlayer()->getBalas().at(i)->getmur().getElapsedTime().asSeconds()<<std::endl;
+                if(Game::getGame()->getPlayer()->getBalas().at(i)->getmuro()==true && Game::getGame()->getPlayer()->getBalas().at(i)->getmur().getElapsedTime().asSeconds()>5.0f)
+                    Game::getGame()->getPlayer()->purgue(i);
+
+            }
+
 
 
     camaramove();

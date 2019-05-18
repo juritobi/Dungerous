@@ -510,28 +510,6 @@ std::vector<Proyectil*> Player::getBalas(){
     return vecProyectil;
 }
 
-/*
-void Player::hitted(){
-
-    loseLife(1);
-    sf::Vector2f vec = body.getPosition()-sf::Vector2f(Game::getGame()->getEnemigo()->getHitbox().getPosition());
-    vec= App::getApp()->normalizar(vec);
-    lastState.pos=lastState.pos+vec*multiplier;
-    lastState.hitbox->setPosition(lastState.pos+sf::Vector2f(-15.0f,-15.0f));
-
-    if(Colisiones::getColisiones()->entorno()){
-        if(multiplier>1){
-            multiplier=multiplier/2;
-            hitted();
-        }
-
-    }
-    stateMovement();
-    App::getApp()->invulnerabilidad.restart();
-
-    multiplier=100.f;
-}
-*/
 
 void Player::colision(){
     lastState=firstState;
@@ -566,4 +544,12 @@ void Player::setgod(int i)
     god=false;
     else
     god=true;
+}
+
+void Player::purgue(int i)
+{
+std::cout<<"hola"<<std::endl;
+delete vecProyectil[i];
+vecProyectil.erase(vecProyectil.begin()+i);
+
 }

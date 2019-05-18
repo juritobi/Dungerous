@@ -26,10 +26,16 @@ class Proyectil
         void                        setexiste();
         bool                        getexiste();
         void                        setmover();
+        void                        setmuro();
+        bool                        getmuro();
+        sf::Clock                   getmur();
+        void                        setmur();
+
 
 
     private:
 
+        bool                            muro;
         bool                            mover;
         int                             varx;
         int                             vary;
@@ -43,6 +49,7 @@ class Proyectil
         Animation                       Boss;
         float                           tipoBala;
         sf::Sprite                      body;
+        sf::Clock                       mur;
 
         bool derecha;
         int fila;
