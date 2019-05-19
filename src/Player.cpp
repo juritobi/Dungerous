@@ -31,8 +31,8 @@ Player::Player()
 ,atackSpeed(0.5)
 {
     god=false;
-    sala=7;
-    firstState.pos=sf::Vector2f(960,8360);
+    sala=13;
+    firstState.pos=sf::Vector2f(960,15000);
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
     efectoAtaque.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkataque"));
     efectoGolpeado.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkherido"));
@@ -168,7 +168,7 @@ void Player::animate(sf::Time elapsedTime){
     parar=true;
 
     if(rodando && Crodar.getElapsedTime().asSeconds()<0.5){
-        speed=500;
+        speed=750;
 
     }
     else if(rodando && Crodar.getElapsedTime().asSeconds()>0.5 && Crodar.getElapsedTime().asSeconds()<1){

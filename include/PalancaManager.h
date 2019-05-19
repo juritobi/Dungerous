@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "AssetManager.h"
 
+
 class PalancaManager
 {
     public:

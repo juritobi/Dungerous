@@ -25,38 +25,44 @@ Game::Game()
     boss=new Boss(sf::Vector2u(3,8), mPlayer, 3);
     hudView.setSize(762,7608.f);
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.1f));
-    App::getApp()->mView.setCenter(sf::Vector2f(960.0f,8160.f));
+    App::getApp()->mView.setCenter(sf::Vector2f(960.0f,14686.0f));
     loadGame();
     mMap= Map::getMap();
     mMap->generarmatriz(mPlayer);
-    mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,136,4);
+    mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,238,3);
 
     /*crear palancas*/
 
     std::vector<int> p1;
-    p1.push_back(0);
+    p1.push_back(1);
     p1.push_back(3);
     std::vector<int> p2;
     p2.push_back(1);
+    p2.push_back(3);
     std::vector<int> p3;
-    p3.push_back(2);
+    p3.push_back(0);
+    p3.push_back(1);
     p3.push_back(3);
     std::vector<int> p4;
+    p4.push_back(1);
+    p4.push_back(2);
     p4.push_back(3);
     std::vector<int> vect [4]={p1,p2,p3,p4};
-    manejadorPalanca=new PalancaManager(sf::Vector2f(960+64*-2,2720),2);
+    manejadorPalanca=new PalancaManager(sf::Vector2f(960+64*-2,13600),2);
     for(int i =0;i<4;i++){
         palancas[i]= new Palanca(posicionPalanca[i],vect[i],manejadorPalanca);
     }
 
     /*crear portales*/
-    for(int i = 0 ; i<11;i++){
+    for(int i = 0 ; i<22;i++){
         portales.push_back(new Portal(posicionPortal[2*i],direccionPortal[2*i]));
         portales.push_back(new Portal(posicionPortal[2*i+1],portales[2*i],direccionPortal[2*i+1]));
         portales[2*i]->setDestino(portales[2*i+1]);
     }
 
-    tienda=new Tienda(sf::Vector2f(1200,8000));
+    tienda[0]=new Tienda(sf::Vector2f(1200,14500));
+    tienda[1]=new Tienda(sf::Vector2f(1200,8000));
+    tienda[2]=new Tienda(sf::Vector2f(1350,3264));
 
     mPower.push_back(new PowerUp(sf::Vector2f(150,150),1));
 
@@ -81,7 +87,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Game::update(sf::Time elapsedTime){
 
 
-
+    std::cout<<portales.size()<<std::endl;
     mPlayer->update(elapsedTime);
 
     boss->update();
@@ -92,7 +98,7 @@ void Game::update(sf::Time elapsedTime){
         portales[i]->letsGo();
     }
 
-
+std::cout<<"hahahsfhdihghiegrlbjdfbjfdojpbpobjtahonjbgfsñonjkgdb"<<std::endl;
 
     //Colisiones::getColisiones()->hostion();
 
@@ -126,15 +132,6 @@ void Game::update(sf::Time elapsedTime){
     mMap->reiniciar();
     Purgue();
 
-    std::cout<<mMap->getMap()->getenemigos().size()<<std::endl;
-    std::cout<<mMap->getMap()->getmuros().size()<<std::endl;
-    std::cout<<mMap->getMap()->getpuertas().size()<<std::endl;
-    std::cout<<portales.size()<<std::endl;
-
-    /*
-    if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
-        Colisiones::getColisiones()->hostiado();
-        */
 }
 
 //calcula el tick para mover el personaje y dibuja
@@ -163,11 +160,12 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     for(int i = 0;i<portales.size();i++){
         mWindow->draw(portales[i]->getSprite());
     }
-    mWindow->draw(tienda->getSprite());
-    for(int i=0;i<tienda->getPup().size();i++){
-        mWindow->draw(tienda->getPup()[i]->getSprite());
+    for (int i = 0;i<3;i++){
+        mWindow->draw(tienda[i]->getSprite());
+        for(int j=0;j<tienda[i]->getPup().size();j++){
+            mWindow->draw(tienda[i]->getPup()[j]->getSprite());
+        }
     }
-
     mWindow->draw(mPlayer->getBody());
    // mWindow->draw(mPlayer->getHitb());
     //mWindow->draw(mPlayer->getEspada());
@@ -240,7 +238,7 @@ void Game::saveGame(){
     myfile.open("save.txt");
 
     myfile<<
-    960<<" "<<8360<<" "<<hud::getHud()->getPsetaNum()<<std::endl;
+    960<<" "<<15000<<" "<<hud::getHud()->getPsetaNum()<<std::endl;
 
     /*mPlayer->getPosition().x<<" "<<
     mPlayer->getPosition().y<<std::endl;*/
@@ -286,8 +284,8 @@ muerte->setOrigin(og);
 muerte->setPosition(pos);
 }
 
-Tienda* Game::getTienda(){
-    return tienda;
+Tienda* Game::getTienda(int i){
+    return tienda[i];
 }
 
 

@@ -17,15 +17,13 @@ Colisiones::Colisiones()
     habiaEnemigos=false;
 }
 
-bool Colisiones::entorno(){
+void Colisiones::entorno(){
 
     Player* personaje = Game::getGame()->getPlayer();
 
     for (int i=0;i<Map::getMap()->getmuros().size();i++){
         if(personaje->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
-
             personaje->colision(0,0);
-            return true;
         }
     }
 
@@ -68,11 +66,14 @@ void Colisiones::palanca(){
 }
 void Colisiones::pup(){
 
-    for(int i = 0; i<Game::getGame()->getTienda()->getPup().size() && i>=0 ;i++ ){
-        if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Game::getGame()->getTienda()->getPup()[i]->getSprite().getGlobalBounds())&&hud::getHud()->getPsetaNum()>0){
-            Game::getGame()->getPlayer()->pickPu(Game::getGame()->getTienda()->getPup()[i]->getTipo());
-            Game::getGame()->getTienda()->borrarPup(i);
-            hud::getHud()->setPseta(-1);
+    for(int i = 0; i<3;i++ ){
+
+        for(int j = 0; j<Game::getGame()->getTienda(i)->getPup().size() && j>=0 ;j++ ){
+            if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Game::getGame()->getTienda(i)->getPup()[j]->getSprite().getGlobalBounds())&&hud::getHud()->getPsetaNum()>0){
+                Game::getGame()->getPlayer()->pickPu(Game::getGame()->getTienda(i)->getPup()[j]->getTipo());
+                Game::getGame()->getTienda(i)->getPup()[j]->setExiste();
+                hud::getHud()->setPseta(-1);
+            }
         }
     }
 }
@@ -85,8 +86,15 @@ void Colisiones::importalte(){
             sf::Vector2f posicion;
             int dir;
             if(Game::getGame()->getPlayer()->getgod()){
-                posicion = Game::getGame()->getPortales()[Game::getGame()->getPortales().size()-1]->getSprite().getPosition();
-                dir = Game::getGame()->getPortales()[Game::getGame()->getPortales().size()-1]->getDireccion();
+                if(Game::getGame()->getPortales().size()>25){
+                    posicion = Game::getGame()->getPortales()[21]->getSprite().getPosition();
+                    dir = Game::getGame()->getPortales()[21]->getDireccion();
+                }
+                else{
+                    posicion = Game::getGame()->getPortales()[Game::getGame()->getPortales().size()-1]->getSprite().getPosition();
+                    dir = Game::getGame()->getPortales()[Game::getGame()->getPortales().size()-1]->getDireccion();
+                }
+
             }
             else{
                 posicion = Game::getGame()->getPortales()[i]->getDestino()->getSprite().getPosition();
@@ -121,7 +129,7 @@ void Colisiones::camaramove()
         }
 
 
-    if(Game::getGame()->getPlayer()->getsala()==2){
+    if(Game::getGame()->getPlayer()->getsala()==12){
         if(Game::getGame()->getPalancaM()->getTerminado())
             n=0;
         else
@@ -258,7 +266,12 @@ void Colisiones::enemigo()
 
 void Colisiones::limpiar()
 {
-
+        for(int i = 0;i<3;i++)
+            for(int j = 0; j<Game::getGame()->getTienda(i)->getPup().size() && j>=0 ;j++ ){
+                if(!Game::getGame()->getTienda(i)->getPup()[j]->getExiste()){
+                    Game::getGame()->getTienda(i)->borrarPup(j);
+                }
+        }
 
         for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++)
             if(Map::getMap()->getenemigos().at(i)->getexiste()==false)
@@ -315,10 +328,12 @@ void Colisiones::limpieza()
 
 
     for (int i=0;i<Game::getGame()->getPortales().size();i++)
-        if(Game::getGame()->getPortales().at(i)->getSprite().getPosition().y-Game::getGame()->getPlayer()->getHitb().getPosition().y>10.0f){
-            while(Game::getGame()->getPortales().size()>0){
-                    Game::getGame()->purguepto(i);
-        }
+        if(Game::getGame()->getPortales().at(i)->getSprite().getPosition().y-Game::getGame()->getPlayer()->getHitb().getPosition().y>100.0f){
+             Game::getGame()->purguepto(i);
+            //while(Game::getGame()->getPortales().size()>0){
+
+        //}
+
     }
 }
 
