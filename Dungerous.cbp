@@ -68,6 +68,7 @@
 		<Unit filename="include/SplashState.h" />
 		<Unit filename="include/StateManager.h" />
 		<Unit filename="include/Tienda.h" />
+		<Unit filename="include/Victory.h" />
 		<Unit filename="include/hud.h" />
 		<Unit filename="include/tinyxml2.h" />
 		<Unit filename="main.cpp" />
@@ -96,6 +97,7 @@
 		<Unit filename="src/SplashState.cpp" />
 		<Unit filename="src/StateManager.cpp" />
 		<Unit filename="src/Tienda.cpp" />
+		<Unit filename="src/Victory.cpp" />
 		<Unit filename="src/hud.cpp" />
 		<Unit filename="src/tinyxml2.cpp" />
 		<Extensions>

@@ -78,7 +78,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
 void Game::update(sf::Time elapsedTime){
 
-    std::cout<<"hola"<<std::endl;
+
 
     mPlayer->update(elapsedTime);
 
@@ -127,6 +127,10 @@ void Game::update(sf::Time elapsedTime){
     mMap->reiniciar();
     Purgue();
 
+    std::cout<<mMap->getMap()->getenemigos().size()<<std::endl;
+    std::cout<<mMap->getMap()->getmuros().size()<<std::endl;
+    std::cout<<mMap->getMap()->getpuertas().size()<<std::endl;
+    std::cout<<portales.size()<<std::endl;
 
     /*
     if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
@@ -286,7 +290,7 @@ Tienda* Game::getTienda(){
     return tienda;
 }
 
-<<<<<<< HEAD
+
 void Game::restart(){
         mPlayer=nullptr;
         delete mPlayer;
@@ -295,9 +299,16 @@ void Game::restart(){
         Colisiones::getColisiones()->restart();
         mMap->restart();
         game=new Game();
-=======
+}
+
 PalancaManager* Game::getPalancaM(){
     return manejadorPalanca;
->>>>>>> 9d59a42d78445728d7bbcfece24d4e40fc796d3f
+
+}
+
+void Game::purguepto(int i)
+{
+delete portales[i];
+portales.erase(portales.begin()+i);
 }
 

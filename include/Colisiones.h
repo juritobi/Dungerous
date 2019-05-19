@@ -23,6 +23,7 @@ class Colisiones
         void limpiar();
         void enemigo();
         void muerte();
+        void limpieza();
 
         void restart();
 

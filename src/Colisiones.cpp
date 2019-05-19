@@ -133,6 +133,7 @@ void Colisiones::camaramove()
                 Map::getMap()->getenemigos()[i]->getclock()->restart();
                 Map::getMap()->reiniciapuertas();
                 Map::getMap()->setreinicio();
+                limpieza();
                 }
             }
         }
@@ -244,7 +245,7 @@ void Colisiones::limpiar()
 
         for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++)
             if(Map::getMap()->getenemigos().at(i)->getexiste()==false)
-                Map::getMap()->Purguepos(i);
+                Map::getMap()->Purgueposenemi(i);
 
 
         for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++)
@@ -263,18 +264,18 @@ void Colisiones::limpiar()
 
         for(unsigned int i=0; i<Game::getGame()->getBoss()->getBalasBoss().size();i++)
             if(Game::getGame()->getBoss()->getBalasBoss().at(i)->getmur().getElapsedTime().asSeconds()>5.0f)
-            Game::getGame()->getBoss()->Purgue(i);
+                Game::getGame()->getBoss()->Purgue(i);
 
 
         for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
             if(Game::getGame()->getPlayer()->getBalas().at(i)->getmuro()==true && Game::getGame()->getPlayer()->getBalas().at(i)->getmur().getElapsedTime().asSeconds()>5.0f)
-            Game::getGame()->getPlayer()->purgue(i);
+                Game::getGame()->getPlayer()->purgue(i);
 
 
 
         for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
             if(Game::getGame()->getPlayer()->getBalas().at(i)->getexiste()==false)
-            Game::getGame()->getPlayer()->purgue(i);
+                Game::getGame()->getPlayer()->purgue(i);
 
 
 
@@ -284,13 +285,35 @@ void Colisiones::limpiar()
 
 
 
+void Colisiones::limpieza()
+{
+     for (int i=0;i<Map::getMap()->getmuros().size();i++)
+        if(Map::getMap()->getmuros().at(i)->getPosition().y-Game::getGame()->getPlayer()->getBody().getPosition().y>100.0f)
+           Map::getMap()->purguemur(i);
+
+    for (int i=0;i<Map::getMap()->getpuertas().size();i++)
+        if(Map::getMap()->getpuertas().at(i)->getPosition().y-Game::getGame()->getPlayer()->getBody().getPosition().y>100.0f)
+           Map::getMap()->purguepta(i);
+
+
+
+        for (int i=0;i<Game::getGame()->getPortales().size();i++)
+            if(Game::getGame()->getPortales().at(i)->getSprite().getPosition().y-Game::getGame()->getPlayer()->getHitb().getPosition().y>10.0f){
+                while(Game::getGame()->getPortales().size()>0){
+                        Game::getGame()->purguepto(i);
+            }
+        }
+
+}
+
+
 
 void Colisiones::muerte(){
 
      if (hud::getHud()->getLife().size() <= 0){
         StateManager::getStateManager()->AddState(GameOver::getGameOver(), true);
         GameOver::getGameOver()->posNuevo();
-     }
+        }
 
 }
 
