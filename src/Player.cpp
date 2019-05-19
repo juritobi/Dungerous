@@ -20,8 +20,8 @@ Player::Player()
 ,life(4)
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
-,animation( 0.2f,sf::Vector2u(6, 27),"player")
-,animationAtaque( 0.1f,sf::Vector2u(6, 27),"player")
+,animation( 0.2f,sf::Vector2u(6, 30),"player")
+,animationAtaque( 0.1f,sf::Vector2u(6, 30),"player")
 ,fila(3)
 ,derecha(false)
 ,parar(false)
@@ -34,6 +34,7 @@ Player::Player()
     sala=7;
     firstState.pos=sf::Vector2f(960,8360);
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
+    efectoAtaque.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkataque"));
     body.setOrigin(42.5f,42.5f);
     hitb.setOrigin(17.5f,25.0f);
     hitb.setPosition(firstState.pos.x-15,firstState.pos.y-15);
@@ -78,18 +79,21 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
     }
 
      if (key == sf::Keyboard::Up){
+
         if(!(isPressed&&aup)){
             aup=isPressed;
             if(isPressed) Catacar.restart();
         }
     }
      if (key == sf::Keyboard::Down){
+
         if(!(isPressed&&adown)){
             adown=isPressed;
             if(isPressed) Catacar.restart();
         }
     }
      if (key == sf::Keyboard::Left){
+
         if(!(isPressed&&aleft)){
             aleft=isPressed;
             if(isPressed) Catacar.restart();
@@ -97,6 +101,7 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
     }
      if (key == sf::Keyboard::Right){
+
         if(!(isPressed&&aright)){
             aright=isPressed;
             if(isPressed) Catacar.restart();
@@ -180,7 +185,7 @@ void Player::animate(sf::Time elapsedTime){
         else{
             if(up){
                 if(invulnerable){
-                    fila=26;
+                    fila=27;
                     if(rodando)
                         fila=18;
                 }
@@ -193,7 +198,7 @@ void Player::animate(sf::Time elapsedTime){
             }
             if(down){
                 if(invulnerable){
-                    fila=25;
+                    fila=28;
                     if(rodando)
                         fila=20;
                 }
@@ -206,7 +211,7 @@ void Player::animate(sf::Time elapsedTime){
             }
             if(right){
                 if(invulnerable){
-                    fila=24;
+                    fila=29;
                     if(rodando)
                         fila=18;
                     derecha=true;
@@ -221,7 +226,7 @@ void Player::animate(sf::Time elapsedTime){
             }
             if(left){
                 if(invulnerable){
-                    fila=24;
+                    fila=29;
                     if(rodando)
                         fila=18;
                     derecha=false;

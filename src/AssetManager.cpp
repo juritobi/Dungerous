@@ -48,3 +48,36 @@ sf::Font &AssetManager::GetFont(std::string name)
     return fonts.at(name);
 }
 
+void AssetManager::createMusica(std::string name, std::string path){
+
+
+    if(!musica.openFromFile(path)){
+        std::cout << "No se ha podido cargar " << path << std::endl;
+        exit(0);
+    }
+    std::cout << path << " cargada correctamente " << std::endl;
+
+    musica.setVolume(50.0f);
+
+}
+
+sf::Music &AssetManager::GetMusica(std::string name){
+    return musica;
+}
+
+void AssetManager::createSoundEffect(std::string name, std::string path){
+
+    sf::SoundBuffer efectoSonido;
+    if(!efectoSonido.loadFromFile(path)){
+        std::cout << "No se ha podido cargar " << path << std::endl;
+        exit(0);
+    }
+    std::cout << path << " cargada correctamente " << std::endl;
+
+    efectosSonido[name]=efectoSonido;
+
+}
+
+sf::SoundBuffer &AssetManager::GetEfectosSonido(std::string name){
+    return efectosSonido.at(name);
+}

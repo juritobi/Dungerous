@@ -72,6 +72,7 @@ class Player
         sf::Clock               relojInvulnerable;
         sf::Clock                       mur;
 
+        sf::Sound               efectoAtaque;
         sf::RectangleShape      body;
         sf::RectangleShape      hitb;
         sf::RectangleShape      espada;
