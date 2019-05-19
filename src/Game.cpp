@@ -25,11 +25,11 @@ Game::Game()
     boss=new Boss(sf::Vector2u(3,8), mPlayer, 3);
     hudView.setSize(762,7608.f);
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.1f));
-    App::getApp()->mView.setCenter(sf::Vector2f(960.0f,8160.f));
+    App::getApp()->mView.setCenter(sf::Vector2f(960.0f,14686.0f));
     loadGame();
     mMap= Map::getMap();
     mMap->generarmatriz(mPlayer);
-    mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,136,4);
+    mMap->load("assets/THIS.png",sf::Vector2u(64,64),mMap->_tilemap,30,238,3);
 
     /*crear palancas*/
 
@@ -240,7 +240,7 @@ void Game::saveGame(){
     myfile.open("save.txt");
 
     myfile<<
-    960<<" "<<8360<<" "<<hud::getHud()->getPsetaNum()<<std::endl;
+    960<<" "<<15000<<" "<<hud::getHud()->getPsetaNum()<<std::endl;
 
     /*mPlayer->getPosition().x<<" "<<
     mPlayer->getPosition().y<<std::endl;*/
