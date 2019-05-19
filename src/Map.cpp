@@ -27,7 +27,7 @@ bool Map::load(const std::string& tileset, sf::Vector2u tileSize, int*** level, 
     vertex.setPrimitiveType(sf::Quads);
     vertex.resize(width*height*4);
 
-    for(unsigned k=0; k<2;k++){
+    for(unsigned k=0; k<1;k++){
     for(unsigned int i=0; i<width;i++){
         for(unsigned int j=0; j<height;j++)
         {
@@ -179,7 +179,7 @@ for(unsigned int l=0;l<=_numLayers;l++){
             }
 
 
-            if((l==1 || l==2 || l==3)){
+            if(l==1 || l==2 || l==3){
 
             data->QueryIntAttribute("id",&id);
             data->QueryIntAttribute("x",&cx);
@@ -187,16 +187,16 @@ for(unsigned int l=0;l<=_numLayers;l++){
             data->QueryIntAttribute("width",&objwid);
             data->QueryIntAttribute("height",&objhei);
 
-                if(data->NextSiblingElement("object") && l==2){
+                if(data->NextSiblingElement("object") && l==1){
                 data= data->NextSiblingElement("object");
                 generarcolision(cx,cy,objhei,objwid);
                 }
-                else if(data->NextSiblingElement("object") && l==3){
+                else if(data->NextSiblingElement("object") && l==2){
                 data= data->NextSiblingElement("object");
                 generarpuerta(cx,cy,objhei,objwid);
                 }
 
-                else if(data->NextSiblingElement("object") && l==4){
+                else if(data->NextSiblingElement("object") && l==3){
 
                     if(data->FirstChildElement("ellipse")){
                         data= data->NextSiblingElement("object");
@@ -209,7 +209,7 @@ for(unsigned int l=0;l<=_numLayers;l++){
 
                     }
 
-                else if(!data->NextSiblingElement("object") && l==4 && next==true){
+                else if(!data->NextSiblingElement("object") && l==3 && next==true){
 
                      if(data->FirstChildElement("ellipse")){
                         generarspawns(cx,cy,objhei,objwid,1);
@@ -287,7 +287,7 @@ void Map::cambiopuertas()
     }
 
 
-load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
+load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,238,3);
 }
 
 
@@ -306,7 +306,7 @@ void Map::reiniciapuertas()
         }
     }
 
-load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,136,4);
+load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,238,3);
 }
 
 void Map::Mostrar(sf::RenderWindow& window)
@@ -352,6 +352,26 @@ void Map::asignarsala()
 
         else if(enemigos[i]->getbody().getPosition().y>7560.0f && enemigos[i]->getbody().getPosition().y<8640.0f)
         enemigos[i]->setsala(7);
+
+        else if(enemigos[i]->getbody().getPosition().y>8640.0f && enemigos[i]->getbody().getPosition().y<9720.0f)
+        enemigos[i]->setsala(8);
+
+        else if(enemigos[i]->getbody().getPosition().y>9720.0f && enemigos[i]->getbody().getPosition().y<10800.0f)
+        enemigos[i]->setsala(9);
+
+        else if(enemigos[i]->getbody().getPosition().y>10800.0f && enemigos[i]->getbody().getPosition().y<11880.0f)
+        enemigos[i]->setsala(10);
+
+        else if(enemigos[i]->getbody().getPosition().y>11880.0f && enemigos[i]->getbody().getPosition().y<12960.0f)
+        enemigos[i]->setsala(11);
+
+        else if(enemigos[i]->getbody().getPosition().y>12960.0f && enemigos[i]->getbody().getPosition().y<14040.0f)
+        enemigos[i]->setsala(12);
+
+        else if(enemigos[i]->getbody().getPosition().y>14040.0f && enemigos[i]->getbody().getPosition().y<15120.0f)
+        enemigos[i]->setsala(13);
+
+
 
 
 

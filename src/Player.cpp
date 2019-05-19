@@ -31,8 +31,8 @@ Player::Player()
 ,atackSpeed(0.5)
 {
     god=false;
-    sala=7;
-    firstState.pos=sf::Vector2f(960,8360);
+    sala=13;
+    firstState.pos=sf::Vector2f(960,15000);
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
     body.setOrigin(42.5f,42.5f);
     hitb.setOrigin(17.5f,25.0f);
