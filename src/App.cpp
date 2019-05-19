@@ -12,7 +12,7 @@ const sf::Time App::minUpdateTime = sf::milliseconds(60.f);
 App* App::app = 0;
 
 App::App()
-:mWindow(sf::VideoMode(1920,1080),"Dungerous",sf::Style::Fullscreen)
+:mWindow(sf::VideoMode(1920,1080),"Dungerous",sf::Style::Default)
 ,mView(sf::FloatRect(0,0,1920,1080))
 {
     std::srand(std::time(nullptr));

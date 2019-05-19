@@ -83,8 +83,15 @@ void Colisiones::importalte(){
             sf::Vector2f posicion;
             int dir;
             if(Game::getGame()->getPlayer()->getgod()){
-                posicion = Game::getGame()->getPortales()[Game::getGame()->getPortales().size()-1]->getSprite().getPosition();
-                dir = Game::getGame()->getPortales()[Game::getGame()->getPortales().size()-1]->getDireccion();
+                if(Game::getGame()->getPortales().size()>25){
+                    posicion = Game::getGame()->getPortales()[21]->getSprite().getPosition();
+                    dir = Game::getGame()->getPortales()[21]->getDireccion();
+                }
+                else{
+                    posicion = Game::getGame()->getPortales()[Game::getGame()->getPortales().size()-1]->getSprite().getPosition();
+                    dir = Game::getGame()->getPortales()[Game::getGame()->getPortales().size()-1]->getDireccion();
+                }
+
             }
             else{
                 posicion = Game::getGame()->getPortales()[i]->getDestino()->getSprite().getPosition();
