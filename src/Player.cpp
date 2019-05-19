@@ -123,9 +123,14 @@ void Player::update(sf::Time elapsedTime){
         body.setFillColor(sf::Color::Red);
     }
 
-	if(!disparo && Catacar.getElapsedTime().asSeconds()>atackSpeed){
+
+
+	if(!disparo && !aup && !adown && !aleft && !aright && Catacar.getElapsedTime().asSeconds()>atackSpeed){
         stateMovement();
 	}
+
+
+
 	else if(disparo && !aup && !adown && !aleft && !aright && Catacar.getElapsedTime().asSeconds()>0.5){
         stateMovement();
 	}
@@ -345,6 +350,7 @@ void Player::animate(sf::Time elapsedTime){
 
 void Player::espadazo(){
     if(!disparo){
+
         if(aup)           {
             espada.setSize(sf::Vector2f(50.0f,30.0f));
             espada.setPosition(body.getPosition().x-25 , body.getPosition().y-50.0f);
@@ -363,6 +369,10 @@ void Player::espadazo(){
         }
         if(Catacar.getElapsedTime().asSeconds()>0.5){
             espada.setSize(sf::Vector2f(0,0));
+        }
+        if((aup || adown || aleft || aright) && relojSonido.getElapsedTime().asSeconds() > 0.5 && espada.getSize().x != 0){
+            efectoAtaque.play();
+            relojSonido.restart();
         }
     }
     else{

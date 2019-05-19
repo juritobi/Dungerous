@@ -71,6 +71,7 @@ class Player
         sf::Clock               delayBalas;
         sf::Clock               relojInvulnerable;
         sf::Clock                       mur;
+        sf::Clock               relojSonido;
 
         sf::Sound               efectoAtaque;
         sf::RectangleShape      body;
