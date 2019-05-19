@@ -377,7 +377,7 @@ return puertas;
 
 
 
-void Map::Purguepos(int i){
+void Map::Purgueposenemi(int i){
 
 matando=true;
 muerte.setPosition(enemigos[i]->getbody().getPosition());
@@ -430,6 +430,22 @@ matando=false;
 void Map::restart(){
     mapa=new Map();
 }
+
+void Map::purguemur(int i){
+
+delete muros[i];
+muros.erase(muros.begin()+i);
+
+}
+
+void Map::purguepta(int i){
+
+delete puertas[i];
+puertas.erase(puertas.begin()+i);
+
+}
+
+
 
 
 

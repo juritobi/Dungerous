@@ -44,3 +44,9 @@ sf::RectangleShape Portal::getSprite(){
 int Portal::getDireccion(){
     return dir;
 }
+
+void Portal::limpiarpto()
+{
+destino=nullptr;
+delete destino;
+}

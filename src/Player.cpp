@@ -8,7 +8,7 @@
 
 Player::Player()
 :body(sf::Vector2f(85,85))
-,speed(600.f)
+,speed(300.f)
 ,up(false)
 ,down(false)
 ,right(false)
@@ -161,16 +161,16 @@ void Player::animate(sf::Time elapsedTime){
 
     }
     else if(rodando && Crodar.getElapsedTime().asSeconds()>0.5 && Crodar.getElapsedTime().asSeconds()<1){
-        speed=600;
+        speed=300;
         rodando=false;
 
     }
     else if(rodando && Crodar.getElapsedTime().asSeconds()>1){
-        speed=600;
+        speed=300;
         Crodar.restart();
     }
     else{
-        speed=600;
+        speed=300;
     }
 
     if(Catacar.getElapsedTime().asSeconds()>atackSpeed){
