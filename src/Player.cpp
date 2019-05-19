@@ -157,7 +157,7 @@ void Player::animate(sf::Time elapsedTime){
     parar=true;
 
     if(rodando && Crodar.getElapsedTime().asSeconds()<0.5){
-        speed=500;
+        speed=750;
 
     }
     else if(rodando && Crodar.getElapsedTime().asSeconds()>0.5 && Crodar.getElapsedTime().asSeconds()<1){

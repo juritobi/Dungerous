@@ -24,7 +24,7 @@ Pausa::Pausa()
     pausaList[2].setPosition((App::getApp()->mView.getCenter().x -50) - (this->_playButton.getGlobalBounds().width / 2), (App::getApp()->mView.getCenter().y + 200) - (this->_playButton.getGlobalBounds().height / 2.5));
     selectedItemIndex = 0;
 
-    AssetManager::getAssetManager()->createTexture("Background", "assets/PauseBackground.png");
+    AssetManager::getAssetManager()->createTexture("Background", "assets/pause.jpg");
     AssetManager::getAssetManager()->createTexture("Play Button", "assets/PlayButton.png");
     AssetManager::getAssetManager()->createTexture("Home Button", "assets/home.png");
 
