@@ -72,6 +72,7 @@ void App::run(){
 
     AssetManager::getAssetManager()->GetMusica("fondo").play();
     AssetManager::getAssetManager()->GetMusica("fondo").setLoop(true);
+
     while (mWindow.isOpen())
 	{
 

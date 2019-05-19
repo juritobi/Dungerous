@@ -74,6 +74,7 @@ class Player
         sf::Clock               relojSonido;
 
         sf::Sound               efectoAtaque;
+        sf::Sound               efectoGolpeado;
         sf::RectangleShape      body;
         sf::RectangleShape      hitb;
         sf::RectangleShape      espada;

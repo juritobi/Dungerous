@@ -35,6 +35,7 @@ Player::Player()
     firstState.pos=sf::Vector2f(960,8360);
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
     efectoAtaque.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkataque"));
+    efectoGolpeado.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkherido"));
     body.setOrigin(42.5f,42.5f);
     hitb.setOrigin(17.5f,25.0f);
     hitb.setPosition(firstState.pos.x-15,firstState.pos.y-15);
@@ -437,6 +438,7 @@ void Player::espadazo(){
 void Player::loseLife(int i){
 std::cout<<"he perdido vida"<<std::endl;
     if(!invulnerable){
+        efectoGolpeado.play();
         life=life-1;
         hud::getHud()->loseLife(i);
         invulnerable = true;
