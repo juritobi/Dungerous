@@ -27,7 +27,7 @@ bool Map::load(const std::string& tileset, sf::Vector2u tileSize, int*** level, 
     vertex.setPrimitiveType(sf::Quads);
     vertex.resize(width*height*4);
 
-    for(unsigned k=0; k<2;k++){
+    for(unsigned k=0; k<1;k++){
     for(unsigned int i=0; i<width;i++){
         for(unsigned int j=0; j<height;j++)
         {

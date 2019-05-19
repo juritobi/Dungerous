@@ -67,7 +67,7 @@ Game::Game()
 
 void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
-    if(key == sf::Keyboard::P){
+    if(key == sf::Keyboard::Escape){
         Pausa::getPausa()->posNuevo();
         hud::getHud()->tiempoPausa.restart();
         StateManager::getStateManager()->AddState(Pausa::getPausa(), true);

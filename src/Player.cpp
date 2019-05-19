@@ -48,7 +48,7 @@ Player::Player()
 //detecta las teclas pulsadas
 void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
-    if(key== sf::Keyboard::E){
+    if(key== sf::Keyboard::F){
         if(isPressed){
             Colisiones::getColisiones()->palanca();
         }

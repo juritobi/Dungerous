@@ -21,9 +21,6 @@ App::App()
     StateManager::getStateManager();
     AssetManager::getAssetManager();
     //Map::getMap();
-
-    StateManager::getStateManager()->AddState(SplashState::getSplashState());
-
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
 
     AssetManager::getAssetManager()->createFont("font1", "assets/font.otf");
@@ -48,6 +45,8 @@ App::App()
     AssetManager::getAssetManager()->createTexture("fireball", "assets/fireball.png");
     AssetManager::getAssetManager()->createTexture("tienda", "assets/tienda.png");
     AssetManager::getAssetManager()->createTexture("muerte", "assets/Muerte.png");
+
+
 }
 
 App* App::getApp(){
@@ -65,6 +64,7 @@ void App::run(){
 
     generalClock.restart();
     updateClock.restart();
+    StateManager::getStateManager()->AddState(Menu::getMenu());
     updateStart = generalClock.getElapsedTime();
 
     while (mWindow.isOpen())
@@ -94,9 +94,7 @@ void App::manageEvents(){
 		{
 
 			case sf::Event::KeyPressed:
-			    if(event.key.code == sf::Keyboard::Escape){
-                        mWindow.close();
-                }
+
 				StateManager::getStateManager()->GetActiveState()->manageEvents(event.key.code,true);
 
                 if(event.key.code == sf::Keyboard::G)
