@@ -39,11 +39,8 @@ class Game : public InterfazEstado {
         Player*          mPlayer;
         void            Purgue();
         void            lanzarmuerte(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f og);
-<<<<<<< HEAD
         void restart();
-=======
         PalancaManager* getPalancaM();
->>>>>>> 9d59a42d78445728d7bbcfece24d4e40fc796d3f
 
     private:
         static Game* game;

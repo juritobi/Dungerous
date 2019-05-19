@@ -283,7 +283,6 @@ Tienda* Game::getTienda(){
     return tienda;
 }
 
-<<<<<<< HEAD
 void Game::restart(){
         mPlayer=nullptr;
         delete mPlayer;
@@ -292,9 +291,10 @@ void Game::restart(){
         Colisiones::getColisiones()->restart();
         mMap->restart();
         game=new Game();
-=======
+}
+
 PalancaManager* Game::getPalancaM(){
     return manejadorPalanca;
->>>>>>> 9d59a42d78445728d7bbcfece24d4e40fc796d3f
+
 }
 

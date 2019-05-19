@@ -42,7 +42,6 @@ void PalancaManager::activa( std::vector<int> toActivate){
         }
         if(condicion){
             terminado=true;
-            //llamar funcion puerta
         }
     }
 }

@@ -34,6 +34,7 @@ class Colisiones
         sf::Clock reloj2;
         sf::Clock hachas;
         Game* mGame;
+        bool habiaEnemigos;
 
 
 };
