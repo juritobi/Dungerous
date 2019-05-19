@@ -171,6 +171,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     mWindow->draw(mPlayer->getBody());
    // mWindow->draw(mPlayer->getHitb());
     //mWindow->draw(mPlayer->getEspada());
+    mWindow->draw(boss->getHitb());
     mWindow->draw(boss->getbody());
 
     for(int i=0; i < mPlayer->getBalas().size();i++){

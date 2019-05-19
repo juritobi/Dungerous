@@ -25,8 +25,6 @@ class Boss
         void                        renderBalas(float tick);
         void                        Lanzallamas();
         void                        Embestir(sf::Time elapsedTime);
-        sf::Vector2f                firstState;
-        sf::Vector2f                lastState;
         int                         getsala();
         std::vector<Proyectil*>     getBalasBoss();
         void                        sethp();
@@ -34,6 +32,7 @@ class Boss
         int                         getRandom();
         void                        resetAtaque();
         void                        Purgue(int i);
+        sf::RectangleShape          getHitb();
 
     protected:
 
@@ -50,9 +49,12 @@ class Boss
         int                         sala;
         bool                        boolAtaque;
 
+        sf::RectangleShape          hitb;
 
+        State                       firstState;
+        State                       lastState;
 
-        sf::Sprite         body;
+        sf::Sprite                  body;
 
         std::vector<Proyectil*>     vecBalasBoss;
 

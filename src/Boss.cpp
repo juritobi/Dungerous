@@ -7,9 +7,15 @@ Boss::Boss(sf::Vector2u vec, Player* player, int vida)//comento cosas para proba
 :animar(0.1f,sf::Vector2u(4,12),"boss")
 ,direccion(sf::Vector2f(0,0))
 ,atacando(false)
+,hitb(sf::Vector2f(25.0f,25.0f))
 {
 
-    firstState=sf::Vector2f(960,600);
+    firstState.pos=sf::Vector2f(960,600);
+    hitb.setOrigin(hitb.getGlobalBounds().width/2,hitb.getGlobalBounds().height/2);
+    hitb.setPosition(body.getGlobalBounds().width/2,body.getGlobalBounds().height/2);
+    hitb.setFillColor(sf::Color::White);
+    hitb.setScale(5,5);
+    firstState.hitbox=&hitb;
     vida=vida;
     lastState=firstState;
     sala=0;
@@ -38,13 +44,12 @@ Boss::~Boss()
 void Boss::update(){
 
     if(Game::getGame()->getBoss()->getsala()==player->getsala()){
-    direccion=player->getPosition() - body.getPosition();
-    direccion=App::getApp()->normalizar(direccion);
+        direccion=player->getPosition() - body.getPosition();
+        direccion=App::getApp()->normalizar(direccion);
+        Mover();
 
+    }
 
-
-    Mover();
-   }
     Animar();
 }
 
@@ -60,7 +65,7 @@ void Boss::Mover()//mueve al enemigo hacia el player
 
     AtaqueRandom(elapsedTime);
     if(!embistiendo){
-        lastState += movement * elapsedTime.asSeconds();
+        lastState.pos += movement * elapsedTime.asSeconds();
     }
 
 
@@ -119,8 +124,8 @@ void Boss::Animar()
 
 void Boss::renderMove(float tick){
 
-    body.setPosition(firstState.x*(1-tick)+lastState.x*tick,firstState.y*(1-tick)+lastState.y*tick);
-
+    body.setPosition(firstState.pos.x*(1-tick)+lastState.pos.x*tick,firstState.pos.y*(1-tick)+lastState.pos.y*tick);
+    hitb.setPosition(body.getPosition());
 }
 
 void Boss::AtaqueRandom(sf::Time elapsedTime){
@@ -227,7 +232,7 @@ void Boss::Embestir(sf::Time elapsedTime){
 
     }
 
-    lastState += EmbestirMov * elapsedTime.asSeconds();
+    lastState.pos += EmbestirMov * elapsedTime.asSeconds();
 
 }
 
@@ -253,7 +258,7 @@ void Boss::hitted(){
 
     sf::Vector2f vec = sf::Vector2f(body.getPosition()-player->getPosition());
     vec= App::getApp()->normalizar(vec);
-    lastState=lastState+vec*speed;
+    lastState.pos=lastState.pos+vec*speed;
     if(vida>0)
     vida = vida-1;
 }
@@ -286,4 +291,8 @@ return vida;
 void Boss::Purgue(int i){
 delete vecBalasBoss[i];
 vecBalasBoss.erase(vecBalasBoss.begin()+i);
+}
+
+sf::RectangleShape Boss::getHitb(){
+    return *lastState.hitbox;
 }
