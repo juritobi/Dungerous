@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="238" tilewidth="64" tileheight="64" nextobjectid="737">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="238" tilewidth="64" tileheight="64" nextobjectid="751">
  <tileset firstgid="1" name="THIS" tilewidth="64" tileheight="64" tilecount="506">
   <image source="THIS.png" width="1472" height="1408"/>
  </tileset>
@@ -7178,10 +7178,7 @@
   <object id="469" x="1028" y="12737.3" width="698.667" height="280"/>
   <object id="470" x="832" y="12606.7" width="65.3333" height="393.333"/>
   <object id="471" x="897.333" y="12604" width="257.333" height="68"/>
-  <object id="472" x="1154.67" y="12416" width="446.667" height="258.667"/>
   <object id="474" x="961.333" y="12224" width="769.333" height="129.333"/>
-  <object id="475" x="1666.67" y="12354.7" width="64" height="320"/>
-  <object id="476" x="1734.67" y="12544" width="122.667" height="132"/>
   <object id="477" x="961.333" y="12346.7" width="62.6667" height="198.667"/>
   <object id="478" x="641.333" y="12478.7" width="322.667" height="65.3333"/>
   <object id="479" x="193.333" y="12673.3" width="510.667" height="192"/>
@@ -7374,7 +7371,9 @@
   <object id="671" x="-10.6667" y="12" width="77.3333" height="1038.67"/>
   <object id="672" x="-8" y="0" width="1942.67" height="65.3333"/>
   <object id="673" x="1857.33" y="2.66667" width="110.667" height="1041.33"/>
-  <object id="720" x="1544" y="25"/>
+  <object id="737" x="1159" y="12428" width="432" height="238"/>
+  <object id="743" x="1738.67" y="12546.7" width="106.667" height="124"/>
+  <object id="750" x="1394.67" y="15185.3"/>
  </objectgroup>
  <objectgroup name="puertas">
   <object id="674" x="897.333" y="14144" width="129.333" height="80"/>
@@ -7390,7 +7389,8 @@
   <object id="684" x="898.667" y="3289.33" width="122.667" height="48"/>
   <object id="685" x="896" y="2196" width="126.667" height="53.3333"/>
   <object id="687" x="898.667" y="1106.67" width="124" height="53.3333"/>
-  <object id="721" x="1594" y="18"/>
+  <object id="747" x="1670.67" y="12357.3" width="58.6667" height="310.667"/>
+  <object id="749" x="1320" y="15201.3"/>
  </objectgroup>
  <objectgroup name="enemys">
   <object id="689" x="100" y="12096">
