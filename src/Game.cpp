@@ -34,14 +34,19 @@ Game::Game()
     /*crear palancas*/
 
     std::vector<int> p1;
-    p1.push_back(0);
+    p1.push_back(1);
     p1.push_back(3);
     std::vector<int> p2;
-    p2.push_back(1);
+    p2.push_back(0);
+    p2.push_back(2);
+    p2.push_back(3);
     std::vector<int> p3;
+    p3.push_back(0);
+    p3.push_back(1);
     p3.push_back(2);
-    p3.push_back(3);
     std::vector<int> p4;
+    p4.push_back(0);
+    p4.push_back(2);
     p4.push_back(3);
     std::vector<int> vect [4]={p1,p2,p3,p4};
     manejadorPalanca=new PalancaManager(sf::Vector2f(960+64*-2,2720),2);
