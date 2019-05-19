@@ -119,7 +119,7 @@ while(layer){
 _numLayers++;
 layer=layer->NextSiblingElement("layer");
 }
-_numLayers=4;
+_numLayers=3;
 //esto es la inicializacion el array del mapa
 //crea el tilemap puntero a puntero a puntero de ints
 _tilemap=new int**[_numLayers];
@@ -155,16 +155,13 @@ bool next=true;
 
 for(unsigned int l=0;l<=_numLayers;l++){
 
-
             if(l==1)
-            data=map->FirstChildElement("layer")->NextSiblingElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
-            if(l==2)
             data=map->FirstChildElement("objectgroup")->FirstChildElement("object");
-            if(l==3){
+            if(l==2){
             data=map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
             next=true;
             }
-            if(l==4){
+            if(l==3){
             data=map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
             next=true;
             }
@@ -176,13 +173,13 @@ for(unsigned int l=0;l<=_numLayers;l++){
 
 
 
-            if(l==0  || l==1){
+            if(l==0){
             data->QueryIntAttribute("gid", &_tilemap[l][y][x]);
             data= data->NextSiblingElement("tile");
             }
 
 
-            if((l==2 || l==3 || l==4)){
+            if((l==1 || l==2 || l==3)){
 
             data->QueryIntAttribute("id",&id);
             data->QueryIntAttribute("x",&cx);
