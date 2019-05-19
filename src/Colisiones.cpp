@@ -21,11 +21,11 @@ void Colisiones::entorno(){
 
     Player* personaje = Game::getGame()->getPlayer();
 
-    /*for (int i=0;i<Map::getMap()->getmuros().size();i++){
+    for (int i=0;i<Map::getMap()->getmuros().size();i++){
         if(personaje->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
             personaje->colision(0,0);
         }
-    }*/
+    }
 
      for (int i=0;i<Map::getMap()->getmuros().size();i++){
         if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds()) && Game::getGame()->getBoss()->getRandom() == 2){
@@ -119,7 +119,7 @@ void Colisiones::camaramove()
         }
 
 
-    if(Game::getGame()->getPlayer()->getsala()==2){
+    if(Game::getGame()->getPlayer()->getsala()==12){
         if(Game::getGame()->getPalancaM()->getTerminado())
             n=0;
         else
