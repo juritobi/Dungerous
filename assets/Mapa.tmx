@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="238" tilewidth="64" tileheight="64" nextobjectid="758">
+=======
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="238" tilewidth="64" tileheight="64" nextobjectid="759">
+>>>>>>> 072014c2a8e2d4c6980664dc6e44b17a0d4743dc
  <tileset firstgid="1" name="THIS" tilewidth="64" tileheight="64" tilecount="506">
   <image source="THIS.png" width="1472" height="1408"/>
  </tileset>
@@ -7369,6 +7373,7 @@
   <object id="673" x="1857.33" y="2.66667" width="110.667" height="1041.33"/>
   <object id="737" x="1159" y="12428" width="432" height="238"/>
   <object id="743" x="1738.67" y="12546.7" width="106.667" height="124"/>
+<<<<<<< HEAD
   <object id="750" x="1394.67" y="15185.3"/>
   <object id="751" x="964" y="3970" width="316" height="126"/>
   <object id="752" x="1282" y="4030" width="62" height="64"/>
@@ -7377,6 +7382,10 @@
   <object id="755" x="48" y="7666" width="782" height="1012"/>
   <object id="756" x="1216" y="7650" width="688" height="282"/>
   <object id="757" x="1220" y="8386" width="664" height="276"/>
+=======
+  <object id="755" x="1670.67" y="12353.3" width="56" height="310.667"/>
+  <object id="757" x="1304" y="15192"/>
+>>>>>>> 072014c2a8e2d4c6980664dc6e44b17a0d4743dc
  </objectgroup>
  <objectgroup name="puertas">
   <object id="674" x="897.333" y="14144" width="129.333" height="80"/>
@@ -7392,8 +7401,7 @@
   <object id="684" x="898.667" y="3289.33" width="122.667" height="48"/>
   <object id="685" x="896" y="2196" width="126.667" height="53.3333"/>
   <object id="687" x="898.667" y="1106.67" width="124" height="53.3333"/>
-  <object id="747" x="1670.67" y="12357.3" width="58.6667" height="310.667"/>
-  <object id="749" x="1320" y="15201.3"/>
+  <object id="758" x="1448" y="15198.7"/>
  </objectgroup>
  <objectgroup name="enemys">
   <object id="689" x="100" y="12096">
