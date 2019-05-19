@@ -30,7 +30,7 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
         body.setTexture(AssetManager::getAssetManager()->GetTexture("enem2"));
         body.setOrigin(30.0f,30.0f);
         fila = 0;
-        hp=5;
+        hp=3;
     }
     body.setPosition(pos);
     body.setScale(sf::Vector2f(2.0f,2.0f));
