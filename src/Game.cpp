@@ -131,15 +131,6 @@ void Game::update(sf::Time elapsedTime){
     mMap->reiniciar();
     Purgue();
 
-    std::cout<<mMap->getMap()->getenemigos().size()<<std::endl;
-    std::cout<<mMap->getMap()->getmuros().size()<<std::endl;
-    std::cout<<mMap->getMap()->getpuertas().size()<<std::endl;
-    std::cout<<portales.size()<<std::endl;
-
-    /*
-    if(App::getApp()->invulnerabilidad.getElapsedTime().asSeconds()>2)
-        Colisiones::getColisiones()->hostiado();
-        */
 }
 
 //calcula el tick para mover el personaje y dibuja
