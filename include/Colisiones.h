@@ -27,7 +27,6 @@ class Colisiones
 
         void restart();
 
-
     private:
         static Colisiones* colisiones;
         Colisiones();

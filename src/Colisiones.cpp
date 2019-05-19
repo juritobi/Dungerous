@@ -76,8 +76,18 @@ void Colisiones::importalte(){
     Player* personaje = Game::getGame()->getPlayer();
     for(int i = 0;i<Game::getGame()->getPortales().size();i++){
         if(personaje->getHitb().getGlobalBounds().intersects(Game::getGame()->getPortales()[i]->getSprite().getGlobalBounds())){
-            sf::Vector2f posicion = Game::getGame()->getPortales()[i]->getDestino()->getSprite().getPosition();
-            switch(Game::getGame()->getPortales()[i]->getDestino()->getDireccion()){
+            sf::Vector2f posicion;
+            int dir;
+            if(Game::getGame()->getPlayer()->getgod()){
+                posicion = Game::getGame()->getPortales()[Game::getGame()->getPortales().size()-1]->getSprite().getPosition();
+                dir = Game::getGame()->getPortales()[Game::getGame()->getPortales().size()-1]->getDireccion();
+            }
+            else{
+                posicion = Game::getGame()->getPortales()[i]->getDestino()->getSprite().getPosition();
+                dir = Game::getGame()->getPortales()[i]->getDestino()->getDireccion();
+            }
+
+            switch(dir){
                 case 1 :
                     personaje->teleport(sf::Vector2f(posicion.x,posicion.y-100));
                     break;
