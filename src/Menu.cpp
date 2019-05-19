@@ -28,7 +28,7 @@ Menu::Menu()
 
             selectedItemIndex = 0;
 
-		AssetManager::getAssetManager()->createTexture("MenuBackground", "assets/menuBackground.png");
+		AssetManager::getAssetManager()->createTexture("MenuBackground", "assets/splash.jpg");
 		AssetManager::getAssetManager()->createTexture("Play Button", "assets/PlayButton.png");
 		AssetManager::getAssetManager()->createTexture("Exit Button", "assets/exit.png");
 
