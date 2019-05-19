@@ -20,7 +20,7 @@ Boss(0.1f,sf::Vector2u(4, 1),"fuego")
     vary=diry;
      if(tipoBala>=1 && tipoBala<5){
      body.setTexture(AssetManager::getAssetManager()->GetTexture("flechas"));
-     body.setScale(0.5f,0.5f);
+     body.setScale(0.4f,0.4f);
      body.setOrigin(50.0f,50.0f);
      body.setTextureRect(Hacha.uvRect);
      }
