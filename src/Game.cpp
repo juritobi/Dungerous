@@ -55,7 +55,7 @@ Game::Game()
     }
 
     /*crear portales*/
-    for(int i = 0 ; i<11;i++){
+    for(int i = 0 ; i<12;i++){
         portales.push_back(new Portal(posicionPortal[2*i],direccionPortal[2*i]));
         portales.push_back(new Portal(posicionPortal[2*i+1],portales[2*i],direccionPortal[2*i+1]));
         portales[2*i]->setDestino(portales[2*i+1]);
@@ -86,7 +86,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Game::update(sf::Time elapsedTime){
 
 
-
+    std::cout<<portales.size()<<std::endl;
     mPlayer->update(elapsedTime);
 
     boss->update();
@@ -97,7 +97,7 @@ void Game::update(sf::Time elapsedTime){
         portales[i]->letsGo();
     }
 
-
+std::cout<<"hahahsfhdihghiegrlbjdfbjfdojpbpobjtahonjbgfsñonjkgdb"<<std::endl;
 
     //Colisiones::getColisiones()->hostion();
 

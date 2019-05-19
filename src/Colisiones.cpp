@@ -21,13 +21,13 @@ bool Colisiones::entorno(){
 
     Player* personaje = Game::getGame()->getPlayer();
 
-    for (int i=0;i<Map::getMap()->getmuros().size();i++){
+    /*for (int i=0;i<Map::getMap()->getmuros().size();i++){
         if(personaje->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
 
             personaje->colision(0,0);
             return true;
         }
-    }
+    }*/
 
      for (int i=0;i<Map::getMap()->getmuros().size();i++){
         if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds()) && Game::getGame()->getBoss()->getRandom() == 2){
@@ -315,10 +315,11 @@ void Colisiones::limpieza()
 
 
     for (int i=0;i<Game::getGame()->getPortales().size();i++)
-        if(Game::getGame()->getPortales().at(i)->getSprite().getPosition().y-Game::getGame()->getPlayer()->getHitb().getPosition().y>10.0f){
-            while(Game::getGame()->getPortales().size()>0){
-                    Game::getGame()->purguepto(i);
-        }
+        if(Game::getGame()->getPortales().at(i)->getSprite().getPosition().y-Game::getGame()->getPlayer()->getHitb().getPosition().y>100.0f){
+             Game::getGame()->purguepto(i);
+            //while(Game::getGame()->getPortales().size()>0){
+
+        //}
     }
 }
 
