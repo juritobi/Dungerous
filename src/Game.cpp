@@ -209,7 +209,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
 
 
     mWindow->draw(hud::getHud()->getTxtPseta());
-    hud::getHud()->setCrono(cl,125);
+    hud::getHud()->setCrono(cl,300);
     mWindow->draw(hud::getHud()->getTxtCrono());
 
 
