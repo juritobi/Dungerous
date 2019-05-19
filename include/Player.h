@@ -70,11 +70,12 @@ class Player
         sf::Clock               relojDisparo;
         sf::Clock               delayBalas;
         sf::Clock               relojInvulnerable;
-        sf::Clock                       mur;
+        sf::Clock               mur;
         sf::Clock               relojSonido;
 
         sf::Sound               efectoAtaque;
         sf::Sound               efectoGolpeado;
+        sf::Sound               efectoRodando;
         sf::RectangleShape      body;
         sf::RectangleShape      hitb;
         sf::RectangleShape      espada;

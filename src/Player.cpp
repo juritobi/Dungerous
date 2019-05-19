@@ -36,6 +36,7 @@ Player::Player()
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
     efectoAtaque.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkataque"));
     efectoGolpeado.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkherido"));
+    efectoRodando.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkrueda"));
     body.setOrigin(42.5f,42.5f);
     hitb.setOrigin(17.5f,25.0f);
     hitb.setPosition(firstState.pos.x-15,firstState.pos.y-15);
@@ -169,6 +170,10 @@ void Player::animate(sf::Time elapsedTime){
 
     if(rodando && Crodar.getElapsedTime().asSeconds()<0.5){
         speed=750;
+        if(relojSonido.getElapsedTime().asSeconds()>0.5){
+        efectoRodando.play();
+        relojSonido.restart();
+        }
 
     }
     else if(rodando && Crodar.getElapsedTime().asSeconds()>0.5 && Crodar.getElapsedTime().asSeconds()<1){
@@ -204,7 +209,7 @@ void Player::animate(sf::Time elapsedTime){
             }
             if(down){
                 if(invulnerable){
-                    fila=28;
+                    fila=29;
                     if(rodando)
                         fila=20;
                 }
@@ -217,7 +222,7 @@ void Player::animate(sf::Time elapsedTime){
             }
             if(right){
                 if(invulnerable){
-                    fila=29;
+                    fila=28;
                     if(rodando)
                         fila=18;
                     derecha=true;
@@ -232,7 +237,7 @@ void Player::animate(sf::Time elapsedTime){
             }
             if(left){
                 if(invulnerable){
-                    fila=29;
+                    fila=28;
                     if(rodando)
                         fila=18;
                     derecha=false;
@@ -423,6 +428,10 @@ void Player::espadazo(){
                 delayBalas.restart();
 
             }
+            if((aup || adown || aleft || aright) && relojSonido.getElapsedTime().asSeconds() > 0.5 ){
+            efectoAtaque.play();
+            relojSonido.restart();
+        }
 
         //}
 

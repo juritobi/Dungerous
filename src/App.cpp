@@ -48,6 +48,7 @@ App::App()
     AssetManager::getAssetManager()->createMusica("fondo", "assets/musicaFondo.ogg");
     AssetManager::getAssetManager()->createSoundEffect("linkataque", "assets/linkataque.wav");
     AssetManager::getAssetManager()->createSoundEffect("linkherido", "assets/linkherido.wav");
+    AssetManager::getAssetManager()->createSoundEffect("linkrueda" , "assets/linkrueda.wav");
 
 
 }
