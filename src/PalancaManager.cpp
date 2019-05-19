@@ -55,6 +55,7 @@ void PalancaManager::activaAll(){
             indicadores[i].setTextureRect(sf::IntRect(64,0,64,64));
         }
         terminado=true;
+        Map::getMap()->cambiopuertas();
     //}
 }
 

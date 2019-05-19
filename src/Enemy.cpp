@@ -23,14 +23,11 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
     if(type==0){
         body.setTexture(AssetManager::getAssetManager()->GetTexture("enem"));
         body.setOrigin(16.0f,16.0f);
-        fila = 0;
-        hp=2;
     }
     else{
         body.setTexture(AssetManager::getAssetManager()->GetTexture("enem2"));
         body.setOrigin(30.0f,30.0f);
         fila = 0;
-        hp=3;
     }
     body.setPosition(pos);
     body.setScale(sf::Vector2f(2.0f,2.0f));
@@ -159,6 +156,24 @@ sf::Sprite Enemy::getbody()//obtener el body
 void Enemy::setsala(int i)
 {
 sala=i;
+
+    if(type==0){
+        if(sala>=10)
+        hp=4;
+        if(sala<10 && sala>=6)
+        hp=6;
+        if(sala<6)
+        hp=7;
+    }
+     else{
+        if(sala>=10)
+        hp=2;
+        if(sala>=6 && sala<10)
+        hp=3;
+        if(sala<6)
+        hp=3;
+    }
+
 }
 
 sf::Clock * Enemy::getclock()

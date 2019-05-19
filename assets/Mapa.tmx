@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="238" tilewidth="64" tileheight="64" nextobjectid="767">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="238" tilewidth="64" tileheight="64" nextobjectid="775">
  <tileset firstgid="1" name="THIS" tilewidth="64" tileheight="64" tilecount="506">
   <image source="THIS.png" width="1472" height="1408"/>
  </tileset>
@@ -7186,7 +7186,7 @@
   <object id="481" x="-2.66667" y="11906.7" width="1950.67" height="126.667"/>
   <object id="482" x="1853.33" y="12008" width="104" height="1005.33"/>
   <object id="485" x="-4" y="11908" width="68" height="1101.33"/>
-  <object id="486" x="65.3333" y="12094.7" width="830.667" height="322.667"/>
+  <object id="486" x="65.3333" y="12102.7" width="826.667" height="314.7"/>
   <object id="487" x="64" y="12417.3" width="512" height="190.667"/>
   <object id="488" x="896" y="12096" width="833.333" height="62.6667"/>
   <object id="489" x="-8" y="10817.3" width="1964" height="126.667"/>
@@ -7370,7 +7370,6 @@
   <object id="737" x="1159" y="12428" width="432" height="238"/>
   <object id="743" x="1738.67" y="12546.7" width="106.667" height="124"/>
   <object id="755" x="1670.67" y="12353.3" width="56" height="310.667"/>
-  <object id="757" x="1304" y="15192"/>
   <object id="759" x="1538" y="3898" width="124" height="70"/>
   <object id="760" x="1466" y="3968" width="132" height="64"/>
   <object id="761" x="960" y="3968" width="318" height="130"/>
@@ -7378,6 +7377,8 @@
   <object id="763" x="4" y="7618" width="826" height="1070"/>
   <object id="765" x="1220" y="7640" width="656" height="296"/>
   <object id="766" x="1220" y="8382" width="644" height="276"/>
+  <object id="769" x="1296" y="14548" width="258" height="182"/>
+  <object id="771" x="1408" y="15188"/>
  </objectgroup>
  <objectgroup name="puertas">
   <object id="674" x="897.333" y="14144" width="129.333" height="80"/>
@@ -7393,7 +7394,7 @@
   <object id="684" x="898.667" y="3289.33" width="122.667" height="48"/>
   <object id="685" x="896" y="2196" width="126.667" height="53.3333"/>
   <object id="687" x="898.667" y="1106.67" width="124" height="53.3333"/>
-  <object id="758" x="1448" y="15198.7"/>
+  <object id="770" x="1276" y="15192"/>
  </objectgroup>
  <objectgroup name="enemys">
   <object id="689" x="100" y="12096">
@@ -7404,9 +7405,6 @@
   </object>
   <object id="691" x="100" y="10974.7"/>
   <object id="692" x="1824" y="10973.3"/>
-  <object id="693" x="961.333" y="11580">
-   <ellipse/>
-  </object>
   <object id="694" x="610.667" y="9665.33">
    <ellipse/>
   </object>
@@ -7446,6 +7444,9 @@
    <ellipse/>
   </object>
   <object id="718" x="1822.67" y="1249.33">
+   <ellipse/>
+  </object>
+  <object id="767" x="144" y="11242">
    <ellipse/>
   </object>
  </objectgroup>

@@ -67,8 +67,8 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
     if (key == sf::Keyboard::D)
         right = isPressed;
 
-    if (key == sf::Keyboard::Return){
-        if(relojDisparo.getElapsedTime().asSeconds() > 2){
+    if (key == sf::Keyboard::Return||key == sf::Keyboard::E){
+        if(relojDisparo.getElapsedTime().asSeconds() > 0.2){
             if(!disparo){
                 disparo=true;
                 relojDisparo.restart();
@@ -497,8 +497,11 @@ void Player::teleport(sf::Vector2f pos){
 void Player::pickPu(int i){
     switch(i){
         case 1 :
-            life++;
-            hud::getHud()->setLife(1);
+            if(life<7){
+                life++;
+                hud::getHud()->setLife(1);
+            }
+
             break;
 
         case 2://fuerza
@@ -507,9 +510,12 @@ void Player::pickPu(int i){
             break;
 
         case 3://vatt*/
-            atackSpeed-=0.1;
-            animationAtaque.setTime(atackSpeed/5);
-            hud::getHud()->setPup(3);
+            if(atackSpeed>0.1){
+                atackSpeed-=0.1;
+                animationAtaque.setTime(atackSpeed/5);
+                hud::getHud()->setPup(3);
+            }
+
             break;
     }
 

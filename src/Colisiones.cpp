@@ -208,7 +208,8 @@ void Colisiones::espadaenemigo()
     for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++)
         if(Game::getGame()->getBoss()->getHitb().getGlobalBounds().intersects(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds())){
          Game::getGame()->getBoss()->sethp();
-        reloj.restart();
+         Game::getGame()->getPlayer()->getBalas().at(i)->setexiste();
+         reloj.restart();
         }
 
 
