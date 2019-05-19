@@ -136,7 +136,7 @@ void Player::stateMovement(){
 
     firstState=lastState;
 
-    sf::Vector2f movement(0.f, 0.f);
+    movement=sf::Vector2f(0.f, 0.f);
 
     if (up)
             movement.y -= speed;
@@ -364,12 +364,12 @@ void Player::espadazo(){
 
         if(delayBalas.getElapsedTime().asSeconds() > 0.5){
 
+            sf::Vector2f posaux=hitb.getPosition();
 
             if(aup && !adown && !aright && !aleft){
-                Proyectil* bala = new Proyectil(1.0f,hitb.getPosition(),0,0);
-
+                posaux.y-=25.0f;
+                Proyectil* bala = new Proyectil(1.0f,posaux,0,0);
                 vecProyectil.push_back(bala);
-
                 bala=nullptr;
                 delete bala;
                 delayBalas.restart();
@@ -378,8 +378,8 @@ void Player::espadazo(){
 
 
             if(adown && !aup && !aright && !aleft){
-                Proyectil* bala = new Proyectil(2.0f,hitb.getPosition(),0,0);
-
+                posaux.y+=25.0f;
+                Proyectil* bala = new Proyectil(2.0f,posaux,0,0);
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
@@ -390,7 +390,8 @@ void Player::espadazo(){
               //  Proyectil* bala = new Proyectil(3.0f,hitb.getPosition(),0,0);
 
             if(aright && !adown && !aup && !aleft){
-                Proyectil* bala = new Proyectil(3.0f,hitb.getPosition(),0,0);
+                posaux.x+=25.0f;
+                Proyectil* bala = new Proyectil(3.0f,posaux,0,0);
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
@@ -398,7 +399,8 @@ void Player::espadazo(){
             }
 
             if(aleft && !adown && !aright && !aup){
-                Proyectil* bala = new Proyectil(4.0f,hitb.getPosition(),0,0);
+                posaux.x-=25.0f;
+                Proyectil* bala = new Proyectil(4.0f,posaux,0,0);
                 vecProyectil.push_back(bala);
                 bala=nullptr;
                 delete bala;
@@ -507,7 +509,7 @@ std::vector<Proyectil*> Player::getBalas(){
 }
 
 
-void Player::colision(){
+void Player::colision(int x, int y){
     lastState=firstState;
 }
 
@@ -544,8 +546,6 @@ void Player::setgod(int i)
 
 void Player::purgue(int i)
 {
-std::cout<<"hola"<<std::endl;
 delete vecProyectil[i];
 vecProyectil.erase(vecProyectil.begin()+i);
-
 }
