@@ -12,7 +12,7 @@ class Colisiones
     public:
         static Colisiones* getColisiones();
 
-        bool entorno();
+        void entorno();
 
 
         void palanca();

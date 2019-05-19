@@ -17,15 +17,13 @@ Colisiones::Colisiones()
     habiaEnemigos=false;
 }
 
-bool Colisiones::entorno(){
+void Colisiones::entorno(){
 
     Player* personaje = Game::getGame()->getPlayer();
 
     for (int i=0;i<Map::getMap()->getmuros().size();i++){
         if(personaje->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
-
             personaje->colision(0,0);
-            return true;
         }
     }
 
@@ -315,7 +313,7 @@ void Colisiones::limpieza()
 
 
     for (int i=0;i<Game::getGame()->getPortales().size();i++)
-        if(Game::getGame()->getPortales().at(i)->getSprite().getPosition().y-Game::getGame()->getPlayer()->getHitb().getPosition().y>10.0f){
+        if(Game::getGame()->getPortales().at(i)->getSprite().getPosition().y-Game::getGame()->getPlayer()->getHitb().getPosition().y>100.0f){
             while(Game::getGame()->getPortales().size()>0){
                     Game::getGame()->purguepto(i);
         }
