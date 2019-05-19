@@ -23,7 +23,8 @@ bool Colisiones::entorno(){
 
     for (int i=0;i<Map::getMap()->getmuros().size();i++){
         if(personaje->getHitb().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds())){
-            personaje->colision();
+
+            personaje->colision(0,0);
             return true;
             }
         }

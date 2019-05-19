@@ -27,7 +27,7 @@ class Player
         void            espadazo();
 
         //funciones cortas
-        void                colision();
+        void                colision(int x, int y);
         void                setPosition(sf::Vector2f pos);
         void                loseLife(int i);
         void                hitted();
@@ -40,6 +40,7 @@ class Player
 
 
         //getters
+        sf::Vector2f movement;
         bool god;
         void setgod(int i);
         bool getgod();

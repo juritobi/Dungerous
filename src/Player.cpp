@@ -136,7 +136,7 @@ void Player::stateMovement(){
 
     firstState=lastState;
 
-    sf::Vector2f movement(0.f, 0.f);
+    movement=sf::Vector2f(0.f, 0.f);
 
     if (up)
             movement.y -= speed;
@@ -509,7 +509,7 @@ std::vector<Proyectil*> Player::getBalas(){
 }
 
 
-void Player::colision(){
+void Player::colision(int x, int y){
     lastState=firstState;
 }
 
