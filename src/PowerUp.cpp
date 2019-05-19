@@ -2,6 +2,7 @@
 
 PowerUp::PowerUp(sf::Vector2f pos, int i)
 {
+    existe = true;
     sprite.setPosition(pos);
     tipo=i;
 
@@ -25,4 +26,12 @@ int PowerUp::getTipo(){
 
 sf::Sprite PowerUp::getSprite(){
     return sprite;
+}
+
+void PowerUp::setExiste(){
+    existe=false;
+}
+
+bool PowerUp::getExiste(){
+    return existe;
 }

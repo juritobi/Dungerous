@@ -9,10 +9,13 @@ class PowerUp
         PowerUp(sf::Vector2f pos, int i);
         int getTipo();
         sf::Sprite getSprite();
+        void setExiste();
+        bool getExiste();
 
     private:
         sf::Sprite sprite;
         int tipo;
+        bool existe;
 
 };
 

@@ -66,11 +66,14 @@ void Colisiones::palanca(){
 }
 void Colisiones::pup(){
 
-    for(int i = 0; i<Game::getGame()->getTienda()->getPup().size() && i>=0 ;i++ ){
-        if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Game::getGame()->getTienda()->getPup()[i]->getSprite().getGlobalBounds())&&hud::getHud()->getPsetaNum()>0){
-            Game::getGame()->getPlayer()->pickPu(Game::getGame()->getTienda()->getPup()[i]->getTipo());
-            Game::getGame()->getTienda()->borrarPup(i);
-            hud::getHud()->setPseta(-1);
+    for(int i = 0; i<3;i++ ){
+
+        for(int j = 0; j<Game::getGame()->getTienda(i)->getPup().size() && j>=0 ;j++ ){
+            if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Game::getGame()->getTienda(i)->getPup()[j]->getSprite().getGlobalBounds())&&hud::getHud()->getPsetaNum()>0){
+                Game::getGame()->getPlayer()->pickPu(Game::getGame()->getTienda(i)->getPup()[j]->getTipo());
+                Game::getGame()->getTienda(i)->getPup()[j]->setExiste();
+                hud::getHud()->setPseta(-1);
+            }
         }
     }
 }
@@ -263,7 +266,12 @@ void Colisiones::enemigo()
 
 void Colisiones::limpiar()
 {
-
+        for(int i = 0;i<3;i++)
+            for(int j = 0; j<Game::getGame()->getTienda(i)->getPup().size() && j>=0 ;j++ ){
+                if(!Game::getGame()->getTienda(i)->getPup()[j]->getExiste()){
+                    Game::getGame()->getTienda(i)->borrarPup(j);
+                }
+        }
 
         for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++)
             if(Map::getMap()->getenemigos().at(i)->getexiste()==false)

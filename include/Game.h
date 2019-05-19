@@ -33,7 +33,7 @@ class Game : public InterfazEstado {
         Player*         getPlayer();
         Enemy*          getEnemigo();
         Boss*           getBoss();
-        Tienda*         getTienda();
+        Tienda*         getTienda(int i);
         Palanca*        getPalancas(int i);
         std::vector<Portal*> getPortales();
         Player*          mPlayer;
@@ -55,7 +55,7 @@ class Game : public InterfazEstado {
         sf::RectangleShape     *muerte;
         Palanca *palancas [4];
         PalancaManager *manejadorPalanca;
-        Tienda         *tienda;
+        Tienda       *tienda [3];
 
         Map*     mMap;
         Animation dead;

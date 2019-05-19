@@ -60,7 +60,9 @@ Game::Game()
         portales[2*i]->setDestino(portales[2*i+1]);
     }
 
-    tienda=new Tienda(sf::Vector2f(1200,8000));
+    tienda[0]=new Tienda(sf::Vector2f(1200,14500));
+    tienda[1]=new Tienda(sf::Vector2f(1200,8160));
+    tienda[2]=new Tienda(sf::Vector2f(1350,3264));
 
     mPower.push_back(new PowerUp(sf::Vector2f(150,150),1));
 
@@ -158,11 +160,12 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     for(int i = 0;i<portales.size();i++){
         mWindow->draw(portales[i]->getSprite());
     }
-    mWindow->draw(tienda->getSprite());
-    for(int i=0;i<tienda->getPup().size();i++){
-        mWindow->draw(tienda->getPup()[i]->getSprite());
+    for (int i = 0;i<3;i++){
+        mWindow->draw(tienda[i]->getSprite());
+        for(int j=0;j<tienda[i]->getPup().size();j++){
+            mWindow->draw(tienda[i]->getPup()[j]->getSprite());
+        }
     }
-
     mWindow->draw(mPlayer->getBody());
    // mWindow->draw(mPlayer->getHitb());
     //mWindow->draw(mPlayer->getEspada());
@@ -281,8 +284,8 @@ muerte->setOrigin(og);
 muerte->setPosition(pos);
 }
 
-Tienda* Game::getTienda(){
-    return tienda;
+Tienda* Game::getTienda(int i){
+    return tienda[i];
 }
 
 
