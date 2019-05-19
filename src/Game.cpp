@@ -60,6 +60,8 @@ Game::Game()
 
     mPower.push_back(new PowerUp(sf::Vector2f(150,150),1));
 
+    mMap->asignarsala();
+
 }
 
 
@@ -94,9 +96,6 @@ void Game::update(sf::Time elapsedTime){
 
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
     mMap->getenemigos()[i]->update();
-
-    mMap->asignarsala();
-
 
     for(unsigned int i=0;i<mMap->getenemigos().size();i++)
         for(unsigned int j=0;j<mMap->getenemigos()[i]->getbalas().size();j++)
