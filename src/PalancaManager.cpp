@@ -1,5 +1,6 @@
 #include "PalancaManager.h"
 #include <iostream>
+#include "Map.h"
 PalancaManager::PalancaManager(sf::Vector2f posicion,int s)
 {
     for(int i=0;i<4;i++){
@@ -41,6 +42,7 @@ void PalancaManager::activa( std::vector<int> toActivate){
         }
         if(condicion){
             terminado=true;
+            Map::getMap()->cambiopuertas();
         }
     }
 }

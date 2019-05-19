@@ -411,6 +411,7 @@ enemigos.erase(enemigos.begin()+i);
 void Map::reiniciar()
 {
 int n=0;
+
     for(unsigned int i=0; i<enemigos.size();i++)
         if(enemigos[i]->getsala()==player->getsala())
         n++;
@@ -419,7 +420,7 @@ int n=0;
         n++;
 
 
-    if(n==0 && reinicio==false){
+    if(n==0 && reinicio==false && Game::getGame()->getPlayer()->getsala()!=12){
     cambiopuertas();
     reinicio=true;
     }
