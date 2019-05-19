@@ -2,6 +2,7 @@
 #define HUD_H
 #import <vector>
 #import <SFML/Graphics.hpp>
+
 class hud
 {
     public:
@@ -18,7 +19,7 @@ class hud
         void setPseta(int i);
         bool setCrono(sf::Clock c, int i);
         void loseCrono();
-
+        void comprobarReloj();
         sf::Time sumaTiempo;
         sf::Clock tiempoPausa;
 
@@ -27,6 +28,7 @@ class hud
 
     private:
         static hud* hudo;
+        bool        relojACero;
         hud();
         sf::Texture tLife;
         sf::Texture tPseta;
