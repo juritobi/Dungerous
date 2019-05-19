@@ -37,25 +37,24 @@ Game::Game()
     p1.push_back(1);
     p1.push_back(3);
     std::vector<int> p2;
-    p2.push_back(0);
-    p2.push_back(2);
+    p2.push_back(1);
     p2.push_back(3);
     std::vector<int> p3;
     p3.push_back(0);
     p3.push_back(1);
-    p3.push_back(2);
+    p3.push_back(3);
     std::vector<int> p4;
-    p4.push_back(0);
+    p4.push_back(1);
     p4.push_back(2);
     p4.push_back(3);
     std::vector<int> vect [4]={p1,p2,p3,p4};
-    manejadorPalanca=new PalancaManager(sf::Vector2f(960+64*-2,2720),2);
+    manejadorPalanca=new PalancaManager(sf::Vector2f(960+64*-2,13600),2);
     for(int i =0;i<4;i++){
         palancas[i]= new Palanca(posicionPalanca[i],vect[i],manejadorPalanca);
     }
 
     /*crear portales*/
-    for(int i = 0 ; i<12;i++){
+    for(int i = 0 ; i<22;i++){
         portales.push_back(new Portal(posicionPortal[2*i],direccionPortal[2*i]));
         portales.push_back(new Portal(posicionPortal[2*i+1],portales[2*i],direccionPortal[2*i+1]));
         portales[2*i]->setDestino(portales[2*i+1]);
