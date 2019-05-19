@@ -22,7 +22,6 @@ void PalancaManager::activa( std::vector<int> toActivate){
     if(!terminado){
 
         for (int i = 0; i<toActivate.size();i++){
-            std::cout<<toActivate[i]<<std::endl;
             if(activaciones[toActivate[i]]){
                 activaciones[toActivate[i]]=false;
                 indicadores[toActivate[i]].setTextureRect(sf::IntRect(0,0,64,64));
@@ -46,6 +45,16 @@ void PalancaManager::activa( std::vector<int> toActivate){
     }
 }
 
+void PalancaManager::activaAll(){
+    //if(!terminado){
+
+        for (int i = 0; i<4;i++){
+            activaciones[i]=true;
+            indicadores[i].setTextureRect(sf::IntRect(64,0,64,64));
+        }
+        terminado=true;
+    //}
+}
 
 sf::Sprite PalancaManager::getSprite(int i){
     return indicadores[i];

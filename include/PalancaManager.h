@@ -12,6 +12,7 @@ class PalancaManager
         int getSala();
         sf::Sprite getSprite(int i);
         bool getTerminado();
+        void activaAll();
 
     private:
 

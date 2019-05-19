@@ -26,23 +26,23 @@ bool Colisiones::entorno(){
 
             personaje->colision(0,0);
             return true;
+        }
+    }
+
+     for (int i=0;i<Map::getMap()->getmuros().size();i++){
+        if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds()) && Game::getGame()->getBoss()->getRandom() == 2){
+            Game::getGame()->getBoss()->resetAtaque();
+        }
+     }
+      for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++){
+        for(unsigned int j=0; j<Map::getMap()->getmuros().size();j++){
+            if(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getmuros().at(j)->getGlobalBounds())){
+            Game::getGame()->getPlayer()->getBalas().at(i)->setmover();
+            Game::getGame()->getPlayer()->getBalas().at(i)->setmuro();
+
             }
         }
-
-         for (int i=0;i<Map::getMap()->getmuros().size();i++){
-            if(Game::getGame()->getBoss()->getbody().getGlobalBounds().intersects(Map::getMap()->getmuros()[i]->getGlobalBounds()) && Game::getGame()->getBoss()->getRandom() == 2){
-                Game::getGame()->getBoss()->resetAtaque();
-            }
-         }
-          for(unsigned int i=0; i<Game::getGame()->getPlayer()->getBalas().size();i++){
-            for(unsigned int j=0; j<Map::getMap()->getmuros().size();j++){
-                if(Game::getGame()->getPlayer()->getBalas().at(i)->getBody().getGlobalBounds().intersects(Map::getMap()->getmuros().at(j)->getGlobalBounds())){
-                Game::getGame()->getPlayer()->getBalas().at(i)->setmover();
-                Game::getGame()->getPlayer()->getBalas().at(i)->setmuro();
-
-                }
-            }
-        }
+    }
 
 
  espadaenemigo();
@@ -57,7 +57,12 @@ void Colisiones::palanca(){
 
         sf::Vector2f vecResta(personaje-Game::getGame()->getPalancas(i)->getSprite().getPosition());
         if(sqrt(pow(vecResta.x,2)+pow(vecResta.y,2))<50){
-            Game::getGame()->getPalancas(i)->activa();
+            if(Game::getGame()->getPlayer()->getgod()){
+                Game::getGame()->getPalancaM()->activaAll();
+            }
+            else{
+                Game::getGame()->getPalancas(i)->activa();
+            }
         }
     }
 }
@@ -309,13 +314,12 @@ void Colisiones::limpieza()
 
 
 
-        for (int i=0;i<Game::getGame()->getPortales().size();i++)
-            if(Game::getGame()->getPortales().at(i)->getSprite().getPosition().y-Game::getGame()->getPlayer()->getHitb().getPosition().y>10.0f){
-                while(Game::getGame()->getPortales().size()>0){
-                        Game::getGame()->purguepto(i);
-            }
+    for (int i=0;i<Game::getGame()->getPortales().size();i++)
+        if(Game::getGame()->getPortales().at(i)->getSprite().getPosition().y-Game::getGame()->getPlayer()->getHitb().getPosition().y>10.0f){
+            while(Game::getGame()->getPortales().size()>0){
+                    Game::getGame()->purguepto(i);
         }
-
+    }
 }
 
 
