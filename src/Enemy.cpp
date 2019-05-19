@@ -4,8 +4,8 @@
 
 
 Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f pos)//comento cosas para probar que funciona, cuando ya esté se descomentan las dos
-:animar(0.1f,sf::Vector2u(4,4),"enem")
-,animar2(0.15f,sf::Vector2u(8,4),"enem2")
+:animar(0.2f,sf::Vector2u(4,4),"enem")
+,animar2(0.25f,sf::Vector2u(8,4),"enem2")
 ,direccion(sf::Vector2f(0,0))
 {
     calculoColision = false;
