@@ -11,7 +11,8 @@ Boss::Boss(sf::Vector2u vec, Player* player, int vida)//comento cosas para proba
 {
 
     firstState.pos=sf::Vector2f(960,600);
-    hitb.setOrigin(hitb.getGlobalBounds().width/2,hitb.getGlobalBounds().height/2);
+    hitb.setOrigin(hitb.getGlobalBounds().width/2,hitb.
+    getGlobalBounds().height/2);
     hitb.setPosition(body.getGlobalBounds().width/2,body.getGlobalBounds().height/2);
     hitb.setFillColor(sf::Color::White);
     hitb.setScale(5,5);
@@ -294,5 +295,5 @@ vecBalasBoss.erase(vecBalasBoss.begin()+i);
 }
 
 sf::RectangleShape Boss::getHitb(){
-    return *lastState.hitbox;
+    return hitb;
 }
