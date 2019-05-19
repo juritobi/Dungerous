@@ -14,6 +14,7 @@ class Portal
         void setDestino(Portal* p);
         Portal* getDestino();
         int getDireccion();
+        void limpiarpto();
 
         void letsGo();
 

@@ -29,12 +29,13 @@ class Map : public sf::Drawable, public sf::Transformable
         void reiniciapuertas();
         void cambiopuertas();
         void asignarsala();
-        void Purguepos(int i);
-        void Purgueall();
+        void Purgueposenemi(int i);
         void Mostrar(sf::RenderWindow& window);
         void reiniciar();
         void setreinicio();
         void setmatando();
+        void purguemur(int i);
+        void purguepta(int i);
         sf::RectangleShape getmuerte();
         std::vector<sf::RectangleShape*> getmuros();
         std::vector<sf::RectangleShape*> getpuertas();
