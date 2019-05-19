@@ -14,6 +14,7 @@ Colisiones* Colisiones::getColisiones(){
 
 Colisiones::Colisiones()
 {
+
     habiaEnemigos=false;
 }
 

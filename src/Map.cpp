@@ -12,6 +12,8 @@ Map* Map::getMap(){
 
 Map::Map(){
 
+sonidoPuerta.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("cambiaPuerta"));
+sonidoDolor.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("golpeaEnemigo"));
 matando=false;
 muerte=sf::RectangleShape();
 
@@ -278,9 +280,10 @@ void Map::cambiopuertas()
     for(unsigned int i=0; i<_width;i++){
         for(unsigned int j=0; j<_height;j++)
             {
-             if(_tilemap[k][j][i]==433)
+             if(_tilemap[k][j][i]==433){
              _tilemap[k][j][i]=479;
-
+               sonidoPuerta.play();
+            }
 
             }
         }
@@ -400,7 +403,7 @@ matando=true;
 muerte.setPosition(enemigos[i]->getbody().getPosition());
 muerte.setSize(sf::Vector2f(50.0f,50.0f));
 muerte.setOrigin(enemigos[i]->getbody().getOrigin());
-
+sonidoDolor.play();
 Game::getGame()->lanzarmuerte(muerte.getPosition(), muerte.getSize(), muerte.getOrigin());
 
 

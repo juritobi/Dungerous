@@ -17,6 +17,9 @@ class AssetManager{
             void createMusica(std::string name, std::string path);
             sf::Music &GetMusica(std::string name);
 
+            void createMusicaBoss(std::string name, std::string path);
+            sf::Music &GetMusicaBoss(std::string name);
+
             void createSoundEffect(std::string name, std::string path);
             sf::SoundBuffer &GetEfectosSonido(std::string name);
 
@@ -27,5 +30,6 @@ class AssetManager{
             std::map<std::string, sf::Font> fonts;
             std::map<std::string, sf::SoundBuffer> efectosSonido;
             sf::Music musica;
+            sf::Music musicaBoss;
 };
 

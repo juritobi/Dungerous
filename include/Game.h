@@ -61,7 +61,8 @@ class Game : public InterfazEstado {
         Animation dead;
         Boss*    boss;
 
-        sf::Clock reiniciar;
+        sf::Clock                   reiniciar;
+
 
 
         std::vector<Portal*> portales;

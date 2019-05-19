@@ -1,6 +1,7 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Player.h"
 #include <math.h>
 #include <iostream>
@@ -51,7 +52,7 @@ class Enemy
         unsigned int                fila;
 
         sf::Sprite                  body;
-
+        sf::Sound                   sonidoDolor;
 
         Animation                   animar;
         Animation                   animar2;

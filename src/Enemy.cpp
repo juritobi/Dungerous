@@ -8,6 +8,7 @@ Enemy::Enemy(sf::Vector2u vec, Player* player, int vida, int type,sf::Vector2f p
 ,animar2(0.25f,sf::Vector2u(8,4),"enem2")
 ,direccion(sf::Vector2f(0,0))
 {
+    sonidoDolor.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("golpeaEnemigo"));
     calculoColision = false;
     existe=true;
     sala=0;
@@ -198,6 +199,7 @@ return hp;
 void Enemy::sethp()
 {
     hp-=Game::getGame()->getPlayer()->getStrength();
+    sonidoDolor.play();
     damages.restart();
 }
 
