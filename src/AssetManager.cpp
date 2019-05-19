@@ -13,6 +13,12 @@ AssetManager* AssetManager::getAssetManager(){
     return assetManager;
 }
 
+/*
+
+se encarga de crear texturas, fuentes o sonidos y guardarlos en un mapa con un string como nombre para poder acceder a ellos desde cualquier sitio
+
+*/
+
 void AssetManager::createTexture(std::string name,std:: string path){
 
     sf::Texture texturacop;
