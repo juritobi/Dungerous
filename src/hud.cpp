@@ -1,6 +1,9 @@
 #include "../include/hud.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Game.h"
+#include "StateManager.h"
+#include "GameOver.h"
 #include <sstream>
 
 hud* hud::hudo=0;
@@ -13,6 +16,7 @@ hud* hud::getHud(){
 
 hud::hud():mClock()
 {
+    relojACero=false;
     vVida=1;
     vFuerza=1;
     vVel=1;
@@ -132,9 +136,11 @@ bool hud::setCrono(sf::Clock c,int i){
     }
     if(minut<=0&&sec<=0){
         fin=true;
+        relojACero=true;
     }
     ss<<cero1<<minut<<":"<<cero2<<sec;
     txtCrono.setString(ss.str());
+    comprobarReloj();
     return fin;
 }
 void hud::setPup(int i){
@@ -170,6 +176,13 @@ void hud::setPup(int i){
             sPup.push_back(sVel2);
             vVel++;
         }
+    }
+}
+
+void hud::comprobarReloj(){
+    if(relojACero && !Game::getGame()->getPlayer()->getgod()){
+        StateManager::getStateManager()->AddState(GameOver::getGameOver(),true);
+        GameOver::getGameOver()->posNuevo();
     }
 }
 
