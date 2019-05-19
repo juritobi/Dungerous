@@ -57,14 +57,10 @@ void Colisiones::palanca(){
         sf::Vector2f vecResta(personaje-Game::getGame()->getPalancas(i)->getSprite().getPosition());
         if(sqrt(pow(vecResta.x,2)+pow(vecResta.y,2))<50){
             Game::getGame()->getPalancas(i)->activa();
-
-            //Game::getGame()->getPlayer()->pickPu(3);
-
         }
     }
 }
 void Colisiones::pup(){
-
 
     for(int i = 0; i<Game::getGame()->getTienda()->getPup().size() && i>=0 ;i++ ){
         if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Game::getGame()->getTienda()->getPup()[i]->getSprite().getGlobalBounds())&&hud::getHud()->getPsetaNum()>0){
@@ -73,8 +69,6 @@ void Colisiones::pup(){
             hud::getHud()->setPseta(-1);
         }
     }
-
-
 }
 
 
@@ -124,6 +118,11 @@ void Colisiones::camaramove()
         {
             if(Game::getGame()->getPlayer()->getHitb().getGlobalBounds().intersects(Map::getMap()->getpuertas()[i]->getGlobalBounds()) && cambio==false){
                 Game::getGame()->getGame()->getPlayer()->teleport(sf::Vector2f( 960.0f, Game::getGame()->getGame()->getPlayer()->getHitb().getPosition().y-250.0f));
+                if(habiaEnemigos){
+                    hud::getHud()->setPseta(1);
+                    habiaEnemigos=false;
+                }
+                Game::getGame()->saveGame();
                 App::getApp()->mView.setCenter(sf::Vector2f( App::getApp()->mView.getCenter().x, App::getApp()->mView.getCenter().y-1088.0f));
                 cambio=true;
                 Map::getMap()->cambiopuertas();
