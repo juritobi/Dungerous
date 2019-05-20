@@ -1,5 +1,4 @@
 #include "../include/StateManager.h"
-#include "../include/SplashState.h"
 #include <memory>
 #include <stack>
 #include <iostream>

@@ -86,6 +86,7 @@ void Pausa::manageEvents(sf::Keyboard::Key key, bool isPressed)
         if(key == sf::Keyboard::Return && GetPressedItem() == 2){
 
             StateManager::getStateManager()->RemoveState();
+            Game::getGame()->restart();
             Menu::getMenu()->posNuevo();
             StateManager::getStateManager()->AddState(Menu::getMenu(), true);
         }

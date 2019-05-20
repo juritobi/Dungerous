@@ -3,7 +3,6 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include "StateManager.h"
-#include "SplashState.h"
 
 class App
 {
