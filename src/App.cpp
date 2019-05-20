@@ -6,10 +6,25 @@
 #include "../include/Map.h"
 #include "Game.h"
 
-//peta por que la distancia del vector de solision es cerca de cero divide y cacatoa
-
 const sf::Time App::minUpdateTime = sf::milliseconds(60.f);
+
+/*
+
+    funcione para para que la case sea singleton, el contructor de la clase es un metodo privado
+
+*/
+
 App* App::app = 0;
+
+App* App::getApp(){
+
+    if (app == 0)
+    {
+        app = new App();
+    }
+
+    return app;
+}
 
 App::App()
 :mWindow(sf::VideoMode(1920,1080),"Dungerous",sf::Style::Default)
@@ -17,27 +32,21 @@ App::App()
 {
     std::srand(std::time(nullptr));
     mWindow.setFramerateLimit(300);
-    //siongleton init
+
     StateManager::getStateManager();
     AssetManager::getAssetManager();
-    //Map::getMap();
     mView.setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
 
     AssetManager::getAssetManager()->createFont("font1", "assets/font.otf");
-
     AssetManager::getAssetManager()->createTexture("portal","assets/portal.png");
-
     AssetManager::getAssetManager()->createTexture("PVida","assets/vida.png");
     AssetManager::getAssetManager()->createTexture("PFuerza","assets/fuerza.png");
     AssetManager::getAssetManager()->createTexture("PAtaque","assets/velAt.png");
-
     AssetManager::getAssetManager()->createTexture("calavera","assets/calavera.png");
     AssetManager::getAssetManager()->createTexture("calaveraRoja","assets/calavera.png");
     AssetManager::getAssetManager()->createTexture("calaveras","assets/calaveras.png");
-
-
     AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
-    AssetManager::getAssetManager()->createTexture("flechas", "assets/flechas.png");//yo no existo parte 2
+    AssetManager::getAssetManager()->createTexture("flechas", "assets/flechas.png");
     AssetManager::getAssetManager()->createTexture("boss", "assets/dragon.png");
     AssetManager::getAssetManager()->createTexture("fuego", "assets/fuego.png");
     AssetManager::getAssetManager()->createTexture("enem2","assets/enemy2.png");
@@ -53,15 +62,12 @@ App::App()
 
 }
 
-App* App::getApp(){
+/*
 
-    if (app == 0)
-    {
-        app = new App();
-    }
+inicia el bucle del juego, antes de hacerlo añade un estado en la pila de estados, es este caso Menu.
+cuando entra en el loop se utilizan relojes para limitar el numero de updates
 
-    return app;
-}
+*/
 
 void App::run(){
 
@@ -91,6 +97,13 @@ void App::run(){
         render();
 	}
 }
+
+/*
+
+se encarga de leer los inputs por teclado y en este caso G para activar el God mode, una vez hecho manda a los estado que cada uno se encarge de manejar sus inputs,
+ya que son diferentes en cada estado
+
+*/
 
 void App::manageEvents(){
 
@@ -131,6 +144,12 @@ void App::manageEvents(){
 
 }
 
+/*
+
+tanto update como render se encargan de llamar a la misma funcion del estado activo ya se son diferentes para cada uno
+
+*/
+
 void App::update(sf::Time elapsedTime){
 
     StateManager::getStateManager()->GetActiveState()->update(elapsedTime);
@@ -144,13 +163,13 @@ void App::render(){
 
     mWindow.setView(mView);
 
-    StateManager::getStateManager()->GetActiveState()->render(minUpdateTime, updateClock.getElapsedTime());//mGame sera state manager
+    StateManager::getStateManager()->GetActiveState()->render(minUpdateTime, updateClock.getElapsedTime());
 
     mWindow.display();
 }
 
 
-sf::Vector2f App::normalizar(sf::Vector2f vec)//se normaliza la dirección por la que tiene que perseguir
+sf::Vector2f App::normalizar(sf::Vector2f vec)//normaliza un vector
 {
 
     float normalizar = sqrt((vec.x * vec.x) + (vec.y * vec.y));

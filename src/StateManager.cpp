@@ -16,11 +16,24 @@ StateManager* StateManager::getStateManager(){
     return stateManager;
 }
 
+/*
+
+se encarga de manejar una pila de estados el que esta en la cima de la pila sera el que se esta ejecutando
+
+*/
+
 StateManager::StateManager()
 :_isRemoving(false)
 ,_isAdding(false)
 ,_isReplacing(false)
 {}
+
+/*
+
+las funciones de añadir o eliminar estados no eliminan realmente, si no que guardan variables para que se pueda cambiar despues,
+esto es asi para evitar problemas al cambiar de estado durante un update
+
+*/
 
 void StateManager::AddState(InterfazEstado* newState, bool isReplacing)
 {
@@ -32,6 +45,12 @@ void StateManager::AddState(InterfazEstado* newState, bool isReplacing)
 void StateManager::RemoveState(){
     _isRemoving = true;
 }
+
+/*
+
+al inicio del loop del juego se llama a esta funcion que es la que se encaga realmente de modificar la pila de estados
+
+*/
 
 void  StateManager::ProcessStateChanges( ){
     if(_isRemoving && !_states.empty( )){

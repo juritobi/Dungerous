@@ -6,6 +6,8 @@
 
 #include "StateManager.h"
 #include "App.h"
+#include "SFML/Audio.hpp"
+
 Menu* Menu::menu = 0;
 int MENUSCREEN_WIDTH =1920;
 int MENUSCREEN_HEIGHT =1080;
@@ -58,6 +60,7 @@ void Menu::manageEvents(sf::Keyboard::Key key, bool isPressed)
             StateManager::getStateManager()->AddState(Game::getGame(), true);
         }
         if(key == sf::Keyboard::Return && GetPressedItem() == 1){
+            AssetManager::getAssetManager()->GetMusica("fondo").stop();
             exit(0);
         }
         if(key == sf::Keyboard::Down){
