@@ -2,6 +2,7 @@
 #define TILEMAP_H
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
 #include <tinyxml2.h>
 #include <vector>
@@ -64,6 +65,8 @@ class Map : public sf::Drawable, public sf::Transformable
     protected:
 
     private:
+    sf::Sound                   sonidoPuerta;
+    sf::Sound                   sonidoDolor;
     sf::RectangleShape muerte;
         Player *player;
         static Map* mapa;

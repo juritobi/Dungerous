@@ -11,7 +11,7 @@ class Palanca
     public:
         Palanca(sf::Vector2f posicion, std::vector<int> activa, PalancaManager *manager);
         void activa();
-
+        sf::Sound   sonidoPalanca;
         sf::Sprite getSprite();
 
     private:

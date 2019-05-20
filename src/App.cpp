@@ -55,9 +55,14 @@ App::App()
     AssetManager::getAssetManager()->createTexture("tienda", "assets/tienda.png");
     AssetManager::getAssetManager()->createTexture("muerte", "assets/Muerte.png");
     AssetManager::getAssetManager()->createMusica("fondo", "assets/musicaFondo.ogg");
+    AssetManager::getAssetManager()->createMusicaBoss("boss", "assets/musicaBoss.ogg");
     AssetManager::getAssetManager()->createSoundEffect("linkataque", "assets/linkataque.wav");
     AssetManager::getAssetManager()->createSoundEffect("linkherido", "assets/linkherido.wav");
     AssetManager::getAssetManager()->createSoundEffect("linkrueda" , "assets/linkrueda.wav");
+    AssetManager::getAssetManager()->createSoundEffect("linkGameOver", "assets/linkGameOver.wav");
+    AssetManager::getAssetManager()->createSoundEffect("cambiaPuerta", "assets/cambiaPuerta.wav");
+    AssetManager::getAssetManager()->createSoundEffect("palancas" , "assets/palancas.wav");
+    AssetManager::getAssetManager()->createSoundEffect("golpeaEnemigo" , "assets/enemigoRecibeDano.wav");
 
 
 }
@@ -77,8 +82,7 @@ void App::run(){
     StateManager::getStateManager()->AddState(Menu::getMenu());
     updateStart = generalClock.getElapsedTime();
 
-    AssetManager::getAssetManager()->GetMusica("fondo").play();
-    AssetManager::getAssetManager()->GetMusica("fondo").setLoop(true);
+    playMusica();
 
     while (mWindow.isOpen())
 	{
@@ -178,6 +182,17 @@ sf::Vector2f App::normalizar(sf::Vector2f vec)//normaliza un vector
 
 }
 
+void App::playMusica(){
+    AssetManager::getAssetManager()->GetMusica("fondo").play();
+    AssetManager::getAssetManager()->GetMusica("fondo").setLoop(true);
+    AssetManager::getAssetManager()->GetMusica("fondo").setVolume(100.0f);
+}
+
+void App::playMusicaBoss(){
+    AssetManager::getAssetManager()->GetMusicaBoss("boss").play();
+    AssetManager::getAssetManager()->GetMusicaBoss("boss").setLoop(true);
+    AssetManager::getAssetManager()->GetMusicaBoss("boss").setVolume(100.0f);
+}
 
 sf::Time App::getElapsedTime(){
     return lastUpdateTime;

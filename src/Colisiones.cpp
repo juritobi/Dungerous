@@ -14,10 +14,11 @@ Colisiones* Colisiones::getColisiones(){
 
 Colisiones::Colisiones()
 {
+
     habiaEnemigos=false;
 }
 
-void Colisiones::entorno(){
+void Colisiones::entorno(){     //Calculo de las colisiones de los objetos del juego con el entorno(muros)
 
     Player* personaje = Game::getGame()->getPlayer();
 
@@ -49,7 +50,7 @@ void Colisiones::entorno(){
 }
 
 
-void Colisiones::palanca(){
+void Colisiones::palanca(){     //activacion de las palacas
     sf::Vector2f personaje = Game::getGame()->getPlayer()->getBody().getPosition();
     for(int i = 0; i<4;i++){
 
@@ -64,7 +65,7 @@ void Colisiones::palanca(){
         }
     }
 }
-void Colisiones::pup(){
+void Colisiones::pup(){ //coger los powerups
 
     for(int i = 0; i<3;i++ ){
 
@@ -119,7 +120,7 @@ void Colisiones::importalte(){
     }
 }
 
-void Colisiones::camaramove()
+void Colisiones::camaramove()       //mover la camara y el player cuando colisionas con una puerta
 {
     int n=0;
     for(unsigned int i=0; i<Map::getMap()->getenemigos().size();i++)
@@ -166,7 +167,7 @@ void Colisiones::camaramove()
 
 
 
-void Colisiones::espadaenemigo()
+void Colisiones::espadaenemigo() //calculos cuando el jugador ataca a los enemigos o el jefe
 {
 
     if(reloj.getElapsedTime().asSeconds()>0.5f){
@@ -222,7 +223,7 @@ void Colisiones::espadaenemigo()
 }
 }
 
-void Colisiones::enemigo()
+void Colisiones::enemigo() //calculos cuando los enemigos atacan al jugador
 {
     if(Game::getGame()->getPlayer()->getgod()==false){
         if(reloj2.getElapsedTime().asSeconds()>2.0f){
@@ -265,7 +266,7 @@ void Colisiones::enemigo()
 
 
 
-void Colisiones::limpiar()
+void Colisiones::limpiar()          //DELETES  DEL JUEGOS
 {
         for(int i = 0;i<3;i++)
             for(int j = 0; j<Game::getGame()->getTienda(i)->getPup().size() && j>=0 ;j++ ){
@@ -316,7 +317,7 @@ void Colisiones::limpiar()
 
 
 
-void Colisiones::limpieza()
+void Colisiones::limpieza() //DELETES CONFORMER AVANZA EL JUEGO, SE VAN BORRANDO OBJETOS SUPERADOS COMO PUERTAS, MUROS, PORTALES..ETC
 {
      for (int i=0;i<Map::getMap()->getmuros().size();i++)
         if(Map::getMap()->getmuros().at(i)->getPosition().y-Game::getGame()->getPlayer()->getBody().getPosition().y>100.0f)

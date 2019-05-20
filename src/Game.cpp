@@ -21,6 +21,7 @@ Game::Game()
 ,cl()
 ,dead(0.2f,sf::Vector2u(6, 1),"muerte")
 {
+
     mPlayer= new Player();
     boss=new Boss(sf::Vector2u(3,8), mPlayer, 30);
     hudView.setSize(762,7608.f);

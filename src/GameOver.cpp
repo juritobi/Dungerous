@@ -22,7 +22,7 @@ GameOver* GameOver::getGameOver(){
 GameOver::GameOver()
 {
     AssetManager::getAssetManager()->createTexture("GameOverBackground", "assets/gameOver.jpg");
-
+    sonidoMuerte.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkGameOver"));
     background.setTexture(&AssetManager::getAssetManager()->GetTexture("GameOverBackground"));
 
     background.setSize(sf::Vector2f (GameOverSCREEN_WIDTH, GameOverSCREEN_HEIGHT));
@@ -30,6 +30,7 @@ GameOver::GameOver()
 }
 void GameOver::posNuevo(){
 
+        sonidoMuerte.play();
         background.setPosition((App::getApp()->mView.getCenter().x ) - (this->background.getGlobalBounds().width / 2), (App::getApp()->mView.getCenter().y-110 ) - (this->background.getGlobalBounds().height / 2.5));
 
 }

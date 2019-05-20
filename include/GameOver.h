@@ -16,7 +16,7 @@
         void  posNuevo();
 
 	private:
-
+        sf::Sound                   sonidoMuerte;
 		GameOver();
 
 		sf::RectangleShape background;

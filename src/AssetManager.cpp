@@ -63,12 +63,29 @@ void AssetManager::createMusica(std::string name, std::string path){
     }
     std::cout << path << " cargada correctamente " << std::endl;
 
-    musica.setVolume(50.0f);
+    musica.setVolume(75.0f);
+
+}
+
+void AssetManager::createMusicaBoss(std::string name, std::string path){
+
+
+    if(!musicaBoss.openFromFile(path)){
+        std::cout << "No se ha podido cargar " << path << std::endl;
+        exit(0);
+    }
+    std::cout << path << " cargada correctamente " << std::endl;
+
+    musicaBoss.setVolume(75.0f);
 
 }
 
 sf::Music &AssetManager::GetMusica(std::string name){
     return musica;
+}
+
+sf::Music &AssetManager::GetMusicaBoss(std::string name){
+    return musicaBoss;
 }
 
 void AssetManager::createSoundEffect(std::string name, std::string path){

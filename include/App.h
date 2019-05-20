@@ -9,6 +9,8 @@ class App
 {
 	public:
 		void					run();
+        void                    playMusica();
+        void                    playMusicaBoss();
 		static App*				getApp();
 
         sf::RenderWindow		mWindow;
@@ -23,7 +25,6 @@ class App
     private:
         static App*             app;
         App();
-
         void                    manageEvents();
         void                    update(sf::Time elapsedTime);
         void                    render();

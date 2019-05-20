@@ -28,6 +28,7 @@ class Colisiones
         void restart();
 
     private:
+
         static Colisiones* colisiones;
         Colisiones();
         sf::Clock reloj;
