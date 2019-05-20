@@ -45,6 +45,9 @@ App::App()
     AssetManager::getAssetManager()->createTexture("fireball", "assets/fireball.png");
     AssetManager::getAssetManager()->createTexture("tienda", "assets/tienda.png");
     AssetManager::getAssetManager()->createTexture("muerte", "assets/Muerte.png");
+    AssetManager::getAssetManager()->createMusica("fondo", "assets/musicaFondo.ogg");
+    AssetManager::getAssetManager()->createSoundEffect("linkataque", "assets/linkataque.wav");
+    AssetManager::getAssetManager()->createSoundEffect("linkherido", "assets/linkherido.wav");
 
 
 }
@@ -66,6 +69,9 @@ void App::run(){
     updateClock.restart();
     StateManager::getStateManager()->AddState(Menu::getMenu());
     updateStart = generalClock.getElapsedTime();
+
+    AssetManager::getAssetManager()->GetMusica("fondo").play();
+    AssetManager::getAssetManager()->GetMusica("fondo").setLoop(true);
 
     while (mWindow.isOpen())
 	{

@@ -1,6 +1,6 @@
 #ifndef BOOK_GAME_HPP
 #define BOOK_GAME_HPP
-
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include "StateManager.h"
 #include "SplashState.h"

@@ -20,8 +20,8 @@ Player::Player()
 ,life(4)
 ,hitb(sf::Vector2f(35.0f,50.0f))
 ,espada()
-,animation( 0.2f,sf::Vector2u(6, 27),"player")
-,animationAtaque( 0.1f,sf::Vector2u(6, 27),"player")
+,animation( 0.2f,sf::Vector2u(6, 30),"player")
+,animationAtaque( 0.1f,sf::Vector2u(6, 30),"player")
 ,fila(3)
 ,derecha(false)
 ,parar(false)
@@ -34,6 +34,8 @@ Player::Player()
     sala=13;
     firstState.pos=sf::Vector2f(960,15000);
     body.setTexture(&AssetManager::getAssetManager()->GetTexture("player"));
+    efectoAtaque.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkataque"));
+    efectoGolpeado.setBuffer(AssetManager::getAssetManager()->GetEfectosSonido("linkherido"));
     body.setOrigin(42.5f,42.5f);
     hitb.setOrigin(17.5f,25.0f);
     hitb.setPosition(firstState.pos.x-15,firstState.pos.y-15);
@@ -78,18 +80,21 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
     }
 
      if (key == sf::Keyboard::Up){
+
         if(!(isPressed&&aup)){
             aup=isPressed;
             if(isPressed) Catacar.restart();
         }
     }
      if (key == sf::Keyboard::Down){
+
         if(!(isPressed&&adown)){
             adown=isPressed;
             if(isPressed) Catacar.restart();
         }
     }
      if (key == sf::Keyboard::Left){
+
         if(!(isPressed&&aleft)){
             aleft=isPressed;
             if(isPressed) Catacar.restart();
@@ -97,6 +102,7 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
     }
      if (key == sf::Keyboard::Right){
+
         if(!(isPressed&&aright)){
             aright=isPressed;
             if(isPressed) Catacar.restart();
@@ -118,9 +124,14 @@ void Player::update(sf::Time elapsedTime){
         body.setFillColor(sf::Color::Red);
     }
 
-	if(!disparo && Catacar.getElapsedTime().asSeconds()>atackSpeed){
+
+
+	if(!disparo && !aup && !adown && !aleft && !aright && Catacar.getElapsedTime().asSeconds()>atackSpeed){
         stateMovement();
 	}
+
+
+
 	else if(disparo && !aup && !adown && !aleft && !aright && Catacar.getElapsedTime().asSeconds()>0.5){
         stateMovement();
 	}
@@ -180,7 +191,7 @@ void Player::animate(sf::Time elapsedTime){
         else{
             if(up){
                 if(invulnerable){
-                    fila=26;
+                    fila=27;
                     if(rodando)
                         fila=18;
                 }
@@ -193,7 +204,7 @@ void Player::animate(sf::Time elapsedTime){
             }
             if(down){
                 if(invulnerable){
-                    fila=25;
+                    fila=28;
                     if(rodando)
                         fila=20;
                 }
@@ -206,7 +217,7 @@ void Player::animate(sf::Time elapsedTime){
             }
             if(right){
                 if(invulnerable){
-                    fila=24;
+                    fila=29;
                     if(rodando)
                         fila=18;
                     derecha=true;
@@ -221,7 +232,7 @@ void Player::animate(sf::Time elapsedTime){
             }
             if(left){
                 if(invulnerable){
-                    fila=24;
+                    fila=29;
                     if(rodando)
                         fila=18;
                     derecha=false;
@@ -340,6 +351,7 @@ void Player::animate(sf::Time elapsedTime){
 
 void Player::espadazo(){
     if(!disparo){
+
         if(aup)           {
             espada.setSize(sf::Vector2f(50.0f,30.0f));
             espada.setPosition(body.getPosition().x-25 , body.getPosition().y-50.0f);
@@ -358,6 +370,10 @@ void Player::espadazo(){
         }
         if(Catacar.getElapsedTime().asSeconds()>0.5){
             espada.setSize(sf::Vector2f(0,0));
+        }
+        if((aup || adown || aleft || aright) && relojSonido.getElapsedTime().asSeconds() > 0.5 && espada.getSize().x != 0){
+            efectoAtaque.play();
+            relojSonido.restart();
         }
     }
     else{
@@ -422,6 +438,7 @@ void Player::espadazo(){
 void Player::loseLife(int i){
 std::cout<<"he perdido vida"<<std::endl;
     if(!invulnerable){
+        efectoGolpeado.play();
         life=life-1;
         hud::getHud()->loseLife(i);
         invulnerable = true;

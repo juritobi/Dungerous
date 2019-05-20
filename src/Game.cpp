@@ -22,7 +22,7 @@ Game::Game()
 ,dead(0.2f,sf::Vector2u(6, 1),"muerte")
 {
     mPlayer= new Player();
-    boss=new Boss(sf::Vector2u(3,8), mPlayer, 3);
+    boss=new Boss(sf::Vector2u(3,8), mPlayer, 30);
     hudView.setSize(762,7608.f);
     hudView.setViewport(sf::FloatRect(0.f,0.f,1.f,0.1f));
     App::getApp()->mView.setCenter(sf::Vector2f(960.0f,14686.0f));
@@ -87,7 +87,7 @@ void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 void Game::update(sf::Time elapsedTime){
 
 
-    std::cout<<portales.size()<<std::endl;
+
     mPlayer->update(elapsedTime);
 
     boss->update();
@@ -98,7 +98,7 @@ void Game::update(sf::Time elapsedTime){
         portales[i]->letsGo();
     }
 
-std::cout<<"hahahsfhdihghiegrlbjdfbjfdojpbpobjtahonjbgfsñonjkgdb"<<std::endl;
+
 
     //Colisiones::getColisiones()->hostion();
 
@@ -169,7 +169,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     mWindow->draw(mPlayer->getBody());
    // mWindow->draw(mPlayer->getHitb());
     //mWindow->draw(mPlayer->getEspada());
-    mWindow->draw(boss->getHitb());
+    //mWindow->draw(boss->getHitb());
     mWindow->draw(boss->getbody());
 
     for(int i=0; i < mPlayer->getBalas().size();i++){
@@ -193,7 +193,7 @@ void Game::render(sf::Time minUpdateTime, sf::Time updateTime){
     if(mMap->getMap()->getmatando()==true)
         mWindow->draw(*muerte);
 
-    //App::getApp()->mWindow.draw(Map::getMap());
+
 
     mWindow->setView(hudView);
 
