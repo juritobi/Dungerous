@@ -42,8 +42,6 @@ App::App()
     AssetManager::getAssetManager()->createTexture("PVida","assets/vida.png");
     AssetManager::getAssetManager()->createTexture("PFuerza","assets/fuerza.png");
     AssetManager::getAssetManager()->createTexture("PAtaque","assets/velAt.png");
-    AssetManager::getAssetManager()->createTexture("calavera","assets/calavera.png");
-    AssetManager::getAssetManager()->createTexture("calaveraRoja","assets/calavera.png");
     AssetManager::getAssetManager()->createTexture("calaveras","assets/calaveras.png");
     AssetManager::getAssetManager()->createTexture("enem","assets/enemy.png");
     AssetManager::getAssetManager()->createTexture("flechas", "assets/flechas.png");
