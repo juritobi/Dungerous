@@ -153,7 +153,18 @@ this->data=map->FirstChildElement("layer")->FirstChildElement("data")->FirstChil
 bool next=true;
 
 
+/*
+Esta es la parte esencial de la clase, buena parte del juego se genera aqui, lo que se hace es leer todas las capas, en funcion del numero de capa se genera una cosa u otra
+La capa 1 es la capa de patrones de tiled, se almacena en una matriz tridimensional para luego dibujar el mapa
+La capa 2 es la primera capa de objetos, esta capa genera las colisiones del entorno.
+La capa 3 es la segunda capa de objetos, esta capa genera las puertas.
+La capa 4 es la tercera capa de objetos, esta genera los enemigos, se ha desarrollado un sistema que genera los enemigos donde se dibuje un cuadrado, enemigo tipo 1, o un circulo, enemigo tipo 2.
+Todos los objetos son almacenados en vectores para que cuando sea necesario sean borrados
+*/
+
 for(unsigned int l=0;l<=_numLayers;l++){
+
+    //Selecion de capa con tinyxml
 
             if(l==1)
             data=map->FirstChildElement("objectgroup")->FirstChildElement("object");
@@ -174,12 +185,12 @@ for(unsigned int l=0;l<=_numLayers;l++){
 
 
             if(l==0){
-            data->QueryIntAttribute("gid", &_tilemap[l][y][x]);
+            data->QueryIntAttribute("gid", &_tilemap[l][y][x]);     //Capa de patrones
             data= data->NextSiblingElement("tile");
             }
 
 
-            if(l==1 || l==2 || l==3){
+            if(l==1 || l==2 || l==3){                   //Capas de objetos
 
             data->QueryIntAttribute("id",&id);
             data->QueryIntAttribute("x",&cx);
@@ -187,23 +198,23 @@ for(unsigned int l=0;l<=_numLayers;l++){
             data->QueryIntAttribute("width",&objwid);
             data->QueryIntAttribute("height",&objhei);
 
-                if(data->NextSiblingElement("object") && l==1){
+                if(data->NextSiblingElement("object") && l==1){ //Si es la capa 1 se generan los muros del juego
                 data= data->NextSiblingElement("object");
                 generarcolision(cx,cy,objhei,objwid);
                 }
-                else if(data->NextSiblingElement("object") && l==2){
+                else if(data->NextSiblingElement("object") && l==2){    //Si es la capa 2 se generan las puertas del juego
                 data= data->NextSiblingElement("object");
                 generarpuerta(cx,cy,objhei,objwid);
                 }
 
-                else if(data->NextSiblingElement("object") && l==3){
+                else if(data->NextSiblingElement("object") && l==3){    //Si es la capa 3 se generan los enemigos del juego
 
-                    if(data->FirstChildElement("ellipse")){
+                    if(data->FirstChildElement("ellipse")){             //Si es una elipse se genera de tipo 1, enemigo que dispara
                         data= data->NextSiblingElement("object");
                         generarspawns(cx,cy,objhei,objwid,1);
                         }
                         else{
-                        data= data->NextSiblingElement("object");
+                        data= data->NextSiblingElement("object");       //Si es un cuadrado se genera de tipo 0, enemigo que va a por ti
                         generarspawns(cx,cy,objhei,objwid,0);
                         }
 
@@ -233,7 +244,7 @@ void Map::generarcolision(int x, int y, int h, int w)
 
 sf::RectangleShape *muro= new sf::RectangleShape();
 muro->setSize(sf::Vector2f(w,h));
-muro->setPosition(sf::Vector2f(x,y));
+muro->setPosition(sf::Vector2f(x,y));                   //creacion de muros
 muro->setFillColor(sf::Color::Red);
 muros.push_back(muro);
 muro=nullptr;
@@ -247,7 +258,7 @@ void Map::generarpuerta(int x, int y, int h, int w)
 sf::RectangleShape *puerta= new sf::RectangleShape();
 puerta->setSize(sf::Vector2f(w,h));
 puerta->setPosition(sf::Vector2f(x,y));
-puerta->setFillColor(sf::Color::Red);
+puerta->setFillColor(sf::Color::Red);                   //creacion de puertas
 puertas.push_back(puerta);
 puerta=nullptr;
 delete puerta;
@@ -261,7 +272,7 @@ Enemy *enemigo= new Enemy(sf::Vector2u (4,4), player, 3,type,sf::Vector2f(x,y));
 enemigos.push_back(enemigo);
 enemigo=nullptr;
 delete enemigo;
-}
+}                                                                                       //creacion de enemigos
 if(type==1){
 Enemy *enemigo= new Enemy(sf::Vector2u (3,8), player, 3,type,sf::Vector2f(x,y));
 enemigos.push_back(enemigo);
@@ -278,7 +289,7 @@ void Map::cambiopuertas()
     for(unsigned int i=0; i<_width;i++){
         for(unsigned int j=0; j<_height;j++)
             {
-             if(_tilemap[k][j][i]==433)
+             if(_tilemap[k][j][i]==433)                                         //metodo para cambiar abrir las puertas
              _tilemap[k][j][i]=479;
 
 
@@ -294,7 +305,7 @@ load("assets/THIS.png",sf::Vector2u(64,64),_tilemap,30,238,3);
 void Map::reiniciapuertas()
 {
 
- for(unsigned k=0; k<3;k++){
+ for(unsigned k=0; k<3;k++){                                                    //metodo para cerrar las puertas
     for(unsigned int i=0; i<_width;i++){
         for(unsigned int j=0; j<_height;j++)
             {
@@ -324,7 +335,7 @@ window.draw(*puertas[i]);
 }
 
 
-void Map::asignarsala()
+void Map::asignarsala()     //metodo muy poco optimo pero no ha dado tiempo a hacerlo mejor, se asigna a los enemigos una sala segun posicion para que no se activen hasta que llegue el player a su sala
 {
 
     for(unsigned int i=0; i<enemigos.size();i++)
@@ -411,6 +422,7 @@ enemigos.erase(enemigos.begin()+i);
 void Map::reiniciar()
 {
 int n=0;
+                                                        //manejar la apertura de puertas
 
     for(unsigned int i=0; i<enemigos.size();i++)
         if(enemigos[i]->getsala()==player->getsala())
