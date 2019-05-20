@@ -159,11 +159,11 @@ sala=i;
 
     if(type==0){
         if(sala>=10)
-        hp=5;
+        hp=4;
         if(sala<10 && sala>=6)
-        hp=7;
+        hp=6;
         if(sala<6)
-        hp=9;
+        hp=7;
     }
      else{
         if(sala>=10)
@@ -171,7 +171,7 @@ sala=i;
         if(sala>=6 && sala<10)
         hp=3;
         if(sala<6)
-        hp=4;
+        hp=3;
     }
 
 }
