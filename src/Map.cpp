@@ -291,11 +291,7 @@ void Map::cambiopuertas()
     for(unsigned int i=0; i<_width;i++){
         for(unsigned int j=0; j<_height;j++)
             {
-<<<<<<< HEAD
              if(_tilemap[k][j][i]==433){
-=======
-             if(_tilemap[k][j][i]==433)                                         //metodo para cambiar abrir las puertas
->>>>>>> 572b549f66ad1b8fc135837be1aef66c75774b0a
              _tilemap[k][j][i]=479;
                sonidoPuerta.play();
             }

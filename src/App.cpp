@@ -27,7 +27,7 @@ App* App::getApp(){
 }
 
 App::App()
-:mWindow(sf::VideoMode(1920,1080),"Dungerous",sf::Style::Default)
+:mWindow(sf::VideoMode(1920,1080),"Dungerous",sf::Style::Fullscreen)
 ,mView(sf::FloatRect(0,0,1920,1080))
 {
     std::srand(std::time(nullptr));
