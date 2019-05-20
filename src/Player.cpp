@@ -488,8 +488,11 @@ void Player::teleport(sf::Vector2f pos){
 void Player::pickPu(int i){
     switch(i){
         case 1 :
-            life++;
-            hud::getHud()->setLife(1);
+            if(life<7){
+                life++;
+                hud::getHud()->setLife(1);
+            }
+
             break;
 
         case 2://fuerza
@@ -498,9 +501,12 @@ void Player::pickPu(int i){
             break;
 
         case 3://vatt*/
-            atackSpeed-=0.1;
-            animationAtaque.setTime(atackSpeed/5);
-            hud::getHud()->setPup(3);
+            if(atackSpeed>0.1){
+                atackSpeed-=0.1;
+                animationAtaque.setTime(atackSpeed/5);
+                hud::getHud()->setPup(3);
+            }
+
             break;
     }
 
