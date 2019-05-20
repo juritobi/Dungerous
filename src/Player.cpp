@@ -64,8 +64,8 @@ void Player::manageEvents(sf::Keyboard::Key key, bool isPressed){
     if (key == sf::Keyboard::D)
         right = isPressed;
 
-    if (key == sf::Keyboard::Return){
-        if(relojDisparo.getElapsedTime().asSeconds() > 2){
+    if (key == sf::Keyboard::Return||key == sf::Keyboard::E){
+        if(relojDisparo.getElapsedTime().asSeconds() > 0.2){
             if(!disparo){
                 disparo=true;
                 relojDisparo.restart();
