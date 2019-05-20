@@ -61,7 +61,7 @@ Game::Game()
     }
 
     tienda[0]=new Tienda(sf::Vector2f(1200,14500));
-    tienda[1]=new Tienda(sf::Vector2f(1200,8160));
+    tienda[1]=new Tienda(sf::Vector2f(1200,8000));
     tienda[2]=new Tienda(sf::Vector2f(1350,3264));
 
     mPower.push_back(new PowerUp(sf::Vector2f(150,150),1));
