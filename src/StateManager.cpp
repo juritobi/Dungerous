@@ -19,6 +19,7 @@ StateManager* StateManager::getStateManager(){
 /*
 
 se encarga de manejar una pila de estados el que esta en la cima de la pila sera el que se esta ejecutando
+Cada estado hereda se de interfazEstados que contiene funciones virtuales puras que se tiene que mdificar en cada clase assetManager(), update(), y render()
 
 */
 

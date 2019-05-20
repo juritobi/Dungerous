@@ -71,6 +71,7 @@ Game::Game()
 }
 
 
+
 void Game::manageEvents(sf::Keyboard::Key key, bool isPressed){
 
     if(key == sf::Keyboard::Escape){
@@ -239,10 +240,6 @@ void Game::saveGame(){
 
     myfile<<
     960<<" "<<15000<<" "<<hud::getHud()->getPsetaNum()<<std::endl;
-
-    /*mPlayer->getPosition().x<<" "<<
-    mPlayer->getPosition().y<<std::endl;*/
-
     myfile.close();
 }
 
